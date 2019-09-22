@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		840704892336E4E900961B1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840704882336E4E900961B1E /* SceneDelegate.swift */; };
+		8407048D23371D6E00961B1E /* StepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407048C23371D6E00961B1E /* StepTableViewCell.swift */; };
 		84C10B142336994E00146547 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B132336994E00146547 /* AppDelegate.swift */; };
 		84C10B182336994E00146547 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B172336994E00146547 /* ViewController.swift */; };
 		84C10B1B2336994E00146547 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B192336994E00146547 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		840704882336E4E900961B1E /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8407048C23371D6E00961B1E /* StepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTableViewCell.swift; sourceTree = "<group>"; };
 		84C10B102336994E00146547 /* workoutapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = workoutapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C10B132336994E00146547 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C10B172336994E00146547 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8407048E2337AE2700961B1E /* List Table */ = {
+			isa = PBXGroup;
+			children = (
+				84C10B2923369FD100146547 /* TableViewController.swift */,
+				84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */,
+			);
+			path = "List Table";
+			sourceTree = "<group>";
+		};
+		8407048F2337AE4400961B1E /* Steps Table */ = {
+			isa = PBXGroup;
+			children = (
+				84C10B172336994E00146547 /* ViewController.swift */,
+				8407048C23371D6E00961B1E /* StepTableViewCell.swift */,
+			);
+			path = "Steps Table";
+			sourceTree = "<group>";
+		};
 		84C10B072336994E00146547 = {
 			isa = PBXGroup;
 			children = (
@@ -102,9 +122,8 @@
 				84C10B1E2336995000146547 /* LaunchScreen.storyboard */,
 				84C10B212336995000146547 /* Info.plist */,
 				84C10B2723369FB300146547 /* NavViewController.swift */,
-				84C10B2923369FD100146547 /* TableViewController.swift */,
-				84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */,
-				84C10B172336994E00146547 /* ViewController.swift */,
+				8407048E2337AE2700961B1E /* List Table */,
+				8407048F2337AE4400961B1E /* Steps Table */,
 				84C10B2D2336A0F700146547 /* Video.swift */,
 			);
 			path = workoutapp;
@@ -247,6 +266,7 @@
 				84C10B142336994E00146547 /* AppDelegate.swift in Sources */,
 				84C10B2823369FB300146547 /* NavViewController.swift in Sources */,
 				84C10B2C23369FEB00146547 /* VideoTableViewCell.swift in Sources */,
+				8407048D23371D6E00961B1E /* StepTableViewCell.swift in Sources */,
 				84C10B2A23369FD100146547 /* TableViewController.swift in Sources */,
 				84C10B2E2336A0F700146547 /* Video.swift in Sources */,
 			);
