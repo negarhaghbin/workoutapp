@@ -7,23 +7,61 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840704892336E4E900961B1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840704882336E4E900961B1E /* SceneDelegate.swift */; };
 		84C10B142336994E00146547 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B132336994E00146547 /* AppDelegate.swift */; };
-		84C10B162336994E00146547 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B152336994E00146547 /* SceneDelegate.swift */; };
 		84C10B182336994E00146547 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B172336994E00146547 /* ViewController.swift */; };
 		84C10B1B2336994E00146547 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B192336994E00146547 /* Main.storyboard */; };
 		84C10B1D2336995000146547 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B1C2336995000146547 /* Assets.xcassets */; };
 		84C10B202336995000146547 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B1E2336995000146547 /* LaunchScreen.storyboard */; };
+		84C10B2823369FB300146547 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B2723369FB300146547 /* NavViewController.swift */; };
+		84C10B2A23369FD100146547 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B2923369FD100146547 /* TableViewController.swift */; };
+		84C10B2C23369FEB00146547 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */; };
+		84C10B2E2336A0F700146547 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B2D2336A0F700146547 /* Video.swift */; };
+		84C10B422336A10000146547 /* doubleChopKneePulls-clip.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B312336A10000146547 /* doubleChopKneePulls-clip.mp4 */; };
+		84C10B432336A10000146547 /* alternatingLunges-clip.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B322336A10000146547 /* alternatingLunges-clip.mp4 */; };
+		84C10B442336A10000146547 /* armCircles-clip.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B332336A10000146547 /* armCircles-clip.mp4 */; };
+		84C10B452336A10000146547 /* InnerTightLift-clip.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B342336A10000146547 /* InnerTightLift-clip.mp4 */; };
+		84C10B462336A10000146547 /* stepsAndPulls-clip.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B352336A10000146547 /* stepsAndPulls-clip.mp4 */; };
+		84C10B472336A10000146547 /* alternatingLunges.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B372336A10000146547 /* alternatingLunges.mp4 */; };
+		84C10B482336A10000146547 /* InnerTightLift.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B382336A10000146547 /* InnerTightLift.mp4 */; };
+		84C10B492336A10000146547 /* stepsAndPulls.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B392336A10000146547 /* stepsAndPulls.mp4 */; };
+		84C10B4A2336A10000146547 /* doubleChopKneePulls.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B3A2336A10000146547 /* doubleChopKneePulls.mp4 */; };
+		84C10B4B2336A10000146547 /* armCircles.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B3B2336A10000146547 /* armCircles.mp4 */; };
+		84C10B4C2336A10000146547 /* armCircles.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B3D2336A10000146547 /* armCircles.png */; };
+		84C10B4D2336A10000146547 /* doubleChopKneePulls.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B3E2336A10000146547 /* doubleChopKneePulls.png */; };
+		84C10B4E2336A10000146547 /* InnerTightLift.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B3F2336A10000146547 /* InnerTightLift.png */; };
+		84C10B4F2336A10000146547 /* alternatingLunges.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B402336A10000146547 /* alternatingLunges.png */; };
+		84C10B502336A10000146547 /* stepsAndPulls.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B412336A10000146547 /* stepsAndPulls.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		840704882336E4E900961B1E /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		84C10B102336994E00146547 /* workoutapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = workoutapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C10B132336994E00146547 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		84C10B152336994E00146547 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		84C10B172336994E00146547 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		84C10B1A2336994E00146547 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84C10B1C2336995000146547 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84C10B1F2336995000146547 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84C10B212336995000146547 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84C10B2723369FB300146547 /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
+		84C10B2923369FD100146547 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
+		84C10B2D2336A0F700146547 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		84C10B312336A10000146547 /* doubleChopKneePulls-clip.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "doubleChopKneePulls-clip.mp4"; sourceTree = "<group>"; };
+		84C10B322336A10000146547 /* alternatingLunges-clip.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "alternatingLunges-clip.mp4"; sourceTree = "<group>"; };
+		84C10B332336A10000146547 /* armCircles-clip.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "armCircles-clip.mp4"; sourceTree = "<group>"; };
+		84C10B342336A10000146547 /* InnerTightLift-clip.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "InnerTightLift-clip.mp4"; sourceTree = "<group>"; };
+		84C10B352336A10000146547 /* stepsAndPulls-clip.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "stepsAndPulls-clip.mp4"; sourceTree = "<group>"; };
+		84C10B372336A10000146547 /* alternatingLunges.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = alternatingLunges.mp4; sourceTree = "<group>"; };
+		84C10B382336A10000146547 /* InnerTightLift.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = InnerTightLift.mp4; sourceTree = "<group>"; };
+		84C10B392336A10000146547 /* stepsAndPulls.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = stepsAndPulls.mp4; sourceTree = "<group>"; };
+		84C10B3A2336A10000146547 /* doubleChopKneePulls.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = doubleChopKneePulls.mp4; sourceTree = "<group>"; };
+		84C10B3B2336A10000146547 /* armCircles.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = armCircles.mp4; sourceTree = "<group>"; };
+		84C10B3D2336A10000146547 /* armCircles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = armCircles.png; sourceTree = "<group>"; };
+		84C10B3E2336A10000146547 /* doubleChopKneePulls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doubleChopKneePulls.png; sourceTree = "<group>"; };
+		84C10B3F2336A10000146547 /* InnerTightLift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InnerTightLift.png; sourceTree = "<group>"; };
+		84C10B402336A10000146547 /* alternatingLunges.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alternatingLunges.png; sourceTree = "<group>"; };
+		84C10B412336A10000146547 /* stepsAndPulls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stepsAndPulls.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +94,66 @@
 		84C10B122336994E00146547 /* workoutapp */ = {
 			isa = PBXGroup;
 			children = (
+				84C10B2F2336A10000146547 /* Local Videos */,
+				840704882336E4E900961B1E /* SceneDelegate.swift */,
 				84C10B132336994E00146547 /* AppDelegate.swift */,
-				84C10B152336994E00146547 /* SceneDelegate.swift */,
 				84C10B172336994E00146547 /* ViewController.swift */,
 				84C10B192336994E00146547 /* Main.storyboard */,
 				84C10B1C2336995000146547 /* Assets.xcassets */,
 				84C10B1E2336995000146547 /* LaunchScreen.storyboard */,
 				84C10B212336995000146547 /* Info.plist */,
+				84C10B2723369FB300146547 /* NavViewController.swift */,
+				84C10B2923369FD100146547 /* TableViewController.swift */,
+				84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */,
+				84C10B2D2336A0F700146547 /* Video.swift */,
 			);
 			path = workoutapp;
+			sourceTree = "<group>";
+		};
+		84C10B2F2336A10000146547 /* Local Videos */ = {
+			isa = PBXGroup;
+			children = (
+				84C10B302336A10000146547 /* TravelVidsClips */,
+				84C10B362336A10000146547 /* TravelVids */,
+				84C10B3C2336A10000146547 /* Thumbnails */,
+			);
+			path = "Local Videos";
+			sourceTree = "<group>";
+		};
+		84C10B302336A10000146547 /* TravelVidsClips */ = {
+			isa = PBXGroup;
+			children = (
+				84C10B312336A10000146547 /* doubleChopKneePulls-clip.mp4 */,
+				84C10B322336A10000146547 /* alternatingLunges-clip.mp4 */,
+				84C10B332336A10000146547 /* armCircles-clip.mp4 */,
+				84C10B342336A10000146547 /* InnerTightLift-clip.mp4 */,
+				84C10B352336A10000146547 /* stepsAndPulls-clip.mp4 */,
+			);
+			path = TravelVidsClips;
+			sourceTree = "<group>";
+		};
+		84C10B362336A10000146547 /* TravelVids */ = {
+			isa = PBXGroup;
+			children = (
+				84C10B372336A10000146547 /* alternatingLunges.mp4 */,
+				84C10B382336A10000146547 /* InnerTightLift.mp4 */,
+				84C10B392336A10000146547 /* stepsAndPulls.mp4 */,
+				84C10B3A2336A10000146547 /* doubleChopKneePulls.mp4 */,
+				84C10B3B2336A10000146547 /* armCircles.mp4 */,
+			);
+			path = TravelVids;
+			sourceTree = "<group>";
+		};
+		84C10B3C2336A10000146547 /* Thumbnails */ = {
+			isa = PBXGroup;
+			children = (
+				84C10B3D2336A10000146547 /* armCircles.png */,
+				84C10B3E2336A10000146547 /* doubleChopKneePulls.png */,
+				84C10B3F2336A10000146547 /* InnerTightLift.png */,
+				84C10B402336A10000146547 /* alternatingLunges.png */,
+				84C10B412336A10000146547 /* stepsAndPulls.png */,
+			);
+			path = Thumbnails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +214,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C10B4E2336A10000146547 /* InnerTightLift.png in Resources */,
+				84C10B482336A10000146547 /* InnerTightLift.mp4 in Resources */,
+				84C10B442336A10000146547 /* armCircles-clip.mp4 in Resources */,
+				84C10B4A2336A10000146547 /* doubleChopKneePulls.mp4 in Resources */,
+				84C10B422336A10000146547 /* doubleChopKneePulls-clip.mp4 in Resources */,
+				84C10B492336A10000146547 /* stepsAndPulls.mp4 in Resources */,
+				84C10B472336A10000146547 /* alternatingLunges.mp4 in Resources */,
+				84C10B4F2336A10000146547 /* alternatingLunges.png in Resources */,
+				84C10B502336A10000146547 /* stepsAndPulls.png in Resources */,
 				84C10B202336995000146547 /* LaunchScreen.storyboard in Resources */,
 				84C10B1D2336995000146547 /* Assets.xcassets in Resources */,
+				84C10B462336A10000146547 /* stepsAndPulls-clip.mp4 in Resources */,
+				84C10B4B2336A10000146547 /* armCircles.mp4 in Resources */,
+				84C10B4C2336A10000146547 /* armCircles.png in Resources */,
+				84C10B4D2336A10000146547 /* doubleChopKneePulls.png in Resources */,
 				84C10B1B2336994E00146547 /* Main.storyboard in Resources */,
+				84C10B452336A10000146547 /* InnerTightLift-clip.mp4 in Resources */,
+				84C10B432336A10000146547 /* alternatingLunges-clip.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,8 +243,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C10B182336994E00146547 /* ViewController.swift in Sources */,
+				840704892336E4E900961B1E /* SceneDelegate.swift in Sources */,
 				84C10B142336994E00146547 /* AppDelegate.swift in Sources */,
-				84C10B162336994E00146547 /* SceneDelegate.swift in Sources */,
+				84C10B2823369FB300146547 /* NavViewController.swift in Sources */,
+				84C10B2C23369FEB00146547 /* VideoTableViewCell.swift in Sources */,
+				84C10B2A23369FD100146547 /* TableViewController.swift in Sources */,
+				84C10B2E2336A0F700146547 /* Video.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +395,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3BH49U8WFP;
 				INFOPLIST_FILE = workoutapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,6 +414,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3BH49U8WFP;
 				INFOPLIST_FILE = workoutapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
