@@ -47,9 +47,6 @@ class TableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: VideoCellReuseIdentifier, for: indexPath) as? VideoTableViewCell else {
             return VideoTableViewCell()
         }
-        print("sectionsCount \(sectionsCount)")
-        print("section \(indexPath.section)")
-        print("row \(indexPath.row)")
         let index=(indexPath.section * sectionsCount[indexPath.section==0 ? 0:indexPath.section-1]) + indexPath.row
         
         let video = videos[index]
@@ -65,8 +62,11 @@ class TableViewController: UITableViewController {
         // Get the new view controller using segue.destination.
         let vc=segue.destination as! ViewController
         // Pass the selected object to the new view controller.
-        let blogIndex = tableView.indexPathForSelectedRow?.row
-        vc.video = videos[blogIndex!]
+        let indexPath=tableView.indexPathForSelectedRow
+        let sectionCount = (indexPath?.section != 0) ? sectionsCount[indexPath!.section - 1] : sectionsCount[0]
+
+        let index = (indexPath!.section) * sectionCount + (indexPath!.row)
+        vc.video = videos[index]
         
     }
     
