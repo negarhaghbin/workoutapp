@@ -97,7 +97,6 @@
 				84C10B2F2336A10000146547 /* Local Videos */,
 				840704882336E4E900961B1E /* SceneDelegate.swift */,
 				84C10B132336994E00146547 /* AppDelegate.swift */,
-				84C10B172336994E00146547 /* ViewController.swift */,
 				84C10B192336994E00146547 /* Main.storyboard */,
 				84C10B1C2336995000146547 /* Assets.xcassets */,
 				84C10B1E2336995000146547 /* LaunchScreen.storyboard */,
@@ -105,6 +104,7 @@
 				84C10B2723369FB300146547 /* NavViewController.swift */,
 				84C10B2923369FD100146547 /* TableViewController.swift */,
 				84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */,
+				84C10B172336994E00146547 /* ViewController.swift */,
 				84C10B2D2336A0F700146547 /* Video.swift */,
 			);
 			path = workoutapp;
