@@ -95,8 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				84C10B2F2336A10000146547 /* Local Videos */,
-				840704882336E4E900961B1E /* SceneDelegate.swift */,
 				84C10B132336994E00146547 /* AppDelegate.swift */,
+				840704882336E4E900961B1E /* SceneDelegate.swift */,
 				84C10B192336994E00146547 /* Main.storyboard */,
 				84C10B1C2336995000146547 /* Assets.xcassets */,
 				84C10B1E2336995000146547 /* LaunchScreen.storyboard */,

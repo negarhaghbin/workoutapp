@@ -18,14 +18,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ee-sX-YH4">
                                 <rect key="frame" x="20" y="88" width="374" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1S-DP-3dU">
-                                <rect key="frame" x="20" y="465" width="350" height="174"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -37,6 +30,13 @@
                                     <outletCollection property="gestureRecognizers" destination="eLL-Nk-Zsm" appends="YES" id="CSQ-lx-RIG"/>
                                 </connections>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1S-DP-3dU">
+                                <rect key="frame" x="20" y="481" width="374" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -57,7 +57,7 @@
             </objects>
             <point key="canvasLocation" x="2813.04347826087" y="115.84821428571428"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Workout List-->
         <scene sceneID="pyw-Py-3OA">
             <objects>
                 <tableViewController id="eo6-In-mNI" customClass="TableViewController" customModule="workoutapp" customModuleProvider="target" sceneMemberID="viewController">
@@ -73,27 +73,27 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdK-7o-Szb" userLabel="titleLabel">
-                                            <rect key="frame" x="201" y="52" width="193" height="32"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alternatingLunges.png" translatesAutoresizingMaskIntoConstraints="NO" id="wZq-9z-jqt" userLabel="previewImageView">
-                                            <rect key="frame" x="0.0" y="7" width="193" height="136"/>
+                                            <rect key="frame" x="20" y="7" width="193" height="136"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="193" id="1Pr-ur-ShP"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdK-7o-Szb" userLabel="titleLabel">
+                                            <rect key="frame" x="221" y="48" width="173" height="55"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="PdK-7o-Szb" firstAttribute="top" secondItem="MZR-U0-4I4" secondAttribute="topMargin" constant="41" id="219-03-z8n"/>
-                                        <constraint firstItem="wZq-9z-jqt" firstAttribute="leading" secondItem="MZR-U0-4I4" secondAttribute="leadingMargin" constant="-20" id="BrA-vX-UPk"/>
+                                        <constraint firstItem="PdK-7o-Szb" firstAttribute="top" secondItem="MZR-U0-4I4" secondAttribute="topMargin" constant="37" id="219-03-z8n"/>
+                                        <constraint firstItem="wZq-9z-jqt" firstAttribute="leading" secondItem="MZR-U0-4I4" secondAttribute="leadingMargin" id="BrA-vX-UPk"/>
                                         <constraint firstItem="wZq-9z-jqt" firstAttribute="top" secondItem="MZR-U0-4I4" secondAttribute="topMargin" constant="-4" id="U2v-Co-gqU"/>
                                         <constraint firstItem="PdK-7o-Szb" firstAttribute="leading" secondItem="wZq-9z-jqt" secondAttribute="trailing" constant="8" id="XEw-Gl-WW2"/>
                                         <constraint firstItem="PdK-7o-Szb" firstAttribute="trailing" secondItem="MZR-U0-4I4" secondAttribute="trailingMargin" id="clM-xy-s2k"/>
                                         <constraint firstItem="wZq-9z-jqt" firstAttribute="centerY" secondItem="MZR-U0-4I4" secondAttribute="centerY" id="iub-dc-8HA"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="PdK-7o-Szb" secondAttribute="bottom" constant="55" id="qUd-N8-66R"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="PdK-7o-Szb" secondAttribute="bottom" constant="36" id="qUd-N8-66R"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration" identifier="VideoTableViewCell" label="VideoTableViewCell">
@@ -111,7 +111,7 @@
                             <outlet property="delegate" destination="eo6-In-mNI" id="Pv1-Uz-KnL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="B5s-Af-Pwa"/>
+                    <navigationItem key="navigationItem" title="Workout List" id="B5s-Af-Pwa"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nIz-3s-nve" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
