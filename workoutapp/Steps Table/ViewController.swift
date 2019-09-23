@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var subtitleView: UILabel!
     @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    var video : Video = Video.init(url: URL(fileURLWithPath: "") , thumbURL: URL(fileURLWithPath: ""), title: "", subtitle: "", steps: [], section: "")
+    var video : Video = Video.init(url: URL(fileURLWithPath: "") , thumbURL: URL(fileURLWithPath: ""), title: "", subtitle: "", steps: [], section: "", videoThumbURL: URL(fileURLWithPath: ""))
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,12 +24,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         titleLabel.text=video.title
         subtitleView.text=video.subtitle
-        previewImageView.image=UIImage(named: (video.thumbURL.path))
+        previewImageView.image=UIImage(named: (video.videoThumbURL.path))
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600
-        
-        // Do any additional setup after loading the view.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

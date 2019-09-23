@@ -11,14 +11,16 @@ import UIKit
 class Video: NSObject {
     let url: URL
     let thumbURL: URL
+    let videoThumbURL: URL
     let title: String
     let subtitle: String
     let steps: [(Int,String)]
     let section: String
 
-    init(url: URL, thumbURL: URL, title: String, subtitle: String, steps:[(Int,String)], section: String) {
+    init(url: URL, thumbURL: URL, title: String, subtitle: String, steps:[(Int,String)], section: String, videoThumbURL:URL) {
       self.url = url
       self.thumbURL = thumbURL
+      self.videoThumbURL = videoThumbURL
       self.title = title
       self.subtitle = subtitle
       self.steps=steps
@@ -43,7 +45,7 @@ class Video: NSObject {
              (2,"Circle your arms forward using small controlled motions, gradually making the circles bigger until you feel a stretch in your triceps."),
              (3,"Reverse the direction of the circles after 30 seconds.")],
             
-            [(1,"step 1"), (2,"step 2"), (3,"step 3")],
+            [(1,"Start with your feet a little wider than shoulder-width apart and bring both arms overhead."), (2,"Pull down and across the body, twice, before resetting & repeating on the opposite side.")],
             
             [(1,"Lift your ribs and prop your head up on your hand. Be sure that you keep your back and neck in good alignment."),
             (2,"Put the foot of your top leg up in the back."),
@@ -68,7 +70,10 @@ class Video: NSObject {
         let thumbURLPath = Bundle.main.path(forResource: name, ofType: "png")!
         let thumbURL = URL(fileURLWithPath: thumbURLPath)
         
-        let video = Video(url: url, thumbURL: thumbURL, title: titles[index], subtitle: subtitles[index], steps: allSteps[index], section: sections[index])
+        let videoThumbURLPath = Bundle.main.path(forResource: name, ofType: "jpg")!
+        let videoThumbURL = URL(fileURLWithPath: videoThumbURLPath)
+        
+        let video = Video(url: url, thumbURL: thumbURL, title: titles[index], subtitle: subtitles[index], steps: allSteps[index], section: sections[index], videoThumbURL: videoThumbURL)
         videos.append(video)
           
       }
