@@ -26,6 +26,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         subtitleView.text=video.subtitle
         previewImageView.image=UIImage(named: (video.thumbURL.path))
         
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 600
+        
         // Do any additional setup after loading the view.
     }
     
@@ -38,7 +41,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return StepTableViewCell()
         }
         let step = video.steps[indexPath.row]
-        print(step)
         cell.numberLabel.text = String(step.0)
         cell.descriptionLabel.text = step.1
 
