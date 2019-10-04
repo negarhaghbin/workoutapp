@@ -7,12 +7,25 @@
 //
 
 import UIKit
+import UserNotifications
+import AVFoundation
+
+enum Identifiers {
+  static let viewAction = "VIEW_IDENTIFIER"
+  static let newsCategory = "NEWS_CATEGORY"
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient,
+                                                         mode: AVAudioSession.Mode.moviePlayback,
+        options: [.mixWithOthers])
+
+        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+        registerForPushNotifications()
         return true
     }
 
@@ -29,7 +42,84 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    func registerForPushNotifications() {
+      UNUserNotificationCenter.current()
+        .requestAuthorization(options: [.alert, .sound, .badge]) {
+          [weak self] granted, error in
+            
+          print("Permission granted: \(granted)")
+          guard granted else { return }
 
+          let viewAction = UNNotificationAction(
+            identifier: Identifiers.viewAction, title: "View",
+            options: [.foreground])
+
+            
+          let newsCategory = UNNotificationCategory(
+            identifier: Identifiers.newsCategory, actions: [viewAction],
+            intentIdentifiers: [], options: [])
+      UNUserNotificationCenter.current().setNotificationCategories([newsCategory])
+
+          self?.getNotificationSettings()
+      }
+    }
+    
+    func getNotificationSettings() {
+      UNUserNotificationCenter.current().getNotificationSettings { settings in
+        print("Notification settings: \(settings)")
+        guard settings.authorizationStatus == .authorized else { return }
+        DispatchQueue.main.async {
+          UIApplication.shared.registerForRemoteNotifications()
+        }
+
+      }
+    }
+    
+    func application(
+      _ application: UIApplication,
+      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+    ) {
+      let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+      let token = tokenParts.joined()
+      print("Device Token: \(token)")
+    }
+
+    func application(
+      _ application: UIApplication,
+      didFailToRegisterForRemoteNotificationsWithError error: Error) {
+      print("Failed to register: \(error)")
+    }
 
 }
+
+//extension AppDelegate: UNUserNotificationCenterDelegate {
+//  func userNotificationCenter(
+//    _ center: UNUserNotificationCenter,
+//    didReceive response: UNNotificationResponse,
+//    withCompletionHandler completionHandler: @escaping () -> Void) {
+//
+//    // 1
+//    let userInfo = response.notification.request.content.userInfo
+//
+//    // 2
+//    if let aps = userInfo["aps"] as? [String: AnyObject],
+//      let newsItem = NewsItem.makeNewsItem(aps) {
+//
+//      (window?.rootViewController as? UITabBarController)?.selectedIndex = 1
+//
+//      // 3
+//      if response.actionIdentifier == Identifiers.viewAction,
+//        let url = URL(string: newsItem.link) {
+//        let safari = SFSafariViewController(url: url)
+//        window?.rootViewController?.present(safari, animated: true,
+//                                            completion: nil)
+//      }
+//    }
+//
+//    // 4
+//    completionHandler()
+//  }
+//}
+
 

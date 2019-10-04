@@ -32,9 +32,9 @@ class Video: NSObject {
       var videos: [Video] = []
       let names = [ "stepsAndPulls", "armCircles", "doubleChopKneePulls", "InnerTightLift", "alternatingLunges"]
       let titles = [ "Lateral Steps And Pulls" , "Arm Circles", "Double Chop Knee Pulls", "Inner Thigh Lift", "Alternating Lunges"]
-      let subtitles = ["Duration: 30 seconds \nEquipment: No Equipment", "Duration: 60 seconds \nEquipment: No Equipment",
-                       "Duration: 50 seconds (30 seconds each direction) \nEquipment: No Equipment",
-                       "Duration: 80 seconds (40 seconds each side) \nEquipment: No Equipment", "Duration: 25 seconds \nEquipment: No Equipment"]
+      let subtitles = ["30 seconds \u{2022} No Equipments", "60 seconds \u{2022} No Equipment",
+                       "60 seconds (30 seconds each direction) \u{2022} No Equipments",
+                       "80 seconds (40 seconds each side) \u{2022} No Equipments", "25 seconds \u{2022} No Equipmentss"]
         let sections = ["Total Body", "Upper Body", "Abs", "Lower Body", "Lower Body" ]
         let allSteps = [
             [(1,"Start with your feet a little wider than shoulder-width apart and bring both hands above your head."),
