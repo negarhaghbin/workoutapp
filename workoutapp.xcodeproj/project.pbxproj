@@ -33,6 +33,7 @@
 		84C10B4E2336A10000146547 /* InnerTightLift.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B3F2336A10000146547 /* InnerTightLift.png */; };
 		84C10B4F2336A10000146547 /* alternatingLunges.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B402336A10000146547 /* alternatingLunges.png */; };
 		84C10B502336A10000146547 /* stepsAndPulls.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B412336A10000146547 /* stepsAndPulls.png */; };
+		84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6EEC4235227F3001B00D8 /* SplitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		84C10B3F2336A10000146547 /* InnerTightLift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InnerTightLift.png; sourceTree = "<group>"; };
 		84C10B402336A10000146547 /* alternatingLunges.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alternatingLunges.png; sourceTree = "<group>"; };
 		84C10B412336A10000146547 /* stepsAndPulls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stepsAndPulls.png; sourceTree = "<group>"; };
+		84E6EEC4235227F3001B00D8 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				8407048E2337AE2700961B1E /* List Table */,
 				8407048F2337AE4400961B1E /* Steps Table */,
 				84C10B2D2336A0F700146547 /* Video.swift */,
+				84E6EEC4235227F3001B00D8 /* SplitViewController.swift */,
 			);
 			path = workoutapp;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				84C10B142336994E00146547 /* AppDelegate.swift in Sources */,
 				84C10B2823369FB300146547 /* NavViewController.swift in Sources */,
 				84C10B2C23369FEB00146547 /* VideoTableViewCell.swift in Sources */,
+				84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */,
 				8407048D23371D6E00961B1E /* StepTableViewCell.swift in Sources */,
 				84C10B2A23369FD100146547 /* TableViewController.swift in Sources */,
 				84C10B2E2336A0F700146547 /* Video.swift in Sources */,

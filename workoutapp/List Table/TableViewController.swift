@@ -13,10 +13,16 @@ struct Section{
     var exercises : [Video]
 }
 
+protocol ExerciseSelectionDelegate: class {
+  func exerciseSelected(_ newExercise: Video)
+}
+
 class TableViewController: UITableViewController {
     var videos: [Video] = []
     let VideoCellReuseIdentifier = "VideoTableViewCell"
     var sections : [Section] = []
+    
+    weak var delegate: ExerciseSelectionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,25 +71,31 @@ class TableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        //(view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor(red: 0.9, green: 0.7, blue: 0.9, alpha: 1)
-        //(view as! UITableViewHeaderFooterView).textLabel?.textColor = UIColor.white
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index=(indexPath.section * sections[indexPath.section==0 ? 0:indexPath.section-1].exercises.count) + indexPath.row
+        
+        let selectedVideo = videos[index]
+        delegate?.exerciseSelected(selectedVideo)
+        if
+            let detailViewController = delegate as? ViewController,
+            let detailNavigationController = detailViewController.navigationController {
+          splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
+        }
     }
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        let vc=segue.destination as! ViewController
-        // Pass the selected object to the new view controller.
-        let indexPath=tableView.indexPathForSelectedRow
-        let sectionCount = (indexPath?.section != 0) ? sections[indexPath!.section - 1].exercises.count : sections[0].exercises.count
-
-        let index = (indexPath!.section) * sectionCount + (indexPath!.row)
-        vc.video = videos[index]
-        
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destination.
+//        let vc=segue.destination as! ViewController
+//        // Pass the selected object to the new view controller.
+//        let indexPath=tableView.indexPathForSelectedRow
+//        let sectionCount = (indexPath?.section != 0) ? sections[indexPath!.section - 1].exercises.count : sections[0].exercises.count
+//
+//        let index = (indexPath!.section) * sectionCount + (indexPath!.row)
+//        vc.video = videos[index]
+//
+//    }
     
 
 }

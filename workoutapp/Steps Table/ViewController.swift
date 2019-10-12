@@ -16,38 +16,51 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var subtitleView: UILabel!
     @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    var video : Video = Video.init(url: URL(fileURLWithPath: "") , thumbURL: URL(fileURLWithPath: ""), title: "", subtitle: "", steps: [], section: "", videoThumbURL: URL(fileURLWithPath: ""))
+    internal let tapRecognizer1: UITapGestureRecognizer = UITapGestureRecognizer()
+    
+    var video : Video?{
+        didSet{
+            refreshUI()
+        }
+    }
+    
+    private func refreshUI(){
+        loadView()
+        titleLabel.text=video?.title
+        subtitleView.text=video?.subtitle
+        previewImageView.image=UIImage(named: ((video?.videoThumbURL.path) ?? ""))
+        tapRecognizer1.addTarget(self, action: Selector(("tap:")))
+        previewImageView.gestureRecognizers = []
+        previewImageView.gestureRecognizers!.append(tapRecognizer1)
+    }
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text=video.title
-        subtitleView.text=video.subtitle
-        previewImageView.image=UIImage(named: (video.videoThumbURL.path))
-        
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return video.steps.count
+        return (video?.steps.count ?? 0)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: StepCellReuseIdentifier, for: indexPath) as? StepTableViewCell else {
             return StepTableViewCell()
         }
-        let step = video.steps[indexPath.row]
-        cell.numberLabel.text = String(step.0)
-        cell.descriptionLabel.text = step.1
+        let step = video?.steps[indexPath.row]
+        cell.numberLabel.text = String(step!.0)
+        cell.descriptionLabel.text = step!.1
 
         return cell
     }
     
-    @IBAction func tap(_ sender: UITapGestureRecognizer) {
-        let videoURL = video.url
-        let player = AVPlayer(url: videoURL)
+    @objc func tap(_ sender: UITapGestureRecognizer) {
+        let videoURL = video?.url
+        let player = AVPlayer(url: videoURL!)
         let playerViewController = AVPlayerViewController()
         playerViewController.player = player
 
@@ -55,5 +68,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             player.play()
         }
     }
+}
+
+extension ViewController: ExerciseSelectionDelegate {
+  func exerciseSelected(_ newExercise: Video) {
+    video = newExercise
+  }
 }
 
