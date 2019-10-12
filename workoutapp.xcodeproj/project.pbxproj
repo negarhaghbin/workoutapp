@@ -34,6 +34,7 @@
 		84C10B4F2336A10000146547 /* alternatingLunges.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B402336A10000146547 /* alternatingLunges.png */; };
 		84C10B502336A10000146547 /* stepsAndPulls.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B412336A10000146547 /* stepsAndPulls.png */; };
 		84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6EEC4235227F3001B00D8 /* SplitViewController.swift */; };
+		84E6EEC723528902001B00D8 /* startup in Resources */ = {isa = PBXBuildFile; fileRef = 84E6EEC623528902001B00D8 /* startup */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		84C10B402336A10000146547 /* alternatingLunges.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alternatingLunges.png; sourceTree = "<group>"; };
 		84C10B412336A10000146547 /* stepsAndPulls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stepsAndPulls.png; sourceTree = "<group>"; };
 		84E6EEC4235227F3001B00D8 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		84E6EEC623528902001B00D8 /* startup */ = {isa = PBXFileReference; lastKnownFileType = file; name = startup; path = workoutapp/Assets.xcassets/startup; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		84C10B072336994E00146547 = {
 			isa = PBXGroup;
 			children = (
+				84E6EEC623528902001B00D8 /* startup */,
 				84C10B122336994E00146547 /* workoutapp */,
 				84C10B112336994E00146547 /* Products */,
 			);
@@ -247,6 +250,7 @@
 				84372D4F2339342B00D6586D /* armCircles.jpg in Resources */,
 				84372D4B2339342A00D6586D /* doubleChopKneePulls.jpg in Resources */,
 				84372D4E2339342B00D6586D /* InnerTightLift.jpg in Resources */,
+				84E6EEC723528902001B00D8 /* startup in Resources */,
 				84372D4C2339342A00D6586D /* alternatingLunges.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
