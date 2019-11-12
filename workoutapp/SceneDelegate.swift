@@ -15,13 +15,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard
-          let splitViewController = window?.rootViewController as? UISplitViewController,
+          let tabBarController = window?.rootViewController as? UITabBarController,
+          let splitViewController = tabBarController.viewControllers?.first as? UISplitViewController,
           let leftNavController = splitViewController.viewControllers.first
             as? UINavigationController,
           let masterViewController = leftNavController.viewControllers.first
             as? TableViewController,
           let detailViewController = (splitViewController.viewControllers.last as? UINavigationController)?.topViewController as? ViewController
-          else { fatalError() }
+          else { return() }
 
         let firstExercise = masterViewController.videos.first
         detailViewController.video = firstExercise

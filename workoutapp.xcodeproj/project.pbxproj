@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5659C03FFC5341E18519622C /* Pods_workoutapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E22110DCB59BDDF5D0F7BE4 /* Pods_workoutapp.framework */; };
 		840704892336E4E900961B1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840704882336E4E900961B1E /* SceneDelegate.swift */; };
 		8407048D23371D6E00961B1E /* StepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407048C23371D6E00961B1E /* StepTableViewCell.swift */; };
 		84372D4B2339342A00D6586D /* doubleChopKneePulls.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D462339342A00D6586D /* doubleChopKneePulls.jpg */; };
@@ -14,6 +15,14 @@
 		84372D4D2339342B00D6586D /* stepsAndPulls.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D482339342A00D6586D /* stepsAndPulls.jpg */; };
 		84372D4E2339342B00D6586D /* InnerTightLift.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D492339342A00D6586D /* InnerTightLift.jpg */; };
 		84372D4F2339342B00D6586D /* armCircles.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D4A2339342A00D6586D /* armCircles.jpg */; };
+		846446A22376008500F493F0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A12376008500F493F0 /* TabBarViewController.swift */; };
+		846446A42376094900F493F0 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A32376094900F493F0 /* SettingsTableViewCell.swift */; };
+		846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A523760C9C00F493F0 /* SettingsTableViewController.swift */; };
+		846446AD237759F800F493F0 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446AC237759F800F493F0 /* Setting.swift */; };
+		846446B12377A10100F493F0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446B02377A10100F493F0 /* User.swift */; };
+		846446B32377A55B00F493F0 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446B22377A55B00F493F0 /* UserTableViewCell.swift */; };
+		846446B52378ACEA00F493F0 /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446B42378ACEA00F493F0 /* NameTableViewCell.swift */; };
+		846446B72378AD0100F493F0 /* NameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446B62378AD0100F493F0 /* NameTableViewController.swift */; };
 		84C10B142336994E00146547 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B132336994E00146547 /* AppDelegate.swift */; };
 		84C10B182336994E00146547 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B172336994E00146547 /* ViewController.swift */; };
 		84C10B1B2336994E00146547 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B192336994E00146547 /* Main.storyboard */; };
@@ -33,11 +42,43 @@
 		84C10B4E2336A10000146547 /* InnerTightLift.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B3F2336A10000146547 /* InnerTightLift.png */; };
 		84C10B4F2336A10000146547 /* alternatingLunges.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B402336A10000146547 /* alternatingLunges.png */; };
 		84C10B502336A10000146547 /* stepsAndPulls.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B412336A10000146547 /* stepsAndPulls.png */; };
+		84CB241A2379ACD900C1A66F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB24192379ACD900C1A66F /* UserModel.swift */; };
+		84DD8045237319A700B16601 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD8044237319A700B16601 /* NotificationService.swift */; };
+		84DD8049237319A700B16601 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 84DD8042237319A700B16601 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		84DD804F237462C500B16601 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DD804E237462C500B16601 /* HealthKit.framework */; };
 		84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6EEC4235227F3001B00D8 /* SplitViewController.swift */; };
 		84E6EEC723528902001B00D8 /* startup in Resources */ = {isa = PBXBuildFile; fileRef = 84E6EEC623528902001B00D8 /* startup */; };
+		FBC816195429A1F687D666FD /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1C683DBE4ED97BFBB67D2 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		84DD8047237319A700B16601 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84C10B082336994E00146547 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84DD8041237319A700B16601;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		84DD804A237319A700B16601 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				84DD8049237319A700B16601 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1E22110DCB59BDDF5D0F7BE4 /* Pods_workoutapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_workoutapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		259771ABF07E8122892F77E4 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
+		65B1C683DBE4ED97BFBB67D2 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840704882336E4E900961B1E /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8407048C23371D6E00961B1E /* StepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTableViewCell.swift; sourceTree = "<group>"; };
 		84361466233BE0660088ADA8 /* 5M Workout.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "5M Workout.entitlements"; sourceTree = "<group>"; };
@@ -46,6 +87,14 @@
 		84372D482339342A00D6586D /* stepsAndPulls.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stepsAndPulls.jpg; sourceTree = "<group>"; };
 		84372D492339342A00D6586D /* InnerTightLift.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = InnerTightLift.jpg; sourceTree = "<group>"; };
 		84372D4A2339342A00D6586D /* armCircles.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = armCircles.jpg; sourceTree = "<group>"; };
+		846446A12376008500F493F0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		846446A32376094900F493F0 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		846446A523760C9C00F493F0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		846446AC237759F800F493F0 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		846446B02377A10100F493F0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		846446B22377A55B00F493F0 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		846446B42378ACEA00F493F0 /* NameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NameTableViewCell.swift; path = workoutapp/NameTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		846446B62378AD0100F493F0 /* NameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewController.swift; sourceTree = "<group>"; };
 		84C10B102336994E00146547 /* 5M Workout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "5M Workout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C10B132336994E00146547 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C10B172336994E00146547 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,8 +116,16 @@
 		84C10B3F2336A10000146547 /* InnerTightLift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InnerTightLift.png; sourceTree = "<group>"; };
 		84C10B402336A10000146547 /* alternatingLunges.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alternatingLunges.png; sourceTree = "<group>"; };
 		84C10B412336A10000146547 /* stepsAndPulls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stepsAndPulls.png; sourceTree = "<group>"; };
+		84CB24192379ACD900C1A66F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		84DD8042237319A700B16601 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		84DD8044237319A700B16601 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		84DD8046237319A700B16601 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84DD804E237462C500B16601 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		84E6EEC4235227F3001B00D8 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
-		84E6EEC623528902001B00D8 /* startup */ = {isa = PBXFileReference; lastKnownFileType = file; name = startup; path = workoutapp/Assets.xcassets/startup; sourceTree = "<group>"; };
+		84E6EEC623528902001B00D8 /* startup */ = {isa = PBXFileReference; lastKnownFileType = file; path = startup; sourceTree = "<group>"; };
+		AD8ED2DAAEEFF97A4D28B7DE /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		DEFBCB37B5690F1D4D76BE76 /* Pods-workoutapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workoutapp.release.xcconfig"; path = "Target Support Files/Pods-workoutapp/Pods-workoutapp.release.xcconfig"; sourceTree = "<group>"; };
+		E228E4E341D33C7AAF50BB78 /* Pods-workoutapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workoutapp.debug.xcconfig"; path = "Target Support Files/Pods-workoutapp/Pods-workoutapp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,36 +133,85 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5659C03FFC5341E18519622C /* Pods_workoutapp.framework in Frameworks */,
+				84DD804F237462C500B16601 /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84DD803F237319A700B16601 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBC816195429A1F687D666FD /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8407048E2337AE2700961B1E /* List Table */ = {
+		8407048E2337AE2700961B1E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				84C10B2923369FD100146547 /* TableViewController.swift */,
-				84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */,
+				84CB24192379ACD900C1A66F /* UserModel.swift */,
 			);
-			path = "List Table";
+			path = Models;
 			sourceTree = "<group>";
 		};
-		8407048F2337AE4400961B1E /* Steps Table */ = {
+		8407048F2337AE4400961B1E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				84C10B172336994E00146547 /* ViewController.swift */,
-				8407048C23371D6E00961B1E /* StepTableViewCell.swift */,
+				84E6EEC623528902001B00D8 /* startup */,
+				84C10B1C2336995000146547 /* Assets.xcassets */,
+				84C10B192336994E00146547 /* Main.storyboard */,
+				84C10B1E2336995000146547 /* LaunchScreen.storyboard */,
 			);
-			path = "Steps Table";
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		846446A723760CA300F493F0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */,
+				846446B42378ACEA00F493F0 /* NameTableViewCell.swift */,
+				846446B22377A55B00F493F0 /* UserTableViewCell.swift */,
+				8407048C23371D6E00961B1E /* StepTableViewCell.swift */,
+				846446A32376094900F493F0 /* SettingsTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		846446AE23779DAF00F493F0 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				846446A12376008500F493F0 /* TabBarViewController.swift */,
+				846446A523760C9C00F493F0 /* SettingsTableViewController.swift */,
+				84C10B2723369FB300146547 /* NavViewController.swift */,
+				846446B62378AD0100F493F0 /* NameTableViewController.swift */,
+				84E6EEC4235227F3001B00D8 /* SplitViewController.swift */,
+				84C10B172336994E00146547 /* ViewController.swift */,
+				84C10B2923369FD100146547 /* TableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		846446AF23779DC500F493F0 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				84C10B2D2336A0F700146547 /* Video.swift */,
+				846446AC237759F800F493F0 /* Setting.swift */,
+				846446B02377A10100F493F0 /* User.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 		84C10B072336994E00146547 = {
 			isa = PBXGroup;
 			children = (
-				84E6EEC623528902001B00D8 /* startup */,
 				84C10B122336994E00146547 /* workoutapp */,
+				84DD8043237319A700B16601 /* OneSignalNotificationServiceExtension */,
 				84C10B112336994E00146547 /* Products */,
+				A72FBEC29CCC784116FDDF90 /* Pods */,
+				BB1005974B7E61BF1EE9DDA0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				84C10B102336994E00146547 /* 5M Workout.app */,
+				84DD8042237319A700B16601 /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,15 +231,12 @@
 				84C10B2F2336A10000146547 /* Local Videos */,
 				84C10B132336994E00146547 /* AppDelegate.swift */,
 				840704882336E4E900961B1E /* SceneDelegate.swift */,
-				84C10B192336994E00146547 /* Main.storyboard */,
-				84C10B1C2336995000146547 /* Assets.xcassets */,
-				84C10B1E2336995000146547 /* LaunchScreen.storyboard */,
 				84C10B212336995000146547 /* Info.plist */,
-				84C10B2723369FB300146547 /* NavViewController.swift */,
-				8407048E2337AE2700961B1E /* List Table */,
-				8407048F2337AE4400961B1E /* Steps Table */,
-				84C10B2D2336A0F700146547 /* Video.swift */,
-				84E6EEC4235227F3001B00D8 /* SplitViewController.swift */,
+				846446AF23779DC500F493F0 /* Objects */,
+				8407048F2337AE4400961B1E /* Resources */,
+				846446AE23779DAF00F493F0 /* View Controllers */,
+				846446A723760CA300F493F0 /* Cells */,
+				8407048E2337AE2700961B1E /* Models */,
 			);
 			path = workoutapp;
 			sourceTree = "<group>";
@@ -175,6 +279,36 @@
 			path = Thumbnails;
 			sourceTree = "<group>";
 		};
+		84DD8043237319A700B16601 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				84DD8044237319A700B16601 /* NotificationService.swift */,
+				84DD8046237319A700B16601 /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
+		A72FBEC29CCC784116FDDF90 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AD8ED2DAAEEFF97A4D28B7DE /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				259771ABF07E8122892F77E4 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
+				E228E4E341D33C7AAF50BB78 /* Pods-workoutapp.debug.xcconfig */,
+				DEFBCB37B5690F1D4D76BE76 /* Pods-workoutapp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BB1005974B7E61BF1EE9DDA0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84DD804E237462C500B16601 /* HealthKit.framework */,
+				65B1C683DBE4ED97BFBB67D2 /* Pods_OneSignalNotificationServiceExtension.framework */,
+				1E22110DCB59BDDF5D0F7BE4 /* Pods_workoutapp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -182,18 +316,40 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84C10B242336995000146547 /* Build configuration list for PBXNativeTarget "workoutapp" */;
 			buildPhases = (
+				76DC636BA3E2FA716F3CCFAB /* [CP] Check Pods Manifest.lock */,
 				84C10B0C2336994E00146547 /* Sources */,
 				84C10B0D2336994E00146547 /* Frameworks */,
 				84C10B0E2336994E00146547 /* Resources */,
+				84DD804A237319A700B16601 /* Embed App Extensions */,
+				73CA80EFC8F7FB34885713F4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				84DD8048237319A700B16601 /* PBXTargetDependency */,
 			);
 			name = workoutapp;
 			productName = workoutapp;
 			productReference = 84C10B102336994E00146547 /* 5M Workout.app */;
 			productType = "com.apple.product-type.application";
+		};
+		84DD8041237319A700B16601 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84DD804D237319A700B16601 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				CA1E024A67FB7E80670D7FF8 /* [CP] Check Pods Manifest.lock */,
+				84DD803E237319A700B16601 /* Sources */,
+				84DD803F237319A700B16601 /* Frameworks */,
+				84DD8040237319A700B16601 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = 84DD8042237319A700B16601 /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -201,12 +357,15 @@
 		84C10B082336994E00146547 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = Negar;
 				TargetAttributes = {
 					84C10B0F2336994E00146547 = {
 						CreatedOnToolsVersion = 11.0;
+					};
+					84DD8041237319A700B16601 = {
+						CreatedOnToolsVersion = 11.2;
 					};
 				};
 			};
@@ -224,6 +383,7 @@
 			projectRoot = "";
 			targets = (
 				84C10B0F2336994E00146547 /* workoutapp */,
+				84DD8041237319A700B16601 /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -255,26 +415,122 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		84DD8040237319A700B16601 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		73CA80EFC8F7FB34885713F4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-workoutapp/Pods-workoutapp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-workoutapp/Pods-workoutapp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-workoutapp/Pods-workoutapp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76DC636BA3E2FA716F3CCFAB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-workoutapp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA1E024A67FB7E80670D7FF8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84C10B0C2336994E00146547 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				846446B72378AD0100F493F0 /* NameTableViewController.swift in Sources */,
 				84C10B182336994E00146547 /* ViewController.swift in Sources */,
 				840704892336E4E900961B1E /* SceneDelegate.swift in Sources */,
 				84C10B142336994E00146547 /* AppDelegate.swift in Sources */,
 				84C10B2823369FB300146547 /* NavViewController.swift in Sources */,
+				846446B32377A55B00F493F0 /* UserTableViewCell.swift in Sources */,
+				846446AD237759F800F493F0 /* Setting.swift in Sources */,
+				846446B52378ACEA00F493F0 /* NameTableViewCell.swift in Sources */,
 				84C10B2C23369FEB00146547 /* VideoTableViewCell.swift in Sources */,
+				846446B12377A10100F493F0 /* User.swift in Sources */,
 				84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */,
+				846446A42376094900F493F0 /* SettingsTableViewCell.swift in Sources */,
 				8407048D23371D6E00961B1E /* StepTableViewCell.swift in Sources */,
+				846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */,
+				84CB241A2379ACD900C1A66F /* UserModel.swift in Sources */,
 				84C10B2A23369FD100146547 /* TableViewController.swift in Sources */,
+				846446A22376008500F493F0 /* TabBarViewController.swift in Sources */,
 				84C10B2E2336A0F700146547 /* Video.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		84DD803E237319A700B16601 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84DD8045237319A700B16601 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		84DD8048237319A700B16601 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84DD8041237319A700B16601 /* OneSignalNotificationServiceExtension */;
+			targetProxy = 84DD8047237319A700B16601 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		84C10B192336994E00146547 /* Main.storyboard */ = {
@@ -412,7 +668,9 @@
 		};
 		84C10B252336995000146547 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E228E4E341D33C7AAF50BB78 /* Pods-workoutapp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "workoutapp/5M Workout.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -432,7 +690,9 @@
 		};
 		84C10B262336995000146547 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEFBCB37B5690F1D4D76BE76 /* Pods-workoutapp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "workoutapp/5M Workout.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -445,6 +705,48 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.negar.workoutapp;
 				PRODUCT_NAME = "5M Workout";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		84DD804B237319A700B16601 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD8ED2DAAEEFF97A4D28B7DE /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3BH49U8WFP;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.negar.workoutapp.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		84DD804C237319A700B16601 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 259771ABF07E8122892F77E4 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3BH49U8WFP;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.negar.workoutapp.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -467,6 +769,15 @@
 			buildConfigurations = (
 				84C10B252336995000146547 /* Debug */,
 				84C10B262336995000146547 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84DD804D237319A700B16601 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84DD804B237319A700B16601 /* Debug */,
+				84DD804C237319A700B16601 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

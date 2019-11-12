@@ -9,6 +9,7 @@
 import UIKit
 import UserNotifications
 import AVFoundation
+import OneSignal
 
 enum Identifiers {
   static let viewAction = "VIEW_IDENTIFIER"
@@ -24,8 +25,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                          mode: AVAudioSession.Mode.moviePlayback,
         options: [.mixWithOthers])
 
-        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
-        registerForPushNotifications()
+//        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+//        registerForPushNotifications()
+        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
+
+        // Replace 'YOUR_APP_ID' with your OneSignal App ID.
+        OneSignal.initWithLaunchOptions(launchOptions,
+        appId: "49bbdbe3-71f3-418e-a5ad-9268e1826031",
+        handleNotificationAction: nil,
+        settings: onesignalInitSettings)
+
+        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
+
+        // Recommend moving the below line to prompt for push after informing the user about
+        //   how your app will use them.
+        OneSignal.promptForPushNotifications(userResponse: { accepted in
+        print("User accepted notifications: \(accepted)")
+        })
         return true
     }
 
@@ -42,6 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
     
     func registerForPushNotifications() {
       UNUserNotificationCenter.current()
@@ -76,13 +93,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       }
     }
     
-    func application(
-      _ application: UIApplication,
-      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
-    ) {
-      let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-      let token = tokenParts.joined()
-      print("Device Token: \(token)")
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenParts = deviceToken.map {
+            data in String(format: "%02.2hhx", data)
+        }
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
     }
 
     func application(
