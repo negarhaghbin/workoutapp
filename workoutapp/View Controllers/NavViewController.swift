@@ -107,8 +107,8 @@ class NavViewController: UINavigationController {
           newUser.name = name
           realm.add(newUser)
           user = newUser
-          UserDefaults.standard.set(user.uuid, forKey: "uuid")
         }
+        UserDefaults.standard.set(user.uuid, forKey: "uuid")
     }
     
     

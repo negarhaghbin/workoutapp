@@ -10,6 +10,14 @@
 		5659C03FFC5341E18519622C /* Pods_workoutapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E22110DCB59BDDF5D0F7BE4 /* Pods_workoutapp.framework */; };
 		840704892336E4E900961B1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840704882336E4E900961B1E /* SceneDelegate.swift */; };
 		8407048D23371D6E00961B1E /* StepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407048C23371D6E00961B1E /* StepTableViewCell.swift */; };
+		8409283E237C8D9800C695F6 /* RoutineCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409283D237C8D9700C695F6 /* RoutineCollectionViewController.swift */; };
+		84092840237CD46000C695F6 /* RoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409283F237CD46000C695F6 /* RoutineCollectionViewCell.swift */; };
+		84092842237CDC1700C695F6 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 84092841237CDC1700C695F6 /* File */; };
+		84092847237CE16B00C695F6 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84092846237CE16B00C695F6 /* Image.swift */; };
+		8409284C237CE92500C695F6 /* upperBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 8409284B237CE92500C695F6 /* upperBody.png */; };
+		84092851237CF27F00C695F6 /* lowerBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 8409284D237CF27E00C695F6 /* lowerBody.png */; };
+		84092852237CF27F00C695F6 /* abs.png in Resources */ = {isa = PBXBuildFile; fileRef = 8409284E237CF27E00C695F6 /* abs.png */; };
+		84092853237CF27F00C695F6 /* totalBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 84092850237CF27E00C695F6 /* totalBody.png */; };
 		84372D4B2339342A00D6586D /* doubleChopKneePulls.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D462339342A00D6586D /* doubleChopKneePulls.jpg */; };
 		84372D4C2339342A00D6586D /* alternatingLunges.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D472339342A00D6586D /* alternatingLunges.jpg */; };
 		84372D4D2339342B00D6586D /* stepsAndPulls.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D482339342A00D6586D /* stepsAndPulls.jpg */; };
@@ -78,6 +86,15 @@
 		65B1C683DBE4ED97BFBB67D2 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840704882336E4E900961B1E /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8407048C23371D6E00961B1E /* StepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTableViewCell.swift; sourceTree = "<group>"; };
+		8409283D237C8D9700C695F6 /* RoutineCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoutineCollectionViewController.swift; path = "/Users/negar/Desktop/Concordia/workoutapp/workoutapp/View Controllers/RoutineCollectionViewController.swift"; sourceTree = "<absolute>"; };
+		8409283F237CD46000C695F6 /* RoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCollectionViewCell.swift; sourceTree = "<group>"; };
+		84092841237CDC1700C695F6 /* File */ = {isa = PBXFileReference; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
+		84092846237CE16B00C695F6 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		8409284B237CE92500C695F6 /* upperBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upperBody.png; sourceTree = "<group>"; };
+		8409284D237CF27E00C695F6 /* lowerBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lowerBody.png; sourceTree = "<group>"; };
+		8409284E237CF27E00C695F6 /* abs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abs.png; sourceTree = "<group>"; };
+		8409284F237CF27E00C695F6 /* upperBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upperBody.png; sourceTree = "<group>"; };
+		84092850237CF27E00C695F6 /* totalBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = totalBody.png; sourceTree = "<group>"; };
 		84361466233BE0660088ADA8 /* 5M Workout.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "5M Workout.entitlements"; sourceTree = "<group>"; };
 		84372D462339342A00D6586D /* doubleChopKneePulls.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = doubleChopKneePulls.jpg; sourceTree = "<group>"; };
 		84372D472339342A00D6586D /* alternatingLunges.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = alternatingLunges.jpg; sourceTree = "<group>"; };
@@ -162,11 +179,24 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		84092843237CDC8800C695F6 /* Routine Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				8409284E237CF27E00C695F6 /* abs.png */,
+				8409284D237CF27E00C695F6 /* lowerBody.png */,
+				84092850237CF27E00C695F6 /* totalBody.png */,
+				8409284F237CF27E00C695F6 /* upperBody.png */,
+				8409284B237CE92500C695F6 /* upperBody.png */,
+			);
+			path = "Routine Pictures";
+			sourceTree = "<group>";
+		};
 		846446A723760CA300F493F0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */,
 				8407048C23371D6E00961B1E /* StepTableViewCell.swift */,
+				8409283F237CD46000C695F6 /* RoutineCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -174,6 +204,7 @@
 		846446AE23779DAF00F493F0 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8409283D237C8D9700C695F6 /* RoutineCollectionViewController.swift */,
 				846446A12376008500F493F0 /* TabBarViewController.swift */,
 				846446A523760C9C00F493F0 /* SettingsTableViewController.swift */,
 				84C10B2723369FB300146547 /* NavViewController.swift */,
@@ -191,6 +222,7 @@
 				84C10B2D2336A0F700146547 /* Video.swift */,
 				846446AC237759F800F493F0 /* Setting.swift */,
 				846446B02377A10100F493F0 /* User.swift */,
+				84092846237CE16B00C695F6 /* Image.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -218,6 +250,7 @@
 		84C10B122336994E00146547 /* workoutapp */ = {
 			isa = PBXGroup;
 			children = (
+				84092843237CDC8800C695F6 /* Routine Pictures */,
 				84361466233BE0660088ADA8 /* 5M Workout.entitlements */,
 				84C10B2F2336A10000146547 /* Local Videos */,
 				84C10B132336994E00146547 /* AppDelegate.swift */,
@@ -228,6 +261,7 @@
 				846446AE23779DAF00F493F0 /* View Controllers */,
 				846446A723760CA300F493F0 /* Cells */,
 				8407048E2337AE2700961B1E /* Models */,
+				84092841237CDC1700C695F6 /* File */,
 			);
 			path = workoutapp;
 			sourceTree = "<group>";
@@ -384,10 +418,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84092851237CF27F00C695F6 /* lowerBody.png in Resources */,
+				84092852237CF27F00C695F6 /* abs.png in Resources */,
+				8409284C237CE92500C695F6 /* upperBody.png in Resources */,
+				84092853237CF27F00C695F6 /* totalBody.png in Resources */,
 				84C10B4E2336A10000146547 /* InnerTightLift.png in Resources */,
 				84C10B482336A10000146547 /* InnerTightLift.mp4 in Resources */,
 				84C10B4A2336A10000146547 /* doubleChopKneePulls.mp4 in Resources */,
 				84C10B492336A10000146547 /* stepsAndPulls.mp4 in Resources */,
+				84092842237CDC1700C695F6 /* File in Resources */,
 				84C10B472336A10000146547 /* alternatingLunges.mp4 in Resources */,
 				84C10B4F2336A10000146547 /* alternatingLunges.png in Resources */,
 				84C10B502336A10000146547 /* stepsAndPulls.png in Resources */,
@@ -485,18 +524,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				846446B72378AD0100F493F0 /* NameTableViewController.swift in Sources */,
+				84092847237CE16B00C695F6 /* Image.swift in Sources */,
 				84C10B182336994E00146547 /* ViewController.swift in Sources */,
 				840704892336E4E900961B1E /* SceneDelegate.swift in Sources */,
 				84C10B142336994E00146547 /* AppDelegate.swift in Sources */,
 				84C10B2823369FB300146547 /* NavViewController.swift in Sources */,
 				846446AD237759F800F493F0 /* Setting.swift in Sources */,
 				84C10B2C23369FEB00146547 /* VideoTableViewCell.swift in Sources */,
+				8409283E237C8D9800C695F6 /* RoutineCollectionViewController.swift in Sources */,
 				846446B12377A10100F493F0 /* User.swift in Sources */,
 				84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */,
 				8407048D23371D6E00961B1E /* StepTableViewCell.swift in Sources */,
 				846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */,
 				84CB241A2379ACD900C1A66F /* UserModel.swift in Sources */,
 				84C10B2A23369FD100146547 /* TableViewController.swift in Sources */,
+				84092840237CD46000C695F6 /* RoutineCollectionViewCell.swift in Sources */,
 				846446A22376008500F493F0 /* TabBarViewController.swift in Sources */,
 				84C10B2E2336A0F700146547 /* Video.swift in Sources */,
 			);
