@@ -23,6 +23,8 @@
 		84372D4D2339342B00D6586D /* stepsAndPulls.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D482339342A00D6586D /* stepsAndPulls.jpg */; };
 		84372D4E2339342B00D6586D /* InnerTightLift.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D492339342A00D6586D /* InnerTightLift.jpg */; };
 		84372D4F2339342B00D6586D /* armCircles.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D4A2339342A00D6586D /* armCircles.jpg */; };
+		843C3DA3237F0798006FE720 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C3DA2237F0798006FE720 /* RoutineViewController.swift */; };
+		843C3DA5237F0961006FE720 /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */; };
 		846446A22376008500F493F0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A12376008500F493F0 /* TabBarViewController.swift */; };
 		846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A523760C9C00F493F0 /* SettingsTableViewController.swift */; };
 		846446AD237759F800F493F0 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446AC237759F800F493F0 /* Setting.swift */; };
@@ -101,6 +103,8 @@
 		84372D482339342A00D6586D /* stepsAndPulls.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stepsAndPulls.jpg; sourceTree = "<group>"; };
 		84372D492339342A00D6586D /* InnerTightLift.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = InnerTightLift.jpg; sourceTree = "<group>"; };
 		84372D4A2339342A00D6586D /* armCircles.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = armCircles.jpg; sourceTree = "<group>"; };
+		843C3DA2237F0798006FE720 /* RoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
+		843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
 		846446A12376008500F493F0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		846446A523760C9C00F493F0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		846446AC237759F800F493F0 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
@@ -197,6 +201,7 @@
 				84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */,
 				8407048C23371D6E00961B1E /* StepTableViewCell.swift */,
 				8409283F237CD46000C695F6 /* RoutineCollectionViewCell.swift */,
+				843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -204,14 +209,15 @@
 		846446AE23779DAF00F493F0 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8409283D237C8D9700C695F6 /* RoutineCollectionViewController.swift */,
 				846446A12376008500F493F0 /* TabBarViewController.swift */,
 				846446A523760C9C00F493F0 /* SettingsTableViewController.swift */,
 				84C10B2723369FB300146547 /* NavViewController.swift */,
 				846446B62378AD0100F493F0 /* NameTableViewController.swift */,
 				84E6EEC4235227F3001B00D8 /* SplitViewController.swift */,
-				84C10B172336994E00146547 /* ViewController.swift */,
 				84C10B2923369FD100146547 /* TableViewController.swift */,
+				84C10B172336994E00146547 /* ViewController.swift */,
+				8409283D237C8D9700C695F6 /* RoutineCollectionViewController.swift */,
+				843C3DA2237F0798006FE720 /* RoutineViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -528,10 +534,12 @@
 				84C10B182336994E00146547 /* ViewController.swift in Sources */,
 				840704892336E4E900961B1E /* SceneDelegate.swift in Sources */,
 				84C10B142336994E00146547 /* AppDelegate.swift in Sources */,
+				843C3DA3237F0798006FE720 /* RoutineViewController.swift in Sources */,
 				84C10B2823369FB300146547 /* NavViewController.swift in Sources */,
 				846446AD237759F800F493F0 /* Setting.swift in Sources */,
 				84C10B2C23369FEB00146547 /* VideoTableViewCell.swift in Sources */,
 				8409283E237C8D9800C695F6 /* RoutineCollectionViewController.swift in Sources */,
+				843C3DA5237F0961006FE720 /* RoutineTableViewCell.swift in Sources */,
 				846446B12377A10100F493F0 /* User.swift in Sources */,
 				84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */,
 				8407048D23371D6E00961B1E /* StepTableViewCell.swift in Sources */,

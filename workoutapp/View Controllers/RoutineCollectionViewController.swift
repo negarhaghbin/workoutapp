@@ -10,9 +10,14 @@ import UIKit
 struct RoutineSection{
     var title: String
     var image : Image
+    var exercises : [Video]
 }
 
 private let reuseIdentifier = "RoutineCell"
+
+protocol RoutineSelectionDelegate: class {
+  func routineSelected(_ newRoutine: RoutineSection)
+}
 
 class RoutineCollectionViewController: UICollectionViewController {
     private let sectionInsets = UIEdgeInsets(top: 2.0, left: 0.0, bottom: 2.0, right: 0.0)
@@ -20,20 +25,49 @@ class RoutineCollectionViewController: UICollectionViewController {
     var images: [Image] = []
     var sections : [RoutineSection] = []
     var cgsize : CGSize? = nil
+    var videos: [Video] = []
     
+    weak var delegate: RoutineSelectionDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        videos = Video.localVideos()
         images = Image.initialRoutineSections()
         initSections()
+        for video in videos{
+            for (index,section) in sections.enumerated(){
+                if section.title == video.section{
+                    sections[index].exercises.append(video)
+                }
+            }
+        }
     }
     
     func initSections(){
         let titles=["Total Body", "Upper Body", "Abs", "Lower Body"]
         for (index, title) in titles.enumerated(){
-            sections.append(RoutineSection(title: title, image: images[index]))
+            sections.append(RoutineSection(title: title, image: images[index], exercises: []))
         }
     }
+    
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using [segue destinationViewController].
+        //print(cgsize)
+        if segue.identifier == "showExercises" {
+            let vc = segue.destination as! RoutineViewController
+            let cell = sender as! UICollectionViewCell
+            let indexPath = self.collectionView!.indexPath(for: cell)
+            vc.section = sections[indexPath!.section]
+            //vc.cgsize=cgsize!
+        }
+        
+        // Pass the selected object to the new view controller.
+    }
+    
 
     // MARK: UICollectionViewDataSource
 
@@ -52,7 +86,7 @@ class RoutineCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! RoutineCollectionViewCell
         
         let image = images[indexPath.section]
-        //cell.backgroundImage.frame = CGRect(x: 0, y: 0, width: 550, height: 250) 
+        //cell.backgroundImage.frame = CGRect(x: 0, y: 0, width: 550, height: 250)
         cell.backgroundImage.image = imageWithImage(image: UIImage(named: (image.url.path))!, scaledToSize:cgsize!)
     
         return cell
