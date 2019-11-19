@@ -15,6 +15,7 @@ class NavViewController: UINavigationController {
     private let pedometer = CMPedometer()
     var timer: Timer!
     var user: UserModel!
+    let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,9 @@ class NavViewController: UINavigationController {
         timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(NavViewController.update), userInfo: nil, repeats: true)
         if isNewUser(){
             askName()
+        }
+        if ExerciseModel.loadExercises() == []{
+            ExerciseModel.initExerciseModelTable(realm: realm)
         }
             
     }
@@ -99,8 +103,6 @@ class NavViewController: UINavigationController {
     }
     
     func creatUser(name: String){
-        let realm = try! Realm()
-          
         try! realm.write {
           let newUser = UserModel()
             

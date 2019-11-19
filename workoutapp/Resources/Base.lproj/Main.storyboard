@@ -236,7 +236,7 @@
         <!--Routines-->
         <scene sceneID="x03-NP-coQ">
             <objects>
-                <collectionViewController id="QwJ-Jj-bgR" customClass="RoutineCollectionViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="NextViewController" id="QwJ-Jj-bgR" customClass="RoutineCollectionViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="NZS-wh-HDQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -522,7 +522,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="DD2-E3-WeX" kind="show" id="iig-fW-MV6"/>
+                                    <segue destination="DD2-E3-WeX" kind="show" identifier="startRoutine" id="iig-fW-MV6"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="wOs-Na-YiR">
@@ -533,7 +533,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RoutineTableReuseIdentifier" id="n9t-HI-eoE" customClass="RoutineTableViewCell" customModule="_M_Workout" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RoutineTableReuseIdentifier" id="n9t-HI-eoE" customClass="RoutineTableViewCell" customModule="_M_Workout" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="255.33333206176758" width="414" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n9t-HI-eoE" id="hil-XV-Xxg">
@@ -565,7 +565,7 @@
                                         <connections>
                                             <outlet property="previewImage" destination="WKO-l8-bbw" id="LdU-b1-KD4"/>
                                             <outlet property="title" destination="8rF-2h-f8z" id="O28-Kb-zHu"/>
-                                            <segue destination="00Z-Fp-75g" kind="show" id="MaB-x7-u7x"/>
+                                            <segue destination="00Z-Fp-75g" kind="show" identifier="showExercise" id="MaB-x7-u7x"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -590,6 +590,7 @@
                     <connections>
                         <outlet property="headerImage" destination="jpQ-eX-qfs" id="S6g-Uz-i10"/>
                         <outlet property="startButton" destination="XXV-eb-PPa" id="g5S-Cm-Qni"/>
+                        <outlet property="tableView" destination="wOs-Na-YiR" id="Jve-M9-Tba"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JaK-45-waL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -604,24 +605,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wI6-Za-xjv">
+                                <rect key="frame" x="20" y="96" width="374" height="40.666666666666657"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pw4-NP-OJp" customClass="YouTubePlayerView" customModule="YouTubePlayer">
-                                <rect key="frame" x="0.0" y="336" width="414" height="224"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="0.0" y="144.66666666666663" width="414" height="224"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Pw4-NP-OJp" secondAttribute="height" multiplier="207:112" id="oQC-Uc-c8p"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Pw4-NP-OJp" firstAttribute="top" secondItem="53b-pp-6fo" secondAttribute="top" constant="248" id="2s0-cR-jly"/>
+                            <constraint firstItem="53b-pp-6fo" firstAttribute="trailing" secondItem="wI6-Za-xjv" secondAttribute="trailing" constant="20" id="1C9-pH-DWX"/>
                             <constraint firstItem="Pw4-NP-OJp" firstAttribute="leading" secondItem="WJs-JD-iI5" secondAttribute="leading" id="2xV-ra-Pwd"/>
+                            <constraint firstItem="Pw4-NP-OJp" firstAttribute="width" secondItem="WJs-JD-iI5" secondAttribute="width" id="HMT-id-AXc"/>
                             <constraint firstAttribute="trailing" secondItem="Pw4-NP-OJp" secondAttribute="trailing" id="Kxl-D1-Paw"/>
-                            <constraint firstItem="Pw4-NP-OJp" firstAttribute="centerY" secondItem="WJs-JD-iI5" secondAttribute="centerY" id="Q6k-PT-HT7"/>
-                            <constraint firstItem="53b-pp-6fo" firstAttribute="bottom" secondItem="Pw4-NP-OJp" secondAttribute="bottom" constant="253" id="Qqi-8b-aEU"/>
+                            <constraint firstItem="wI6-Za-xjv" firstAttribute="leading" secondItem="53b-pp-6fo" secondAttribute="leading" constant="20" id="S56-oj-Fs7"/>
+                            <constraint firstItem="Pw4-NP-OJp" firstAttribute="top" secondItem="wI6-Za-xjv" secondAttribute="bottom" constant="8" id="SpA-9Q-1y5"/>
                             <constraint firstItem="Pw4-NP-OJp" firstAttribute="centerX" secondItem="WJs-JD-iI5" secondAttribute="centerX" id="WjG-Cs-v42"/>
+                            <constraint firstItem="wI6-Za-xjv" firstAttribute="top" secondItem="53b-pp-6fo" secondAttribute="top" constant="8" id="sCX-RK-haa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="53b-pp-6fo"/>
                     </view>
                     <navigationItem key="navigationItem" id="Y3U-Kg-i2f"/>
                     <connections>
+                        <outlet property="titleLabel" destination="wI6-Za-xjv" id="09X-6V-TF1"/>
                         <outlet property="youtubeView" destination="Pw4-NP-OJp" id="88A-Tj-oMe"/>
                     </connections>
                 </viewController>
@@ -654,6 +666,7 @@
                     <navigationItem key="navigationItem" id="EWW-0L-Une"/>
                     <connections>
                         <outlet property="counter" destination="LgB-KB-lw9" id="7LC-GG-mmO"/>
+                        <segue destination="7Am-BE-rlc" kind="show" identifier="start" id="pIQ-VM-oDt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZlC-GZ-3F6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -663,12 +676,12 @@
         <!--Gif View Controller-->
         <scene sceneID="fvO-pL-5DR">
             <objects>
-                <viewController storyboardIdentifier="NextViewController" id="7Am-BE-rlc" customClass="GifViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7Am-BE-rlc" customClass="GifViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BuD-CO-gsO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crunch.gif" translatesAutoresizingMaskIntoConstraints="NO" id="vBk-XF-Jbl">
-                                <rect key="frame" x="0.0" y="69" width="414" height="210"/>
+                                <rect key="frame" x="0.0" y="113" width="414" height="210"/>
                                 <color key="backgroundColor" white="0.96714469178082196" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQa-Qw-kdQ" userLabel="count">
@@ -678,10 +691,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9s-xR-x4Y">
-                                <rect key="frame" x="180" y="689.66666666666674" width="54" height="70"/>
+                                <rect key="frame" x="237" y="675.33333333333337" width="54" height="65.333333333333371"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="54" id="8f3-aP-2i5"/>
-                                    <constraint firstAttribute="height" constant="74.666666666666742" id="DI5-YZ-kNn"/>
+                                    <constraint firstAttribute="width" constant="54" id="GAQ-UP-upC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -690,25 +702,45 @@
                                     <action selector="togglePlay:" destination="7Am-BE-rlc" eventType="touchUpInside" id="7i0-sh-w6R"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Enf-75-42s">
+                                <rect key="frame" x="110" y="675.33333333333337" width="70" height="65.333333333333371"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="N4P-1W-6fZ"/>
+                                    <constraint firstAttribute="width" constant="70" id="tJB-5t-PHQ"/>
+                                </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" backgroundImage="stop.fill" catalog="system">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="quitRoutine:" destination="7Am-BE-rlc" eventType="touchUpInside" id="6dE-vS-pa8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.96999999999999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vBk-XF-Jbl" firstAttribute="top" secondItem="EHp-9b-6fa" secondAttribute="top" constant="25" id="00I-z1-bkK"/>
+                            <constraint firstItem="EHp-9b-6fa" firstAttribute="bottom" secondItem="U9s-xR-x4Y" secondAttribute="bottom" constant="69.999999999999886" id="0oE-mH-zv8"/>
                             <constraint firstItem="vBk-XF-Jbl" firstAttribute="centerX" secondItem="BuD-CO-gsO" secondAttribute="centerX" id="5yX-CK-oc6"/>
+                            <constraint firstItem="U9s-xR-x4Y" firstAttribute="leading" secondItem="EHp-9b-6fa" secondAttribute="centerX" constant="30" id="JRl-qO-XAB"/>
                             <constraint firstItem="vBk-XF-Jbl" firstAttribute="trailing" secondItem="EHp-9b-6fa" secondAttribute="trailing" id="KuD-bC-M4O"/>
                             <constraint firstItem="uQa-Qw-kdQ" firstAttribute="centerY" secondItem="BuD-CO-gsO" secondAttribute="centerY" id="VBY-zR-Bf6"/>
                             <constraint firstItem="vBk-XF-Jbl" firstAttribute="leading" secondItem="EHp-9b-6fa" secondAttribute="leading" id="aai-kc-rjc"/>
                             <constraint firstItem="uQa-Qw-kdQ" firstAttribute="centerX" secondItem="BuD-CO-gsO" secondAttribute="centerX" id="eO1-Kr-HiG"/>
+                            <constraint firstItem="U9s-xR-x4Y" firstAttribute="leading" secondItem="Enf-75-42s" secondAttribute="trailing" constant="57" id="nEG-8b-spG"/>
                             <constraint firstItem="vBk-XF-Jbl" firstAttribute="width" secondItem="BuD-CO-gsO" secondAttribute="width" id="nJ3-cG-vxb"/>
-                            <constraint firstItem="EHp-9b-6fa" firstAttribute="bottom" secondItem="U9s-xR-x4Y" secondAttribute="bottom" constant="100" id="tkR-jN-y4e"/>
-                            <constraint firstItem="U9s-xR-x4Y" firstAttribute="centerX" secondItem="BuD-CO-gsO" secondAttribute="centerX" id="uLe-7P-ApQ"/>
+                            <constraint firstItem="Enf-75-42s" firstAttribute="centerY" secondItem="U9s-xR-x4Y" secondAttribute="centerY" id="pBL-cV-Rxi"/>
+                            <constraint firstItem="EHp-9b-6fa" firstAttribute="bottom" secondItem="Enf-75-42s" secondAttribute="bottom" constant="69.999999999999773" id="uMq-lE-zd0"/>
+                            <constraint firstItem="Enf-75-42s" firstAttribute="top" secondItem="U9s-xR-x4Y" secondAttribute="top" id="w7S-Vj-tZU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EHp-9b-6fa"/>
                     </view>
+                    <navigationItem key="navigationItem" id="SvU-dA-GLq"/>
                     <connections>
                         <outlet property="counter" destination="uQa-Qw-kdQ" id="Fky-fX-F32"/>
                         <outlet property="gifView" destination="vBk-XF-Jbl" id="CTx-ou-2R1"/>
                         <outlet property="playPause" destination="U9s-xR-x4Y" id="4Em-BP-YWd"/>
+                        <outlet property="stopButton" destination="Enf-75-42s" id="rzF-CR-ZgD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqE-GK-zB5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -724,6 +756,7 @@
         <image name="goforward" catalog="system" width="60" height="64"/>
         <image name="house.fill" catalog="system" width="64" height="52"/>
         <image name="pause.fill" catalog="system" width="58" height="64"/>
+        <image name="stop.fill" catalog="system" width="64" height="56"/>
         <image name="upperBody.png" width="283.44000244140625" height="94.080001831054688"/>
     </resources>
 </document>

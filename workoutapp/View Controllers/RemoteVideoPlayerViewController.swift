@@ -9,14 +9,24 @@
 import UIKit
 import YouTubePlayer
 
-class RemoteVideoPlayerViewController: UIViewController {
-
+class RemoteVideoPlayerViewController: UIViewController{
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var youtubeView: YouTubePlayerView!
+    var exercise : ExerciseModel?{
+        didSet{
+            refreshUI()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let videoUrl = URL(string: "https://youtu.be/MKmrqcoCZ-M")
-        youtubeView.loadVideoURL(videoUrl!)
         // Do any additional setup after loading the view.
+    }
+    
+    func refreshUI(){
+        loadView()
+        youtubeView.loadVideoURL(URL(string: exercise!.videoURLString)!)
+        titleLabel.text = exercise!.title
     }
     
 

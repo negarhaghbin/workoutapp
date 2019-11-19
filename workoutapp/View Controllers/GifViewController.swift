@@ -10,6 +10,7 @@ import UIKit
 
 class GifViewController: UIViewController {
 
+    @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var counter: UILabel!
     @IBOutlet weak var gifView: UIImageView!
     @IBOutlet weak var playPause: UIButton!
@@ -22,15 +23,9 @@ class GifViewController: UIViewController {
             refreshUI()
         }
     }
-    let gifs = ["crunch", "air-bike-crunches"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        self.gifView.loadGif(name: self.gifs[0])
-        runTimer()
-        createProgressBar()
         
     }
     
@@ -53,6 +48,9 @@ class GifViewController: UIViewController {
     
     private func refreshUI(){
         loadView()
+        self.gifView.loadGif(name: (section?.exercises[0].gifName)!)
+        runTimer()
+        createProgressBar()
         
     }
     
@@ -70,9 +68,22 @@ class GifViewController: UIViewController {
         }
     }
     
+    @IBAction func quitRoutine(_ sender: Any) {
+        let alert = UIAlertController(title: "Do you want to finish workout?", message: "It will exit this routine and your progress will be lost.", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
+            action in
+            let myVC = self.storyboard?.instantiateViewController(withIdentifier: "NextViewController") as! RoutineCollectionViewController
+            self.show(myVC, sender: Any?.self)
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+
+        self.present(alert, animated: true)
+    }
+    
     func createProgressBar(){
         let center = view.center
-        let circularPath = UIBezierPath(arcCenter: center, radius: view.frame.width/4, startAngle: -CGFloat.pi/2, endAngle: 2*CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: center, radius: view.frame.width/4, startAngle: -CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: true)
         shapeLayer.path = circularPath.cgPath
         shapeLayer.strokeColor = UIColor.systemPink.cgColor
         shapeLayer.lineWidth = 10

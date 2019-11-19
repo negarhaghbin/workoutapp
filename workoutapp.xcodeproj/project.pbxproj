@@ -31,6 +31,9 @@
 		845FD8C723830C1600E9B1D8 /* swift+gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C623830C1600E9B1D8 /* swift+gif.swift */; };
 		845FD8C923834E7A00E9B1D8 /* RemoteVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C823834E7A00E9B1D8 /* RemoteVideoPlayerViewController.swift */; };
 		845FD8CB2383626200E9B1D8 /* air-bike-crunches.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8CA2383626100E9B1D8 /* air-bike-crunches.gif */; };
+		845FD8CF23844A8A00E9B1D8 /* RoutineSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8CE23844A8A00E9B1D8 /* RoutineSection.swift */; };
+		845FD8D123844C5300E9B1D8 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8D023844C5300E9B1D8 /* Exercise.swift */; };
+		845FD8D32384518500E9B1D8 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8D22384518500E9B1D8 /* ExerciseModel.swift */; };
 		846446A22376008500F493F0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A12376008500F493F0 /* TabBarViewController.swift */; };
 		846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A523760C9C00F493F0 /* SettingsTableViewController.swift */; };
 		846446AD237759F800F493F0 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446AC237759F800F493F0 /* Setting.swift */; };
@@ -117,6 +120,9 @@
 		845FD8C623830C1600E9B1D8 /* swift+gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "swift+gif.swift"; sourceTree = "<group>"; };
 		845FD8C823834E7A00E9B1D8 /* RemoteVideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteVideoPlayerViewController.swift; sourceTree = "<group>"; };
 		845FD8CA2383626100E9B1D8 /* air-bike-crunches.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "air-bike-crunches.gif"; path = "workoutapp/Local Videos/gifs/air-bike-crunches.gif"; sourceTree = "<group>"; };
+		845FD8CE23844A8A00E9B1D8 /* RoutineSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSection.swift; sourceTree = "<group>"; };
+		845FD8D023844C5300E9B1D8 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		845FD8D22384518500E9B1D8 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
 		846446A12376008500F493F0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		846446A523760C9C00F493F0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		846446AC237759F800F493F0 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
@@ -180,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				84CB24192379ACD900C1A66F /* UserModel.swift */,
+				845FD8D22384518500E9B1D8 /* ExerciseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -230,9 +237,9 @@
 				84C10B172336994E00146547 /* ViewController.swift */,
 				8409283D237C8D9700C695F6 /* RoutineCollectionViewController.swift */,
 				843C3DA2237F0798006FE720 /* RoutineViewController.swift */,
+				845FD8C823834E7A00E9B1D8 /* RemoteVideoPlayerViewController.swift */,
 				845FD8C02380995100E9B1D8 /* StartRoutineViewController.swift */,
 				845FD8C4238309A100E9B1D8 /* GifViewController.swift */,
-				845FD8C823834E7A00E9B1D8 /* RemoteVideoPlayerViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -244,6 +251,8 @@
 				846446AC237759F800F493F0 /* Setting.swift */,
 				846446B02377A10100F493F0 /* User.swift */,
 				84092846237CE16B00C695F6 /* Image.swift */,
+				845FD8CE23844A8A00E9B1D8 /* RoutineSection.swift */,
+				845FD8D023844C5300E9B1D8 /* Exercise.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -566,12 +575,15 @@
 				84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */,
 				8407048D23371D6E00961B1E /* StepTableViewCell.swift in Sources */,
 				846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */,
+				845FD8D123844C5300E9B1D8 /* Exercise.swift in Sources */,
 				84CB241A2379ACD900C1A66F /* UserModel.swift in Sources */,
+				845FD8CF23844A8A00E9B1D8 /* RoutineSection.swift in Sources */,
 				845FD8C5238309A100E9B1D8 /* GifViewController.swift in Sources */,
 				845FD8C723830C1600E9B1D8 /* swift+gif.swift in Sources */,
 				84C10B2A23369FD100146547 /* TableViewController.swift in Sources */,
 				84092840237CD46000C695F6 /* RoutineCollectionViewCell.swift in Sources */,
 				846446A22376008500F493F0 /* TabBarViewController.swift in Sources */,
+				845FD8D32384518500E9B1D8 /* ExerciseModel.swift in Sources */,
 				84C10B2E2336A0F700146547 /* Video.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

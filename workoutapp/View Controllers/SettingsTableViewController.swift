@@ -27,10 +27,6 @@ class SettingsTableViewController: UITableViewController {
         user.name=specificPerson!.name
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.performSegue(withIdentifier: "edit", sender: self)
-//    }
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

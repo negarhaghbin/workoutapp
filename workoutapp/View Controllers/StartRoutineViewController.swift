@@ -25,8 +25,9 @@ class StartRoutineViewController: UIViewController {
             if self.seconds == 0 {
                 timer.invalidate()
                 self.counter.text = "Start"
-                let myVC = self.storyboard?.instantiateViewController(withIdentifier: "NextViewController") as! GifViewController
-                self.show(myVC, sender: Any?.self)
+                self.performSegue(withIdentifier: "start", sender: self)
+//                let myVC = self.storyboard?.instantiateViewController(withIdentifier: "NextViewController") as! GifViewController
+//                self.show(myVC, sender: Any?.self)
             }
         }
     }
@@ -36,6 +37,7 @@ class StartRoutineViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         // Get the new view controller using segue.destination.
         let vc = segue.destination as? GifViewController
         // Pass the selected object to the new view controller.

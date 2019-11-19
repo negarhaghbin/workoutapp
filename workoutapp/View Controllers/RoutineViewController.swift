@@ -8,12 +8,17 @@
 
 import UIKit
 
+
 class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+    
     var section : RoutineSection?{
         didSet{
             refreshUI()
         }
     }
+    
+    @IBOutlet weak var tableView: UITableView!
+    var selectedExercise = ExerciseModel()
     
     let RoutineTableReuseIdentifier = "RoutineTableReuseIdentifier"
     @IBOutlet weak var startButton: UIButton!
@@ -55,23 +60,12 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
                 return RoutineTableViewCell()
         }
         
-        let video = section!.exercises[indexPath.row]
-        cell.title.text = video.title
-        cell.previewImage.image = UIImage(named: (video.thumbURL.path))
+        let exercise = section!.exercises[indexPath.row]
+        cell.title.text = exercise.title
+        cell.previewImage.image = UIImage(named: (exercise.gifName + ".gif"))
 
         return cell
     }
-    
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let selectedVideo = videos[indexPath.row]
-//        delegate?.exerciseSelected(selectedVideo)
-//        if
-//            let detailViewController = delegate as? ViewController,
-//            let detailNavigationController = detailViewController.navigationController {
-//          splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
-//        }
-//    }
-    
 
     /*
     // Override to support conditional editing of the table view.
@@ -114,9 +108,18 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
-        let vc = segue.destination as? StartRoutineViewController
-        // Pass the selected object to the new view controller.
-        vc!.section = section
+        if segue.identifier == "startRoutine" {
+            let vc = segue.destination as? StartRoutineViewController
+            // Pass the selected object to the new view controller.
+            vc!.section = section
+        }
+        
+        if segue.identifier == "showExercise", let destination = segue.destination as? RemoteVideoPlayerViewController {
+            if let cell = sender as? UITableViewCell, let indexPath = self.tableView.indexPath(for: cell) {
+                let exercise = section!.exercises[indexPath.row]
+                destination.exercise = exercise
+            }
+        }
     }
     
 

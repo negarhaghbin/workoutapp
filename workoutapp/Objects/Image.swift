@@ -16,7 +16,7 @@ class Image: NSObject {
       super.init()
     }
     
-    class func initialRoutineSections()->[Image]{
+    class func loadRoutineSectionHeaders()->[Image]{
         var images: [Image] = []
         let names = [ "totalBody", "upperBody", "abs", "lowerBody"]
 

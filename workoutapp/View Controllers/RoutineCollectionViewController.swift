@@ -7,12 +7,6 @@
 
 import UIKit
 
-struct RoutineSection{
-    var title: String
-    var image : Image
-    var exercises : [Video]
-}
-
 private let reuseIdentifier = "RoutineCell"
 
 protocol RoutineSelectionDelegate: class {
@@ -25,30 +19,16 @@ class RoutineCollectionViewController: UICollectionViewController {
     var images: [Image] = []
     var sections : [RoutineSection] = []
     var cgsize : CGSize? = nil
-    var videos: [Video] = []
     
     weak var delegate: RoutineSelectionDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        videos = Video.localVideos()
-        images = Image.initialRoutineSections()
-        initSections()
-        for video in videos{
-            for (index,section) in sections.enumerated(){
-                if section.title == video.section{
-                    sections[index].exercises.append(video)
-                }
-            }
-        }
+        images=Image.loadRoutineSectionHeaders()
+        sections = RoutineSection.getRoutineSections()
     }
     
-    func initSections(){
-        let titles=["Total Body", "Upper Body", "Abs", "Lower Body"]
-        for (index, title) in titles.enumerated(){
-            sections.append(RoutineSection(title: title, image: images[index], exercises: []))
-        }
-    }
+    
     
     
     // MARK: - Navigation
