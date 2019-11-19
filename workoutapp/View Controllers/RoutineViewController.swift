@@ -16,10 +16,17 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     let RoutineTableReuseIdentifier = "RoutineTableReuseIdentifier"
-    
+    @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var headerImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    private func refreshUI(){
+        loadView()
+        headerImage.image = imageWithImage( image: UIImage(named:section!.image.url.path)!, scaledToSize: CGSize(width: view.frame.width, height: view.frame.width/3))
+        self.title = section?.title
     }
     
     func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{
@@ -28,12 +35,6 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return newImage
-    }
-    
-    private func refreshUI(){
-        loadView()
-        headerImage.image = imageWithImage( image: UIImage(named:section!.image.url.path)!, scaledToSize: CGSize(width: view.frame.width, height: view.frame.width/3))
-        print(CGSize(width: view.frame.width, height: view.frame.width/3))
     }
 
     // MARK: - Table view data source
@@ -107,15 +108,17 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
+        let vc = segue.destination as? StartRoutineViewController
         // Pass the selected object to the new view controller.
+        vc!.section = section
     }
-    */
+    
 
 }
 

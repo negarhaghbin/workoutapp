@@ -25,6 +25,12 @@
 		84372D4F2339342B00D6586D /* armCircles.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D4A2339342A00D6586D /* armCircles.jpg */; };
 		843C3DA3237F0798006FE720 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C3DA2237F0798006FE720 /* RoutineViewController.swift */; };
 		843C3DA5237F0961006FE720 /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */; };
+		845FD8C12380995100E9B1D8 /* StartRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C02380995100E9B1D8 /* StartRoutineViewController.swift */; };
+		845FD8C3238308E300E9B1D8 /* crunch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8C2238308E300E9B1D8 /* crunch.gif */; };
+		845FD8C5238309A100E9B1D8 /* GifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C4238309A100E9B1D8 /* GifViewController.swift */; };
+		845FD8C723830C1600E9B1D8 /* swift+gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C623830C1600E9B1D8 /* swift+gif.swift */; };
+		845FD8C923834E7A00E9B1D8 /* RemoteVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C823834E7A00E9B1D8 /* RemoteVideoPlayerViewController.swift */; };
+		845FD8CB2383626200E9B1D8 /* air-bike-crunches.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8CA2383626100E9B1D8 /* air-bike-crunches.gif */; };
 		846446A22376008500F493F0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A12376008500F493F0 /* TabBarViewController.swift */; };
 		846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A523760C9C00F493F0 /* SettingsTableViewController.swift */; };
 		846446AD237759F800F493F0 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446AC237759F800F493F0 /* Setting.swift */; };
@@ -105,6 +111,12 @@
 		84372D4A2339342A00D6586D /* armCircles.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = armCircles.jpg; sourceTree = "<group>"; };
 		843C3DA2237F0798006FE720 /* RoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
 		843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
+		845FD8C02380995100E9B1D8 /* StartRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRoutineViewController.swift; sourceTree = "<group>"; };
+		845FD8C2238308E300E9B1D8 /* crunch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = crunch.gif; path = "workoutapp/Local Videos/gifs/crunch.gif"; sourceTree = "<group>"; };
+		845FD8C4238309A100E9B1D8 /* GifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifViewController.swift; sourceTree = "<group>"; };
+		845FD8C623830C1600E9B1D8 /* swift+gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "swift+gif.swift"; sourceTree = "<group>"; };
+		845FD8C823834E7A00E9B1D8 /* RemoteVideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteVideoPlayerViewController.swift; sourceTree = "<group>"; };
+		845FD8CA2383626100E9B1D8 /* air-bike-crunches.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "air-bike-crunches.gif"; path = "workoutapp/Local Videos/gifs/air-bike-crunches.gif"; sourceTree = "<group>"; };
 		846446A12376008500F493F0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		846446A523760C9C00F493F0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		846446AC237759F800F493F0 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
@@ -218,6 +230,9 @@
 				84C10B172336994E00146547 /* ViewController.swift */,
 				8409283D237C8D9700C695F6 /* RoutineCollectionViewController.swift */,
 				843C3DA2237F0798006FE720 /* RoutineViewController.swift */,
+				845FD8C02380995100E9B1D8 /* StartRoutineViewController.swift */,
+				845FD8C4238309A100E9B1D8 /* GifViewController.swift */,
+				845FD8C823834E7A00E9B1D8 /* RemoteVideoPlayerViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -236,6 +251,8 @@
 		84C10B072336994E00146547 = {
 			isa = PBXGroup;
 			children = (
+				845FD8CA2383626100E9B1D8 /* air-bike-crunches.gif */,
+				845FD8C2238308E300E9B1D8 /* crunch.gif */,
 				84C10B122336994E00146547 /* workoutapp */,
 				84DD8043237319A700B16601 /* OneSignalNotificationServiceExtension */,
 				84C10B112336994E00146547 /* Products */,
@@ -268,6 +285,7 @@
 				846446A723760CA300F493F0 /* Cells */,
 				8407048E2337AE2700961B1E /* Models */,
 				84092841237CDC1700C695F6 /* File */,
+				845FD8C623830C1600E9B1D8 /* swift+gif.swift */,
 			);
 			path = workoutapp;
 			sourceTree = "<group>";
@@ -424,6 +442,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845FD8CB2383626200E9B1D8 /* air-bike-crunches.gif in Resources */,
+				845FD8C3238308E300E9B1D8 /* crunch.gif in Resources */,
 				84092851237CF27F00C695F6 /* lowerBody.png in Resources */,
 				84092852237CF27F00C695F6 /* abs.png in Resources */,
 				8409284C237CE92500C695F6 /* upperBody.png in Resources */,
@@ -533,8 +553,10 @@
 				84092847237CE16B00C695F6 /* Image.swift in Sources */,
 				84C10B182336994E00146547 /* ViewController.swift in Sources */,
 				840704892336E4E900961B1E /* SceneDelegate.swift in Sources */,
+				845FD8C12380995100E9B1D8 /* StartRoutineViewController.swift in Sources */,
 				84C10B142336994E00146547 /* AppDelegate.swift in Sources */,
 				843C3DA3237F0798006FE720 /* RoutineViewController.swift in Sources */,
+				845FD8C923834E7A00E9B1D8 /* RemoteVideoPlayerViewController.swift in Sources */,
 				84C10B2823369FB300146547 /* NavViewController.swift in Sources */,
 				846446AD237759F800F493F0 /* Setting.swift in Sources */,
 				84C10B2C23369FEB00146547 /* VideoTableViewCell.swift in Sources */,
@@ -545,6 +567,8 @@
 				8407048D23371D6E00961B1E /* StepTableViewCell.swift in Sources */,
 				846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */,
 				84CB241A2379ACD900C1A66F /* UserModel.swift in Sources */,
+				845FD8C5238309A100E9B1D8 /* GifViewController.swift in Sources */,
+				845FD8C723830C1600E9B1D8 /* swift+gif.swift in Sources */,
 				84C10B2A23369FD100146547 /* TableViewController.swift in Sources */,
 				84092840237CD46000C695F6 /* RoutineCollectionViewCell.swift in Sources */,
 				846446A22376008500F493F0 /* TabBarViewController.swift in Sources */,
