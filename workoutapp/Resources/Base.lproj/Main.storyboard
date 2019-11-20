@@ -693,9 +693,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crunch.gif" translatesAutoresizingMaskIntoConstraints="NO" id="vBk-XF-Jbl">
-                                <rect key="frame" x="0.0" y="113" width="414" height="210"/>
+                                <rect key="frame" x="0.0" y="96" width="414" height="215"/>
                                 <color key="backgroundColor" white="0.96714469178082196" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrj-WH-Tpp">
+                                <rect key="frame" x="345" y="319" width="49" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsH-Ks-IPr">
+                                <rect key="frame" x="20" y="319" width="325" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQa-Qw-kdQ" userLabel="count">
                                 <rect key="frame" x="113.66666666666669" y="404.66666666666669" width="187" height="87"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="67"/>
@@ -728,28 +740,43 @@
                                     <action selector="quitRoutine:" destination="7Am-BE-rlc" eventType="touchUpInside" id="6dE-vS-pa8"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pHX-pb-SXZ" customClass="Balloon" customModule="_M_Workout" customModuleProvider="target">
+                                <rect key="frame" x="171" y="357" width="72" height="183"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.96999999999999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vBk-XF-Jbl" firstAttribute="top" secondItem="EHp-9b-6fa" secondAttribute="top" constant="25" id="00I-z1-bkK"/>
+                            <constraint firstItem="vBk-XF-Jbl" firstAttribute="top" secondItem="EHp-9b-6fa" secondAttribute="top" constant="8" id="00I-z1-bkK"/>
                             <constraint firstItem="EHp-9b-6fa" firstAttribute="bottom" secondItem="U9s-xR-x4Y" secondAttribute="bottom" constant="69.999999999999886" id="0oE-mH-zv8"/>
                             <constraint firstItem="vBk-XF-Jbl" firstAttribute="centerX" secondItem="BuD-CO-gsO" secondAttribute="centerX" id="5yX-CK-oc6"/>
+                            <constraint firstItem="wrj-WH-Tpp" firstAttribute="top" secondItem="vBk-XF-Jbl" secondAttribute="bottom" constant="8" id="9d0-a2-QZK"/>
                             <constraint firstItem="U9s-xR-x4Y" firstAttribute="leading" secondItem="EHp-9b-6fa" secondAttribute="centerX" constant="30" id="JRl-qO-XAB"/>
+                            <constraint firstItem="EHp-9b-6fa" firstAttribute="trailing" secondItem="wrj-WH-Tpp" secondAttribute="trailing" constant="20" id="JsY-Ir-xhm"/>
+                            <constraint firstItem="rsH-Ks-IPr" firstAttribute="leading" secondItem="EHp-9b-6fa" secondAttribute="leading" constant="20" id="KcN-bX-vjP"/>
                             <constraint firstItem="vBk-XF-Jbl" firstAttribute="trailing" secondItem="EHp-9b-6fa" secondAttribute="trailing" id="KuD-bC-M4O"/>
-                            <constraint firstItem="uQa-Qw-kdQ" firstAttribute="centerY" secondItem="BuD-CO-gsO" secondAttribute="centerY" id="VBY-zR-Bf6"/>
+                            <constraint firstItem="uQa-Qw-kdQ" firstAttribute="centerX" secondItem="BuD-CO-gsO" secondAttribute="centerX" id="PmC-Dd-Bxm"/>
+                            <constraint firstItem="rsH-Ks-IPr" firstAttribute="top" secondItem="vBk-XF-Jbl" secondAttribute="bottom" constant="8" id="Swk-Ac-Gao"/>
+                            <constraint firstItem="uQa-Qw-kdQ" firstAttribute="centerY" secondItem="BuD-CO-gsO" secondAttribute="centerY" id="Tg3-FY-Iub"/>
                             <constraint firstItem="vBk-XF-Jbl" firstAttribute="leading" secondItem="EHp-9b-6fa" secondAttribute="leading" id="aai-kc-rjc"/>
                             <constraint firstItem="uQa-Qw-kdQ" firstAttribute="centerX" secondItem="BuD-CO-gsO" secondAttribute="centerX" id="eO1-Kr-HiG"/>
+                            <constraint firstItem="wrj-WH-Tpp" firstAttribute="leading" secondItem="rsH-Ks-IPr" secondAttribute="trailing" id="en3-rT-tvE"/>
                             <constraint firstItem="U9s-xR-x4Y" firstAttribute="leading" secondItem="Enf-75-42s" secondAttribute="trailing" constant="57" id="nEG-8b-spG"/>
                             <constraint firstItem="vBk-XF-Jbl" firstAttribute="width" secondItem="BuD-CO-gsO" secondAttribute="width" id="nJ3-cG-vxb"/>
                             <constraint firstItem="Enf-75-42s" firstAttribute="centerY" secondItem="U9s-xR-x4Y" secondAttribute="centerY" id="pBL-cV-Rxi"/>
                             <constraint firstItem="EHp-9b-6fa" firstAttribute="bottom" secondItem="Enf-75-42s" secondAttribute="bottom" constant="69.999999999999773" id="uMq-lE-zd0"/>
+                            <constraint firstItem="vBk-XF-Jbl" firstAttribute="height" secondItem="BuD-CO-gsO" secondAttribute="height" multiplier="0.24" id="vep-w3-6zn"/>
                             <constraint firstItem="Enf-75-42s" firstAttribute="top" secondItem="U9s-xR-x4Y" secondAttribute="top" id="w7S-Vj-tZU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EHp-9b-6fa"/>
                     </view>
                     <navigationItem key="navigationItem" id="SvU-dA-GLq"/>
                     <connections>
+                        <outlet property="balloon" destination="pHX-pb-SXZ" id="BaM-Fb-V95"/>
                         <outlet property="counter" destination="uQa-Qw-kdQ" id="Fky-fX-F32"/>
+                        <outlet property="exerciseCounter" destination="wrj-WH-Tpp" id="BAL-Gz-AZm"/>
+                        <outlet property="exerciseTitle" destination="rsH-Ks-IPr" id="fR4-v5-hqR"/>
                         <outlet property="gifView" destination="vBk-XF-Jbl" id="CTx-ou-2R1"/>
                         <outlet property="playPause" destination="U9s-xR-x4Y" id="4Em-BP-YWd"/>
                         <outlet property="stopButton" destination="Enf-75-42s" id="rzF-CR-ZgD"/>

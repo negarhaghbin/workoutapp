@@ -37,6 +37,8 @@
 		845FD8DE23859FD100E9B1D8 /* plank-hold.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8D823859FD100E9B1D8 /* plank-hold.gif */; };
 		845FD8DF23859FD100E9B1D8 /* plank-leg-raise.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8D923859FD100E9B1D8 /* plank-leg-raise.gif */; };
 		845FD8E023859FD100E9B1D8 /* air-bike-crunches.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8DA23859FD100E9B1D8 /* air-bike-crunches.gif */; };
+		845FD8E22385CD4C00E9B1D8 /* Balloon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8E12385CD4B00E9B1D8 /* Balloon.swift */; };
+		845FD8E42385D76200E9B1D8 /* rest.png in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8E32385D76200E9B1D8 /* rest.png */; };
 		846446A22376008500F493F0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A12376008500F493F0 /* TabBarViewController.swift */; };
 		846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A523760C9C00F493F0 /* SettingsTableViewController.swift */; };
 		846446AD237759F800F493F0 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446AC237759F800F493F0 /* Setting.swift */; };
@@ -129,6 +131,8 @@
 		845FD8D823859FD100E9B1D8 /* plank-hold.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "plank-hold.gif"; sourceTree = "<group>"; };
 		845FD8D923859FD100E9B1D8 /* plank-leg-raise.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "plank-leg-raise.gif"; sourceTree = "<group>"; };
 		845FD8DA23859FD100E9B1D8 /* air-bike-crunches.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "air-bike-crunches.gif"; sourceTree = "<group>"; };
+		845FD8E12385CD4B00E9B1D8 /* Balloon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Balloon.swift; sourceTree = "<group>"; };
+		845FD8E32385D76200E9B1D8 /* rest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rest.png; sourceTree = "<group>"; };
 		846446A12376008500F493F0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		846446A523760C9C00F493F0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		846446AC237759F800F493F0 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 		845FD8D423859FD100E9B1D8 /* gifs */ = {
 			isa = PBXGroup;
 			children = (
+				845FD8E32385D76200E9B1D8 /* rest.png */,
 				845FD8D523859FD100E9B1D8 /* raised-leg-hold.gif */,
 				845FD8D623859FD100E9B1D8 /* crunch.gif */,
 				845FD8D723859FD100E9B1D8 /* sitting-twists.gif */,
@@ -303,6 +308,7 @@
 				84C10B2F2336A10000146547 /* Local Videos */,
 				84C10B132336994E00146547 /* AppDelegate.swift */,
 				840704882336E4E900961B1E /* SceneDelegate.swift */,
+				845FD8E12385CD4B00E9B1D8 /* Balloon.swift */,
 				84C10B212336995000146547 /* Info.plist */,
 				846446AF23779DC500F493F0 /* Objects */,
 				8407048F2337AE4400961B1E /* Resources */,
@@ -492,6 +498,7 @@
 				845FD8DB23859FD100E9B1D8 /* raised-leg-hold.gif in Resources */,
 				84C10B1B2336994E00146547 /* Main.storyboard in Resources */,
 				84372D4F2339342B00D6586D /* armCircles.jpg in Resources */,
+				845FD8E42385D76200E9B1D8 /* rest.png in Resources */,
 				84372D4B2339342A00D6586D /* doubleChopKneePulls.jpg in Resources */,
 				84372D4E2339342B00D6586D /* InnerTightLift.jpg in Resources */,
 				84E6EEC723528902001B00D8 /* startup in Resources */,
@@ -592,6 +599,7 @@
 				84C10B2C23369FEB00146547 /* VideoTableViewCell.swift in Sources */,
 				8409283E237C8D9800C695F6 /* RoutineCollectionViewController.swift in Sources */,
 				843C3DA5237F0961006FE720 /* RoutineTableViewCell.swift in Sources */,
+				845FD8E22385CD4C00E9B1D8 /* Balloon.swift in Sources */,
 				846446B12377A10100F493F0 /* User.swift in Sources */,
 				84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */,
 				8407048D23371D6E00961B1E /* StepTableViewCell.swift in Sources */,

@@ -20,12 +20,17 @@ class RoutineSection: NSObject {
         super.init()
     }
     
-    func getDescription()->String{
+    func getDuration()->Int{
         var duration = 0
-        var equipments : [String] = []
-        var equipmentsString = ""
         for exercise in exercises{
             duration += exercise.durationS
+        }
+        return duration
+    }
+    
+    func getEquipments()->Array<String>{
+        var equipments : [String] = []
+        for exercise in exercises{
             if (exercise.getEquipments() != []){
                 for equipment in exercise.getEquipments(){
                     if (!equipments.contains(equipment)){
@@ -34,6 +39,12 @@ class RoutineSection: NSObject {
                 }
             }
         }
+        return equipments
+    }
+    
+    func getDescription()->String{
+        var equipmentsString = ""
+        let equipments = self.getEquipments()
         if (equipments == []){
             equipmentsString = "No Equipments"
         }
@@ -44,8 +55,7 @@ class RoutineSection: NSObject {
             }
             equipmentsString = temp
         }
-        return "  \(duration) seconds \u{2022} \(equipmentsString)"
-        
+        return "  \(self.getDuration()) seconds \u{2022} \(equipmentsString)"
     }
     
     class func getRoutineSections()->[RoutineSection]{
