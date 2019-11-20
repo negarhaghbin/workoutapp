@@ -26,14 +26,17 @@
 		843C3DA3237F0798006FE720 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C3DA2237F0798006FE720 /* RoutineViewController.swift */; };
 		843C3DA5237F0961006FE720 /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */; };
 		845FD8C12380995100E9B1D8 /* StartRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C02380995100E9B1D8 /* StartRoutineViewController.swift */; };
-		845FD8C3238308E300E9B1D8 /* crunch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8C2238308E300E9B1D8 /* crunch.gif */; };
 		845FD8C5238309A100E9B1D8 /* GifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C4238309A100E9B1D8 /* GifViewController.swift */; };
 		845FD8C723830C1600E9B1D8 /* swift+gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C623830C1600E9B1D8 /* swift+gif.swift */; };
 		845FD8C923834E7A00E9B1D8 /* RemoteVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C823834E7A00E9B1D8 /* RemoteVideoPlayerViewController.swift */; };
-		845FD8CB2383626200E9B1D8 /* air-bike-crunches.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8CA2383626100E9B1D8 /* air-bike-crunches.gif */; };
 		845FD8CF23844A8A00E9B1D8 /* RoutineSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8CE23844A8A00E9B1D8 /* RoutineSection.swift */; };
-		845FD8D123844C5300E9B1D8 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8D023844C5300E9B1D8 /* Exercise.swift */; };
 		845FD8D32384518500E9B1D8 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8D22384518500E9B1D8 /* ExerciseModel.swift */; };
+		845FD8DB23859FD100E9B1D8 /* raised-leg-hold.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8D523859FD100E9B1D8 /* raised-leg-hold.gif */; };
+		845FD8DC23859FD100E9B1D8 /* crunch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8D623859FD100E9B1D8 /* crunch.gif */; };
+		845FD8DD23859FD100E9B1D8 /* sitting-twists.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8D723859FD100E9B1D8 /* sitting-twists.gif */; };
+		845FD8DE23859FD100E9B1D8 /* plank-hold.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8D823859FD100E9B1D8 /* plank-hold.gif */; };
+		845FD8DF23859FD100E9B1D8 /* plank-leg-raise.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8D923859FD100E9B1D8 /* plank-leg-raise.gif */; };
+		845FD8E023859FD100E9B1D8 /* air-bike-crunches.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8DA23859FD100E9B1D8 /* air-bike-crunches.gif */; };
 		846446A22376008500F493F0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A12376008500F493F0 /* TabBarViewController.swift */; };
 		846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A523760C9C00F493F0 /* SettingsTableViewController.swift */; };
 		846446AD237759F800F493F0 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446AC237759F800F493F0 /* Setting.swift */; };
@@ -115,14 +118,17 @@
 		843C3DA2237F0798006FE720 /* RoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
 		843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
 		845FD8C02380995100E9B1D8 /* StartRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRoutineViewController.swift; sourceTree = "<group>"; };
-		845FD8C2238308E300E9B1D8 /* crunch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = crunch.gif; path = "workoutapp/Local Videos/gifs/crunch.gif"; sourceTree = "<group>"; };
 		845FD8C4238309A100E9B1D8 /* GifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifViewController.swift; sourceTree = "<group>"; };
 		845FD8C623830C1600E9B1D8 /* swift+gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "swift+gif.swift"; sourceTree = "<group>"; };
 		845FD8C823834E7A00E9B1D8 /* RemoteVideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteVideoPlayerViewController.swift; sourceTree = "<group>"; };
-		845FD8CA2383626100E9B1D8 /* air-bike-crunches.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "air-bike-crunches.gif"; path = "workoutapp/Local Videos/gifs/air-bike-crunches.gif"; sourceTree = "<group>"; };
 		845FD8CE23844A8A00E9B1D8 /* RoutineSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSection.swift; sourceTree = "<group>"; };
-		845FD8D023844C5300E9B1D8 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		845FD8D22384518500E9B1D8 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
+		845FD8D523859FD100E9B1D8 /* raised-leg-hold.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "raised-leg-hold.gif"; sourceTree = "<group>"; };
+		845FD8D623859FD100E9B1D8 /* crunch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = crunch.gif; sourceTree = "<group>"; };
+		845FD8D723859FD100E9B1D8 /* sitting-twists.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "sitting-twists.gif"; sourceTree = "<group>"; };
+		845FD8D823859FD100E9B1D8 /* plank-hold.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "plank-hold.gif"; sourceTree = "<group>"; };
+		845FD8D923859FD100E9B1D8 /* plank-leg-raise.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "plank-leg-raise.gif"; sourceTree = "<group>"; };
+		845FD8DA23859FD100E9B1D8 /* air-bike-crunches.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "air-bike-crunches.gif"; sourceTree = "<group>"; };
 		846446A12376008500F493F0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		846446A523760C9C00F493F0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		846446AC237759F800F493F0 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
@@ -214,6 +220,19 @@
 			path = "Routine Pictures";
 			sourceTree = "<group>";
 		};
+		845FD8D423859FD100E9B1D8 /* gifs */ = {
+			isa = PBXGroup;
+			children = (
+				845FD8D523859FD100E9B1D8 /* raised-leg-hold.gif */,
+				845FD8D623859FD100E9B1D8 /* crunch.gif */,
+				845FD8D723859FD100E9B1D8 /* sitting-twists.gif */,
+				845FD8D823859FD100E9B1D8 /* plank-hold.gif */,
+				845FD8D923859FD100E9B1D8 /* plank-leg-raise.gif */,
+				845FD8DA23859FD100E9B1D8 /* air-bike-crunches.gif */,
+			);
+			path = gifs;
+			sourceTree = "<group>";
+		};
 		846446A723760CA300F493F0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,7 +271,6 @@
 				846446B02377A10100F493F0 /* User.swift */,
 				84092846237CE16B00C695F6 /* Image.swift */,
 				845FD8CE23844A8A00E9B1D8 /* RoutineSection.swift */,
-				845FD8D023844C5300E9B1D8 /* Exercise.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -260,8 +278,6 @@
 		84C10B072336994E00146547 = {
 			isa = PBXGroup;
 			children = (
-				845FD8CA2383626100E9B1D8 /* air-bike-crunches.gif */,
-				845FD8C2238308E300E9B1D8 /* crunch.gif */,
 				84C10B122336994E00146547 /* workoutapp */,
 				84DD8043237319A700B16601 /* OneSignalNotificationServiceExtension */,
 				84C10B112336994E00146547 /* Products */,
@@ -302,6 +318,7 @@
 		84C10B2F2336A10000146547 /* Local Videos */ = {
 			isa = PBXGroup;
 			children = (
+				845FD8D423859FD100E9B1D8 /* gifs */,
 				84C10B362336A10000146547 /* Videos */,
 				84C10B3C2336A10000146547 /* Thumbnails */,
 			);
@@ -451,16 +468,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				845FD8CB2383626200E9B1D8 /* air-bike-crunches.gif in Resources */,
-				845FD8C3238308E300E9B1D8 /* crunch.gif in Resources */,
 				84092851237CF27F00C695F6 /* lowerBody.png in Resources */,
 				84092852237CF27F00C695F6 /* abs.png in Resources */,
 				8409284C237CE92500C695F6 /* upperBody.png in Resources */,
+				845FD8E023859FD100E9B1D8 /* air-bike-crunches.gif in Resources */,
 				84092853237CF27F00C695F6 /* totalBody.png in Resources */,
 				84C10B4E2336A10000146547 /* InnerTightLift.png in Resources */,
 				84C10B482336A10000146547 /* InnerTightLift.mp4 in Resources */,
 				84C10B4A2336A10000146547 /* doubleChopKneePulls.mp4 in Resources */,
 				84C10B492336A10000146547 /* stepsAndPulls.mp4 in Resources */,
+				845FD8DD23859FD100E9B1D8 /* sitting-twists.gif in Resources */,
 				84092842237CDC1700C695F6 /* File in Resources */,
 				84C10B472336A10000146547 /* alternatingLunges.mp4 in Resources */,
 				84C10B4F2336A10000146547 /* alternatingLunges.png in Resources */,
@@ -468,14 +485,18 @@
 				84C10B202336995000146547 /* LaunchScreen.storyboard in Resources */,
 				84C10B1D2336995000146547 /* Assets.xcassets in Resources */,
 				84372D4D2339342B00D6586D /* stepsAndPulls.jpg in Resources */,
+				845FD8DC23859FD100E9B1D8 /* crunch.gif in Resources */,
 				84C10B4B2336A10000146547 /* armCircles.mp4 in Resources */,
 				84C10B4C2336A10000146547 /* armCircles.png in Resources */,
 				84C10B4D2336A10000146547 /* doubleChopKneePulls.png in Resources */,
+				845FD8DB23859FD100E9B1D8 /* raised-leg-hold.gif in Resources */,
 				84C10B1B2336994E00146547 /* Main.storyboard in Resources */,
 				84372D4F2339342B00D6586D /* armCircles.jpg in Resources */,
 				84372D4B2339342A00D6586D /* doubleChopKneePulls.jpg in Resources */,
 				84372D4E2339342B00D6586D /* InnerTightLift.jpg in Resources */,
 				84E6EEC723528902001B00D8 /* startup in Resources */,
+				845FD8DE23859FD100E9B1D8 /* plank-hold.gif in Resources */,
+				845FD8DF23859FD100E9B1D8 /* plank-leg-raise.gif in Resources */,
 				84372D4C2339342A00D6586D /* alternatingLunges.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,7 +596,6 @@
 				84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */,
 				8407048D23371D6E00961B1E /* StepTableViewCell.swift in Sources */,
 				846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */,
-				845FD8D123844C5300E9B1D8 /* Exercise.swift in Sources */,
 				84CB241A2379ACD900C1A66F /* UserModel.swift in Sources */,
 				845FD8CF23844A8A00E9B1D8 /* RoutineSection.swift in Sources */,
 				845FD8C5238309A100E9B1D8 /* GifViewController.swift in Sources */,

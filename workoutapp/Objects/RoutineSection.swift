@@ -20,6 +20,34 @@ class RoutineSection: NSObject {
         super.init()
     }
     
+    func getDescription()->String{
+        var duration = 0
+        var equipments : [String] = []
+        var equipmentsString = ""
+        for exercise in exercises{
+            duration += exercise.durationS
+            if (exercise.getEquipments() != []){
+                for equipment in exercise.getEquipments(){
+                    if (!equipments.contains(equipment)){
+                        equipments.append(equipment)
+                    }
+                }
+            }
+        }
+        if (equipments == []){
+            equipmentsString = "No Equipments"
+        }
+        else{
+            var temp = ""
+            for equipment in equipments{
+                temp += "\(equipment) "
+            }
+            equipmentsString = temp
+        }
+        return "  \(duration) seconds \u{2022} \(equipmentsString)"
+        
+    }
+    
     class func getRoutineSections()->[RoutineSection]{
         var sections : [RoutineSection] = []
         let images = Image.loadRoutineSectionHeaders()

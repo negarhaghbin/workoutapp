@@ -29,6 +29,14 @@ class GifViewController: UIViewController {
         
     }
     
+    private func refreshUI(){
+        loadView()
+        self.gifView.loadGif(name: (section?.exercises[0].gifName)!)
+        runTimer()
+        createProgressBar()
+        
+    }
+    
     func runTimer(){
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.seconds += 1
@@ -44,14 +52,6 @@ class GifViewController: UIViewController {
         let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60
         return String(format:"%02i:%02i", minutes, seconds)
-    }
-    
-    private func refreshUI(){
-        loadView()
-        self.gifView.loadGif(name: (section?.exercises[0].gifName)!)
-        runTimer()
-        createProgressBar()
-        
     }
     
     @IBAction func togglePlay(_ sender: Any) {

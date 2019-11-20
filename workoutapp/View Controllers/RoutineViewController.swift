@@ -17,6 +17,7 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var selectedExercise = ExerciseModel()
     
@@ -32,6 +33,7 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         loadView()
         headerImage.image = imageWithImage( image: UIImage(named:section!.image.url.path)!, scaledToSize: CGSize(width: view.frame.width, height: view.frame.width/3))
         self.title = section?.title
+        descriptionLabel.text = section?.getDescription()
     }
     
     func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{
