@@ -17,20 +17,15 @@ class GifViewController: UIViewController {
     @IBOutlet weak var exerciseCounter: UILabel!
     
     @IBOutlet weak var exerciseTitle: UILabel!
-    // 1
     var animationTimer: Timer?
-    // 2
     var startTime: TimeInterval?, endTime: TimeInterval?
-    // 3
     let animationDuration = 3.0
-    // 4
     var height: CGFloat = 0
     
     @IBOutlet weak var balloon: Balloon!
     
-    
     let shapeLayer = CAShapeLayer()
-    let restDuration = 20
+    let restDuration = 10
     var timer = Timer()
     var exerciseTimer = Timer()
     var isResting = false
@@ -47,7 +42,6 @@ class GifViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     private func refreshUI(){
@@ -144,8 +138,12 @@ class GifViewController: UIViewController {
 
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
             action in
-            let myVC = self.storyboard?.instantiateViewController(withIdentifier: "NextViewController") as! RoutineCollectionViewController
-            self.show(myVC, sender: Any?.self)
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "NextViewController") as! RoutineCollectionViewController
+            let viewcontrollers = [vc]
+            self.navigationController!.setViewControllers(viewcontrollers, animated: true)
+            
+            
+            //self.show(myVC, sender: Any?.self)
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
 

@@ -10,6 +10,7 @@ import UIKit
 import UserNotifications
 import AVFoundation
 import OneSignal
+import RealmSwift
 
 enum Identifiers {
   static let viewAction = "VIEW_IDENTIFIER"
@@ -18,9 +19,13 @@ enum Identifiers {
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    let realm = try! Realm()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if ExerciseModel.loadExercises() == []{
+            ExerciseModel.initExerciseModelTable(realm: realm)
+        }
         try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient,
                                                          mode: AVAudioSession.Mode.moviePlayback,
         options: [.mixWithOthers])

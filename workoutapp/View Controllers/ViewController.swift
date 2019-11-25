@@ -7,18 +7,16 @@
 //
 
 import UIKit
-import AVKit
+import YouTubePlayer
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let StepCellReuseIdentifier = "StepTableViewCell"
     
     @IBOutlet weak var subtitleView: UILabel!
-    @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    internal let tapRecognizer1: UITapGestureRecognizer = UITapGestureRecognizer()
-    
-    var video : Video?{
+    @IBOutlet weak var youtubeView: YouTubePlayerView!
+    var exercise : ExerciseModel?{
         didSet{
             refreshUI()
         }
@@ -26,12 +24,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     private func refreshUI(){
         loadView()
-        titleLabel.text=video?.title
-        subtitleView.text=video?.subtitle
-        previewImageView.image=UIImage(named: ((video?.videoThumbURL.path) ?? ""))
-        tapRecognizer1.addTarget(self, action: Selector(("tap:")))
-        previewImageView.gestureRecognizers = []
-        previewImageView.gestureRecognizers!.append(tapRecognizer1)
+        youtubeView.loadVideoURL(URL(string: exercise!.videoURLString)!)
+        titleLabel.text = exercise!.title
+        subtitleView.text=exercise?.getDescription()
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -43,36 +38,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (video?.steps.count ?? 0)
+        return 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: StepCellReuseIdentifier, for: indexPath) as? StepTableViewCell else {
-            return StepTableViewCell()
-        }
-        let step = video?.steps[indexPath.row]
-        cell.numberLabel.text = String(step!.0)
-        cell.descriptionLabel.text = step!.1
 
-        return cell
-    }
-    
-    @objc func tap(_ sender: UITapGestureRecognizer) {
-        let videoURL = video?.url
-        let player = AVPlayer(url: videoURL!)
-        let playerViewController = AVPlayerViewController()
-        playerViewController.player = player
-
-        present(playerViewController, animated: true) {
-            player.play()
-        }
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: StepCellReuseIdentifier, for: indexPath) as? StepTableViewCell else {
+//            return StepTableViewCell()
+//        }
+//        let step = video?.steps[indexPath.row]
+//        cell.numberLabel.text = String(step!.0)
+//        cell.descriptionLabel.text = step!.1
+//
+//        return cell
+        return StepTableViewCell()
     }
 }
 
 extension ViewController: ExerciseSelectionDelegate {
-  func exerciseSelected(_ newExercise: Video) {
-    video = newExercise
+  func exerciseSelected(_ newExercise: ExerciseModel) {
+    exercise = newExercise
   }
 }
 

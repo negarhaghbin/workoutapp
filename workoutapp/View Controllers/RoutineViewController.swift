@@ -116,7 +116,7 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
             vc!.section = section
         }
         
-        if segue.identifier == "showExercise", let destination = segue.destination as? RemoteVideoPlayerViewController {
+        if segue.identifier == "showExercise", let destination = segue.destination as? ViewController {
             if let cell = sender as? UITableViewCell, let indexPath = self.tableView.indexPath(for: cell) {
                 let exercise = section!.exercises[indexPath.row]
                 destination.exercise = exercise

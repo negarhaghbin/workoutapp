@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -23,9 +24,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             as? TableViewController,
           let detailViewController = (splitViewController.viewControllers.last as? UINavigationController)?.topViewController as? ViewController
           else { return() }
-
-        let firstExercise = masterViewController.videos.first
-        detailViewController.video = firstExercise
+        
+        
+        
+        let firstExercise = masterViewController.sections.first?.exercises.first
+        detailViewController.exercise = firstExercise
         masterViewController.delegate = detailViewController
         detailViewController.navigationItem.leftItemsSupplementBackButton = true
         detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem

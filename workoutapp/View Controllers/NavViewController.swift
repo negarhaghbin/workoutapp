@@ -30,9 +30,9 @@ class NavViewController: UINavigationController {
         if isNewUser(){
             askName()
         }
-        if ExerciseModel.loadExercises() == []{
-            ExerciseModel.initExerciseModelTable(realm: realm)
-        }
+//        if ExerciseModel.loadExercises() == []{
+//            ExerciseModel.initExerciseModelTable(realm: realm)
+//        }
             
     }
     
@@ -86,7 +86,9 @@ class NavViewController: UINavigationController {
     
     func askName(){
             let alert = UIAlertController(title: "What's your name?", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+                self.creatUser(name: "Awsome me")
+            }))
 
             alert.addTextField(configurationHandler: { textField in
                 textField.placeholder = "Awsome me"

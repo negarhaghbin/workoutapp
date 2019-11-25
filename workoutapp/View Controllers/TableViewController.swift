@@ -6,44 +6,20 @@
 //  Copyright © 2019 Negar. All rights reserved.
 //
 
-
-
 import UIKit
 
-struct Section{
-    var title: String
-    var exercises : [Video]
-}
-
 protocol ExerciseSelectionDelegate: class {
-  func exerciseSelected(_ newExercise: Video)
+  func exerciseSelected(_ newExercise: ExerciseModel)
 }
 
 class TableViewController: UITableViewController {
-    var videos: [Video] = []
-    let VideoCellReuseIdentifier = "VideoTableViewCell"
-    var sections : [Section] = []
+    var sections : [RoutineSection] = RoutineSection.getRoutineSections()
+    let VideoTableViewCellIdentifier = "VideoTableViewCell"
     
     weak var delegate: ExerciseSelectionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        videos = Video.localVideos()
-        initSections()
-        for video in videos{
-            for (index,section) in sections.enumerated(){
-                if section.title == video.section{
-                    sections[index].exercises.append(video)
-                }
-            }
-        }
-    }
-    
-    func initSections(){
-        let titles=["Total Body", "Upper Body", "Abs", "Lower Body"]
-        for title in titles{
-            sections.append(Section(title: title, exercises: []))
-        }
     }
     
     // MARK: - Table view data source
@@ -62,22 +38,20 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: VideoCellReuseIdentifier, for: indexPath) as? VideoTableViewCell else {
-            return VideoTableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: VideoTableViewCellIdentifier, for: indexPath) as? VideoTableViewCell
+            else{
+                return VideoTableViewCell()
         }
-        let index=(indexPath.section * sections[indexPath.section==0 ? 0:indexPath.section-1].exercises.count) + indexPath.row
         
-        let video = videos[index]
-        cell.titleLabel.text = video.title
-        cell.previewImageView.image = UIImage(named: (video.thumbURL.path))
+        let exercise = sections[indexPath.section].exercises[indexPath.row]
+        cell.titleLabel.text = exercise.title
+        cell.previewImageView.image = UIImage(named: (exercise.gifName + ".gif"))
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let index=(indexPath.section * sections[indexPath.section==0 ? 0:indexPath.section-1].exercises.count) + indexPath.row
-        
-        let selectedVideo = videos[index]
-        delegate?.exerciseSelected(selectedVideo)
+        let selectedExercise = sections[indexPath.section].exercises[indexPath.row]
+        delegate?.exerciseSelected(selectedExercise)
         if
             let detailViewController = delegate as? ViewController,
             let detailNavigationController = detailViewController.navigationController {

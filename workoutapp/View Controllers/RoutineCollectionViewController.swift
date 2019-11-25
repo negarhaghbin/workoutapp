@@ -24,6 +24,8 @@ class RoutineCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        tabBarController?.tabBar.isHidden = false
         images=Image.loadRoutineSectionHeaders()
         sections = RoutineSection.getRoutineSections()
     }

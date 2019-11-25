@@ -16,6 +16,8 @@ class StartRoutineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
+        tabBarController?.tabBar.isHidden = true
+        
 
         // Do any additional setup after loading the view.
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
