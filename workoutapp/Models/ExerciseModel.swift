@@ -75,7 +75,7 @@ class ExerciseModel: Object {
             realm.add(ExerciseModel(value: ["Raised Arm Circles", upper, "raised-arm-circles",  "", 30,""]))
             realm.add(ExerciseModel(value: ["Arms Raised to the Side Hold", upper,  "hold",  "", 60,""] ))
             realm.add(ExerciseModel(value: ["Bicep Extensions", upper, "bicep-extensions",  "", 30,""]))
-            realm.add(ExerciseModel(value: ["Bicep Extensions Hold", upper, "bicep-extensions-hold",  "", 60,""]))
+            realm.add(ExerciseModel(value: ["Bicep Extensions Hold", upper, "bicep-extension-hold",  "", 60,""]))
         }
     }
     

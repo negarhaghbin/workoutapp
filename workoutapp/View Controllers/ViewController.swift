@@ -24,9 +24,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     private func refreshUI(){
         loadView()
-        youtubeView.loadVideoURL(URL(string: exercise!.videoURLString)!)
-        titleLabel.text = exercise!.title
+        if (exercise?.videoURLString != ""){
+            youtubeView.loadVideoURL(URL(string: exercise!.videoURLString)!)
+        }
+        titleLabel.text = exercise?.title
         subtitleView.text=exercise?.getDescription()
+        
     }
     
     @IBOutlet weak var tableView: UITableView!

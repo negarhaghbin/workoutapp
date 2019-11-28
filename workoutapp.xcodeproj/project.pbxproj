@@ -54,6 +54,7 @@
 		845FD902238C6C9800E9B1D8 /* clench-unclench-side.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8FD238C6C9700E9B1D8 /* clench-unclench-side.gif */; };
 		845FD903238C6C9800E9B1D8 /* raised-arm-circles.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8FE238C6C9700E9B1D8 /* raised-arm-circles.gif */; };
 		845FD904238C6C9800E9B1D8 /* hold.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8FF238C6C9800E9B1D8 /* hold.gif */; };
+		845FD906238C815E00E9B1D8 /* LocationNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD905238C815E00E9B1D8 /* LocationNotificationScheduler.swift */; };
 		846446A22376008500F493F0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A12376008500F493F0 /* TabBarViewController.swift */; };
 		846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A523760C9C00F493F0 /* SettingsTableViewController.swift */; };
 		846446AD237759F800F493F0 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446AC237759F800F493F0 /* Setting.swift */; };
@@ -162,6 +163,7 @@
 		845FD8FD238C6C9700E9B1D8 /* clench-unclench-side.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "clench-unclench-side.gif"; sourceTree = "<group>"; };
 		845FD8FE238C6C9700E9B1D8 /* raised-arm-circles.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "raised-arm-circles.gif"; sourceTree = "<group>"; };
 		845FD8FF238C6C9800E9B1D8 /* hold.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hold.gif; sourceTree = "<group>"; };
+		845FD905238C815E00E9B1D8 /* LocationNotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNotificationScheduler.swift; sourceTree = "<group>"; };
 		846446A12376008500F493F0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		846446A523760C9C00F493F0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		846446AC237759F800F493F0 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
@@ -282,6 +284,14 @@
 			path = gifs;
 			sourceTree = "<group>";
 		};
+		845FD907238C817600E9B1D8 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				845FD905238C815E00E9B1D8 /* LocationNotificationScheduler.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		846446A723760CA300F493F0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +369,7 @@
 				8407048E2337AE2700961B1E /* Models */,
 				84092841237CDC1700C695F6 /* File */,
 				845FD8C623830C1600E9B1D8 /* swift+gif.swift */,
+				845FD907238C817600E9B1D8 /* Notification */,
 			);
 			path = workoutapp;
 			sourceTree = "<group>";
@@ -655,6 +666,7 @@
 				846446AD237759F800F493F0 /* Setting.swift in Sources */,
 				84C10B2C23369FEB00146547 /* VideoTableViewCell.swift in Sources */,
 				8409283E237C8D9800C695F6 /* RoutineCollectionViewController.swift in Sources */,
+				845FD906238C815E00E9B1D8 /* LocationNotificationScheduler.swift in Sources */,
 				843C3DA5237F0961006FE720 /* RoutineTableViewCell.swift in Sources */,
 				845FD8E22385CD4C00E9B1D8 /* Balloon.swift in Sources */,
 				846446B12377A10100F493F0 /* User.swift in Sources */,
