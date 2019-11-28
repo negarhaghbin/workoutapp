@@ -17,6 +17,8 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    var customizedSection : RoutineSection? = nil
+    
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var selectedExercise = ExerciseModel()
@@ -34,6 +36,8 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         headerImage.image = imageWithImage( image: UIImage(named:section!.image.url.path)!, scaledToSize: CGSize(width: view.frame.width, height: view.frame.width/3))
         self.title = section?.title
         descriptionLabel.text = section?.getDescription()
+        customizedSection = RoutineSection(title: section!.title, image: section!.image, exercises: section!.exercises)
+        //customizedSection = section!.copy() as? RoutineSection
     }
     
     func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{
@@ -47,7 +51,6 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -65,45 +68,28 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         let exercise = section!.exercises[indexPath.row]
         cell.title.text = exercise.title
         cell.previewImage.image = UIImage(named: (exercise.gifName + ".gif"))
+        
+        if(customizedSection?.exercises[indexPath.row].title != ""){
+            cell.selectionSwitch.setOn(true, animated: true)
+        }
+        else{
+            cell.selectionSwitch.setOn(false, animated: true)
+        }
+        
+        cell.selectionSwitch.tag = indexPath.row
+        cell.selectionSwitch.addTarget(self, action: #selector(self.addRemoveExercise(_:)), for: .valueChanged)
 
         return cell
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    @IBAction func addRemoveExercise(_ sender: UISwitch!) {
+        if(sender.isOn){
+            customizedSection?.exercises[sender.tag] = section!.exercises[sender.tag]
+        }
+        else{
+            customizedSection?.exercises[sender.tag] = ExerciseModel()
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
     // MARK: - Navigation
 
@@ -113,7 +99,10 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         if segue.identifier == "startRoutine" {
             let vc = segue.destination as? StartRoutineViewController
             // Pass the selected object to the new view controller.
-            vc!.section = section
+            customizedSection?.exercises = (customizedSection?.exercises.filter {
+                $0.title != ""
+                })!
+            vc!.section = customizedSection
         }
         
         if segue.identifier == "showExercise", let destination = segue.destination as? ViewController {

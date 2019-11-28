@@ -514,7 +514,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RoutineTableReuseIdentifier" id="n9t-HI-eoE" customClass="RoutineTableViewCell" customModule="_M_Workout" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RoutineTableReuseIdentifier" editingAccessoryType="checkmark" id="n9t-HI-eoE" customClass="RoutineTableViewCell" customModule="_M_Workout" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="93.333332061767578" width="414" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n9t-HI-eoE" id="hil-XV-Xxg">
@@ -527,8 +527,14 @@
                                                         <constraint firstAttribute="width" constant="209" id="zo9-dM-A8N"/>
                                                     </constraints>
                                                 </imageView>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TRq-WB-QjC">
+                                                    <rect key="frame" x="328" y="60" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="addRemoveExercise:" destination="Y48-bW-O1q" eventType="valueChanged" id="n0I-hX-2Kw"/>
+                                                    </connections>
+                                                </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rF-2h-f8z">
-                                                    <rect key="frame" x="229" y="65" width="126" height="20.333333333333329"/>
+                                                    <rect key="frame" x="217" y="65" width="91" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -536,15 +542,20 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="WKO-l8-bbw" secondAttribute="bottom" id="0cR-gr-SmG"/>
+                                                <constraint firstItem="TRq-WB-QjC" firstAttribute="top" secondItem="hil-XV-Xxg" secondAttribute="topMargin" constant="49" id="2ao-mf-UFf"/>
                                                 <constraint firstItem="WKO-l8-bbw" firstAttribute="top" secondItem="hil-XV-Xxg" secondAttribute="top" id="3yA-Eb-t3b"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="8rF-2h-f8z" secondAttribute="trailing" constant="20" id="43G-sT-3uU"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="8rF-2h-f8z" secondAttribute="trailing" constant="67" id="43G-sT-3uU"/>
                                                 <constraint firstItem="WKO-l8-bbw" firstAttribute="leading" secondItem="hil-XV-Xxg" secondAttribute="leading" id="9c9-zh-12R"/>
-                                                <constraint firstItem="8rF-2h-f8z" firstAttribute="leading" secondItem="WKO-l8-bbw" secondAttribute="trailing" constant="20" id="Wa0-K8-2uw"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="TRq-WB-QjC" secondAttribute="bottom" constant="48" id="E9J-mm-kNU"/>
+                                                <constraint firstAttribute="trailing" secondItem="TRq-WB-QjC" secondAttribute="trailing" constant="6" id="MfA-L5-7Xv"/>
+                                                <constraint firstItem="8rF-2h-f8z" firstAttribute="leading" secondItem="WKO-l8-bbw" secondAttribute="trailing" constant="8" id="Wa0-K8-2uw"/>
+                                                <constraint firstItem="TRq-WB-QjC" firstAttribute="leading" secondItem="8rF-2h-f8z" secondAttribute="trailing" constant="20" id="bot-ck-pXq"/>
                                                 <constraint firstItem="8rF-2h-f8z" firstAttribute="centerY" secondItem="hil-XV-Xxg" secondAttribute="centerY" id="z62-9J-WS1"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="previewImage" destination="WKO-l8-bbw" id="LdU-b1-KD4"/>
+                                            <outlet property="selectionSwitch" destination="TRq-WB-QjC" id="ww5-9D-w2G"/>
                                             <outlet property="title" destination="8rF-2h-f8z" id="O28-Kb-zHu"/>
                                             <segue destination="BYZ-38-t0r" kind="show" identifier="showExercise" id="Hbj-4o-Y2K"/>
                                         </connections>
@@ -603,7 +614,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JaK-45-waL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2417" y="-721"/>
+            <point key="canvasLocation" x="2415.9420289855075" y="-721.20535714285711"/>
         </scene>
         <!--Start Routine View Controller-->
         <scene sceneID="PaQ-9f-RxU">
