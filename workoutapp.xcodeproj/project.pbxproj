@@ -55,6 +55,7 @@
 		845FD903238C6C9800E9B1D8 /* raised-arm-circles.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8FE238C6C9700E9B1D8 /* raised-arm-circles.gif */; };
 		845FD904238C6C9800E9B1D8 /* hold.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8FF238C6C9800E9B1D8 /* hold.gif */; };
 		845FD906238C815E00E9B1D8 /* LocationNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD905238C815E00E9B1D8 /* LocationNotificationScheduler.swift */; };
+		845FD9092390A35F00E9B1D8 /* dailyRoutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD9082390A35E00E9B1D8 /* dailyRoutine.swift */; };
 		846446A22376008500F493F0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A12376008500F493F0 /* TabBarViewController.swift */; };
 		846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A523760C9C00F493F0 /* SettingsTableViewController.swift */; };
 		846446AD237759F800F493F0 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446AC237759F800F493F0 /* Setting.swift */; };
@@ -164,6 +165,7 @@
 		845FD8FE238C6C9700E9B1D8 /* raised-arm-circles.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "raised-arm-circles.gif"; sourceTree = "<group>"; };
 		845FD8FF238C6C9800E9B1D8 /* hold.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hold.gif; sourceTree = "<group>"; };
 		845FD905238C815E00E9B1D8 /* LocationNotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNotificationScheduler.swift; sourceTree = "<group>"; };
+		845FD9082390A35E00E9B1D8 /* dailyRoutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dailyRoutine.swift; sourceTree = "<group>"; };
 		846446A12376008500F493F0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		846446A523760C9C00F493F0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		846446AC237759F800F493F0 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			children = (
 				84CB24192379ACD900C1A66F /* UserModel.swift */,
 				845FD8D22384518500E9B1D8 /* ExerciseModel.swift */,
+				845FD9082390A35E00E9B1D8 /* dailyRoutine.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				846446B72378AD0100F493F0 /* NameTableViewController.swift in Sources */,
+				845FD9092390A35F00E9B1D8 /* dailyRoutine.swift in Sources */,
 				84092847237CE16B00C695F6 /* Image.swift in Sources */,
 				84C10B182336994E00146547 /* ViewController.swift in Sources */,
 				840704892336E4E900961B1E /* SceneDelegate.swift in Sources */,

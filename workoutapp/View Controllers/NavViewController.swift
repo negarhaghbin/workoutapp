@@ -16,6 +16,7 @@ class NavViewController: UINavigationController {
     var timer: Timer!
     var user: UserModel!
     let realm = try! Realm()
+    var todayRoutine : dailyRoutine = dailyRoutine()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +31,6 @@ class NavViewController: UINavigationController {
         if isNewUser(){
             askName()
         }
-//        if ExerciseModel.loadExercises() == []{
-//            ExerciseModel.initExerciseModelTable(realm: realm)
-//        }
             
     }
     

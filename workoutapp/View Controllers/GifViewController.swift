@@ -61,8 +61,8 @@ class GifViewController: UIViewController {
             self.seconds += 1
             self.counter.text = self.timeString(time: TimeInterval(self.seconds))
             if (self.seconds == self.routineDuration){
-                self.finishRoutine()
                 self.timer.invalidate()
+                self.finishRoutine()
             }
         }
         exerciseTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
@@ -98,13 +98,19 @@ class GifViewController: UIViewController {
         currentExerciseIndex += 1
     }
     
+    func exitRoutine(){
+        dailyRoutine.update(seconds: self.seconds)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "NextViewController") as! RoutineCollectionViewController
+        let viewcontrollers = [vc]
+        self.navigationController!.setViewControllers(viewcontrollers, animated: true)
+    }
+    
     func finishRoutine(){
         let alert = UIAlertController(title: "Well done!", message: "You have succesfully finished your today's workout.", preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "Done", style: .default, handler: {
             action in
-            let myVC = self.storyboard?.instantiateViewController(withIdentifier: "NextViewController") as! RoutineCollectionViewController
-            self.show(myVC, sender: Any?.self)
+            self.exitRoutine()
         }))
         showCongratulationAnimation()
         self.present(alert, animated: true)
@@ -138,15 +144,9 @@ class GifViewController: UIViewController {
 
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
             action in
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "NextViewController") as! RoutineCollectionViewController
-            let viewcontrollers = [vc]
-            self.navigationController!.setViewControllers(viewcontrollers, animated: true)
-            
-            
-            //self.show(myVC, sender: Any?.self)
+            self.exitRoutine()
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-
         self.present(alert, animated: true)
     }
 
