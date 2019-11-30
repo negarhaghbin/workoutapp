@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import YouTubePlayer
+//import YouTubePlayer
+import YoutubePlayer_in_WKWebView
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -15,7 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var subtitleView: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var youtubeView: YouTubePlayerView!
+    @IBOutlet weak var youtubeView: WKYTPlayerView!
     var exercise : ExerciseModel?{
         didSet{
             refreshUI()
@@ -25,7 +26,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     private func refreshUI(){
         loadView()
         if (exercise?.videoURLString != ""){
-            youtubeView.loadVideoURL(URL(string: exercise!.videoURLString)!)
+            youtubeView.load(withVideoId: exercise!.videoURLString)
         }
         titleLabel.text = exercise?.title
         subtitleView.text=exercise?.getDescription()
