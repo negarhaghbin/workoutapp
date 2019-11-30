@@ -24,9 +24,20 @@
                             </label>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lWS-xL-PVp" customClass="WKYTPlayerView">
                                 <rect key="frame" x="0.0" y="157" width="414" height="224"/>
-                                <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28P-hw-P0c">
+                                        <rect key="frame" x="8" y="8" width="398" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="28P-hw-P0c" secondAttribute="trailing" constant="8" id="Djs-T8-nEv"/>
+                                    <constraint firstItem="28P-hw-P0c" firstAttribute="leading" secondItem="lWS-xL-PVp" secondAttribute="leading" constant="8" id="GDN-IL-Dga"/>
                                     <constraint firstAttribute="width" secondItem="lWS-xL-PVp" secondAttribute="height" multiplier="207:112" id="M1n-QX-dPv"/>
+                                    <constraint firstItem="28P-hw-P0c" firstAttribute="top" secondItem="lWS-xL-PVp" secondAttribute="top" constant="8" id="qIs-cu-Ss8"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1S-DP-3dU">
@@ -111,6 +122,7 @@
                         <outlet property="subtitleView" destination="l1S-DP-3dU" id="rB1-CK-pU3"/>
                         <outlet property="tableView" destination="BVD-um-QWy" id="AG5-V2-2OY"/>
                         <outlet property="titleLabel" destination="9Ee-sX-YH4" id="IiQ-Sa-7WU"/>
+                        <outlet property="warningLabel" destination="28P-hw-P0c" id="iqU-Wu-5O9"/>
                         <outlet property="youtubeView" destination="lWS-xL-PVp" id="QzF-FL-dyk"/>
                     </connections>
                 </viewController>

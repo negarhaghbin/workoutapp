@@ -124,29 +124,41 @@ class GifViewController: UIViewController {
         return String(format:"%02i:%02i", minutes, seconds)
     }
     
+    func pauseRoutine(){
+        timer.invalidate()
+        exerciseTimer.invalidate()
+        pauseAnimation()
+    }
+    
+    func resumeRoutine(){
+        runTimer()
+        resumeAnimation()
+    }
+    
     @IBAction func togglePlay(_ sender: Any) {
         if self.resumeTapped == false {
-            timer.invalidate()
-            exerciseTimer.invalidate()
+            pauseRoutine()
             self.resumeTapped = true
-            pauseAnimation()
             self.playPause.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
         } else {
-             runTimer()
-             self.resumeTapped = false
-            resumeAnimation()
-             self.playPause.setBackgroundImage(UIImage(systemName: "pause.fill"), for: .normal)
+            resumeRoutine()
+            self.resumeTapped = false
+            self.playPause.setBackgroundImage(UIImage(systemName: "pause.fill"), for: .normal)
         }
     }
     
     @IBAction func quitRoutine(_ sender: Any) {
+        pauseRoutine()
         let alert = UIAlertController(title: "Do you want to finish workout?", message: "It will exit this routine and your progress will be lost.", preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
             action in
             self.exitRoutine()
         }))
-        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: {
+            action in
+            self.resumeRoutine()
+        }))
         self.present(alert, animated: true)
     }
 
