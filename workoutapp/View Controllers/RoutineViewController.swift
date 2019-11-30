@@ -91,6 +91,18 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    
+    @IBAction func start(_ sender: Any) {
+        let alert = UIAlertController(title: "Are you ready?", message: "Your workout will start shortly after choosing yes.", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
+            action in
+            self.performSegue(withIdentifier: "startRoutine", sender:Any?.self)
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

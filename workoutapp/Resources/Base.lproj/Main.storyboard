@@ -507,13 +507,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5N-7L-ZwO">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000-00-00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5N-7L-ZwO">
                                             <rect key="frame" x="20" y="11.333333333333336" width="195" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm4-gs-64Z">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm4-gs-64Z">
                                             <rect key="frame" x="215" y="11.333333333333336" width="179" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -675,7 +675,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="DD2-E3-WeX" kind="show" identifier="startRoutine" id="iig-fW-MV6"/>
+                                    <action selector="start:" destination="Y48-bW-O1q" eventType="touchUpInside" id="SNE-91-Yec"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -701,11 +701,12 @@
                         <outlet property="headerImage" destination="jpQ-eX-qfs" id="S6g-Uz-i10"/>
                         <outlet property="startButton" destination="XXV-eb-PPa" id="g5S-Cm-Qni"/>
                         <outlet property="tableView" destination="wOs-Na-YiR" id="Jve-M9-Tba"/>
+                        <segue destination="DD2-E3-WeX" kind="show" identifier="startRoutine" id="HN8-Jd-weX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JaK-45-waL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2415.9420289855075" y="-721.20535714285711"/>
+            <point key="canvasLocation" x="2448" y="-721"/>
         </scene>
         <!--Start Routine View Controller-->
         <scene sceneID="PaQ-9f-RxU">
