@@ -56,6 +56,8 @@
 		845FD904238C6C9800E9B1D8 /* hold.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8FF238C6C9800E9B1D8 /* hold.gif */; };
 		845FD906238C815E00E9B1D8 /* LocationNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD905238C815E00E9B1D8 /* LocationNotificationScheduler.swift */; };
 		845FD9092390A35F00E9B1D8 /* dailyRoutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD9082390A35E00E9B1D8 /* dailyRoutine.swift */; };
+		845FD90B2392F4C100E9B1D8 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD90A2392F4C000E9B1D8 /* HistoryTableViewController.swift */; };
+		845FD90D2392F53A00E9B1D8 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD90C2392F53A00E9B1D8 /* HistoryTableViewCell.swift */; };
 		846446A22376008500F493F0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A12376008500F493F0 /* TabBarViewController.swift */; };
 		846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A523760C9C00F493F0 /* SettingsTableViewController.swift */; };
 		846446AD237759F800F493F0 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446AC237759F800F493F0 /* Setting.swift */; };
@@ -166,6 +168,8 @@
 		845FD8FF238C6C9800E9B1D8 /* hold.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hold.gif; sourceTree = "<group>"; };
 		845FD905238C815E00E9B1D8 /* LocationNotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNotificationScheduler.swift; sourceTree = "<group>"; };
 		845FD9082390A35E00E9B1D8 /* dailyRoutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dailyRoutine.swift; sourceTree = "<group>"; };
+		845FD90A2392F4C000E9B1D8 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		845FD90C2392F53A00E9B1D8 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		846446A12376008500F493F0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		846446A523760C9C00F493F0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		846446AC237759F800F493F0 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
@@ -302,6 +306,7 @@
 				8407048C23371D6E00961B1E /* StepTableViewCell.swift */,
 				8409283F237CD46000C695F6 /* RoutineCollectionViewCell.swift */,
 				843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */,
+				845FD90C2392F53A00E9B1D8 /* HistoryTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -320,6 +325,7 @@
 				843C3DA2237F0798006FE720 /* RoutineViewController.swift */,
 				845FD8C02380995100E9B1D8 /* StartRoutineViewController.swift */,
 				845FD8C4238309A100E9B1D8 /* GifViewController.swift */,
+				845FD90A2392F4C000E9B1D8 /* HistoryTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -662,8 +668,10 @@
 				845FD9092390A35F00E9B1D8 /* dailyRoutine.swift in Sources */,
 				84092847237CE16B00C695F6 /* Image.swift in Sources */,
 				84C10B182336994E00146547 /* ViewController.swift in Sources */,
+				845FD90B2392F4C100E9B1D8 /* HistoryTableViewController.swift in Sources */,
 				840704892336E4E900961B1E /* SceneDelegate.swift in Sources */,
 				845FD8C12380995100E9B1D8 /* StartRoutineViewController.swift in Sources */,
+				845FD90D2392F53A00E9B1D8 /* HistoryTableViewCell.swift in Sources */,
 				84C10B142336994E00146547 /* AppDelegate.swift in Sources */,
 				843C3DA3237F0798006FE720 /* RoutineViewController.swift in Sources */,
 				84C10B2823369FB300146547 /* NavViewController.swift in Sources */,

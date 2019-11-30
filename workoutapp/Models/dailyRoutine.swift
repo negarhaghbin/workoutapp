@@ -40,6 +40,12 @@ class dailyRoutine: Object {
         }
     }
     
+    class func getAll() -> [dailyRoutine]{
+        let realm = try? Realm()
+        let allRoutines = realm!.objects(dailyRoutine.self)
+        return Array(allRoutines)
+    }
+    
     class func update(seconds: Int){
         let realm = try? Realm()
         var routine = dailyRoutine.get(realm: realm!)
