@@ -9,6 +9,7 @@
 import UIKit
 import CoreMotion
 import RealmSwift
+import CoreLocation
 
 class NavViewController: UINavigationController {
     private let activityManager = CMMotionActivityManager()
@@ -17,6 +18,9 @@ class NavViewController: UINavigationController {
     var user: UserModel!
     let realm = try! Realm()
     var todayRoutine : dailyRoutine = dailyRoutine()
+    
+    private let locationNotificationScheduler = LocationNotificationScheduler()
+    let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +35,41 @@ class NavViewController: UINavigationController {
         if isNewUser(){
             askName()
         }
+        
+        
+        locationNotificationScheduler.delegate = self
+        
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
+        let l = location.getMostRecordedLocation()
+        self.scheduleLocationNotification(frequentLocation: l)
             
+    }
+    
+    func scheduleLocationNotification(frequentLocation: location) {
+        print("fer: \(frequentLocation)")
+        let notificationInfo = LocationNotificationInfo(notificationId: "home_notification_id",
+                                                        locationId: "home_location_id",
+                                                        radius: 10.0,
+                                                        latitude: frequentLocation.latitude,
+                                                        longitude: frequentLocation.longitude,
+                                                        title: "Are you ready to do your exercises?",
+                                                        body: "Tap to start now.",
+                                                        data: ["location": "NYC Brooklyn Promenade"])
+        
+        locationNotificationScheduler.requestNotification(with: notificationInfo, locationManager: locationManager)
+        
     }
     
     private func startTrackingActivityType() {
@@ -72,7 +110,6 @@ class NavViewController: UINavigationController {
     func isNewUser()->Bool{
         let defaults = UserDefaults.standard
         if defaults.string(forKey: "isAppAlreadyLaunchedOnce") != nil{
-            print("has launched before")
             return false
         }
         else{
@@ -95,7 +132,6 @@ class NavViewController: UINavigationController {
             alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { action in
                 if let name = alert.textFields?.first?.text {
                     self.creatUser(name: name)
-                    print("Your name: \(name)")
                 }
             }))
             self.present(alert, animated: true, completion: nil)
@@ -115,4 +151,79 @@ class NavViewController: UINavigationController {
     
     
 
+}
+
+extension NavViewController: LocationNotificationSchedulerDelegate {
+    
+    func locationPermissionDenied() {
+        let message = "The location permission was not authorized. Please enable it in Settings to continue."
+        presentSettingsAlert(message: message)
+    }
+    
+    func notificationPermissionDenied() {
+        let message = "The notification permission was not authorized. Please enable it in Settings to continue."
+        presentSettingsAlert(message: message)
+    }
+    
+//    func notificationScheduled(error: Error?) {
+//        if let error = error {
+//            let alertController = UIAlertController(title: "Notification Schedule Error",
+//                                                    message: error.localizedDescription,
+//                                                    preferredStyle: .alert)
+//            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//            present(alertController, animated: true)
+//        } else {
+//            let alertController = UIAlertController(title: "Notification Scheduled!",
+//                                                    message: "You will be notified when you are near the location!",
+//                                                    preferredStyle: .alert)
+//            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//            present(alertController, animated: true)
+//        }
+//    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        if response.notification.request.identifier == "home_notification_id" {
+            let notificationData = response.notification.request.content.userInfo
+            let message = "You have reached \(notificationData["location"] ?? "your location!")"
+            
+            let alertController = UIAlertController(title: "Welcome!",
+                                                    message: message,
+                                                    preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alertController, animated: true)
+        }
+        completionHandler()
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert])
+    }
+    
+    private func presentSettingsAlert(message: String) {
+        let alertController = UIAlertController(title: "Permissions Denied!",
+                                                message: message,
+                                                preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (alertAction) in
+            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(appSettings)
+            }
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+        
+        present(alertController, animated: true)
+    }
+}
+
+
+extension NavViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let currentLocation: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(currentLocation.latitude) \(currentLocation.longitude)")
+    }
 }

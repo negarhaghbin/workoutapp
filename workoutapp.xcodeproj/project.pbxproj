@@ -54,7 +54,6 @@
 		845FD902238C6C9800E9B1D8 /* clench-unclench-side.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8FD238C6C9700E9B1D8 /* clench-unclench-side.gif */; };
 		845FD903238C6C9800E9B1D8 /* raised-arm-circles.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8FE238C6C9700E9B1D8 /* raised-arm-circles.gif */; };
 		845FD904238C6C9800E9B1D8 /* hold.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8FF238C6C9800E9B1D8 /* hold.gif */; };
-		845FD906238C815E00E9B1D8 /* LocationNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD905238C815E00E9B1D8 /* LocationNotificationScheduler.swift */; };
 		845FD9092390A35F00E9B1D8 /* dailyRoutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD9082390A35E00E9B1D8 /* dailyRoutine.swift */; };
 		845FD90B2392F4C100E9B1D8 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD90A2392F4C000E9B1D8 /* HistoryTableViewController.swift */; };
 		845FD90D2392F53A00E9B1D8 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD90C2392F53A00E9B1D8 /* HistoryTableViewCell.swift */; };
@@ -82,9 +81,13 @@
 		84C10B4F2336A10000146547 /* alternatingLunges.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B402336A10000146547 /* alternatingLunges.png */; };
 		84C10B502336A10000146547 /* stepsAndPulls.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B412336A10000146547 /* stepsAndPulls.png */; };
 		84CB241A2379ACD900C1A66F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB24192379ACD900C1A66F /* UserModel.swift */; };
+		84DC84B72396D40B00B82BCD /* LocationNotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC84B42396D40B00B82BCD /* LocationNotificationInfo.swift */; };
+		84DC84B82396D40B00B82BCD /* LocationNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC84B52396D40B00B82BCD /* LocationNotificationScheduler.swift */; };
+		84DC84B92396D40B00B82BCD /* LocationNotificationSchedulerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC84B62396D40B00B82BCD /* LocationNotificationSchedulerDelegate.swift */; };
 		84DD8045237319A700B16601 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD8044237319A700B16601 /* NotificationService.swift */; };
 		84DD8049237319A700B16601 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 84DD8042237319A700B16601 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		84DD804F237462C500B16601 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DD804E237462C500B16601 /* HealthKit.framework */; };
+		84DF7B6A23957E630098A4C7 /* locationHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DF7B6923957E630098A4C7 /* locationHistory.swift */; };
 		84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6EEC4235227F3001B00D8 /* SplitViewController.swift */; };
 		84E6EEC723528902001B00D8 /* startup in Resources */ = {isa = PBXBuildFile; fileRef = 84E6EEC623528902001B00D8 /* startup */; };
 		FBC816195429A1F687D666FD /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1C683DBE4ED97BFBB67D2 /* Pods_OneSignalNotificationServiceExtension.framework */; };
@@ -166,7 +169,6 @@
 		845FD8FD238C6C9700E9B1D8 /* clench-unclench-side.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "clench-unclench-side.gif"; sourceTree = "<group>"; };
 		845FD8FE238C6C9700E9B1D8 /* raised-arm-circles.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "raised-arm-circles.gif"; sourceTree = "<group>"; };
 		845FD8FF238C6C9800E9B1D8 /* hold.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hold.gif; sourceTree = "<group>"; };
-		845FD905238C815E00E9B1D8 /* LocationNotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNotificationScheduler.swift; sourceTree = "<group>"; };
 		845FD9082390A35E00E9B1D8 /* dailyRoutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dailyRoutine.swift; sourceTree = "<group>"; };
 		845FD90A2392F4C000E9B1D8 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		845FD90C2392F53A00E9B1D8 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -196,10 +198,14 @@
 		84C10B402336A10000146547 /* alternatingLunges.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alternatingLunges.png; sourceTree = "<group>"; };
 		84C10B412336A10000146547 /* stepsAndPulls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stepsAndPulls.png; sourceTree = "<group>"; };
 		84CB24192379ACD900C1A66F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		84DC84B42396D40B00B82BCD /* LocationNotificationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationNotificationInfo.swift; sourceTree = "<group>"; };
+		84DC84B52396D40B00B82BCD /* LocationNotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationNotificationScheduler.swift; sourceTree = "<group>"; };
+		84DC84B62396D40B00B82BCD /* LocationNotificationSchedulerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationNotificationSchedulerDelegate.swift; sourceTree = "<group>"; };
 		84DD8042237319A700B16601 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DD8044237319A700B16601 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		84DD8046237319A700B16601 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84DD804E237462C500B16601 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		84DF7B6923957E630098A4C7 /* locationHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locationHistory.swift; sourceTree = "<group>"; };
 		84E6EEC4235227F3001B00D8 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		84E6EEC623528902001B00D8 /* startup */ = {isa = PBXFileReference; lastKnownFileType = file; path = startup; sourceTree = "<group>"; };
 		AD8ED2DAAEEFF97A4D28B7DE /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
@@ -234,6 +240,7 @@
 				84CB24192379ACD900C1A66F /* UserModel.swift */,
 				845FD8D22384518500E9B1D8 /* ExerciseModel.swift */,
 				845FD9082390A35E00E9B1D8 /* dailyRoutine.swift */,
+				84DF7B6923957E630098A4C7 /* locationHistory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -289,14 +296,6 @@
 				845FD8DA23859FD100E9B1D8 /* air-bike-crunches.gif */,
 			);
 			path = gifs;
-			sourceTree = "<group>";
-		};
-		845FD907238C817600E9B1D8 /* Notification */ = {
-			isa = PBXGroup;
-			children = (
-				845FD905238C815E00E9B1D8 /* LocationNotificationScheduler.swift */,
-			);
-			path = Notification;
 			sourceTree = "<group>";
 		};
 		846446A723760CA300F493F0 /* Cells */ = {
@@ -376,9 +375,9 @@
 				846446AE23779DAF00F493F0 /* View Controllers */,
 				846446A723760CA300F493F0 /* Cells */,
 				8407048E2337AE2700961B1E /* Models */,
+				84DC84B32396D40B00B82BCD /* LocationNotificationScheduler */,
 				84092841237CDC1700C695F6 /* File */,
 				845FD8C623830C1600E9B1D8 /* swift+gif.swift */,
-				845FD907238C817600E9B1D8 /* Notification */,
 			);
 			path = workoutapp;
 			sourceTree = "<group>";
@@ -420,6 +419,16 @@
 				84C10B412336A10000146547 /* stepsAndPulls.png */,
 			);
 			path = Thumbnails;
+			sourceTree = "<group>";
+		};
+		84DC84B32396D40B00B82BCD /* LocationNotificationScheduler */ = {
+			isa = PBXGroup;
+			children = (
+				84DC84B42396D40B00B82BCD /* LocationNotificationInfo.swift */,
+				84DC84B52396D40B00B82BCD /* LocationNotificationScheduler.swift */,
+				84DC84B62396D40B00B82BCD /* LocationNotificationSchedulerDelegate.swift */,
+			);
+			path = LocationNotificationScheduler;
 			sourceTree = "<group>";
 		};
 		84DD8043237319A700B16601 /* OneSignalNotificationServiceExtension */ = {
@@ -664,21 +673,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DC84B92396D40B00B82BCD /* LocationNotificationSchedulerDelegate.swift in Sources */,
 				846446B72378AD0100F493F0 /* NameTableViewController.swift in Sources */,
 				845FD9092390A35F00E9B1D8 /* dailyRoutine.swift in Sources */,
 				84092847237CE16B00C695F6 /* Image.swift in Sources */,
 				84C10B182336994E00146547 /* ViewController.swift in Sources */,
 				845FD90B2392F4C100E9B1D8 /* HistoryTableViewController.swift in Sources */,
 				840704892336E4E900961B1E /* SceneDelegate.swift in Sources */,
+				84DC84B82396D40B00B82BCD /* LocationNotificationScheduler.swift in Sources */,
 				845FD8C12380995100E9B1D8 /* StartRoutineViewController.swift in Sources */,
 				845FD90D2392F53A00E9B1D8 /* HistoryTableViewCell.swift in Sources */,
 				84C10B142336994E00146547 /* AppDelegate.swift in Sources */,
 				843C3DA3237F0798006FE720 /* RoutineViewController.swift in Sources */,
 				84C10B2823369FB300146547 /* NavViewController.swift in Sources */,
+				84DF7B6A23957E630098A4C7 /* locationHistory.swift in Sources */,
 				846446AD237759F800F493F0 /* Setting.swift in Sources */,
 				84C10B2C23369FEB00146547 /* VideoTableViewCell.swift in Sources */,
 				8409283E237C8D9800C695F6 /* RoutineCollectionViewController.swift in Sources */,
-				845FD906238C815E00E9B1D8 /* LocationNotificationScheduler.swift in Sources */,
+				84DC84B72396D40B00B82BCD /* LocationNotificationInfo.swift in Sources */,
 				843C3DA5237F0961006FE720 /* RoutineTableViewCell.swift in Sources */,
 				845FD8E22385CD4C00E9B1D8 /* Balloon.swift in Sources */,
 				846446B12377A10100F493F0 /* User.swift in Sources */,

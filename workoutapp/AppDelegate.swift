@@ -11,6 +11,7 @@ import UserNotifications
 import AVFoundation
 import OneSignal
 import RealmSwift
+//import CoreLocation
 
 enum Identifiers {
   static let viewAction = "VIEW_IDENTIFIER"
@@ -19,19 +20,18 @@ enum Identifiers {
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
     let realm = try! Realm()
+    //let locationManager = CLLocationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
         if ExerciseModel.loadExercises() == []{
             ExerciseModel.initExerciseModelTable(realm: realm)
         }
-        try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient,
-                                                         mode: AVAudioSession.Mode.moviePlayback,
-        options: [.mixWithOthers])
+        
+        try? AVAudioSession.sharedInstance().setCategory( AVAudioSession.Category.ambient, mode: AVAudioSession.Mode.moviePlayback, options: [.mixWithOthers])
 
-//        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
-//        registerForPushNotifications()
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
 
         // Replace 'YOUR_APP_ID' with your OneSignal App ID.
@@ -42,11 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
 
-        // Recommend moving the below line to prompt for push after informing the user about
-        //   how your app will use them.
+        //OneSignal.promptLocation()
         OneSignal.promptForPushNotifications(userResponse: { accepted in
         print("User accepted notifications: \(accepted)")
         })
+        
+        
         return true
     }
 
@@ -111,6 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       didFailToRegisterForRemoteNotificationsWithError error: Error) {
       print("Failed to register: \(error)")
     }
+    
 
 }
 

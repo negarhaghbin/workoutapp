@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 
 class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
@@ -18,6 +19,7 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     var customizedSection : RoutineSection? = nil
+    let locationManager = CLLocationManager()
     
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -29,6 +31,7 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     private func refreshUI(){
@@ -91,12 +94,22 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    
     @IBAction func start(_ sender: Any) {
         let alert = UIAlertController(title: "Are you ready?", message: "Your workout will start shortly after choosing yes.", preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
             action in
+            guard let currentLocation: CLLocationCoordinate2D = self.locationManager.location?.coordinate else { return }
+            var loc = location()
+            loc.set(lat:currentLocation.latitude , long:currentLocation.longitude)
+            loc.add()
+            
+//            let center = UNUserNotificationCenter.current()
+//            center.getPendingNotificationRequests(completionHandler: { requests in
+//                for request in requests {
+//                    print(request)
+//                }
+//            })
             self.performSegue(withIdentifier: "startRoutine", sender:Any?.self)
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
@@ -128,8 +141,11 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
 
 }
 
+// MARK: - EXTENSIONS
+
 extension RoutineViewController: RoutineSelectionDelegate {
   func routineSelected(_ newRoutine: RoutineSection) {
     section = newRoutine
   }
 }
+

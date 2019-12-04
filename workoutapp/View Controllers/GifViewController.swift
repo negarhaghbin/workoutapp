@@ -42,6 +42,7 @@ class GifViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.isIdleTimerDisabled = true
     }
     
     private func refreshUI(){
@@ -68,7 +69,7 @@ class GifViewController: UIViewController {
         exerciseTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.exerciseSeconds -= 1
             self.exerciseCounter.text = self.timeString(time: TimeInterval(self.exerciseSeconds))
-            if self.exerciseSeconds == 0 {
+            if self.exerciseSeconds == 1 {
                 if (self.currentExerciseIndex < ((self.section?.exercises.count)!-1)){
                     if (!self.isResting){
                         self.exerciseSeconds = self.restDuration
