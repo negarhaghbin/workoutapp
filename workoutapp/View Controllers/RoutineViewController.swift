@@ -102,6 +102,7 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
             guard let currentLocation: CLLocationCoordinate2D = self.locationManager.location?.coordinate else { return }
             var loc = location()
             loc.set(lat:currentLocation.latitude , long:currentLocation.longitude)
+            print(loc)
             loc.add()
             
 //            let center = UNUserNotificationCenter.current()

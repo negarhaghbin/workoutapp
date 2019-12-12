@@ -12,6 +12,11 @@ import RealmSwift
 class SettingsTableViewController: UITableViewController {
     var user : User = User()
     
+    
+    @IBOutlet weak var activitySwitch: UISwitch!
+    @IBOutlet weak var locationSwitch: UISwitch!
+    @IBOutlet weak var timeSwitch: UISwitch!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var userName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +24,8 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         initUser()
-        userName.text=user.name
+        userName.text = user.name
+        timeLabel.text = 
     }
     
     func initUser(){

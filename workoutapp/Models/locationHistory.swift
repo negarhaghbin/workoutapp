@@ -14,21 +14,19 @@ class location: Object {
     @objc dynamic var latitude : Double = 0.0
     @objc dynamic var longitude : Double = 0.0
     @objc dynamic var occurence : Int = 0
-    let locationManager = CLLocationManager()
     
-    func set(lat: Double, long: Double) {
-        self.latitude=lat
-        self.longitude=long
+    func set(lat: Double, long: Double, occ:Int = 0) {
+        self.latitude = lat
+        self.longitude = long
+        self.occurence = occ
     }
     
     func add(){
         let allRegions = getAllRegions()
         let center = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
-        print("hereeeeee")
-        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            // Make sure region monitoring is supported.
-            print("in ifff")
-            if CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self){
+        
+        switch CLLocationManager.authorizationStatus() {
+            case .authorizedWhenInUse, .authorizedAlways:
                 for r in allRegions {
                     if (r.contains(center)){
                         increaseOccurence(r: r)
@@ -36,13 +34,15 @@ class location: Object {
                     }
                 }
                 addNew()
-            }
+            case .notDetermined, .restricted, .denied:
+                break
         }
+        
     }
     
     func increaseOccurence(r: CLCircularRegion){
         let realm = try? Realm()
-        var specificLocation = realm!.objects(location.self).filter("latitude == \(r.center.latitude) && longitude == \(r.center.longitude)").first
+        let specificLocation = realm!.objects(location.self).filter("latitude == \(r.center.latitude) && longitude == \(r.center.longitude)").first
         try! realm?.write {
             specificLocation!.occurence += 1
         }
@@ -51,6 +51,7 @@ class location: Object {
     }
     
     func getRegion()->CLCircularRegion{
+        let locationManager = CLLocationManager()
         let center = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
         let maxDistance = locationManager.maximumRegionMonitoringDistance
         //find the best radius**********************
@@ -77,7 +78,20 @@ class location: Object {
     
     class func getMostRecordedLocation()->location{
         let realm = try? Realm()
-        return realm!.objects(location.self).sorted(byKeyPath: "occurence", ascending: false).first!
+        let locationManager = CLLocationManager()
+        let objects = realm!.objects(location.self)
+        if( objects.isEmpty )
+        {
+            let currentLocation: CLLocationCoordinate2D = locationManager.location!.coordinate
+            var loc = location()
+            loc.set(lat:currentLocation.latitude , long:currentLocation.longitude, occ: 1)
+            try! realm?.write {
+                realm!.add(loc)
+            }
+            return loc
+        }
+        return objects.sorted(byKeyPath: "occurence", ascending: false).first!
+        
         
     }
     

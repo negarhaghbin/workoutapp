@@ -13,12 +13,6 @@ class LocationNotificationScheduler: NSObject {
     
     // MARK: - Public Properties
     
-    weak var delegate: LocationNotificationSchedulerDelegate? {
-        didSet {
-            UNUserNotificationCenter.current().delegate = delegate
-        }
-    }
-    
     // MARK: - Private Properties
     
     //private let locationManager = CLLocationManager()
@@ -30,14 +24,14 @@ class LocationNotificationScheduler: NSObject {
     /// - Parameter data: Data that will be sent with the notification.
     func requestNotification(with notificationInfo: LocationNotificationInfo, locationManager: CLLocationManager) {
         switch CLLocationManager.authorizationStatus() {
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-            askForNotificationPermissions(notificationInfo: notificationInfo)
-        case .authorizedWhenInUse, .authorizedAlways:
-            askForNotificationPermissions(notificationInfo: notificationInfo)
-        case .restricted, .denied:
-            delegate?.locationPermissionDenied()
-            break
+            case .notDetermined:
+                locationManager.requestWhenInUseAuthorization()
+                askForNotificationPermissions(notificationInfo: notificationInfo)
+            case .authorizedWhenInUse, .authorizedAlways:
+                askForNotificationPermissions(notificationInfo: notificationInfo)
+            case .restricted, .denied:
+                print ("denied")
+                break
         }
     }
 }
@@ -55,7 +49,7 @@ private extension LocationNotificationScheduler {
             completionHandler: { [weak self] granted, _ in
                 guard granted else {
                     DispatchQueue.main.async {
-                        self?.delegate?.notificationPermissionDenied()
+                        print("denied")
                     }
                     return
                 }
