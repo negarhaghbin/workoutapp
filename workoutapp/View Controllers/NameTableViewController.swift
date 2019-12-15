@@ -29,7 +29,7 @@ class NameTableViewController: UITableViewController {
     
     @IBAction func changeName(_ sender: Any) {
         let realm=try! Realm()
-        let specificPerson = realm.object(ofType: UserModel.self, forPrimaryKey: UserDefaults.standard.string(forKey: "uuid"))
+        let specificPerson = realm.object(ofType: User.self, forPrimaryKey: UserDefaults.standard.string(forKey: "uuid"))
         try! realm.write {
             specificPerson?.name=(textField.text)!
         }

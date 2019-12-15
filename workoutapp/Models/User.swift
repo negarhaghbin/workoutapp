@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class UserModel: Object {
+class User: Object {
     @objc dynamic var name = ""
     @objc dynamic var uuid : String = UUID().uuidString
     

@@ -10,18 +10,35 @@ import Foundation
 import RealmSwift
 
 class notificationSettings: Object {
+    @objc dynamic var activity : Bool = true
     @objc dynamic var location : Bool = true
     @objc dynamic var timeBool : Bool = true
     @objc dynamic var time : String = "08:00"
     
+    func setActivity(value: Bool){
+        let realm = try! Realm()
+        try! realm.write {
+            self.activity = value
+        }
+    }
+    
     func setLocation(value: Bool){
-        self.location = value
+        let realm = try! Realm()
+        try! realm.write {
+            self.location = value
+        }
     }
     func setTime(value: Bool){
-        self.timeBool = value
+        let realm = try! Realm()
+        try! realm.write {
+            self.timeBool = value
+        }
     }
     func setTime(value: String){
-        self.time = value
+        let realm = try! Realm()
+        try! realm.write {
+            self.time = value
+        }
     }
     func isLocationEnabled() -> Bool{
         return location

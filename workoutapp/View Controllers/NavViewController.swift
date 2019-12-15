@@ -15,7 +15,8 @@ class NavViewController: UINavigationController {
     private let activityManager = CMMotionActivityManager()
     private let pedometer = CMPedometer()
     var timer: Timer!
-    var user: UserModel!
+    
+    var user: User!
     let realm = try! Realm()
     var todayRoutine : dailyRoutine = dailyRoutine()
     
@@ -32,10 +33,10 @@ class NavViewController: UINavigationController {
 
         
         timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(NavViewController.update), userInfo: nil, repeats: true)
+        
         if isNewUser(){
             askName()
         }
-        
         
         // Ask for Authorisation from the User.
         self.locationManager.requestAlwaysAuthorization()
@@ -148,13 +149,17 @@ class NavViewController: UINavigationController {
     }
     
     func creatUser(name: String){
+        let newUser = User()
+        let settings = notificationSettings()
+        newUser.name = name
+        
         try! realm.write {
-          let newUser = UserModel()
-            
-          newUser.name = name
-          realm.add(newUser)
-          user = newUser
+            realm.add(newUser)
+            realm.add(settings)
         }
+        
+        user = newUser
+        
         UserDefaults.standard.set(user.uuid, forKey: "uuid")
     }
     
