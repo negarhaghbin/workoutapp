@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GifViewController: UIViewController {
 
@@ -21,6 +22,8 @@ class GifViewController: UIViewController {
     var startTime: TimeInterval?, endTime: TimeInterval?
     let animationDuration = 3.0
     var height: CGFloat = 0
+    
+    var player: AVAudioPlayer?
     
     @IBOutlet weak var balloon: Balloon!
     
@@ -61,6 +64,9 @@ class GifViewController: UIViewController {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.seconds += 1
             self.counter.text = self.timeString(time: TimeInterval(self.seconds))
+            if (self.seconds == self.routineDuration/2){
+                self.playSound(name: "halfway")
+            }
             if (self.seconds == self.routineDuration){
                 self.timer.invalidate()
                 self.finishRoutine()
@@ -114,6 +120,7 @@ class GifViewController: UIViewController {
             self.exitRoutine()
         }))
         showCongratulationAnimation()
+        playSound(name: "good job")
         self.present(alert, animated: true)
         
     }
@@ -161,6 +168,28 @@ class GifViewController: UIViewController {
             self.resumeRoutine()
         }))
         self.present(alert, animated: true)
+    }
+    
+    func playSound(name: String) {
+        guard let url = Bundle.main.url(forResource: name, withExtension: "m4a") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.m4a.rawValue)
+
+            /* iOS 10 and earlier require the following line:
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+
+            guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
 
     /*

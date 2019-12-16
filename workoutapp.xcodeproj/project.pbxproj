@@ -61,6 +61,9 @@
 		846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A523760C9C00F493F0 /* SettingsTableViewController.swift */; };
 		846446B72378AD0100F493F0 /* NameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446B62378AD0100F493F0 /* NameTableViewController.swift */; };
 		8469DE0223A6A7E50098A5FD /* setTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8469DE0123A6A7E50098A5FD /* setTimeViewController.swift */; };
+		8469DE0423A7CB3A0098A5FD /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8469DE0323A7CB390098A5FD /* beep.wav */; };
+		8469DE0623A7D0640098A5FD /* good job.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8469DE0523A7D0640098A5FD /* good job.m4a */; };
+		8469DE0823A7D8DC0098A5FD /* halfway.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8469DE0723A7D8DB0098A5FD /* halfway.m4a */; };
 		84C10B142336994E00146547 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B132336994E00146547 /* AppDelegate.swift */; };
 		84C10B182336994E00146547 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B172336994E00146547 /* ViewController.swift */; };
 		84C10B1B2336994E00146547 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B192336994E00146547 /* Main.storyboard */; };
@@ -175,6 +178,9 @@
 		846446A523760C9C00F493F0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		846446B62378AD0100F493F0 /* NameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewController.swift; sourceTree = "<group>"; };
 		8469DE0123A6A7E50098A5FD /* setTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setTimeViewController.swift; sourceTree = "<group>"; };
+		8469DE0323A7CB390098A5FD /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
+		8469DE0523A7D0640098A5FD /* good job.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "good job.m4a"; sourceTree = "<group>"; };
+		8469DE0723A7D8DB0098A5FD /* halfway.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = halfway.m4a; sourceTree = "<group>"; };
 		84C10B102336994E00146547 /* 5M Workout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "5M Workout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C10B132336994E00146547 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C10B172336994E00146547 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -383,6 +389,9 @@
 		84C10B2F2336A10000146547 /* Local Videos */ = {
 			isa = PBXGroup;
 			children = (
+				8469DE0723A7D8DB0098A5FD /* halfway.m4a */,
+				8469DE0523A7D0640098A5FD /* good job.m4a */,
+				8469DE0323A7CB390098A5FD /* beep.wav */,
 				845FD8D423859FD100E9B1D8 /* gifs */,
 				84C10B362336A10000146547 /* Videos */,
 				84C10B3C2336A10000146547 /* Thumbnails */,
@@ -542,6 +551,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8469DE0423A7CB3A0098A5FD /* beep.wav in Resources */,
 				84092851237CF27F00C695F6 /* lowerBody.png in Resources */,
 				84092852237CF27F00C695F6 /* abs.png in Resources */,
 				8409284C237CE92500C695F6 /* upperBody.png in Resources */,
@@ -553,6 +563,7 @@
 				84C10B4A2336A10000146547 /* doubleChopKneePulls.mp4 in Resources */,
 				845FD8F6238C32F000E9B1D8 /* butt-kicks.gif in Resources */,
 				845FD8F8238C32F000E9B1D8 /* standing-side-kicks.gif in Resources */,
+				8469DE0623A7D0640098A5FD /* good job.m4a in Resources */,
 				84C10B492336A10000146547 /* stepsAndPulls.mp4 in Resources */,
 				845FD8DD23859FD100E9B1D8 /* sitting-twists.gif in Resources */,
 				84092842237CDC1700C695F6 /* File in Resources */,
@@ -565,6 +576,7 @@
 				84C10B502336A10000146547 /* stepsAndPulls.png in Resources */,
 				84C10B202336995000146547 /* LaunchScreen.storyboard in Resources */,
 				845FD8FA238C673200E9B1D8 /* clench-unclench-overhead.gif in Resources */,
+				8469DE0823A7D8DC0098A5FD /* halfway.m4a in Resources */,
 				845FD903238C6C9800E9B1D8 /* raised-arm-circles.gif in Resources */,
 				845FD8F4238C32F000E9B1D8 /* calf-raise.gif in Resources */,
 				84C10B1D2336995000146547 /* Assets.xcassets in Resources */,

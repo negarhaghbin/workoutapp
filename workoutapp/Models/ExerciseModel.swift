@@ -54,7 +54,7 @@ class ExerciseModel: Object {
             realm.add(ExerciseModel(value: ["Air Bike Crunches", abs,  "air-bike-crunches",  "jKT7-9L935g", 20,""] ))
             realm.add(ExerciseModel(value: ["Sitting Twists", abs, "sitting-twists",  "wkD8rjkodUI", 15,""]))
             realm.add(ExerciseModel(value: ["Raised Leg Hold", abs,  "raised-leg-hold",  "l4kQd9eWclE", 20,""] ))
-            realm.add(ExerciseModel(value: ["High Plank Hold", abs, "plank-hold",  "https://www.youtube.com/watch?v=fSaYfvSpAMI", 15,""]))
+            realm.add(ExerciseModel(value: ["High Plank Hold", abs, "plank-hold",  "fSaYfvSpAMI", 15,""]))
             realm.add(ExerciseModel(value: ["Plank Leg Raise", abs,  "plank-leg-raise",  "IexgiQZetb8", 20,""] ))
             
             

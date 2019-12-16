@@ -7,30 +7,62 @@
 //
 
 import UIKit
+import AVFoundation
 
 class StartRoutineViewController: UIViewController {
     @IBOutlet weak var counter: UILabel!
     var section : RoutineSection?
     var timer = Timer()
     var seconds = 3
+    var player: AVAudioPlayer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
         tabBarController?.tabBar.isHidden = true
+        self.counter.text = "\(seconds)"
+        self.playSound()
         
 
         // Do any additional setup after loading the view.
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.seconds -= 1
-            self.counter.text = "\(self.seconds)"
-
-            if self.seconds == 0 {
-                timer.invalidate()
-                self.counter.text = "Start"
-                self.performSegue(withIdentifier: "start", sender: self)
-//                let myVC = self.storyboard?.instantiateViewController(withIdentifier: "NextViewController") as! GifViewController
-//                self.show(myVC, sender: Any?.self)
+            if self.seconds > 0 {
+                self.counter.text = "\(self.seconds)"
+                self.playSound()
             }
+            
+            if self.seconds == 0 {
+                self.counter.text = "Start"
+                self.playSound()
+            }
+            if self.seconds == -1 {
+                timer.invalidate()
+                self.performSegue(withIdentifier: "start", sender: self)
+            }
+        }
+    }
+    
+
+    func playSound() {
+        guard let url = Bundle.main.url(forResource: "beep", withExtension: "wav") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.wav.rawValue)
+
+            /* iOS 10 and earlier require the following line:
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+
+            guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
     
