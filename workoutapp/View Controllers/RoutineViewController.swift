@@ -105,12 +105,6 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
             print(loc)
             loc.add()
             
-//            let center = UNUserNotificationCenter.current()
-//            center.getPendingNotificationRequests(completionHandler: { requests in
-//                for request in requests {
-//                    print(request)
-//                }
-//            })
             self.performSegue(withIdentifier: "startRoutine", sender:Any?.self)
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))

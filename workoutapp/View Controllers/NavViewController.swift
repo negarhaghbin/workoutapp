@@ -76,7 +76,7 @@ class NavViewController: UINavigationController {
                                                         longitude: frequentLocation.longitude,
                                                         title: "Are you ready to do your exercises?",
                                                         body: "Tap to start now.",
-                                                        data: ["location": "NYC Brooklyn Promenade"])
+                                                        data: [:])
         
         locationNotificationScheduler.requestNotification(with: notificationInfo, locationManager: locationManager)
         

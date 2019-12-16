@@ -26,6 +26,7 @@ class setTimeViewController: UITableViewController {
     
     @IBAction func changeTime(_ sender: Any) {
         setting.setTime(value: timefield.text!)
+        setting.setUpTimeNotification()
          _ = navigationController?.popViewController(animated: true)
     }
     

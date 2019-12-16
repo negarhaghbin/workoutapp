@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import UserNotifications
 
 class notificationSettings: Object {
     @objc dynamic var activity : Bool = true
@@ -48,6 +49,35 @@ class notificationSettings: Object {
     }
     func getTime() -> String{
         return time
+    }
+    
+    func setUpTimeNotification(){
+        let center = UNUserNotificationCenter.current()
+        let content = UNMutableNotificationContent()
+        content.title = "Are you ready to do your exercises?"
+        content.body = "Tap to start now."
+        content.sound = UNNotificationSound.default
+
+        var date = DateComponents()
+        let timeArray = time.split(separator: ":")
+        date.hour = Int(timeArray[0])
+        date.minute = Int(timeArray[1])
+        let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+
+        let request = UNNotificationRequest(identifier: Notification.Time.rawValue, content: content, trigger: trigger)
+        center.add(request)
+    }
+    
+    func disableNotification(identifier: String){
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
+           var identifiers: [String] = []
+           for notification:UNNotificationRequest in notificationRequests {
+               if notification.identifier == identifier {
+                  identifiers.append(notification.identifier)
+               }
+           }
+     UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+        }
     }
     
 }

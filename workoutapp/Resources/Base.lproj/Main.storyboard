@@ -310,8 +310,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="JT7-yW-amM" kind="relationship" relationship="viewControllers" id="E21-tN-dBk"/>
-                        <segue destination="0WH-ss-CgZ" kind="relationship" relationship="viewControllers" id="k7o-qc-1WG"/>
                         <segue destination="rxk-V2-PCx" kind="relationship" relationship="viewControllers" id="sYh-Yh-5VV"/>
+                        <segue destination="0WH-ss-CgZ" kind="relationship" relationship="viewControllers" id="k7o-qc-1WG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dbb-pb-JMh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

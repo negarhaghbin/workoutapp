@@ -9,6 +9,12 @@
 import UIKit
 import RealmSwift
 
+enum Notification: String {
+    case Activity = "activity"
+    case Location = "location"
+    case Time = "time"
+}
+
 class SettingsTableViewController: UITableViewController {
     var user : User = User()
     
@@ -36,6 +42,15 @@ class SettingsTableViewController: UITableViewController {
         timeSwitch.setOn(settings.timeBool, animated: false)
         locationSwitch.setOn(settings.location, animated: false)
         activitySwitch.setOn(settings.activity, animated: false)
+        
+        if(timeSwitch.isOn){
+            timeLabel.isEnabled = true
+            setTimeCell.isUserInteractionEnabled = true
+        }
+        else{
+            timeLabel.isEnabled = false
+            setTimeCell.isUserInteractionEnabled = false
+        }
     }
     
     // MARK: - Navigation
@@ -43,28 +58,32 @@ class SettingsTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         switch sender.restorationIdentifier {
-        case "activity":
+        case Notification.Activity.rawValue:
             if(sender.isOn){
                 settings.setActivity(value: true)
             }
             else{
                 settings.setActivity(value: false)
+                settings.disableNotification(identifier: Notification.Activity.rawValue)
             }
-        case "location":
+        case Notification.Location.rawValue:
             if(sender.isOn){
                 settings.setLocation(value: true)
             }
             else{
                 settings.setLocation(value: false)
+                settings.disableNotification(identifier: Notification.Location.rawValue)
             }
-        case "time":
+        case Notification.Time.rawValue:
             if(sender.isOn){
                 settings.setTime(value: true)
+                settings.setUpTimeNotification()
                 timeLabel.isEnabled = true
                 setTimeCell.isUserInteractionEnabled = true
             }
             else{
                 settings.setTime(value: false)
+                settings.disableNotification(identifier: Notification.Time.rawValue)
                 timeLabel.isEnabled = false
                 setTimeCell.isUserInteractionEnabled = false
             }
