@@ -16,4 +16,14 @@ class User: Object {
     override static func primaryKey() -> String? {
       return "uuid"
     }
+    
+    class func createUser(name: String){
+        let realm = try! Realm()
+        let user = User()
+        try! realm.write {
+            user.name = name
+            realm.add(user)
+        }
+        UserDefaults.standard.set(user.uuid, forKey: "uuid")
+    }
 }

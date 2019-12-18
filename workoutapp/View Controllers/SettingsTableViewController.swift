@@ -17,8 +17,7 @@ enum Notification: String {
 
 class SettingsTableViewController: UITableViewController {
     var user : User = User()
-    
-    var settings : notificationSettings = notificationSettings()
+    var appSettings : notificationSettings = notificationSettings()
     
     
     @IBOutlet weak var setTimeCell: UITableViewCell!
@@ -28,69 +27,135 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var userName: UILabel!
     
+    var notifAuthorized : Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
         user = try! Realm().object(ofType: User.self, forPrimaryKey: UserDefaults.standard.string(forKey: "uuid"))!
-        settings = try! Realm().objects(notificationSettings.self).first!
+        //appSettings = try! Realm().objects(notificationSettings.self).first!
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(viewWillAppear(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         userName.text = user.name
-        timeLabel.text = settings.getTime()
-        timeSwitch.setOn(settings.timeBool, animated: false)
-        locationSwitch.setOn(settings.location, animated: false)
-        activitySwitch.setOn(settings.activity, animated: false)
-        
-        if(timeSwitch.isOn){
-            timeLabel.isEnabled = true
-            setTimeCell.isUserInteractionEnabled = true
+        checkNotificationAuthorization(completion:{ authorization in
+            DispatchQueue.main.async {
+                self.refreshUI(authorization: authorization)
+            }
+            
+        })
+    }
+    
+    private func refreshUI(authorization: Bool){
+        self.appSettings = try! Realm().objects(notificationSettings.self).first!
+        self.timeLabel.text = self.appSettings.getTime()
+        if authorization{
+            self.timeSwitch.setOn(self.appSettings.timeBool, animated: false)
+            self.locationSwitch.setOn(self.appSettings.location, animated: false)
+            self.activitySwitch.setOn(self.appSettings.activity, animated: false)
+            if(self.timeSwitch.isOn){
+                self.timeLabel.isEnabled = true
+                self.setTimeCell.isUserInteractionEnabled = true
+            }
+            else{
+                self.timeLabel.isEnabled = false
+                self.setTimeCell.isUserInteractionEnabled = false
+            }
         }
         else{
-            timeLabel.isEnabled = false
-            setTimeCell.isUserInteractionEnabled = false
+            self.timeSwitch.setOn(false, animated: false)
+            self.locationSwitch.setOn(false, animated: false)
+            self.activitySwitch.setOn(false, animated: false)
+            self.timeLabel.isEnabled = false
+            self.setTimeCell.isUserInteractionEnabled = false
         }
+        
+        self.notifAuthorized = authorization
+    }
+    
+    @objc func checkNotificationAuthorization(completion: @escaping(Bool) -> Void){
+        var authorization = false
+        let current = UNUserNotificationCenter.current()
+        current.getNotificationSettings(completionHandler: { (settings) in
+            if settings.authorizationStatus == .denied {
+                authorization=false
+            } else if settings.authorizationStatus == .authorized {
+                authorization=true
+            }
+            completion(authorization)
+        })
+        
     }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     @IBAction func switchValueChanged(_ sender: UISwitch) {
-        switch sender.restorationIdentifier {
-        case Notification.Activity.rawValue:
-            if(sender.isOn){
-                settings.setActivity(value: true)
+        if !notifAuthorized{
+            presentSettingsAlert()
+            self.timeSwitch.setOn(false, animated: false)
+            self.locationSwitch.setOn(false, animated: false)
+            self.activitySwitch.setOn(false, animated: false)
+            self.timeLabel.isEnabled = false
+            self.setTimeCell.isUserInteractionEnabled = false
+        }
+        else{
+            switch sender.restorationIdentifier {
+            case Notification.Activity.rawValue:
+                if(sender.isOn){
+                    appSettings.setActivity(value: true)
+                    appSettings.setUpActivityNotification()
+                }
+                else{
+                    appSettings.setActivity(value: false)
+                    appSettings.disableNotification(identifier: Notification.Activity.rawValue)
+                }
+            case Notification.Location.rawValue:
+                if(sender.isOn){
+                    appSettings.setLocation(value: true)
+                }
+                else{
+                    appSettings.setLocation(value: false)
+                    appSettings.disableNotification(identifier: Notification.Location.rawValue)
+                }
+            case Notification.Time.rawValue:
+                if(sender.isOn){
+                    appSettings.setTime(value: true)
+                    appSettings.setUpTimeNotification()
+                    timeLabel.isEnabled = true
+                    setTimeCell.isUserInteractionEnabled = true
+                }
+                else{
+                    appSettings.setTime(value: false)
+                    appSettings.disableNotification(identifier: Notification.Time.rawValue)
+                    timeLabel.isEnabled = false
+                    setTimeCell.isUserInteractionEnabled = false
+                }
+            default:
+                print("something has changed")
             }
-            else{
-                settings.setActivity(value: false)
-                settings.disableNotification(identifier: Notification.Activity.rawValue)
+        }
+    }
+    
+    private func presentSettingsAlert() {
+        let alertController = UIAlertController(title: "Notifications are disabled",
+                                                message: "You need to enable notifications from settings first.",
+                                                preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (alertAction) in
+            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(appSettings)
             }
-        case Notification.Location.rawValue:
-            if(sender.isOn){
-                settings.setLocation(value: true)
-            }
-            else{
-                settings.setLocation(value: false)
-                settings.disableNotification(identifier: Notification.Location.rawValue)
-            }
-        case Notification.Time.rawValue:
-            if(sender.isOn){
-                settings.setTime(value: true)
-                settings.setUpTimeNotification()
-                timeLabel.isEnabled = true
-                setTimeCell.isUserInteractionEnabled = true
-            }
-            else{
-                settings.setTime(value: false)
-                settings.disableNotification(identifier: Notification.Time.rawValue)
-                timeLabel.isEnabled = false
-                setTimeCell.isUserInteractionEnabled = false
-            }
-        default:
-            print("something has changed")
         }
         
+        alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+        
+        present(alertController, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

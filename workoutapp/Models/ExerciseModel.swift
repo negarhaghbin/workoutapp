@@ -43,7 +43,8 @@ class ExerciseModel: Object {
         return "\(durationS) seconds \u{2022} \(equipmentsS)"
     }
     
-    class func initExerciseModelTable(realm: Realm){
+    class func initExerciseModelTable(){
+        let realm = try! Realm()
         let total =  "Total Body"
         let upper = "Upper Body"
         let abs = "Abs"

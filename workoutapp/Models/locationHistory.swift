@@ -41,9 +41,9 @@ class location: Object {
     }
     
     func increaseOccurence(r: CLCircularRegion){
-        let realm = try? Realm()
-        let specificLocation = realm!.objects(location.self).filter("latitude == \(r.center.latitude) && longitude == \(r.center.longitude)").first
-        try! realm?.write {
+        let realm = try! Realm()
+        let specificLocation = realm.objects(location.self).filter("latitude == \(r.center.latitude) && longitude == \(r.center.longitude)").first
+        try! realm.write {
             specificLocation!.occurence += 1
         }
         print(specificLocation as Any)
@@ -59,8 +59,8 @@ class location: Object {
     }
     
     func getAllRegions()->[CLCircularRegion]{
-        let realm = try? Realm()
-        let locations = Array(realm!.objects(location.self))
+        let realm = try! Realm()
+        let locations = Array(realm.objects(location.self))
         var results : [CLCircularRegion] = []
         
         for location in locations {
@@ -70,23 +70,23 @@ class location: Object {
     }
     
     func addNew(){
-        let realm = try? Realm()
-        try! realm?.write {
-            realm!.add(location(value: [self.latitude, self.longitude, Int(1)]))
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(location(value: [self.latitude, self.longitude, Int(1)]))
         }
     }
     
     class func getMostRecordedLocation()->location{
-        let realm = try? Realm()
+        let realm = try! Realm()
         let locationManager = CLLocationManager()
-        let objects = realm!.objects(location.self)
+        let objects = realm.objects(location.self)
         if( objects.isEmpty )
         {
             let currentLocation: CLLocationCoordinate2D = locationManager.location!.coordinate
             var loc = location()
             loc.set(lat:currentLocation.latitude , long:currentLocation.longitude, occ: 1)
-            try! realm?.write {
-                realm!.add(loc)
+            try! realm.write {
+                realm.add(loc)
             }
             return loc
         }

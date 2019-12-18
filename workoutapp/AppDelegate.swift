@@ -9,44 +9,32 @@
 import UIKit
 import UserNotifications
 import AVFoundation
-import OneSignal
-import RealmSwift
-//import CoreLocation
-
-enum Identifiers {
-  static let viewAction = "VIEW_IDENTIFIER"
-  static let newsCategory = "NEWS_CATEGORY"
-}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    let realm = try! Realm()
     //let locationManager = CLLocationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        print("here here here")
         if ExerciseModel.loadExercises() == []{
-            ExerciseModel.initExerciseModelTable(realm: realm)
+            ExerciseModel.initExerciseModelTable()
         }
         
         try? AVAudioSession.sharedInstance().setCategory( AVAudioSession.Category.ambient, mode: AVAudioSession.Mode.moviePlayback, options: [.mixWithOthers])
+        
 
-        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
 
         // Replace 'YOUR_APP_ID' with your OneSignal App ID.
-        OneSignal.initWithLaunchOptions(launchOptions,
-        appId: "49bbdbe3-71f3-418e-a5ad-9268e1826031",
-        handleNotificationAction: nil,
-        settings: onesignalInitSettings)
+        //OneSignal.initWithLaunchOptions(launchOptions, appId: "49bbdbe3-71f3-418e-a5ad-9268e1826031", handleNotificationAction: nil, settings: onesignalInitSettings)
 
-        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
+        //OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
 
         //OneSignal.promptLocation()
-        OneSignal.promptForPushNotifications(userResponse: { accepted in
-        print("User accepted notifications: \(accepted)")
-        })
-        
+        //OneSignal.promptForPushNotifications(userResponse: { accepted in
+        //print("User accepted notifications: \(accepted)")
+        //})
+        //registerForPushNotifications()
         
         return true
     }
@@ -59,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+    func application(_ applicvan: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
@@ -67,27 +55,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func registerForPushNotifications() {
+        print("here")
       UNUserNotificationCenter.current()
         .requestAuthorization(options: [.alert, .sound, .badge]) {
           [weak self] granted, error in
-            
           print("Permission granted: \(granted)")
           guard granted else { return }
-
-          let viewAction = UNNotificationAction(
-            identifier: Identifiers.viewAction, title: "View",
-            options: [.foreground])
-
-            
-          let newsCategory = UNNotificationCategory(
-            identifier: Identifiers.newsCategory, actions: [viewAction],
-            intentIdentifiers: [], options: [])
-      UNUserNotificationCenter.current().setNotificationCategories([newsCategory])
-
           self?.getNotificationSettings()
       }
     }
-    
+
+
     func getNotificationSettings() {
       UNUserNotificationCenter.current().getNotificationSettings { settings in
         print("Notification settings: \(settings)")

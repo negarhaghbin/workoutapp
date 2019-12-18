@@ -25,7 +25,8 @@ class dailyRoutine: Object {
       return "dateString"
     }
     
-    class func get(realm: Realm) -> dailyRoutine{
+    class func get() -> dailyRoutine{
+        let realm = try! Realm()
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
 
@@ -41,16 +42,16 @@ class dailyRoutine: Object {
     }
     
     class func getAll() -> [dailyRoutine]{
-        let realm = try? Realm()
-        let allRoutines = realm!.objects(dailyRoutine.self)
+        let realm = try! Realm()
+        let allRoutines = realm.objects(dailyRoutine.self)
         return Array(allRoutines)
     }
     
     class func update(seconds: Int){
-        let realm = try? Realm()
-        var routine = dailyRoutine.get(realm: realm!)
+        let realm = try! Realm()
+        var routine = dailyRoutine.get()
         
-        try! realm!.write {
+        try! realm.write {
             routine.seconds += seconds
         }
     }

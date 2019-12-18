@@ -31,6 +31,7 @@ class setTimeViewController: UITableViewController {
     }
     
     @objc func handleDatePicker(sender: UIDatePicker) {
+        datePicker.date = sender.date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         timefield.text = dateFormatter.string(from: sender.date)
