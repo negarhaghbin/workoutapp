@@ -37,6 +37,7 @@ class GifViewController: UIViewController {
     var resumeTapped : Bool = false
     var seconds = 0
     var routineDuration = 0
+    var routineExercises :[ExerciseModel] = []
     var section : RoutineSection?{
         didSet{
             refreshUI()
@@ -53,7 +54,13 @@ class GifViewController: UIViewController {
         gifView.loadGif(name: (section?.exercises[0].gifName)!)
         exerciseSeconds = (section?.exercises[0].durationS)!
         exerciseTitle.text = (section?.exercises[0].title)!
-        routineDuration = (self.section?.getDuration())! + ((section?.exercises.count)!-1) * restDuration
+        counter.text = self.timeString(time: TimeInterval(self.seconds))
+        exerciseCounter.text = self.timeString(time: TimeInterval(self.exerciseSeconds))
+        for _ in 1...Int(section!.repetition){
+            routineExercises += section!.exercises
+        }
+        routineDuration = (section!.repetition * (section?.getDuration())!) + ((routineExercises.count-1) * restDuration)
+        
         runTimer()
         createProgressBar()
         
@@ -75,8 +82,8 @@ class GifViewController: UIViewController {
         exerciseTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.exerciseSeconds -= 1
             self.exerciseCounter.text = self.timeString(time: TimeInterval(self.exerciseSeconds))
-            if self.exerciseSeconds == 1 {
-                if (self.currentExerciseIndex < ((self.section?.exercises.count)!-1)){
+            if self.exerciseSeconds == 0 {
+                if (self.currentExerciseIndex < ((self.routineExercises.count)-1)){
                     if (!self.isResting){
                         self.exerciseSeconds = self.restDuration
                         self.gifView.image=UIImage(named: "rest.png")
@@ -85,9 +92,9 @@ class GifViewController: UIViewController {
                     }
                     else{
                         self.increaseExerciseIndex()
-                        self.exerciseSeconds = (self.section?.exercises[self.currentExerciseIndex].durationS)!
-                        self.gifView.loadGif(name: (self.section?.exercises[self.currentExerciseIndex].gifName)!)
-                        self.exerciseTitle.text = self.section?.exercises[self.currentExerciseIndex].title
+                        self.exerciseSeconds = (self.routineExercises[self.currentExerciseIndex].durationS)
+                        self.gifView.loadGif(name: (self.routineExercises[self.currentExerciseIndex].gifName))
+                        self.exerciseTitle.text = self.routineExercises[self.currentExerciseIndex].title
                         self.isResting = false
                     }
                 }

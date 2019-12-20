@@ -51,19 +51,19 @@ class ExerciseModel: Object {
         let lower = "Lower Body"
         
         try! realm.write {
-            realm.add(ExerciseModel(value: ["Crunches", abs, "crunch",  "MKmrqcoCZ-M", 20,""]))
-            realm.add(ExerciseModel(value: ["Air Bike Crunches", abs,  "air-bike-crunches",  "jKT7-9L935g", 20,""] ))
-            realm.add(ExerciseModel(value: ["Sitting Twists", abs, "sitting-twists",  "wkD8rjkodUI", 15,""]))
-            realm.add(ExerciseModel(value: ["Raised Leg Hold", abs,  "raised-leg-hold",  "l4kQd9eWclE", 20,""] ))
-            realm.add(ExerciseModel(value: ["High Plank Hold", abs, "plank-hold",  "fSaYfvSpAMI", 15,""]))
-            realm.add(ExerciseModel(value: ["Plank Leg Raise", abs,  "plank-leg-raise",  "IexgiQZetb8", 20,""] ))
+            realm.add(ExerciseModel(value: ["Crunches", abs, "crunch",  "MKmrqcoCZ-M", 30,""]))
+            realm.add(ExerciseModel(value: ["Air Bike Crunches", abs,  "air-bike-crunches",  "jKT7-9L935g", 30,""] ))
+            realm.add(ExerciseModel(value: ["Sitting Twists", abs, "sitting-twists",  "wkD8rjkodUI", 30,""]))
+            realm.add(ExerciseModel(value: ["Raised Leg Hold", abs,  "raised-leg-hold",  "l4kQd9eWclE", 30,""] ))
+            realm.add(ExerciseModel(value: ["High Plank Hold", abs, "plank-hold",  "fSaYfvSpAMI", 30,""]))
+            realm.add(ExerciseModel(value: ["Plank Leg Raise", abs,  "plank-leg-raise",  "IexgiQZetb8", 30,""] ))
             
             
             realm.add(ExerciseModel(value: ["Step Jacks", total, "step-jacks",  "JHdVMkRBuRA", 40,""]))
-            realm.add(ExerciseModel(value: ["Knee to Elbow", total,  "knee-to-elbows",  "FzH5nGwYQMA", 10,""] ))
-            realm.add(ExerciseModel(value: ["Lunge Step-ups", total, "lunge-step-ups",  "KM6-6xTRpow", 10,""]))
-            realm.add(ExerciseModel(value: ["Calf Raise", total,  "calf-raise",  "-M4-G8p8fmc", 10,""] ))
-            realm.add(ExerciseModel(value: ["Bend and Twist", total, "bend-and-twist",  "r2RQoVp9fSk", 10,""]))
+            realm.add(ExerciseModel(value: ["Knee to Elbow", total,  "knee-to-elbows",  "FzH5nGwYQMA", 30,""] ))
+            realm.add(ExerciseModel(value: ["Lunge Step-ups", total, "lunge-step-ups",  "KM6-6xTRpow", 30,""]))
+            realm.add(ExerciseModel(value: ["Calf Raise", total,  "calf-raise",  "-M4-G8p8fmc", 30,""] ))
+            realm.add(ExerciseModel(value: ["Bend and Twist", total, "bend-and-twist",  "r2RQoVp9fSk", 30,""]))
             
             realm.add(ExerciseModel(value: ["Butt Kicks", lower, "butt-kicks",  "oMW59TKZvaI", 20,""]))
             realm.add(ExerciseModel(value: ["March Steps", lower,  "march-steps",  "dt7FAEYRLC4", 20,""] ))

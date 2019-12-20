@@ -93,23 +93,39 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
             customizedSection?.exercises[sender.tag] = ExerciseModel()
         }
     }
-    
+   
     @IBAction func start(_ sender: Any) {
-        let alert = UIAlertController(title: "Are you ready?", message: "Your workout will start shortly after choosing yes.", preferredStyle: .alert)
-
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
+        let startAlert = UIAlertController(title: "Are you ready?", message: "Your workout will start shortly after choosing yes.", preferredStyle: .alert)
+        
+        startAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
             action in
             guard let currentLocation: CLLocationCoordinate2D = self.locationManager.location?.coordinate else { return }
-            var loc = location()
-            loc.set(lat:currentLocation.latitude , long:currentLocation.longitude)
-            print(loc)
-            loc.add()
+                var loc = location()
+                loc.set(lat:currentLocation.latitude , long:currentLocation.longitude)
+                loc.add()
+        
+                self.performSegue(withIdentifier: "startRoutine", sender:Any?.self)
+            }))
+        
+        startAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
+        let repetitionAlert = UIAlertController(title: "Select the number of repetition", message: "", preferredStyle: .alert)
+        
+        repetitionAlert.addTextField(configurationHandler: {
+            textField in
+            textField.keyboardType = .numberPad
+            textField.text = String(self.customizedSection!.repetition)
             
-            self.performSegue(withIdentifier: "startRoutine", sender:Any?.self)
-        }))
-        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-        self.present(alert, animated: true)
-    }
+        })
+        
+        repetitionAlert.addAction(UIAlertAction(title: "Done", style: .default, handler: {
+            action in
+            self.customizedSection?.repetition = Int((repetitionAlert.textFields!.first!.text)!)!
+            self.present(startAlert, animated: true)
+           }))
+        
+        self.present(repetitionAlert, animated: true)
+       }
     
     // MARK: - Navigation
 

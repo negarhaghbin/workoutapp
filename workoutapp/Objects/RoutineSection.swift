@@ -12,12 +12,18 @@ class RoutineSection: NSObject {
     var title: String
     var image : Image
     var exercises : [ExerciseModel]
+    var repetition : Int
     
     init(title: String, image: Image, exercises:[ExerciseModel]) {
         self.title = title
         self.image = image
         self.exercises = exercises
+        self.repetition = 3
         super.init()
+    }
+    
+    func setRepetition(r: Int){
+        self.repetition = r
     }
     
     func getDuration()->Int{
