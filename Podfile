@@ -15,7 +15,7 @@ target 'workoutapp' do
   #pod 'AWSAppSync', '~> 2.12.0'
   #pod 'AWSSNS', '~> 2.9.7'
   #pod 'AWSCognito', '~> 2.9.7'
-  pod 'OneSignal', '>= 2.6.2', '< 3.0'
+  #pod 'OneSignal', '>= 2.6.2', '< 3.0'
   pod 'RealmSwift'
   pod "YoutubePlayer-in-WKWebView", "~> 0.3.0"
   #pod 'YouTubePlayer'

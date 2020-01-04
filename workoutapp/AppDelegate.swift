@@ -8,37 +8,29 @@
 
 import UIKit
 import UserNotifications
-import AVFoundation
+import CoreLocation
+//import HealthKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    //let locationManager = CLLocationManager()
+    let center = UNUserNotificationCenter.current()
+    var appSettings : notificationSettings = notificationSettings()
+    static let locationManager = CLLocationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        print("here here here")
+        
         if ExerciseModel.loadExercises() == []{
             ExerciseModel.initExerciseModelTable()
         }
         
-        try? AVAudioSession.sharedInstance().setCategory( AVAudioSession.Category.ambient, mode: AVAudioSession.Mode.moviePlayback, options: [.mixWithOthers])
-        
+        UNUserNotificationCenter.current().delegate = self
 
-
-        // Replace 'YOUR_APP_ID' with your OneSignal App ID.
-        //OneSignal.initWithLaunchOptions(launchOptions, appId: "49bbdbe3-71f3-418e-a5ad-9268e1826031", handleNotificationAction: nil, settings: onesignalInitSettings)
-
-        //OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
-
-        //OneSignal.promptLocation()
-        //OneSignal.promptForPushNotifications(userResponse: { accepted in
-        //print("User accepted notifications: \(accepted)")
-        //})
-        //registerForPushNotifications()
-        
+        registerForPushNotifications()
         return true
     }
-
+    
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -55,26 +47,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func registerForPushNotifications() {
-        print("here")
-      UNUserNotificationCenter.current()
-        .requestAuthorization(options: [.alert, .sound, .badge]) {
-          [weak self] granted, error in
-          print("Permission granted: \(granted)")
+      center.requestAuthorization(options: [.alert, .sound, .badge]) {
+        [weak self] granted, error in
+        print("Permission granted: \(granted)")
+        if self!.isNewUser(){
+            self!.appSettings = notificationSettings.addNewSettings(granted: granted)
+        }
+        if granted{
+            self!.appSettings.setUpTimeNotification()
+            //self!.requestHealthKit()
+            
+            
+            OperationQueue.main.addOperation{
+                // Ask for Authorisation from the User.
+                AppDelegate.locationManager.requestAlwaysAuthorization()
+                
+                // For use in foreground
+                AppDelegate.locationManager.requestWhenInUseAuthorization()
+                
+
+
+                if CLLocationManager.locationServicesEnabled() {
+                    AppDelegate.locationManager.delegate = self
+                    AppDelegate.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                    AppDelegate.locationManager.startUpdatingLocation()
+                }
+            }
+            
+        }
+        
           guard granted else { return }
-          self?.getNotificationSettings()
+          self?.center.getNotificationSettings { settings in
+            guard settings.authorizationStatus == .authorized else { return }
+            DispatchQueue.main.async {
+              UIApplication.shared.registerForRemoteNotifications()
+            }
+          }
       }
     }
-
-
-    func getNotificationSettings() {
-      UNUserNotificationCenter.current().getNotificationSettings { settings in
-        print("Notification settings: \(settings)")
-        guard settings.authorizationStatus == .authorized else { return }
-        DispatchQueue.main.async {
-          UIApplication.shared.registerForRemoteNotifications()
+    
+    func isNewUser()->Bool{
+        let defaults = UserDefaults.standard
+        if defaults.string(forKey: "isAppAlreadyLaunchedOnce") != nil{
+            return false
         }
-
-      }
+        else{
+            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
+            return true
+        }
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -91,36 +111,71 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       print("Failed to register: \(error)")
     }
     
+//    func requestHealthKit(){
+//        let allTypes = Set([HKObjectType.quantityType(forIdentifier: .stepCount)!])
+//        notificationSettings.healthStore.requestAuthorization(toShare: [], read: allTypes) { (success, error) in
+//            if !success {
+//                print("health not authorized")
+//                self.appSettings.setNotification(option: Notification.Activity.rawValue, value: false)
+//            }
+//        }
+//    }
+    
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+           willPresent notification: UNNotification,
+           withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    {
+        completionHandler(.alert)
+    }
+    
+    private func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert])
+    }
 
 }
 
-//extension AppDelegate: UNUserNotificationCenterDelegate {
-//  func userNotificationCenter(
-//    _ center: UNUserNotificationCenter,
-//    didReceive response: UNNotificationResponse,
-//    withCompletionHandler completionHandler: @escaping () -> Void) {
-//
-//    // 1
-//    let userInfo = response.notification.request.content.userInfo
-//
-//    // 2
-//    if let aps = userInfo["aps"] as? [String: AnyObject],
-//      let newsItem = NewsItem.makeNewsItem(aps) {
-//
-//      (window?.rootViewController as? UITabBarController)?.selectedIndex = 1
-//
-//      // 3
-//      if response.actionIdentifier == Identifiers.viewAction,
-//        let url = URL(string: newsItem.link) {
-//        let safari = SFSafariViewController(url: url)
-//        window?.rootViewController?.present(safari, animated: true,
-//                                            completion: nil)
-//      }
+extension AppDelegate: CLLocationManagerDelegate {
+    //commented it because it causes exception in ipad and there is no use for it
+//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+//        if CLLocationManager.locationServicesEnabled() {
+//        switch status {
+//            case .notDetermined, .restricted, .denied:
+//                print("denied locatoin delegate")
+//                appSettings.setNotification(option: Notification.Location.rawValue, value: false)
+//            case .authorizedAlways, .authorizedWhenInUse:
+//                appSettings.setNotification(option: Notification.Location.rawValue, value: true)
+//                print("acceepted locatoin delegate")
+//            @unknown default:
+//                break
+//            }
+//        }
 //    }
-//
-//    // 4
-//    completionHandler()
-//  }
-//}
 
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+            guard let currentLocation: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+//            print("locations = \(currentLocation.latitude) \(currentLocation.longitude)")
+    }
+        
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+            let center = UNUserNotificationCenter.current()
+           let content = UNMutableNotificationContent()
+           content.title = "Are you ready to do your exercises?"
+           content.body = "Tap to start now."
+           content.sound = .default
 
+           let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (20*60), repeats: false)
+
+           let request = UNNotificationRequest(identifier: Notification.Location.rawValue, content: content, trigger: trigger)
+           center.add(request, withCompletionHandler: nil)
+    }
+        
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+            notificationSettings.cancelNotification(identifier: Notification.Location.rawValue)
+    }
+}

@@ -29,7 +29,6 @@ class RoutineCollectionViewController: UICollectionViewController {
         tabBarController?.tabBar.isHidden = false
         images=Image.loadRoutineSectionHeaders()
         sections = RoutineSection.getRoutineSections()
-        print("collection")
     }
     
     
@@ -141,10 +140,4 @@ extension RoutineCollectionViewController : UICollectionViewDelegateFlowLayout {
     return sectionInsets.left
   }
 }
-
-//private extension RoutineCollectionViewController {
-//  func photo(for indexPath: IndexPath) -> FlickrPhoto {
-//    return searches[indexPath.section].searchResults[indexPath.row]
-//  }
-//}
 

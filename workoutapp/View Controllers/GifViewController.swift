@@ -27,7 +27,7 @@ class GifViewController: UIViewController {
     
     @IBOutlet weak var balloon: Balloon!
     
-    let shapeLayer = CAShapeLayer()
+    var PB = progressBar()
     let restDuration = 10
     var timer = Timer()
     var exerciseTimer = Timer()
@@ -62,7 +62,7 @@ class GifViewController: UIViewController {
         routineDuration = (section!.repetition * (section?.getDuration())!) + ((routineExercises.count-1) * restDuration)
         
         runTimer()
-        createProgressBar()
+        PB.create(view: self.view, duration: routineDuration)
         
     }
     
@@ -113,7 +113,7 @@ class GifViewController: UIViewController {
     }
     
     func exitRoutine(){
-        dailyRoutine.update(seconds: self.seconds)
+        dailyRoutine.update(seconds: self.seconds, sectionTitle: section!.title)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "NextViewController") as! RoutineCollectionViewController
         let viewcontrollers = [vc]
         self.navigationController!.setViewControllers(viewcontrollers, animated: true)
@@ -142,12 +142,12 @@ class GifViewController: UIViewController {
     func pauseRoutine(){
         timer.invalidate()
         exerciseTimer.invalidate()
-        pauseAnimation()
+        PB.pause()
     }
     
     func resumeRoutine(){
         runTimer()
-        resumeAnimation()
+        PB.resume()
     }
     
     @IBAction func togglePlay(_ sender: Any) {
@@ -209,46 +209,6 @@ class GifViewController: UIViewController {
     }
     */
 
-}
-
-extension GifViewController{
-    
-    func createProgressBar(){
-        let center = view.center
-        let circularPath = UIBezierPath(arcCenter: center, radius: view.frame.width/4, startAngle: -CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: true)
-        shapeLayer.path = circularPath.cgPath
-        shapeLayer.strokeColor = UIColor.systemPink.cgColor
-        shapeLayer.lineWidth = 10
-        shapeLayer.lineCap = CAShapeLayerLineCap.round
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        
-        shapeLayer.strokeEnd = 0
-        view.layer.addSublayer(shapeLayer)
-        
-        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        basicAnimation.fillMode = CAMediaTimingFillMode.forwards
-        basicAnimation.toValue = 1
-        basicAnimation.duration = Double(routineDuration)
-        basicAnimation.isRemovedOnCompletion = false
-        
-        shapeLayer.add(basicAnimation,forKey: "timer")
-    }
-    
-     func pauseAnimation(){
-        let pausedTime = shapeLayer.convertTime(CACurrentMediaTime(), from: nil)
-          shapeLayer.speed = 0.0
-          shapeLayer.timeOffset = pausedTime
-    }
-
-    func resumeAnimation(){
-          let pausedTime = shapeLayer.timeOffset
-          shapeLayer.speed = 1.0
-          shapeLayer.timeOffset = 0.0
-          shapeLayer.beginTime = 0.0
-        let timeSincePause = shapeLayer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
-          shapeLayer.beginTime = timeSincePause
-    }
-    
 }
 
 extension GifViewController{

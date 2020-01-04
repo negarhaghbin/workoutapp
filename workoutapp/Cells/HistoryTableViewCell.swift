@@ -10,10 +10,13 @@ import UIKit
 
 class HistoryTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var progress: UIProgressView!
+    @IBOutlet weak var subtitle: UILabel!
+    @IBOutlet weak var percentage: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        progress.transform = progress.transform.scaledBy(x: 1, y: 10)
         // Initialization code
     }
 
@@ -23,4 +26,14 @@ class HistoryTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}
+
+extension HistoryTableViewCell: updateProgressDelegate {
+    func showToday(_ percentage: Float) {
+        self.progress.progress = percentage/100.0
+    }
+    
+    func showAllTime(_ p: Float) {
+        self.progress.setProgress(p, animated: true)
+    }
 }

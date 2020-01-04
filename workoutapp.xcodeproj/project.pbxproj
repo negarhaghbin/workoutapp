@@ -18,6 +18,7 @@
 		84092851237CF27F00C695F6 /* lowerBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 8409284D237CF27E00C695F6 /* lowerBody.png */; };
 		84092852237CF27F00C695F6 /* abs.png in Resources */ = {isa = PBXBuildFile; fileRef = 8409284E237CF27E00C695F6 /* abs.png */; };
 		84092853237CF27F00C695F6 /* totalBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 84092850237CF27E00C695F6 /* totalBody.png */; };
+		840EAC4823BBF877002D0AF6 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840EAC4723BBF877002D0AF6 /* ActivityViewController.swift */; };
 		84372D4B2339342A00D6586D /* doubleChopKneePulls.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D462339342A00D6586D /* doubleChopKneePulls.jpg */; };
 		84372D4C2339342A00D6586D /* alternatingLunges.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D472339342A00D6586D /* alternatingLunges.jpg */; };
 		84372D4D2339342B00D6586D /* stepsAndPulls.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D482339342A00D6586D /* stepsAndPulls.jpg */; };
@@ -55,7 +56,6 @@
 		845FD903238C6C9800E9B1D8 /* raised-arm-circles.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8FE238C6C9700E9B1D8 /* raised-arm-circles.gif */; };
 		845FD904238C6C9800E9B1D8 /* hold.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8FF238C6C9800E9B1D8 /* hold.gif */; };
 		845FD9092390A35F00E9B1D8 /* dailyRoutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD9082390A35E00E9B1D8 /* dailyRoutine.swift */; };
-		845FD90B2392F4C100E9B1D8 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD90A2392F4C000E9B1D8 /* HistoryTableViewController.swift */; };
 		845FD90D2392F53A00E9B1D8 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD90C2392F53A00E9B1D8 /* HistoryTableViewCell.swift */; };
 		846446A22376008500F493F0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A12376008500F493F0 /* TabBarViewController.swift */; };
 		846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A523760C9C00F493F0 /* SettingsTableViewController.swift */; };
@@ -64,6 +64,7 @@
 		8469DE0423A7CB3A0098A5FD /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8469DE0323A7CB390098A5FD /* beep.wav */; };
 		8469DE0623A7D0640098A5FD /* good job.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8469DE0523A7D0640098A5FD /* good job.m4a */; };
 		8469DE0823A7D8DC0098A5FD /* halfway.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8469DE0723A7D8DB0098A5FD /* halfway.m4a */; };
+		8469DE1A23B9105F0098A5FD /* progressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8469DE1923B9105F0098A5FD /* progressBar.swift */; };
 		84C10B142336994E00146547 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B132336994E00146547 /* AppDelegate.swift */; };
 		84C10B182336994E00146547 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B172336994E00146547 /* ViewController.swift */; };
 		84C10B1B2336994E00146547 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B192336994E00146547 /* Main.storyboard */; };
@@ -82,7 +83,6 @@
 		84C10B4E2336A10000146547 /* InnerTightLift.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B3F2336A10000146547 /* InnerTightLift.png */; };
 		84C10B4F2336A10000146547 /* alternatingLunges.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B402336A10000146547 /* alternatingLunges.png */; };
 		84C10B502336A10000146547 /* stepsAndPulls.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B412336A10000146547 /* stepsAndPulls.png */; };
-		84DC84B72396D40B00B82BCD /* LocationNotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC84B42396D40B00B82BCD /* LocationNotificationInfo.swift */; };
 		84DC84B82396D40B00B82BCD /* LocationNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC84B52396D40B00B82BCD /* LocationNotificationScheduler.swift */; };
 		84DC84BB23A1B4C800B82BCD /* notificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC84BA23A1B4C800B82BCD /* notificationSettings.swift */; };
 		84DC84BD23A2F2AA00B82BCD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC84BC23A2F2AA00B82BCD /* User.swift */; };
@@ -134,6 +134,7 @@
 		8409284E237CF27E00C695F6 /* abs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abs.png; sourceTree = "<group>"; };
 		8409284F237CF27E00C695F6 /* upperBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upperBody.png; sourceTree = "<group>"; };
 		84092850237CF27E00C695F6 /* totalBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = totalBody.png; sourceTree = "<group>"; };
+		840EAC4723BBF877002D0AF6 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		84361466233BE0660088ADA8 /* 5M Workout.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "5M Workout.entitlements"; sourceTree = "<group>"; };
 		84372D462339342A00D6586D /* doubleChopKneePulls.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = doubleChopKneePulls.jpg; sourceTree = "<group>"; };
 		84372D472339342A00D6586D /* alternatingLunges.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = alternatingLunges.jpg; sourceTree = "<group>"; };
@@ -172,7 +173,6 @@
 		845FD8FE238C6C9700E9B1D8 /* raised-arm-circles.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "raised-arm-circles.gif"; sourceTree = "<group>"; };
 		845FD8FF238C6C9800E9B1D8 /* hold.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hold.gif; sourceTree = "<group>"; };
 		845FD9082390A35E00E9B1D8 /* dailyRoutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dailyRoutine.swift; sourceTree = "<group>"; };
-		845FD90A2392F4C000E9B1D8 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		845FD90C2392F53A00E9B1D8 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		846446A12376008500F493F0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		846446A523760C9C00F493F0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +181,7 @@
 		8469DE0323A7CB390098A5FD /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
 		8469DE0523A7D0640098A5FD /* good job.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "good job.m4a"; sourceTree = "<group>"; };
 		8469DE0723A7D8DB0098A5FD /* halfway.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = halfway.m4a; sourceTree = "<group>"; };
+		8469DE1923B9105F0098A5FD /* progressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressBar.swift; sourceTree = "<group>"; };
 		84C10B102336994E00146547 /* 5M Workout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "5M Workout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C10B132336994E00146547 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C10B172336994E00146547 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -201,7 +202,6 @@
 		84C10B3F2336A10000146547 /* InnerTightLift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InnerTightLift.png; sourceTree = "<group>"; };
 		84C10B402336A10000146547 /* alternatingLunges.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alternatingLunges.png; sourceTree = "<group>"; };
 		84C10B412336A10000146547 /* stepsAndPulls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stepsAndPulls.png; sourceTree = "<group>"; };
-		84DC84B42396D40B00B82BCD /* LocationNotificationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationNotificationInfo.swift; sourceTree = "<group>"; };
 		84DC84B52396D40B00B82BCD /* LocationNotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationNotificationScheduler.swift; sourceTree = "<group>"; };
 		84DC84BA23A1B4C800B82BCD /* notificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationSettings.swift; sourceTree = "<group>"; };
 		84DC84BC23A2F2AA00B82BCD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -329,8 +329,8 @@
 				843C3DA2237F0798006FE720 /* RoutineViewController.swift */,
 				845FD8C02380995100E9B1D8 /* StartRoutineViewController.swift */,
 				845FD8C4238309A100E9B1D8 /* GifViewController.swift */,
-				845FD90A2392F4C000E9B1D8 /* HistoryTableViewController.swift */,
 				8469DE0123A6A7E50098A5FD /* setTimeViewController.swift */,
+				840EAC4723BBF877002D0AF6 /* ActivityViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -373,15 +373,16 @@
 				84C10B132336994E00146547 /* AppDelegate.swift */,
 				840704882336E4E900961B1E /* SceneDelegate.swift */,
 				845FD8E12385CD4B00E9B1D8 /* Balloon.swift */,
+				8469DE1923B9105F0098A5FD /* progressBar.swift */,
+				845FD8C623830C1600E9B1D8 /* swift+gif.swift */,
+				84DC84B52396D40B00B82BCD /* LocationNotificationScheduler.swift */,
 				84C10B212336995000146547 /* Info.plist */,
 				846446AF23779DC500F493F0 /* Objects */,
 				8407048F2337AE4400961B1E /* Resources */,
 				846446AE23779DAF00F493F0 /* View Controllers */,
 				846446A723760CA300F493F0 /* Cells */,
 				8407048E2337AE2700961B1E /* Models */,
-				84DC84B32396D40B00B82BCD /* LocationNotificationScheduler */,
 				84092841237CDC1700C695F6 /* File */,
-				845FD8C623830C1600E9B1D8 /* swift+gif.swift */,
 			);
 			path = workoutapp;
 			sourceTree = "<group>";
@@ -426,15 +427,6 @@
 				84C10B412336A10000146547 /* stepsAndPulls.png */,
 			);
 			path = Thumbnails;
-			sourceTree = "<group>";
-		};
-		84DC84B32396D40B00B82BCD /* LocationNotificationScheduler */ = {
-			isa = PBXGroup;
-			children = (
-				84DC84B42396D40B00B82BCD /* LocationNotificationInfo.swift */,
-				84DC84B52396D40B00B82BCD /* LocationNotificationScheduler.swift */,
-			);
-			path = LocationNotificationScheduler;
 			sourceTree = "<group>";
 		};
 		84DD8043237319A700B16601 /* OneSignalNotificationServiceExtension */ = {
@@ -683,13 +675,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				846446B72378AD0100F493F0 /* NameTableViewController.swift in Sources */,
+				8469DE1A23B9105F0098A5FD /* progressBar.swift in Sources */,
 				845FD9092390A35F00E9B1D8 /* dailyRoutine.swift in Sources */,
 				84092847237CE16B00C695F6 /* Image.swift in Sources */,
 				84C10B182336994E00146547 /* ViewController.swift in Sources */,
 				8469DE0223A6A7E50098A5FD /* setTimeViewController.swift in Sources */,
 				84DC84BD23A2F2AA00B82BCD /* User.swift in Sources */,
-				845FD90B2392F4C100E9B1D8 /* HistoryTableViewController.swift in Sources */,
 				840704892336E4E900961B1E /* SceneDelegate.swift in Sources */,
+				840EAC4823BBF877002D0AF6 /* ActivityViewController.swift in Sources */,
 				84DC84B82396D40B00B82BCD /* LocationNotificationScheduler.swift in Sources */,
 				845FD8C12380995100E9B1D8 /* StartRoutineViewController.swift in Sources */,
 				845FD90D2392F53A00E9B1D8 /* HistoryTableViewCell.swift in Sources */,
@@ -700,7 +693,6 @@
 				84C10B2C23369FEB00146547 /* VideoTableViewCell.swift in Sources */,
 				84DC84BB23A1B4C800B82BCD /* notificationSettings.swift in Sources */,
 				8409283E237C8D9800C695F6 /* RoutineCollectionViewController.swift in Sources */,
-				84DC84B72396D40B00B82BCD /* LocationNotificationInfo.swift in Sources */,
 				843C3DA5237F0961006FE720 /* RoutineTableViewCell.swift in Sources */,
 				845FD8E22385CD4C00E9B1D8 /* Balloon.swift in Sources */,
 				84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */,

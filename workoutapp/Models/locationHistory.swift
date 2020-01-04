@@ -21,7 +21,7 @@ class location: Object {
         self.occurence = occ
     }
     
-    func add(){
+    func add(completion: @escaping() -> Void){
         let allRegions = getAllRegions()
         let center = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
         
@@ -37,6 +37,7 @@ class location: Object {
             case .notDetermined, .restricted, .denied:
                 break
         }
+        completion()
         
     }
     
@@ -46,8 +47,6 @@ class location: Object {
         try! realm.write {
             specificLocation!.occurence += 1
         }
-        print(specificLocation as Any)
-        
     }
     
     func getRegion()->CLCircularRegion{
@@ -80,8 +79,7 @@ class location: Object {
         let realm = try! Realm()
         let locationManager = CLLocationManager()
         let objects = realm.objects(location.self)
-        if( objects.isEmpty )
-        {
+        if objects.isEmpty{
             let currentLocation: CLLocationCoordinate2D = locationManager.location!.coordinate
             var loc = location()
             loc.set(lat:currentLocation.latitude , long:currentLocation.longitude, occ: 1)

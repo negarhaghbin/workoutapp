@@ -10,11 +10,18 @@ import Foundation
 import RealmSwift
 
 class dailyRoutine: Object {
-    @objc dynamic var seconds : Int
+    //baraye har routine ye setoon dashte bashe
+    @objc dynamic var totalBodySeconds : Int
+    @objc dynamic var upperBodySeconds : Int
+    @objc dynamic var lowerBodySeconds : Int
+    @objc dynamic var absSeconds : Int
     @objc dynamic var dateString : String
     
     required init() {
-        self.seconds = 0
+        totalBodySeconds = 0
+        upperBodySeconds = 0
+        lowerBodySeconds = 0
+        absSeconds = 0
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
         self.dateString = df.string(from: Date())
@@ -47,12 +54,49 @@ class dailyRoutine: Object {
         return Array(allRoutines)
     }
     
-    class func update(seconds: Int){
+    class func getAllDictionary() -> Dictionary<String, Int>{
+        let allRoutines = getAll()
+        var dict = Dictionary<String, Int>()
+        dict["Total Body"]=0
+        dict["Upper Body"]=0
+        dict["Abs"]=0
+        dict["Lower Body"]=0
+        
+        for routine in allRoutines{
+            dict["Total Body"]! += (routine.totalBodySeconds)
+            dict["Upper Body"]!+=routine.upperBodySeconds
+            dict["Abs"]!+=routine.absSeconds
+            dict["Lower Body"]!+=routine.lowerBodySeconds
+        }
+        return dict
+    }
+    
+    class func update(seconds: Int, sectionTitle: String){
         let realm = try! Realm()
         var routine = dailyRoutine.get()
-        
         try! realm.write {
-            routine.seconds += seconds
+            switch sectionTitle {
+            case "Total Body":
+                routine.totalBodySeconds += seconds
+            case "Upper Body":
+                routine.upperBodySeconds += seconds
+            case "Abs":
+                routine.absSeconds += seconds
+            case "Lower Body":
+                routine.lowerBodySeconds += seconds
+            default:
+                break
+            }
         }
+    }
+    
+    class func getDictionary()->Dictionary<String, Int>{
+        var dict = Dictionary<String, Int>()
+        let routine = dailyRoutine.get()
+        dict["Total Body"]=routine.totalBodySeconds
+        dict["Upper Body"]=routine.upperBodySeconds
+        dict["Abs"]=routine.absSeconds
+        dict["Lower Body"]=routine.lowerBodySeconds
+        return dict
     }
 }

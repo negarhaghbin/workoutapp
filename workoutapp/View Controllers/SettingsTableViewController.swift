@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import CoreLocation
 
 enum Notification: String {
     case Activity = "activity"
@@ -15,9 +16,12 @@ enum Notification: String {
     case Time = "time"
 }
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController, CLLocationManagerDelegate {
     var user : User = User()
     var appSettings : notificationSettings = notificationSettings()
+    
+    private let locationNotificationScheduler = LocationNotificationScheduler()
+    let locationManager = CLLocationManager()
     
     
     @IBOutlet weak var setTimeCell: UITableViewCell!
@@ -40,13 +44,25 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
         userName.text = user.name
         checkNotificationAuthorization(completion:{ authorization in
             DispatchQueue.main.async {
+                self.locationAuthorization()
                 self.refreshUI(authorization: authorization)
             }
             
         })
+    }
+    
+    private func locationAuthorization(){
+        switch CLLocationManager.authorizationStatus() {
+            case .authorizedWhenInUse, .authorizedAlways:
+                self.appSettings.setNotification(option: Notification.Location.rawValue, value: true)
+            case .restricted, .denied, .notDetermined:
+                self.appSettings.setNotification(option: Notification.Location.rawValue, value: false)
+                break
+        }
     }
     
     private func refreshUI(authorization: Bool){
@@ -95,7 +111,7 @@ class SettingsTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         if !notifAuthorized{
-            presentSettingsAlert()
+            presentSettingsAlert(option: "Notifications")
             self.timeSwitch.setOn(false, animated: false)
             self.locationSwitch.setOn(false, animated: false)
             self.activitySwitch.setOn(false, animated: false)
@@ -106,33 +122,48 @@ class SettingsTableViewController: UITableViewController {
             switch sender.restorationIdentifier {
             case Notification.Activity.rawValue:
                 if(sender.isOn){
-                    appSettings.setActivity(value: true)
-                    appSettings.setUpActivityNotification()
+                    appSettings.setNotification(option: Notification.Activity.rawValue, value: true)
+                    //appSettings.setUpActivityNotification()
                 }
                 else{
-                    appSettings.setActivity(value: false)
-                    appSettings.disableNotification(identifier: Notification.Activity.rawValue)
+                    appSettings.setNotification(option: Notification.Activity.rawValue, value: false)
+                    notificationSettings.cancelNotification(identifier: Notification.Activity.rawValue)
                 }
+                
             case Notification.Location.rawValue:
                 if(sender.isOn){
-                    appSettings.setLocation(value: true)
+                    switch CLLocationManager.authorizationStatus() {
+                        case .authorizedWhenInUse, .authorizedAlways:
+                            appSettings.setNotification(option: Notification.Location.rawValue, value: true)
+                            locationManager.delegate = self
+                            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                            locationManager.startUpdatingLocation()
+                            let l = location.getMostRecordedLocation()
+                            locationNotificationScheduler.requestNotification(with: l, locationManager: locationManager)
+                        case .restricted, .denied, .notDetermined:
+                            presentSettingsAlert(option: "Location")
+                            self.locationSwitch.setOn(false, animated: false)
+                            break
+                    }
+                    
+
+
+
                 }
                 else{
-                    appSettings.setLocation(value: false)
-                    appSettings.disableNotification(identifier: Notification.Location.rawValue)
+                    appSettings.setNotification(option: Notification.Location.rawValue, value: false)
+                    notificationSettings.cancelNotification(identifier: Notification.Location.rawValue)
                 }
+                
             case Notification.Time.rawValue:
                 if(sender.isOn){
-                    appSettings.setTime(value: true)
                     appSettings.setUpTimeNotification()
-                    timeLabel.isEnabled = true
-                    setTimeCell.isUserInteractionEnabled = true
+                    setTimeSettings(value: true)
+                    
                 }
                 else{
-                    appSettings.setTime(value: false)
-                    appSettings.disableNotification(identifier: Notification.Time.rawValue)
-                    timeLabel.isEnabled = false
-                    setTimeCell.isUserInteractionEnabled = false
+                    notificationSettings.cancelNotification(identifier: Notification.Time.rawValue)
+                    setTimeSettings(value: false)
                 }
             default:
                 print("something has changed")
@@ -140,9 +171,15 @@ class SettingsTableViewController: UITableViewController {
         }
     }
     
-    private func presentSettingsAlert() {
-        let alertController = UIAlertController(title: "Notifications are disabled",
-                                                message: "You need to enable notifications from settings first.",
+    private func setTimeSettings(value: Bool){
+        appSettings.setNotification(option: Notification.Time.rawValue, value: value)
+        timeLabel.isEnabled = value
+        setTimeCell.isUserInteractionEnabled = value
+    }
+    
+    private func presentSettingsAlert(option: String) {
+        let alertController = UIAlertController(title: "\(option) are disabled",
+                                                message: "You need to enable it from settings first.",
                                                 preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
