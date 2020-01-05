@@ -24,15 +24,7 @@ class LocationNotificationScheduler: NSObject {
     }
     
     private func requestNotification(frequentLocation: location) {
-        print("hrer")
-        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
-            print(notificationRequests)
-            for notification:UNNotificationRequest in notificationRequests {
-                if notification.identifier == Notification.Location.rawValue {
-                        return
-                }
-            }
-        }
+        //having 2 requests with same id will override them
         let notification = UNMutableNotificationContent()
         notification.title = "Are you ready?"
         notification.body = "Tap."

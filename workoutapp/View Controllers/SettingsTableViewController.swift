@@ -123,7 +123,7 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
             case Notification.Activity.rawValue:
                 if(sender.isOn){
                     appSettings.setNotification(option: Notification.Activity.rawValue, value: true)
-                    //appSettings.setUpActivityNotification()
+                    appSettings.setUpActivityNotification()
                 }
                 else{
                     appSettings.setNotification(option: Notification.Activity.rawValue, value: false)

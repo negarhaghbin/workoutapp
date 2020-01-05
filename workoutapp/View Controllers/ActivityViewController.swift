@@ -88,7 +88,11 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
             cell.subtitle.isHidden=false
         case 1:
             cell.percentage.text = timeString(seconds:data[title]!)
-            cell.showAllTime(self.totalTime[indexPath.section]/Float(self.max))
+            if self.max>0{ cell.showAllTime(self.totalTime[indexPath.section]/Float(self.max))
+            }
+            else{
+                cell.showAllTime(0.0)
+            }
             
             cell.subtitle.isHidden=true
         

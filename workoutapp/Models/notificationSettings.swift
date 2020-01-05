@@ -89,8 +89,9 @@ class notificationSettings: Object {
         let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
         content.title = "Have you been active enough today?"
-        content.body = "Tap to find out."
+        content.body = "Let's find out."
         content.sound = UNNotificationSound.default
+        content.categoryIdentifier = Notification.Activity.rawValue
 
         var date = DateComponents()
         _ = time.split(separator: ":")

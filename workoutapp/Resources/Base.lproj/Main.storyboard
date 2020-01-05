@@ -384,7 +384,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="yac-aH-O8U" kind="show" id="oaA-VG-cXy"/>
+                                            <segue destination="yac-aH-O8U" kind="show" identifier="history" id="oaA-VG-cXy"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

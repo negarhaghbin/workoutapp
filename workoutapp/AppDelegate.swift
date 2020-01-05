@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ExerciseModel.initExerciseModelTable()
         }
         
-        UNUserNotificationCenter.current().delegate = self
+        center.delegate = self
 
         registerForPushNotifications()
         return true
@@ -55,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         if granted{
             self!.appSettings.setUpTimeNotification()
+            self!.appSettings.setUpActivityNotification()
             //self!.requestHealthKit()
             
             
@@ -129,13 +130,24 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
            willPresent notification: UNNotification,
            withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
     {
-        completionHandler(.alert)
+        completionHandler([.alert,.sound,.badge])
     }
     
-    private func userNotificationCenter(_ center: UNUserNotificationCenter,
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
-                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert])
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+
+        if response.notification.request.identifier == Notification.Activity.rawValue {
+             let tabbarController = UIApplication.shared.windows.first?.rootViewController as! TabBarViewController
+            tabbarController.selectedIndex = 2
+            let nav = tabbarController.viewControllers![2] as! UINavigationController
+            nav.viewControllers.first?.performSegue(withIdentifier: "history", sender:Any?.self)
+        }
+        completionHandler()
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
 }
@@ -163,7 +175,7 @@ extension AppDelegate: CLLocationManagerDelegate {
     }
         
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-            let center = UNUserNotificationCenter.current()
+        print("heresss")
            let content = UNMutableNotificationContent()
            content.title = "Are you ready to do your exercises?"
            content.body = "Tap to start now."
