@@ -83,7 +83,6 @@
 		84C10B4E2336A10000146547 /* InnerTightLift.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B3F2336A10000146547 /* InnerTightLift.png */; };
 		84C10B4F2336A10000146547 /* alternatingLunges.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B402336A10000146547 /* alternatingLunges.png */; };
 		84C10B502336A10000146547 /* stepsAndPulls.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B412336A10000146547 /* stepsAndPulls.png */; };
-		84DC84B82396D40B00B82BCD /* LocationNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC84B52396D40B00B82BCD /* LocationNotificationScheduler.swift */; };
 		84DC84BB23A1B4C800B82BCD /* notificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC84BA23A1B4C800B82BCD /* notificationSettings.swift */; };
 		84DC84BD23A2F2AA00B82BCD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC84BC23A2F2AA00B82BCD /* User.swift */; };
 		84DD8045237319A700B16601 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD8044237319A700B16601 /* NotificationService.swift */; };
@@ -202,7 +201,6 @@
 		84C10B3F2336A10000146547 /* InnerTightLift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InnerTightLift.png; sourceTree = "<group>"; };
 		84C10B402336A10000146547 /* alternatingLunges.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alternatingLunges.png; sourceTree = "<group>"; };
 		84C10B412336A10000146547 /* stepsAndPulls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stepsAndPulls.png; sourceTree = "<group>"; };
-		84DC84B52396D40B00B82BCD /* LocationNotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationNotificationScheduler.swift; sourceTree = "<group>"; };
 		84DC84BA23A1B4C800B82BCD /* notificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationSettings.swift; sourceTree = "<group>"; };
 		84DC84BC23A2F2AA00B82BCD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84DD8042237319A700B16601 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -375,7 +373,6 @@
 				845FD8E12385CD4B00E9B1D8 /* Balloon.swift */,
 				8469DE1923B9105F0098A5FD /* progressBar.swift */,
 				845FD8C623830C1600E9B1D8 /* swift+gif.swift */,
-				84DC84B52396D40B00B82BCD /* LocationNotificationScheduler.swift */,
 				84C10B212336995000146547 /* Info.plist */,
 				846446AF23779DC500F493F0 /* Objects */,
 				8407048F2337AE4400961B1E /* Resources */,
@@ -683,7 +680,6 @@
 				84DC84BD23A2F2AA00B82BCD /* User.swift in Sources */,
 				840704892336E4E900961B1E /* SceneDelegate.swift in Sources */,
 				840EAC4823BBF877002D0AF6 /* ActivityViewController.swift in Sources */,
-				84DC84B82396D40B00B82BCD /* LocationNotificationScheduler.swift in Sources */,
 				845FD8C12380995100E9B1D8 /* StartRoutineViewController.swift in Sources */,
 				845FD90D2392F53A00E9B1D8 /* HistoryTableViewCell.swift in Sources */,
 				84C10B142336994E00146547 /* AppDelegate.swift in Sources */,

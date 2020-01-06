@@ -181,9 +181,9 @@ extension AppDelegate: CLLocationManagerDelegate {
            content.body = "Tap to start now."
            content.sound = .default
 
-           let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (20*60), repeats: false)
+           let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (15*60), repeats: false)
 
-           let request = UNNotificationRequest(identifier: Notification.Location.rawValue, content: content, trigger: trigger)
+           let request = UNNotificationRequest(identifier: "anotherLoc", content: content, trigger: trigger)
            center.add(request, withCompletionHandler: nil)
     }
         

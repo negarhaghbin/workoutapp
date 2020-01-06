@@ -18,8 +18,6 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    private let locationNotificationScheduler = LocationNotificationScheduler()
-    
     var customizedSection : RoutineSection? = nil
     let locationManager = CLLocationManager()
     
@@ -106,7 +104,10 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
                 loc.set(lat:currentLocation.latitude , long:currentLocation.longitude)
                 loc.add(completion: {
                     let l = location.getMostRecordedLocation()
-                    self.locationNotificationScheduler.requestNotification(with: l, locationManager: AppDelegate.locationManager)
+                    let destRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: l.latitude, longitude: l.longitude),
+                    radius: 1.0,
+                    identifier: "home_location_id")
+                    AppDelegate.locationManager.startMonitoring(for: destRegion)
                 })
                 
                 self.performSegue(withIdentifier: "startRoutine", sender:Any?.self)

@@ -19,8 +19,6 @@ enum Notification: String {
 class SettingsTableViewController: UITableViewController, CLLocationManagerDelegate {
     var user : User = User()
     var appSettings : notificationSettings = notificationSettings()
-    
-    private let locationNotificationScheduler = LocationNotificationScheduler()
     let locationManager = CLLocationManager()
     
     
@@ -139,7 +137,10 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
                             locationManager.desiredAccuracy = kCLLocationAccuracyBest
                             locationManager.startUpdatingLocation()
                             let l = location.getMostRecordedLocation()
-                            locationNotificationScheduler.requestNotification(with: l, locationManager: locationManager)
+                            let destRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: l.latitude, longitude: l.longitude),
+                            radius: 1.0,
+                            identifier: "home_location_id")
+                            AppDelegate.locationManager.startMonitoring(for: destRegion)
                         case .restricted, .denied, .notDetermined:
                             presentSettingsAlert(option: "Location")
                             self.locationSwitch.setOn(false, animated: false)
