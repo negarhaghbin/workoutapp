@@ -52,7 +52,7 @@ class location: Object {
     func getRegion()->CLCircularRegion{
         let locationManager = CLLocationManager()
         let center = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
-        let maxDistance = locationManager.maximumRegionMonitoringDistance
+        _ = locationManager.maximumRegionMonitoringDistance
         //find the best radius**********************
         return CLCircularRegion(center: center, radius: 10.0, identifier: "")
     }
@@ -81,7 +81,7 @@ class location: Object {
         let objects = realm.objects(location.self)
         if objects.isEmpty{
             let currentLocation: CLLocationCoordinate2D = locationManager.location!.coordinate
-            var loc = location()
+            let loc = location()
             loc.set(lat:currentLocation.latitude , long:currentLocation.longitude, occ: 1)
             try! realm.write {
                 realm.add(loc)

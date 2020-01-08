@@ -9,6 +9,7 @@
 import UIKit
 import UserNotifications
 import CoreLocation
+import RealmSwift
 //import HealthKit
 
 @UIApplicationMain
@@ -55,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         if granted{
             self!.appSettings.setUpTimeNotification()
-            self!.appSettings.setUpActivityNotification()
+            self!.appSettings.setUpActivityNotification(activity: "")
             //self!.requestHealthKit()
             
             
@@ -136,7 +137,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
-
+        print(response.notification.request.identifier)
+        let tap = Interaction()
+        tap.add(identifier: response.notification.request.identifier)
         if response.notification.request.identifier == Notification.Activity.rawValue {
              let tabbarController = UIApplication.shared.windows.first?.rootViewController as! TabBarViewController
             tabbarController.selectedIndex = 2
@@ -171,20 +174,28 @@ extension AppDelegate: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             guard let currentLocation: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-//            print("locations = \(currentLocation.latitude) \(currentLocation.longitude)")
+            print("locations = \(currentLocation.latitude) \(currentLocation.longitude)")
     }
+    
         
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        print("heresss")
-           let content = UNMutableNotificationContent()
-           content.title = "Are you ready to do your exercises?"
-           content.body = "Tap to start now."
-           content.sound = .default
+        let todayRoutine = dailyRoutine.get()
+        let activityResult  = todayRoutine.hasBeenActiveEnough()
+        if  activityResult == "yes"{
+            notificationSettings.cancelNotification(identifier: Notification.Activity.rawValue)
+        }
+        else{
+            appSettings.setUpActivityNotification(activity: activityResult)
+        }
+            let content = UNMutableNotificationContent()
+            content.title = "Are you ready to do some exercises?"
+            content.body = "Tap to start now."
+            content.sound = .default
 
-           let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (15*60), repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (15*60), repeats: false)
 
-           let request = UNNotificationRequest(identifier: "anotherLoc", content: content, trigger: trigger)
-           center.add(request, withCompletionHandler: nil)
+            let request = UNNotificationRequest(identifier: Notification.Location.rawValue, content: content, trigger: trigger)
+            center.add(request, withCompletionHandler: nil)
     }
         
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {

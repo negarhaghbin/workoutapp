@@ -100,7 +100,7 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         startAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
             action in
             guard let currentLocation: CLLocationCoordinate2D = self.locationManager.location?.coordinate else { return }
-                var loc = location()
+                let loc = location()
                 loc.set(lat:currentLocation.latitude , long:currentLocation.longitude)
                 loc.add(completion: {
                     let l = location.getMostRecordedLocation()
@@ -109,7 +109,7 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
                     identifier: "home_location_id")
                     AppDelegate.locationManager.startMonitoring(for: destRegion)
                 })
-                
+                UIApplication.shared.isIdleTimerDisabled = true
                 self.performSegue(withIdentifier: "startRoutine", sender:Any?.self)
             }))
         

@@ -32,6 +32,30 @@ class dailyRoutine: Object {
       return "dateString"
     }
     
+    func hasBeenActiveEnough()->String{
+        if self.totalBodySeconds > 100{
+            if self.upperBodySeconds > 100{
+                if self.absSeconds > 100{
+                    if self.lowerBodySeconds > 100{
+                        return "yes"
+                    }
+                    else{
+                        return "lower body"
+                    }
+                }
+                else{
+                    return "abs"
+                }
+            }
+            else{
+                return "upper body"
+            }
+        }
+        else{
+            return "total body"
+        }
+    }
+    
     class func get() -> dailyRoutine{
         let realm = try! Realm()
         let df = DateFormatter()
@@ -73,7 +97,7 @@ class dailyRoutine: Object {
     
     class func update(seconds: Int, sectionTitle: String){
         let realm = try! Realm()
-        var routine = dailyRoutine.get()
+        let routine = dailyRoutine.get()
         try! realm.write {
             switch sectionTitle {
             case "Total Body":

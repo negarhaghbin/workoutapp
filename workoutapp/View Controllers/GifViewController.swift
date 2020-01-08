@@ -114,6 +114,7 @@ class GifViewController: UIViewController {
     
     func exitRoutine(){
         dailyRoutine.update(seconds: self.seconds, sectionTitle: section!.title)
+        UIApplication.shared.isIdleTimerDisabled = false
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "NextViewController") as! RoutineCollectionViewController
         let viewcontrollers = [vc]
         self.navigationController!.setViewControllers(viewcontrollers, animated: true)

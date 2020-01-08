@@ -26,6 +26,8 @@
 		84372D4F2339342B00D6586D /* armCircles.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D4A2339342A00D6586D /* armCircles.jpg */; };
 		843C3DA3237F0798006FE720 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C3DA2237F0798006FE720 /* RoutineViewController.swift */; };
 		843C3DA5237F0961006FE720 /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */; };
+		8448791E23C3A9A900F37788 /* dateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448791D23C3A9A800F37788 /* dateExt.swift */; };
+		8448792023C67B7800F37788 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448791F23C67B7800F37788 /* Interaction.swift */; };
 		845FD8C12380995100E9B1D8 /* StartRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C02380995100E9B1D8 /* StartRoutineViewController.swift */; };
 		845FD8C5238309A100E9B1D8 /* GifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C4238309A100E9B1D8 /* GifViewController.swift */; };
 		845FD8C723830C1600E9B1D8 /* swift+gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C623830C1600E9B1D8 /* swift+gif.swift */; };
@@ -142,6 +144,8 @@
 		84372D4A2339342A00D6586D /* armCircles.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = armCircles.jpg; sourceTree = "<group>"; };
 		843C3DA2237F0798006FE720 /* RoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
 		843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
+		8448791D23C3A9A800F37788 /* dateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateExt.swift; sourceTree = "<group>"; };
+		8448791F23C67B7800F37788 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
 		845FD8C02380995100E9B1D8 /* StartRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRoutineViewController.swift; sourceTree = "<group>"; };
 		845FD8C4238309A100E9B1D8 /* GifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifViewController.swift; sourceTree = "<group>"; };
 		845FD8C623830C1600E9B1D8 /* swift+gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "swift+gif.swift"; sourceTree = "<group>"; };
@@ -244,6 +248,7 @@
 				845FD9082390A35E00E9B1D8 /* dailyRoutine.swift */,
 				84DF7B6923957E630098A4C7 /* locationHistory.swift */,
 				84DC84BA23A1B4C800B82BCD /* notificationSettings.swift */,
+				8448791F23C67B7800F37788 /* Interaction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -380,6 +385,7 @@
 				846446A723760CA300F493F0 /* Cells */,
 				8407048E2337AE2700961B1E /* Models */,
 				84092841237CDC1700C695F6 /* File */,
+				8448791D23C3A9A800F37788 /* dateExt.swift */,
 			);
 			path = workoutapp;
 			sourceTree = "<group>";
@@ -673,7 +679,9 @@
 			files = (
 				846446B72378AD0100F493F0 /* NameTableViewController.swift in Sources */,
 				8469DE1A23B9105F0098A5FD /* progressBar.swift in Sources */,
+				8448792023C67B7800F37788 /* Interaction.swift in Sources */,
 				845FD9092390A35F00E9B1D8 /* dailyRoutine.swift in Sources */,
+				8448791E23C3A9A900F37788 /* dateExt.swift in Sources */,
 				84092847237CE16B00C695F6 /* Image.swift in Sources */,
 				84C10B182336994E00146547 /* ViewController.swift in Sources */,
 				8469DE0223A6A7E50098A5FD /* setTimeViewController.swift in Sources */,

@@ -69,7 +69,19 @@ class notificationSettings: Object {
      func setUpTimeNotification(){
         let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
-        content.title = "It's time to do your daily exercises!"
+        
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        let yesterday = df.string(from: Date.yesterday)
+        
+        if (try! Realm().object(ofType: dailyRoutine.self, forPrimaryKey: yesterday)) != nil{
+            content.title = "It's time to do your daily exercises!"
+        }
+        
+        else{
+            content.title = "Today is a new day!"
+        }
+        
         content.body = "Tap to start now."
         content.sound = UNNotificationSound.default
 
@@ -85,11 +97,18 @@ class notificationSettings: Object {
     
     // MARK: Activity Notification
     
-    func setUpActivityNotification(){
+    func setUpActivityNotification(activity: String){
         let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
-        content.title = "Have you been active enough today?"
-        content.body = "Let's find out."
+        if activity == ""{
+            content.title = "Have you been active enough today?"
+            content.body = "Let's find out."
+        }
+        else{
+            content.title = "Do you want to do \(activity) exercises?"
+            content.body = "Tap to start now."
+        }
+        
         content.sound = UNNotificationSound.default
         content.categoryIdentifier = Notification.Activity.rawValue
 
@@ -244,18 +263,6 @@ class notificationSettings: Object {
 //    }
 //
     // MARK: Location Notification
-    class func setUpTimeIntervalNotification(){
-        let center = UNUserNotificationCenter.current()
-        let content = UNMutableNotificationContent()
-        content.title = "Are you ready to do your exercises?"
-        content.body = "Tap to start now."
-        content.sound = .default
-
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (20*60), repeats: false)
-
-        let request = UNNotificationRequest(identifier: Notification.Location.rawValue, content: content, trigger: trigger)
-        center.add(request, withCompletionHandler: nil)
-    }
     
     class func cancelNotification(identifier: String){
         UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
