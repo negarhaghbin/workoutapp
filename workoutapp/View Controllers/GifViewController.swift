@@ -17,6 +17,7 @@ class GifViewController: UIViewController {
     @IBOutlet weak var playPause: UIButton!
     @IBOutlet weak var exerciseCounter: UILabel!
     
+    @IBOutlet weak var totalProgress: UIProgressView!
     @IBOutlet weak var exerciseTitle: UILabel!
     var animationTimer: Timer?
     var startTime: TimeInterval?, endTime: TimeInterval?
@@ -62,7 +63,9 @@ class GifViewController: UIViewController {
         routineDuration = (section!.repetition * (section?.getDuration())!) + ((routineExercises.count-1) * restDuration)
         
         runTimer()
-        PB.create(view: self.view, duration: routineDuration)
+        totalProgress.progress = 0.0
+        totalProgress.transform = totalProgress.transform.scaledBy(x: 1, y: 10)
+        PB.create(view: self.view, duration: self.exerciseSeconds)
         
     }
     
@@ -70,6 +73,7 @@ class GifViewController: UIViewController {
         
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.seconds += 1
+            self.totalProgress.progress += (1.0/Float(self.routineDuration))
             self.counter.text = self.timeString(time: TimeInterval(self.seconds))
             if (self.seconds == self.routineDuration/2){
                 self.playSound(name: "halfway")
@@ -81,7 +85,6 @@ class GifViewController: UIViewController {
         }
         exerciseTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.exerciseSeconds -= 1
-            self.exerciseCounter.text = self.timeString(time: TimeInterval(self.exerciseSeconds))
             if self.exerciseSeconds == 0 {
                 if (self.currentExerciseIndex < ((self.routineExercises.count)-1)){
                     if (!self.isResting){
@@ -89,6 +92,8 @@ class GifViewController: UIViewController {
                         self.gifView.image=UIImage(named: "rest.png")
                         self.exerciseTitle.text = "Rest"
                         self.isResting = true
+                        self.PB.startOver(duration: self.exerciseSeconds)
+                       // self.totalProgress.tintColor = UIColor.yellow
                     }
                     else{
                         self.increaseExerciseIndex()
@@ -96,6 +101,8 @@ class GifViewController: UIViewController {
                         self.gifView.loadGif(name: (self.routineExercises[self.currentExerciseIndex].gifName))
                         self.exerciseTitle.text = self.routineExercises[self.currentExerciseIndex].title
                         self.isResting = false
+                        self.PB.startOver(duration: self.exerciseSeconds)
+                        //self.totalProgress.tintColor = UIColor.systemGreen
                     }
                 }
                 else{
@@ -104,6 +111,7 @@ class GifViewController: UIViewController {
                 }
                 
             }
+            self.exerciseCounter.text = self.timeString(time: TimeInterval(self.exerciseSeconds))
 
         }
     }

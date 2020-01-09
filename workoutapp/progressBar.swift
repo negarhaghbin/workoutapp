@@ -37,7 +37,17 @@ class progressBar: NSObject {
         basicAnimation.fillMode = CAMediaTimingFillMode.forwards
         basicAnimation.toValue = 1
         basicAnimation.duration = Double(duration)
-        basicAnimation.isRemovedOnCompletion = false
+        basicAnimation.isRemovedOnCompletion = true
+        
+        shapeLayer.add(basicAnimation,forKey: "timer")
+    }
+    
+    func startOver(duration: Int){
+        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        basicAnimation.fillMode = CAMediaTimingFillMode.forwards
+        basicAnimation.toValue = 1
+        basicAnimation.duration = Double(duration)
+        basicAnimation.isRemovedOnCompletion = true
         
         shapeLayer.add(basicAnimation,forKey: "timer")
     }
