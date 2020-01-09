@@ -73,9 +73,38 @@ class RoutineSection: NSObject {
         }
         let exercises = ExerciseModel.loadExercises()
         for exercise in exercises{
-            for (index,section) in sections.enumerated(){
+            for section in sections{
                 if section.title == exercise.section{
-                    sections[index].exercises.append(exercise)
+                    section.exercises.append(exercise)
+                }
+            }
+        }
+        return sections
+    }
+    
+    class func getCollectionRoutineSections()->[RoutineSection]{
+        var sections : [RoutineSection] = []
+        let images = Image.loadRoutineSectionHeaders()
+        let titles=["Total Body", "Upper Body", "Abs", "Lower Body"]
+        for (index, title) in titles.enumerated(){
+            sections.append(RoutineSection(title: title, image: images[index], exercises: []))
+        }
+        let exercises = ExerciseModel.loadExercises()
+        for exercise in exercises{
+            for section in sections{
+                if section.title == exercise.section{
+                    if exercise.bothSides{
+                        let exerciseLeft = ExerciseModel(value: exercise)
+                        exerciseLeft.title += "(left)"
+                        section.exercises.append(exerciseLeft)
+                        let exerciseRight = ExerciseModel(value: exercise)
+                        exerciseRight.title += "(right)"
+                        section.exercises.append(exerciseRight)
+                    }
+                    else{
+                       section.exercises.append(exercise)
+                    }
+                    
                 }
             }
         }
