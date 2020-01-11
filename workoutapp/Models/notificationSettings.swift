@@ -16,6 +16,7 @@ import CoreLocation
 class notificationSettings: Object {
     @objc dynamic var activity : Bool = true
     @objc dynamic var location : Bool = true
+    @objc dynamic var locationSendAfter : Int = 15*60 //minutes
     @objc dynamic var timeBool : Bool = true
     @objc dynamic var time : String = "8:00"
     
@@ -29,6 +30,13 @@ class notificationSettings: Object {
         let realm = try! Realm()
         try! realm.write {
             self.time = value
+        }
+    }
+    
+    func setSendAfter(value: Int){
+        let realm = try! Realm()
+        try! realm.write {
+            self.locationSendAfter = value
         }
     }
     
@@ -47,9 +55,9 @@ class notificationSettings: Object {
             }
         }
     }
-
-    func getTime() -> String{
-        return time
+    
+    class func getSettings()->notificationSettings{
+        return try! Realm().objects(notificationSettings.self).first!
     }
     
     class func addNewSettings(granted: Bool)->notificationSettings{

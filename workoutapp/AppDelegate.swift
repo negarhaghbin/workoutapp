@@ -53,21 +53,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Permission granted: \(granted)")
         if self!.isNewUser(){
             self!.appSettings = notificationSettings.addNewSettings(granted: granted)
+            if granted{
+                self!.appSettings.setUpTimeNotification()
+                self!.appSettings.setUpActivityNotification(activity: "")
+            }
+        }
+        else{
+            self!.appSettings = notificationSettings.getSettings()
+            if self!.appSettings.timeBool{
+                self!.appSettings.setUpTimeNotification()
+            }
+            if self!.appSettings.activity{
+                self!.appSettings.setUpActivityNotification(activity: "")
+            }
+            
         }
         if granted{
-            self!.appSettings.setUpTimeNotification()
-            self!.appSettings.setUpActivityNotification(activity: "")
-            //self!.requestHealthKit()
-            
-            
             OperationQueue.main.addOperation{
                 // Ask for Authorisation from the User.
                 AppDelegate.locationManager.requestAlwaysAuthorization()
                 
                 // For use in foreground
                 AppDelegate.locationManager.requestWhenInUseAuthorization()
-                
-
 
                 if CLLocationManager.locationServicesEnabled() {
                     AppDelegate.locationManager.delegate = self
@@ -179,20 +186,22 @@ extension AppDelegate: CLLocationManagerDelegate {
     
         
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        let LocalAppSettings = notificationSettings.getSettings()
         let todayRoutine = dailyRoutine.get()
         let activityResult  = todayRoutine.hasBeenActiveEnough()
         if  activityResult == "yes"{
             notificationSettings.cancelNotification(identifier: Notification.Activity.rawValue)
         }
         else{
-            appSettings.setUpActivityNotification(activity: activityResult)
+            LocalAppSettings.setUpActivityNotification(activity: activityResult)
         }
+            let sendAfter = LocalAppSettings.locationSendAfter
             let content = UNMutableNotificationContent()
             content.title = "Are you ready to do some exercises?"
             content.body = "Tap to start now."
             content.sound = .default
 
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (15*60), repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (TimeInterval(sendAfter)), repeats: false)
 
             let request = UNNotificationRequest(identifier: Notification.Location.rawValue, content: content, trigger: trigger)
             center.add(request, withCompletionHandler: nil)

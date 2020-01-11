@@ -11,6 +11,7 @@ import AVFoundation
 
 class GifViewController: UIViewController {
 
+    @IBOutlet weak var nextLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var counter: UILabel!
     @IBOutlet weak var gifView: UIImageView!
@@ -39,6 +40,8 @@ class GifViewController: UIViewController {
     var seconds = 0
     var routineDuration = 0
     var routineExercises :[ExerciseModel] = []
+    
+    
     var section : RoutineSection?{
         didSet{
             refreshUI()
@@ -55,6 +58,7 @@ class GifViewController: UIViewController {
         gifView.loadGif(name: (section?.exercises[0].gifName)!)
         exerciseSeconds = (section?.exercises[0].durationS)!
         exerciseTitle.text = (section?.exercises[0].title)!
+        nextLabel.text = "Next: Rest"
         counter.text = self.timeString(time: TimeInterval(self.seconds))
         exerciseCounter.text = self.timeString(time: TimeInterval(self.exerciseSeconds))
         for _ in 1...Int(section!.repetition){
@@ -76,7 +80,7 @@ class GifViewController: UIViewController {
             self.totalProgress.progress += (1.0/Float(self.routineDuration))
             self.counter.text = self.timeString(time: TimeInterval(self.seconds))
             if (self.seconds == self.routineDuration/2){
-                self.playSound(name: "halfway")
+                self.playSound(name: "halfway", extensionType: "m4a")
             }
             if (self.seconds == self.routineDuration){
                 self.timer.invalidate()
@@ -85,12 +89,24 @@ class GifViewController: UIViewController {
         }
         exerciseTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.exerciseSeconds -= 1
-            if self.exerciseSeconds == 0 {
+            if self.exerciseSeconds == 4{
+                if (!self.isResting){
+                    self.playSound(name: "rest in", extensionType: "m4a")
+                }
+                else{
+                    self.playSound(name: "start in", extensionType: "m4a")
+                }
+            }
+            else if self.exerciseSeconds == 3{
+                self.playSound(name: "countdown", extensionType: "wav")
+            }
+            else if self.exerciseSeconds == 0 {
                 if (self.currentExerciseIndex < ((self.routineExercises.count)-1)){
                     if (!self.isResting){
                         self.exerciseSeconds = self.restDuration
                         self.gifView.image=UIImage(named: "rest.png")
                         self.exerciseTitle.text = "Rest"
+                        self.nextLabel.text = "Next: \(self.routineExercises[self.currentExerciseIndex].title)"
                         self.isResting = true
                         self.PB.startOver(duration: self.exerciseSeconds)
                        // self.totalProgress.tintColor = UIColor.yellow
@@ -100,6 +116,7 @@ class GifViewController: UIViewController {
                         self.exerciseSeconds = (self.routineExercises[self.currentExerciseIndex].durationS)
                         self.gifView.loadGif(name: (self.routineExercises[self.currentExerciseIndex].gifName))
                         self.exerciseTitle.text = self.routineExercises[self.currentExerciseIndex].title
+                        self.nextLabel.text = "Next: Rest"
                         self.isResting = false
                         self.PB.startOver(duration: self.exerciseSeconds)
                         //self.totalProgress.tintColor = UIColor.systemGreen
@@ -136,7 +153,7 @@ class GifViewController: UIViewController {
             self.exitRoutine()
         }))
         showCongratulationAnimation()
-        playSound(name: "good job")
+        playSound(name: "good job", extensionType: "m4a")
         self.present(alert, animated: true)
         
     }
@@ -186,8 +203,8 @@ class GifViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    func playSound(name: String) {
-        guard let url = Bundle.main.url(forResource: name, withExtension: "m4a") else { return }
+    func playSound(name: String, extensionType:String) {
+        guard let url = Bundle.main.url(forResource: name, withExtension: extensionType) else { return }
 
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)

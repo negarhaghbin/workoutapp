@@ -19,9 +19,11 @@ enum Notification: String {
 class SettingsTableViewController: UITableViewController, CLLocationManagerDelegate {
     var user : User = User()
     var appSettings : notificationSettings = notificationSettings()
+    @IBOutlet weak var sendAfterTime: UILabel!
     let locationManager = CLLocationManager()
     
     
+    @IBOutlet weak var sendAfterCell: UITableViewCell!
     @IBOutlet weak var setTimeCell: UITableViewCell!
     @IBOutlet weak var activitySwitch: UISwitch!
     @IBOutlet weak var locationSwitch: UISwitch!
@@ -46,7 +48,6 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
         userName.text = user.name
         checkNotificationAuthorization(completion:{ authorization in
             DispatchQueue.main.async {
-                self.locationAuthorization()
                 self.refreshUI(authorization: authorization)
             }
             
@@ -63,12 +64,48 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
         }
     }
     
+    private func MinutesToString(time: Int)->String{
+        let hours = time / 3600
+        let minutes = time / 60 % 60
+        switch hours {
+        case 0:
+            if minutes == 1{
+                return "\(minutes) minute"
+            }
+            else{
+                return "\(minutes) minutes"
+            }
+        case 1:
+            if minutes == 1{
+                return "\(hours) hour and \(minutes) minute"
+            }
+            else{
+                return "\(hours) hour and \(minutes) minutes"
+            }
+        default:
+            return "\(hours) hours and \(minutes) minutes"
+        }
+        
+    }
+    
     private func refreshUI(authorization: Bool){
-        self.appSettings = try! Realm().objects(notificationSettings.self).first!
-        self.timeLabel.text = self.appSettings.getTime()
+        appSettings = try! Realm().objects(notificationSettings.self).first!
+        print(appSettings.locationSendAfter)
+        sendAfterTime.text =
+            MinutesToString(time: appSettings.locationSendAfter)
+        timeLabel.text = appSettings.time
         if authorization{
             self.timeSwitch.setOn(self.appSettings.timeBool, animated: false)
             self.locationSwitch.setOn(self.appSettings.location, animated: false)
+            if self.locationSwitch.isOn{
+                self.locationAuthorization()
+                self.sendAfterTime.isEnabled = true
+                self.sendAfterCell.isUserInteractionEnabled = true
+            }
+            else{
+                self.sendAfterTime.isEnabled = false
+                self.sendAfterCell.isUserInteractionEnabled = false
+            }
             self.activitySwitch.setOn(self.appSettings.activity, animated: false)
             if(self.timeSwitch.isOn){
                 self.timeLabel.isEnabled = true
@@ -82,6 +119,8 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
         else{
             self.timeSwitch.setOn(false, animated: false)
             self.locationSwitch.setOn(false, animated: false)
+            self.sendAfterTime.isEnabled = false
+            self.sendAfterCell.isUserInteractionEnabled = false
             self.activitySwitch.setOn(false, animated: false)
             self.timeLabel.isEnabled = false
             self.setTimeCell.isUserInteractionEnabled = false
@@ -112,6 +151,8 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
             presentSettingsAlert(option: "Notifications")
             self.timeSwitch.setOn(false, animated: false)
             self.locationSwitch.setOn(false, animated: false)
+            self.sendAfterTime.isEnabled = false
+            self.sendAfterCell.isUserInteractionEnabled = false
             self.activitySwitch.setOn(false, animated: false)
             self.timeLabel.isEnabled = false
             self.setTimeCell.isUserInteractionEnabled = false
@@ -141,19 +182,27 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
                             radius: 1.0,
                             identifier: "home_location_id")
                             AppDelegate.locationManager.startMonitoring(for: destRegion)
+                            self.sendAfterTime.isEnabled = true
+                            self.sendAfterCell.isUserInteractionEnabled = true
                         case .restricted, .denied, .notDetermined:
                             presentSettingsAlert(option: "Location")
                             self.locationSwitch.setOn(false, animated: false)
+                            self.sendAfterTime.isEnabled = false
+                            self.sendAfterCell.isUserInteractionEnabled = false
                             break
                     }
                     
-
-
-
                 }
                 else{
                     appSettings.setNotification(option: Notification.Location.rawValue, value: false)
+                    self.sendAfterTime.isEnabled = false
+                    self.sendAfterCell.isUserInteractionEnabled = false
                     notificationSettings.cancelNotification(identifier: Notification.Location.rawValue)
+                    let l = location.getMostRecordedLocation()
+                    let destRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: l.latitude, longitude: l.longitude),
+                    radius: 1.0,
+                    identifier: "home_location_id")
+                    AppDelegate.locationManager.stopMonitoring(for: destRegion)
                 }
                 
             case Notification.Time.rawValue:
@@ -198,10 +247,20 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
-        
+        print(segue.identifier!)
+        print(SegueId.setAfter.rawValue)
         if segue.identifier == "edit" {
             let vc = segue.destination as! NameTableViewController
             vc.user = user
+        }
+        else if segue.identifier == SegueId.setAfter.rawValue {
+            print("here")
+            let vc = segue.destination as! setTimeViewController
+            vc.identifier = SegueId.setAfter.rawValue
+        }
+        else if segue.identifier == SegueId.setOn.rawValue {
+            let vc = segue.destination as! setTimeViewController
+            vc.identifier = SegueId.setOn.rawValue
         }
         
         // Pass the selected object to the new view controller.
