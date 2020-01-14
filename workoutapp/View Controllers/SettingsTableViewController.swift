@@ -247,8 +247,6 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
-        print(segue.identifier!)
-        print(SegueId.setAfter.rawValue)
         if segue.identifier == "edit" {
             let vc = segue.destination as! NameTableViewController
             vc.user = user

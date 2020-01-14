@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>com.SO.apprefresh</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -15,17 +19,17 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
-	<string>By accessing your health record, this app can tell you if you&apos;ve been active enough.</string>
+	<string>By accessing your health record, this app can tell you if you've been active enough.</string>
 	<key>NSHealthShareUsageDescription</key>
-	<string>By accessing your health record, this app can tell you if you&apos;ve been active enough.</string>
+	<string>By accessing your health record, this app can tell you if you've been active enough.</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>By accessing your health record, this app can tell you if you&apos;ve been active enough.</string>
+	<string>By accessing your health record, this app can tell you if you've been active enough.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>By accessing your location, this app can find you a good place to exercise.</string>
 	<key>NSLocationUsageDescription</key>
@@ -64,10 +68,6 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
-	<key>BGTaskSchedulerPermittedIdentifiers</key>
-	<array>
-		<string>com.SO.apprefresh</string>
-	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
