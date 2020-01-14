@@ -29,7 +29,7 @@
 		843C3DA3237F0798006FE720 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C3DA2237F0798006FE720 /* RoutineViewController.swift */; };
 		843C3DA5237F0961006FE720 /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */; };
 		8448791E23C3A9A900F37788 /* dateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448791D23C3A9A800F37788 /* dateExt.swift */; };
-		8448792023C67B7800F37788 /* interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448791F23C67B7800F37788 /* interaction.swift */; };
+		8448792023C67B7800F37788 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448791F23C67B7800F37788 /* Interaction.swift */; };
 		8448792223C8DB3400F37788 /* countdown.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8448792123C8DB3300F37788 /* countdown.wav */; };
 		8448792523C8E0B800F37788 /* rest in.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8448792323C8E0B700F37788 /* rest in.m4a */; };
 		8448792623C8E0B800F37788 /* start in.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8448792423C8E0B800F37788 /* start in.m4a */; };
@@ -152,7 +152,7 @@
 		843C3DA2237F0798006FE720 /* RoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
 		843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
 		8448791D23C3A9A800F37788 /* dateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateExt.swift; sourceTree = "<group>"; };
-		8448791F23C67B7800F37788 /* interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = interaction.swift; sourceTree = "<group>"; };
+		8448791F23C67B7800F37788 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
 		8448792123C8DB3300F37788 /* countdown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = countdown.wav; sourceTree = "<group>"; };
 		8448792323C8E0B700F37788 /* rest in.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rest in.m4a"; sourceTree = "<group>"; };
 		8448792423C8E0B800F37788 /* start in.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "start in.m4a"; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 				845FD9082390A35E00E9B1D8 /* dailyRoutine.swift */,
 				84DF7B6923957E630098A4C7 /* locationHistory.swift */,
 				84DC84BA23A1B4C800B82BCD /* notificationSettings.swift */,
-				8448791F23C67B7800F37788 /* interaction.swift */,
+				8448791F23C67B7800F37788 /* Interaction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -698,7 +698,7 @@
 				84086D3B23CE545F00795C3D /* InteractionTableViewController.swift in Sources */,
 				846446B72378AD0100F493F0 /* NameTableViewController.swift in Sources */,
 				8469DE1A23B9105F0098A5FD /* progressBar.swift in Sources */,
-				8448792023C67B7800F37788 /* interaction.swift in Sources */,
+				8448792023C67B7800F37788 /* Interaction.swift in Sources */,
 				845FD9092390A35F00E9B1D8 /* dailyRoutine.swift in Sources */,
 				8448791E23C3A9A900F37788 /* dateExt.swift in Sources */,
 				84092847237CE16B00C695F6 /* Image.swift in Sources */,
