@@ -26,7 +26,7 @@ class setTimeViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(identifier)
+        //print(identifier)
         timefield.inputView = datePicker
         if identifier == SegueId.setAfter.rawValue{
             datePicker.datePickerMode = .countDownTimer
@@ -67,7 +67,7 @@ class setTimeViewController: UITableViewController {
     }
     
     func MinutesToString(time: Int)->String{
-        print(time)
+        //print(time)
         let hours = time / 3600
         let minutes = time / 60 % 60
         switch hours {

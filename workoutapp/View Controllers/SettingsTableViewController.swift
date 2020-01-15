@@ -90,7 +90,7 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
     
     private func refreshUI(authorization: Bool){
         appSettings = try! Realm().objects(notificationSettings.self).first!
-        print(appSettings.locationSendAfter)
+        //print(appSettings.locationSendAfter)
         sendAfterTime.text =
             MinutesToString(time: appSettings.locationSendAfter)
         timeLabel.text = appSettings.time
@@ -252,7 +252,7 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
             vc.user = user
         }
         else if segue.identifier == SegueId.setAfter.rawValue {
-            print("here")
+            //print("here")
             let vc = segue.destination as! setTimeViewController
             vc.identifier = SegueId.setAfter.rawValue
         }

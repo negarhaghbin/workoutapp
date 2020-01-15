@@ -19,7 +19,7 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var segmentController: UISegmentedControl!
     @IBOutlet weak var tView: UITableView!
     var data = dailyRoutine.getDictionary()
-    let titles=["Total Body", "Upper Body", "Abs", "Lower Body"]
+    let titles=[ExerciseType.total.rawValue, ExerciseType.upper.rawValue, ExerciseType.abs.rawValue, ExerciseType.lower.rawValue]
     let strokeColors=[UIColor.red, UIColor.blue, UIColor.systemYellow, UIColor.green]
     var percentages : [Float] = []
     let cellIdentifier = "HistoryCellIdentifier"

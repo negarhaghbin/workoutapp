@@ -8,6 +8,13 @@
 
 import UIKit
 
+enum ExerciseType : String {
+    case total = "Total Body"
+    case upper = "Upper Body"
+    case abs = "Abs"
+    case lower = "Lower Body"
+}
+
 class RoutineSection: NSObject {
     var title: String
     var image : Image
@@ -67,7 +74,7 @@ class RoutineSection: NSObject {
     class func getRoutineSections()->[RoutineSection]{
         var sections : [RoutineSection] = []
         let images = Image.loadRoutineSectionHeaders()
-        let titles=["Total Body", "Upper Body", "Abs", "Lower Body"]
+        let titles=[ExerciseType.total.rawValue, ExerciseType.upper.rawValue, ExerciseType.abs.rawValue, ExerciseType.lower.rawValue]
         for (index, title) in titles.enumerated(){
             sections.append(RoutineSection(title: title, image: images[index], exercises: []))
         }
@@ -85,9 +92,9 @@ class RoutineSection: NSObject {
     class func getCollectionRoutineSections()->[RoutineSection]{
         var sections : [RoutineSection] = []
         let images = Image.loadRoutineSectionHeaders()
-        let titles=["Total Body", "Upper Body", "Abs", "Lower Body"]
+        let titles=[ExerciseType.total, ExerciseType.upper, ExerciseType.abs, ExerciseType.lower]
         for (index, title) in titles.enumerated(){
-            sections.append(RoutineSection(title: title, image: images[index], exercises: []))
+            sections.append(RoutineSection(title: title.rawValue, image: images[index], exercises: []))
         }
         let exercises = ExerciseModel.loadExercises()
         for exercise in exercises{

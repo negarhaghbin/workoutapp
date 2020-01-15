@@ -17,6 +17,7 @@ class InteractionTableViewController: UIViewController, UITableViewDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.tabBar.isHidden = true
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -54,24 +55,19 @@ class InteractionTableViewController: UIViewController, UITableViewDelegate, UIT
         switch segmentController.selectedSegmentIndex {
         case 0:
             cell.dateLabel.text = routineHistory[indexPath.row].dateString
-            cell.identityLabel.text = getAllSeconds()[indexPath.row]
+            cell.identityLabel.text = routineHistory[indexPath.row].exerciseType
+            cell.secondsLabel.text = "\(routineHistory[indexPath.row].seconds) s"
+            cell.secondsLabel.isHidden = false
+            
         case 1:
             cell.dateLabel.text = interactions[indexPath.row].dateString
             cell.identityLabel.text = interactions[indexPath.row].identifier
+            cell.secondsLabel.isHidden = true
         default:
             print("unknown value")
         }
 
         return cell
-    }
-    
-    func getAllSeconds()->[String]{
-        var results : [String] = []
-        for DR in routineHistory{
-            var temp =  DR.absSeconds + DR.lowerBodySeconds + DR.totalBodySeconds + DR.upperBodySeconds
-            results.append(String(temp))
-        }
-        return results
     }
 
     @IBAction func segmentTapped(_ sender: Any) {

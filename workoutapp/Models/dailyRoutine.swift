@@ -11,19 +11,23 @@ import RealmSwift
 
 class dailyRoutine: Object {
     //baraye har routine ye setoon dashte bashe
-    @objc dynamic var totalBodySeconds : Int
-    @objc dynamic var upperBodySeconds : Int
-    @objc dynamic var lowerBodySeconds : Int
-    @objc dynamic var absSeconds : Int
+//    @objc dynamic var totalBodySeconds : Int
+//    @objc dynamic var upperBodySeconds : Int
+//    @objc dynamic var lowerBodySeconds : Int
+//    @objc dynamic var absSeconds : Int
+    @objc dynamic var exerciseType : String
+    @objc dynamic var seconds : Int
     @objc dynamic var dateString : String
     
     required init() {
-        totalBodySeconds = 0
-        upperBodySeconds = 0
-        lowerBodySeconds = 0
-        absSeconds = 0
+//        totalBodySeconds = 0
+//        upperBodySeconds = 0
+//        lowerBodySeconds = 0
+//        absSeconds = 0
+        self.exerciseType = ""
+        seconds = 0
         let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd"
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
         self.dateString = df.string(from: Date())
     }
     
@@ -32,11 +36,12 @@ class dailyRoutine: Object {
       return "dateString"
     }
     
-    func hasBeenActiveEnough()->String{
-        if self.totalBodySeconds > 100{
-            if self.upperBodySeconds > 100{
-                if self.absSeconds > 100{
-                    if self.lowerBodySeconds > 100{
+    class func hasBeenActiveEnough()->String{
+        let todayRoutine = dailyRoutine.getToday()
+        if getSeconds(section: ExerciseType.total.rawValue, todayRoutine:todayRoutine) > 100{
+            if getSeconds(section: ExerciseType.upper.rawValue, todayRoutine:todayRoutine) > 100{
+                if getSeconds(section: ExerciseType.abs.rawValue, todayRoutine:todayRoutine) > 100{
+                    if getSeconds(section: ExerciseType.lower.rawValue, todayRoutine:todayRoutine) > 100{
                         return "yes"
                     }
                     else{
@@ -56,20 +61,25 @@ class dailyRoutine: Object {
         }
     }
     
-    class func get() -> dailyRoutine{
+    class func getToday() -> [dailyRoutine]{
         let realm = try! Realm()
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
 
-        if let todayRoutine = realm.object(ofType: dailyRoutine.self, forPrimaryKey: df.string(from: Date())){
-            return todayRoutine
-        }
-        else{
-            try! realm.write {
-                realm.add(dailyRoutine())
+        let todayRoutine = realm.objects(dailyRoutine.self).filter("dateString BEGINSWITH '\(df.string(from: Date()))'")
+        return Array(todayRoutine)
+    }
+    
+    private class func getSeconds(section: String, todayRoutine: [dailyRoutine])->Int{
+        var result = 0
+        if todayRoutine != []{
+            for entry in todayRoutine{
+                if entry.exerciseType == section{
+                    result += entry.seconds
+                }
             }
-            return realm.object(ofType: dailyRoutine.self, forPrimaryKey: df.string(from: Date()))!
         }
+        return result
     }
     
     class func getAll() -> [dailyRoutine]{
@@ -81,46 +91,46 @@ class dailyRoutine: Object {
     class func getAllDictionary() -> Dictionary<String, Int>{
         let allRoutines = getAll()
         var dict = Dictionary<String, Int>()
-        dict["Total Body"]=0
-        dict["Upper Body"]=0
-        dict["Abs"]=0
-        dict["Lower Body"]=0
+        dict[ExerciseType.total.rawValue]=0
+        dict[ExerciseType.upper.rawValue]=0
+        dict[ExerciseType.abs.rawValue]=0
+        dict[ExerciseType.lower.rawValue]=0
         
         for routine in allRoutines{
-            dict["Total Body"]! += (routine.totalBodySeconds)
-            dict["Upper Body"]!+=routine.upperBodySeconds
-            dict["Abs"]!+=routine.absSeconds
-            dict["Lower Body"]!+=routine.lowerBodySeconds
+            switch routine.exerciseType {
+            case ExerciseType.total.rawValue:
+                dict[ExerciseType.total.rawValue]! += (routine.seconds)
+            case ExerciseType.upper.rawValue:
+            dict[ExerciseType.upper.rawValue]! += (routine.seconds)
+            case ExerciseType.abs.rawValue:
+            dict[ExerciseType.abs.rawValue]! += (routine.seconds)
+            case ExerciseType.lower.rawValue:
+            dict[ExerciseType.lower.rawValue]! += (routine.seconds)
+            default:
+                print("doesn't identify exercise type")
+                
+            }
         }
         return dict
     }
     
-    class func update(seconds: Int, sectionTitle: String){
+    class func add(seconds: Int, sectionTitle: String){
         let realm = try! Realm()
-        let routine = dailyRoutine.get()
+        let newRoutine = dailyRoutine()
         try! realm.write {
-            switch sectionTitle {
-            case "Total Body":
-                routine.totalBodySeconds += seconds
-            case "Upper Body":
-                routine.upperBodySeconds += seconds
-            case "Abs":
-                routine.absSeconds += seconds
-            case "Lower Body":
-                routine.lowerBodySeconds += seconds
-            default:
-                break
-            }
+            newRoutine.exerciseType = sectionTitle
+            newRoutine.seconds = seconds
+            realm.add(newRoutine)
         }
     }
     
     class func getDictionary()->Dictionary<String, Int>{
         var dict = Dictionary<String, Int>()
-        let routine = dailyRoutine.get()
-        dict["Total Body"]=routine.totalBodySeconds
-        dict["Upper Body"]=routine.upperBodySeconds
-        dict["Abs"]=routine.absSeconds
-        dict["Lower Body"]=routine.lowerBodySeconds
+        let routine = dailyRoutine.getToday()
+        dict[ExerciseType.total.rawValue]=getSeconds(section: ExerciseType.total.rawValue, todayRoutine:routine)
+        dict[ExerciseType.upper.rawValue]=getSeconds(section: ExerciseType.upper.rawValue, todayRoutine:routine)
+        dict[ExerciseType.abs.rawValue]=getSeconds(section: ExerciseType.abs.rawValue, todayRoutine:routine)
+        dict[ExerciseType.lower.rawValue]=getSeconds(section: ExerciseType.lower.rawValue, todayRoutine:routine)
         return dict
     }
 }

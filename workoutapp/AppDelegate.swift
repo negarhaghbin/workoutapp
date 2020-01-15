@@ -187,8 +187,8 @@ extension AppDelegate: CLLocationManagerDelegate {
         
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         let LocalAppSettings = notificationSettings.getSettings()
-        let todayRoutine = dailyRoutine.get()
-        let activityResult  = todayRoutine.hasBeenActiveEnough()
+        //let todayRoutine = dailyRoutine.getToday()
+        let activityResult  = dailyRoutine.hasBeenActiveEnough()
         if  activityResult == "yes"{
             notificationSettings.cancelNotification(identifier: Notification.Activity.rawValue)
         }

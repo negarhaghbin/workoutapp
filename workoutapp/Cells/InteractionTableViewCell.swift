@@ -10,6 +10,7 @@ import UIKit
 
 class InteractionTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var secondsLabel: UILabel!
     @IBOutlet weak var identityLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     override func awakeFromNib() {

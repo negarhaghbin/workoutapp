@@ -1176,41 +1176,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6m6-Cm-rul">
-                                <rect key="frame" x="0.0" y="135" width="375" height="594"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6m6-Cm-rul">
+                                <rect key="frame" x="0.0" y="135" width="375" height="677"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InteractionTableCell" id="V47-RY-F7g" customClass="InteractionTableViewCell" customModule="_M_Workout" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="InteractionTableCell" rowHeight="64" id="V47-RY-F7g" customClass="InteractionTableViewCell" customModule="_M_Workout" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V47-RY-F7g" id="eUe-i8-Y5Q">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020-01-14 15:17:05" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YjV-VC-gWP">
-                                                    <rect key="frame" x="15" y="10.999999999999998" width="168.33333333333334" height="20.333333333333329"/>
+                                                    <rect key="frame" x="15" y="11" width="168.33333333333334" height="42"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etq-Vb-w5H">
-                                                    <rect key="frame" x="260.33333333333331" y="11" width="66" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etq-Vb-w5H">
+                                                    <rect key="frame" x="187.66666666666663" y="10" width="167.33333333333337" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFv-kb-UB3">
+                                                    <rect key="frame" x="187.66666666666663" y="36" width="167.33333333333337" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="etq-Vb-w5H" firstAttribute="leading" secondItem="YjV-VC-gWP" secondAttribute="trailing" constant="77" id="2ik-cq-XV2"/>
-                                                <constraint firstItem="etq-Vb-w5H" firstAttribute="top" secondItem="eUe-i8-Y5Q" secondAttribute="topMargin" id="OSR-Y8-vsQ"/>
+                                                <constraint firstItem="etq-Vb-w5H" firstAttribute="leading" secondItem="eUe-i8-Y5Q" secondAttribute="centerX" id="C3g-bU-Slv"/>
+                                                <constraint firstItem="VFv-kb-UB3" firstAttribute="top" secondItem="etq-Vb-w5H" secondAttribute="bottom" constant="5" id="O6k-RN-2GA"/>
                                                 <constraint firstItem="YjV-VC-gWP" firstAttribute="top" secondItem="eUe-i8-Y5Q" secondAttribute="topMargin" id="S0m-rM-hz6"/>
+                                                <constraint firstAttribute="trailing" secondItem="etq-Vb-w5H" secondAttribute="trailing" constant="20" id="dgS-OO-f82"/>
+                                                <constraint firstItem="YjV-VC-gWP" firstAttribute="centerY" secondItem="eUe-i8-Y5Q" secondAttribute="centerY" id="gPT-2w-ZWa"/>
                                                 <constraint firstItem="YjV-VC-gWP" firstAttribute="leading" secondItem="eUe-i8-Y5Q" secondAttribute="leadingMargin" id="nHY-dD-kiT"/>
+                                                <constraint firstItem="etq-Vb-w5H" firstAttribute="top" secondItem="eUe-i8-Y5Q" secondAttribute="top" constant="10" id="pPh-J5-xds"/>
+                                                <constraint firstItem="VFv-kb-UB3" firstAttribute="leading" secondItem="etq-Vb-w5H" secondAttribute="leading" id="sTf-GC-6DU"/>
+                                                <constraint firstAttribute="trailing" secondItem="VFv-kb-UB3" secondAttribute="trailing" constant="20" id="xrF-M6-A7X"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateLabel" destination="YjV-VC-gWP" id="1wZ-xt-Rsm"/>
                                             <outlet property="identityLabel" destination="etq-Vb-w5H" id="nVh-gx-ylT"/>
+                                            <outlet property="secondsLabel" destination="VFv-kb-UB3" id="kUr-u4-bnd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
