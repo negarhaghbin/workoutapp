@@ -99,16 +99,23 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         startAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
             action in
-            guard let currentLocation: CLLocationCoordinate2D = self.locationManager.location?.coordinate else { return }
-                let loc = location()
-                loc.set(lat:currentLocation.latitude , long:currentLocation.longitude)
-                loc.add(completion: {
-                    let l = location.getMostRecordedLocation()
-                    let destRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: l.latitude, longitude: l.longitude),
-                    radius: 1.0,
-                    identifier: "home_location_id")
-                    AppDelegate.locationManager.startMonitoring(for: destRegion)
-                })
+            switch CLLocationManager.authorizationStatus() {
+                case .authorizedWhenInUse, .authorizedAlways:
+                    guard let currentLocation: CLLocationCoordinate2D = self.locationManager.location?.coordinate else { return }
+                    let loc = location()
+                    loc.set(lat:currentLocation.latitude , long:currentLocation.longitude)
+                    loc.add(completion: {
+                        let l = location.getMostRecordedLocation()
+                        let destRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: l.latitude, longitude: l.longitude),
+                        radius: 1.0,
+                        identifier: "home_location_id")
+                        AppDelegate.locationManager.startMonitoring(for: destRegion)
+                    })
+                case .notDetermined, .restricted, .denied:
+                    break
+            }
+            
+            
                 UIApplication.shared.isIdleTimerDisabled = true
                 self.performSegue(withIdentifier: "startRoutine", sender:Any?.self)
             }))

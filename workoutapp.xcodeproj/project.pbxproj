@@ -98,6 +98,8 @@
 		84DF7B6A23957E630098A4C7 /* locationHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DF7B6923957E630098A4C7 /* locationHistory.swift */; };
 		84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6EEC4235227F3001B00D8 /* SplitViewController.swift */; };
 		84E6EEC723528902001B00D8 /* startup in Resources */ = {isa = PBXBuildFile; fileRef = 84E6EEC623528902001B00D8 /* startup */; };
+		84EB32D3244A03DE009816CE /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB32D2244A03DE009816CE /* AppUtility.swift */; };
+		84EB32D7244A39AB009816CE /* SettingsViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB32D6244A39AB009816CE /* SettingsViewExt.swift */; };
 		FBC816195429A1F687D666FD /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1C683DBE4ED97BFBB67D2 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 /* End PBXBuildFile section */
 
@@ -224,6 +226,8 @@
 		84DF7B6923957E630098A4C7 /* locationHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locationHistory.swift; sourceTree = "<group>"; };
 		84E6EEC4235227F3001B00D8 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		84E6EEC623528902001B00D8 /* startup */ = {isa = PBXFileReference; lastKnownFileType = file; path = startup; sourceTree = "<group>"; };
+		84EB32D2244A03DE009816CE /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		84EB32D6244A39AB009816CE /* SettingsViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewExt.swift; path = /Users/negar/Desktop/Concordia/workoutapp/workoutapp/SettingsViewExt.swift; sourceTree = "<absolute>"; };
 		AD8ED2DAAEEFF97A4D28B7DE /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		DEFBCB37B5690F1D4D76BE76 /* Pods-workoutapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workoutapp.release.xcconfig"; path = "Target Support Files/Pods-workoutapp/Pods-workoutapp.release.xcconfig"; sourceTree = "<group>"; };
 		E228E4E341D33C7AAF50BB78 /* Pods-workoutapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workoutapp.debug.xcconfig"; path = "Target Support Files/Pods-workoutapp/Pods-workoutapp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -390,6 +394,7 @@
 				845FD8E12385CD4B00E9B1D8 /* Balloon.swift */,
 				8469DE1923B9105F0098A5FD /* progressBar.swift */,
 				845FD8C623830C1600E9B1D8 /* swift+gif.swift */,
+				84EB32D6244A39AB009816CE /* SettingsViewExt.swift */,
 				84C10B212336995000146547 /* Info.plist */,
 				846446AF23779DC500F493F0 /* Objects */,
 				8407048F2337AE4400961B1E /* Resources */,
@@ -398,6 +403,7 @@
 				8407048E2337AE2700961B1E /* Models */,
 				84092841237CDC1700C695F6 /* File */,
 				8448791D23C3A9A800F37788 /* dateExt.swift */,
+				84EB32D2244A03DE009816CE /* AppUtility.swift */,
 			);
 			path = workoutapp;
 			sourceTree = "<group>";
@@ -702,6 +708,7 @@
 				845FD9092390A35F00E9B1D8 /* dailyRoutine.swift in Sources */,
 				8448791E23C3A9A900F37788 /* dateExt.swift in Sources */,
 				84092847237CE16B00C695F6 /* Image.swift in Sources */,
+				84EB32D3244A03DE009816CE /* AppUtility.swift in Sources */,
 				84C10B182336994E00146547 /* ViewController.swift in Sources */,
 				8469DE0223A6A7E50098A5FD /* setTimeViewController.swift in Sources */,
 				84DC84BD23A2F2AA00B82BCD /* User.swift in Sources */,
@@ -711,6 +718,7 @@
 				845FD90D2392F53A00E9B1D8 /* HistoryTableViewCell.swift in Sources */,
 				84086D3D23CE562300795C3D /* InteractionTableViewCell.swift in Sources */,
 				84C10B142336994E00146547 /* AppDelegate.swift in Sources */,
+				84EB32D7244A39AB009816CE /* SettingsViewExt.swift in Sources */,
 				843C3DA3237F0798006FE720 /* RoutineViewController.swift in Sources */,
 				84C10B2823369FB300146547 /* NavViewController.swift in Sources */,
 				84DF7B6A23957E630098A4C7 /* locationHistory.swift in Sources */,
@@ -892,7 +900,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "workoutapp/5M Workout.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3BH49U8WFP;
 				INFOPLIST_FILE = workoutapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -916,7 +924,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "workoutapp/5M Workout.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3BH49U8WFP;
 				INFOPLIST_FILE = workoutapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

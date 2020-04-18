@@ -21,8 +21,10 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
     var appSettings : notificationSettings = notificationSettings()
     @IBOutlet weak var sendAfterTime: UILabel!
     let locationManager = CLLocationManager()
+    let alert = UIAlertController(title: "Set rest time", message: nil, preferredStyle: .alert)
+    var UIPicker: UIPickerView = UIPickerView()
     
-    
+    @IBOutlet weak var restLabel: UILabel!
     @IBOutlet weak var sendAfterCell: UITableViewCell!
     @IBOutlet weak var setTimeCell: UITableViewCell!
     @IBOutlet weak var activitySwitch: UISwitch!
@@ -35,7 +37,10 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        UIPicker.delegate = self
+        UIPicker.dataSource = self
+        addPickerLabels()
+        restDurationAlert()
         user = try! Realm().object(ofType: User.self, forPrimaryKey: UserDefaults.standard.string(forKey: "uuid"))!
         //appSettings = try! Realm().objects(notificationSettings.self).first!
         let notificationCenter = NotificationCenter.default
@@ -46,12 +51,19 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false
         userName.text = user.name
+        restLabel.text = SecondsToString(time: user.restDuration)
         checkNotificationAuthorization(completion:{ authorization in
             DispatchQueue.main.async {
                 self.refreshUI(authorization: authorization)
             }
             
         })
+        tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        tableView.reloadData()
     }
     
     private func locationAuthorization(){
@@ -64,28 +76,25 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
         }
     }
     
-    private func MinutesToString(time: Int)->String{
-        let hours = time / 3600
-        let minutes = time / 60 % 60
-        switch hours {
-        case 0:
-            if minutes == 1{
-                return "\(minutes) minute"
-            }
-            else{
-                return "\(minutes) minutes"
-            }
-        case 1:
-            if minutes == 1{
-                return "\(hours) hour and \(minutes) minute"
-            }
-            else{
-                return "\(hours) hour and \(minutes) minutes"
-            }
-        default:
-            return "\(hours) hours and \(minutes) minutes"
-        }
+    func restDurationAlert(){
+        alert.addTextField(configurationHandler: { textField in
+            textField.inputView = self.UIPicker
+        })
         
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { action in
+            if let rd = self.alert.textFields?.first?.text {
+                self.user.setRestDuration(rd: self.UIPicker.selectedRow(inComponent: 0)*60 + self.UIPicker.selectedRow(inComponent: 1))
+                self.restLabel.text = rd
+            }
+        }))
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 && indexPath.row == 0{
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     private func refreshUI(authorization: Bool){

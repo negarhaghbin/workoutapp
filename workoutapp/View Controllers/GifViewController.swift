@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import RealmSwift
 
 class GifViewController: UIViewController {
 
@@ -29,8 +30,9 @@ class GifViewController: UIViewController {
     
     @IBOutlet weak var balloon: Balloon!
     
+    var user : User = User()
     var PB = progressBar()
-    let restDuration = 10
+    var restDuration = 10
     var timer = Timer()
     var exerciseTimer = Timer()
     var isResting = false
@@ -51,6 +53,11 @@ class GifViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        user = try! Realm().object(ofType: User.self, forPrimaryKey: UserDefaults.standard.string(forKey: "uuid"))!
+        restDuration = user.restDuration
     }
     
     private func refreshUI(){

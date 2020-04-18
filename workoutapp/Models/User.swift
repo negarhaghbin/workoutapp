@@ -12,6 +12,7 @@ import RealmSwift
 class User: Object {
     @objc dynamic var name = ""
     @objc dynamic var uuid : String = UUID().uuidString
+    @objc dynamic var restDuration : Int = 20
     
     override static func primaryKey() -> String? {
       return "uuid"
@@ -25,5 +26,12 @@ class User: Object {
             realm.add(user)
         }
         UserDefaults.standard.set(user.uuid, forKey: "uuid")
+    }
+    
+    func setRestDuration(rd: Int){
+        let realm = try! Realm()
+        try! realm.write {
+            self.restDuration = rd
+        }
     }
 }

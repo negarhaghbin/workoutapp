@@ -65,30 +65,6 @@ class setTimeViewController: UITableViewController {
         datePicker.countDownDuration = sender.countDownDuration
         timefield.text = MinutesToString(time: Int(datePicker.countDownDuration)) 
     }
-    
-    func MinutesToString(time: Int)->String{
-        //print(time)
-        let hours = time / 3600
-        let minutes = time / 60 % 60
-        switch hours {
-        case 0:
-            if minutes == 1{
-                return "\(minutes) minute"
-            }
-            else{
-                return "\(minutes) minutes"
-            }
-        case 1:
-            if minutes == 1{
-                return "\(hours) hour and \(minutes) minute"
-            }
-            else{
-                return "\(hours) hour and \(minutes) minutes"
-            }
-        default:
-            return "\(hours) hours and \(minutes) minutes"
-        }
-    }
 
     
     /*
