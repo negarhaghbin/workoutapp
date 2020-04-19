@@ -17,12 +17,22 @@ enum Notification: String {
 }
 
 class SettingsTableViewController: UITableViewController, CLLocationManagerDelegate {
+    
+    var textFieldTemp : UITextField = UITextField()
+    var textFieldTemp2 : UITextField = UITextField()
+    var restDurationAlert = UIAlertController(title: "Set rest time", message: nil, preferredStyle: .alert)
+    var sendAfterAlert = UIAlertController(title: "Send reminders", message: "Send reminder notifications based on my location after: ", preferredStyle: .alert)
+    var sendOnAlert = UIAlertController(title: "Send reminders", message: "Send reminder notifications daily on: ", preferredStyle: .alert)
+    var UIPicker: UIPickerView = UIPickerView()
+    var datePicker: UIDatePicker = UIDatePicker()
+    var countdownDatePicker : UIDatePicker = UIDatePicker()
+    
+    
     var user : User = User()
     var appSettings : notificationSettings = notificationSettings()
     @IBOutlet weak var sendAfterTime: UILabel!
     let locationManager = CLLocationManager()
-    let alert = UIAlertController(title: "Set rest time", message: nil, preferredStyle: .alert)
-    var UIPicker: UIPickerView = UIPickerView()
+    
     
     @IBOutlet weak var restLabel: UILabel!
     @IBOutlet weak var sendAfterCell: UITableViewCell!
@@ -40,7 +50,9 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
         UIPicker.delegate = self
         UIPicker.dataSource = self
         addPickerLabels()
-        restDurationAlert()
+        createRestDurationAlert()
+        createSendOnAlert()
+        createSendAfterAlert()
         user = try! Realm().object(ofType: User.self, forPrimaryKey: UserDefaults.standard.string(forKey: "uuid"))!
         //appSettings = try! Realm().objects(notificationSettings.self).first!
         let notificationCenter = NotificationCenter.default
@@ -76,24 +88,15 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
         }
     }
     
-    func restDurationAlert(){
-        alert.addTextField(configurationHandler: { textField in
-            textField.inputView = self.UIPicker
-        })
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { action in
-            if let rd = self.alert.textFields?.first?.text {
-                self.user.setRestDuration(rd: self.UIPicker.selectedRow(inComponent: 0)*60 + self.UIPicker.selectedRow(inComponent: 1))
-                self.restLabel.text = rd
-            }
-        }))
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 && indexPath.row == 0{
-            present(alert, animated: true, completion: nil)
+            present(restDurationAlert, animated: true, completion: nil)
+        }
+        else if indexPath.section == 2 && indexPath.row == 2{
+            present(sendAfterAlert, animated: true, completion: nil)
+        }
+        else if indexPath.section == 2 && indexPath.row == 4{
+            present(sendOnAlert, animated: true, completion: nil)
         }
     }
     
@@ -103,6 +106,8 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
         sendAfterTime.text =
             MinutesToString(time: appSettings.locationSendAfter)
         timeLabel.text = appSettings.time
+        textFieldTemp2.text = MinutesToString(time: self.appSettings.locationSendAfter)
+        textFieldTemp.text = self.appSettings.time
         if authorization{
             self.timeSwitch.setOn(self.appSettings.timeBool, animated: false)
             self.locationSwitch.setOn(self.appSettings.location, animated: false)
@@ -259,15 +264,6 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
         if segue.identifier == "edit" {
             let vc = segue.destination as! NameTableViewController
             vc.user = user
-        }
-        else if segue.identifier == SegueId.setAfter.rawValue {
-            //print("here")
-            let vc = segue.destination as! setTimeViewController
-            vc.identifier = SegueId.setAfter.rawValue
-        }
-        else if segue.identifier == SegueId.setOn.rawValue {
-            let vc = segue.destination as! setTimeViewController
-            vc.identifier = SegueId.setOn.rawValue
         }
         
         // Pass the selected object to the new view controller.

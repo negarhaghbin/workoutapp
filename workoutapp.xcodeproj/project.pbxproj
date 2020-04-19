@@ -67,7 +67,6 @@
 		846446A22376008500F493F0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A12376008500F493F0 /* TabBarViewController.swift */; };
 		846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A523760C9C00F493F0 /* SettingsTableViewController.swift */; };
 		846446B72378AD0100F493F0 /* NameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446B62378AD0100F493F0 /* NameTableViewController.swift */; };
-		8469DE0223A6A7E50098A5FD /* setTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8469DE0123A6A7E50098A5FD /* setTimeViewController.swift */; };
 		8469DE0423A7CB3A0098A5FD /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8469DE0323A7CB390098A5FD /* beep.wav */; };
 		8469DE0623A7D0640098A5FD /* good job.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8469DE0523A7D0640098A5FD /* good job.m4a */; };
 		8469DE0823A7D8DC0098A5FD /* halfway.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8469DE0723A7D8DB0098A5FD /* halfway.m4a */; };
@@ -192,7 +191,6 @@
 		846446A12376008500F493F0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		846446A523760C9C00F493F0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		846446B62378AD0100F493F0 /* NameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewController.swift; sourceTree = "<group>"; };
-		8469DE0123A6A7E50098A5FD /* setTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setTimeViewController.swift; sourceTree = "<group>"; };
 		8469DE0323A7CB390098A5FD /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
 		8469DE0523A7D0640098A5FD /* good job.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "good job.m4a"; sourceTree = "<group>"; };
 		8469DE0723A7D8DB0098A5FD /* halfway.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = halfway.m4a; sourceTree = "<group>"; };
@@ -347,7 +345,6 @@
 				843C3DA2237F0798006FE720 /* RoutineViewController.swift */,
 				845FD8C02380995100E9B1D8 /* StartRoutineViewController.swift */,
 				845FD8C4238309A100E9B1D8 /* GifViewController.swift */,
-				8469DE0123A6A7E50098A5FD /* setTimeViewController.swift */,
 				840EAC4723BBF877002D0AF6 /* ActivityViewController.swift */,
 				84086D3A23CE545F00795C3D /* InteractionTableViewController.swift */,
 			);
@@ -710,7 +707,6 @@
 				84092847237CE16B00C695F6 /* Image.swift in Sources */,
 				84EB32D3244A03DE009816CE /* AppUtility.swift in Sources */,
 				84C10B182336994E00146547 /* ViewController.swift in Sources */,
-				8469DE0223A6A7E50098A5FD /* setTimeViewController.swift in Sources */,
 				84DC84BD23A2F2AA00B82BCD /* User.swift in Sources */,
 				840704892336E4E900961B1E /* SceneDelegate.swift in Sources */,
 				840EAC4823BBF877002D0AF6 /* ActivityViewController.swift in Sources */,
