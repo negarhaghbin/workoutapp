@@ -68,7 +68,8 @@ class RoutineSection: NSObject {
             }
             equipmentsString = temp
         }
-        return "  \(self.getDuration()) seconds \u{2022} \(equipmentsString)"
+        print(self.getDuration())
+        return "  \(SecondsToString(time: self.getDuration())) \u{2022} \(equipmentsString)"
     }
     
     class func getRoutineSections()->[RoutineSection]{

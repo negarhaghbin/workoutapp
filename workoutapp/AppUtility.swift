@@ -21,22 +21,31 @@ func MinutesToString(time: Int)->String{
             return "\(minutes) minutes"
         }
     case 1:
-        if minutes == 1{
+        if minutes == 0{
+            return "\(hours) hour"
+        }
+        else if minutes == 1{
             return "\(hours) hour and \(minutes) minute"
         }
         else{
             return "\(hours) hour and \(minutes) minutes"
         }
     default:
-        return "\(hours) hours and \(minutes) minutes"
+        if minutes == 0{
+            return "\(hours) hours"
+        }
+        else if minutes == 1{
+            return "\(hours) hours and \(minutes) minute"
+        }
+        else{
+            return "\(hours) hours and \(minutes) minutes"
+        }
     }
 }
 
 func SecondsToString(time: Int)->String{
     let minutes = time / 60
     let seconds = time % 60
-    print(minutes)
-    print(seconds)
     switch minutes {
     case 0:
         if seconds == 1{
@@ -46,13 +55,24 @@ func SecondsToString(time: Int)->String{
             return "\(seconds) seconds"
         }
     case 1:
-        if seconds == 1{
+        if seconds == 0{
+            return "\(minutes) minute"
+        }
+        else if seconds == 1{
             return "\(minutes) minute and \(seconds) second"
         }
         else{
             return "\(minutes) minute and \(seconds) seconds"
         }
     default:
-        return "\(minutes) minutes and \(seconds) seconds"
+        if seconds == 0{
+            return "\(minutes) minutes"
+        }
+        else if seconds == 1{
+            return "\(minutes) minutes and \(seconds) second"
+        }
+        else{
+            return "\(minutes) minutes and \(seconds) seconds"
+        }
     }
 }

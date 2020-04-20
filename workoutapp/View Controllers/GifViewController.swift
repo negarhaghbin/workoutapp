@@ -113,7 +113,7 @@ class GifViewController: UIViewController {
                         self.exerciseSeconds = self.restDuration
                         self.gifView.image=UIImage(named: "rest.png")
                         self.exerciseTitle.text = "Rest"
-                        self.nextLabel.text = "Next: \(self.routineExercises[self.currentExerciseIndex].title)"
+                        self.nextLabel.text = "Next: \(self.routineExercises[self.currentExerciseIndex+1].title)"
                         self.isResting = true
                         self.PB.startOver(duration: self.exerciseSeconds)
                        // self.totalProgress.tintColor = UIColor.yellow

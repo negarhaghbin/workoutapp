@@ -11,10 +11,12 @@ import UIKit
 import YoutubePlayer_in_WKWebView
 import SystemConfiguration
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    @IBOutlet weak var durationView: UIView!
+    var changeDurationAlert = UIAlertController(title: "Change exercise duration", message: nil, preferredStyle: .alert)
+    var UIPicker: UIPickerView = UIPickerView()
     
-    let StepCellReuseIdentifier = "StepTableViewCell"
-    
+    @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var subtitleView: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -26,11 +28,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     private func refreshUI(){
-        loadView()
+        UIPicker.delegate = self
+        UIPicker.dataSource = self
+        addPickerLabels()
+        if changeDurationAlert.textFields?.count==0{
+            createChangeDurationAlert()
+        }
         if (exercise?.videoURLString != "" && isConnectedToNetwork()){
             youtubeView.load(withVideoId: exercise!.videoURLString)
         }
         else{
+            youtubeView.removeWebView() //might raise problems in future
             warningLabel.isHidden = false
             if(exercise?.videoURLString == ""){
                 warningLabel.text = "There is no video tutorial for this exercise."
@@ -41,33 +49,68 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         titleLabel.text = exercise?.title
-        subtitleView.text=exercise?.getDescription()
+        durationLabel.text = SecondsToString(time: exercise!.durationS)
+//        subtitleView.text=exercise?.getDescription()
         
     }
     
-    @IBOutlet weak var tableView: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 600
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+    func createChangeDurationAlert(){
+        changeDurationAlert.addTextField(configurationHandler: { textField in
+            textField.inputView = self.UIPicker
+        })
+        
+        changeDurationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        changeDurationAlert.addAction(UIAlertAction(title: "Save", style: .default, handler: { action in
+            if let rd = self.changeDurationAlert.textFields?.first?.text {
+                self.exercise?.setDuration(d: self.UIPicker.selectedRow(inComponent: 0)*60 + self.UIPicker.selectedRow(inComponent: 1))
+                self.durationLabel.text = rd
+            }
+        }))
+        
     }
+    
+    func addPickerLabels(){
+        let font = UIFont.boldSystemFont(ofSize: 20.0)
+        let fontSize: CGFloat = font.pointSize
+        let componentWidth: CGFloat = self.view.frame.width / CGFloat(UIPicker.numberOfComponents)
+        let y = (UIPicker.frame.size.height / 2) - (fontSize / 2)
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let label1 = UILabel(frame: CGRect(x: componentWidth * 0.65, y: y, width: componentWidth * 0.4, height: fontSize))
+        label1.font = font
+        label1.textAlignment = .left
+        label1.text = "min"
+        UIPicker.addSubview(label1)
 
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: StepCellReuseIdentifier, for: indexPath) as? StepTableViewCell else {
-//            return StepTableViewCell()
-//        }
-//        let step = video?.steps[indexPath.row]
-//        cell.numberLabel.text = String(step!.0)
-//        cell.descriptionLabel.text = step!.1
-//
-//        return cell
-        return StepTableViewCell()
+        let label2 = UILabel(frame: CGRect(x: componentWidth * 1.65, y: y, width: componentWidth * 0.4, height: fontSize))
+        label2.font = font
+        label2.textAlignment = .left
+        label2.text = "sec"
+        UIPicker.addSubview(label2)
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 60
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+       return String(row)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        changeDurationAlert.textFields?.first?.text = SecondsToString(time: (pickerView.selectedRow(inComponent: 0))*60 + pickerView.selectedRow(inComponent: 1))
+    }
+    
+    @IBAction func changeDuration(_ sender: Any) {
+        present(changeDurationAlert, animated: false, completion: nil)
     }
 }
 

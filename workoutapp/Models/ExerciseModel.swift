@@ -42,7 +42,14 @@ class ExerciseModel: Object {
             equipmentsS = equipmentsString
         }
     
-        return "\(durationS) seconds \u{2022} \(equipmentsS)"
+        return "\(SecondsToString(time: durationS)) \u{2022} \(equipmentsS)"
+    }
+    
+    func setDuration(d: Int){
+        let realm = try! Realm()
+        try! realm.write {
+            self.durationS = d
+        }
     }
     
     class func initExerciseModelTable(){
