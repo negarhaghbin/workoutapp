@@ -71,6 +71,8 @@
 		8469DE0623A7D0640098A5FD /* good job.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8469DE0523A7D0640098A5FD /* good job.m4a */; };
 		8469DE0823A7D8DC0098A5FD /* halfway.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8469DE0723A7D8DB0098A5FD /* halfway.m4a */; };
 		8469DE1A23B9105F0098A5FD /* progressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8469DE1923B9105F0098A5FD /* progressBar.swift */; };
+		849CFC13244F719C007BD77B /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849CFC12244F719C007BD77B /* settings.storyboard */; };
+		849CFC15244F7563007BD77B /* Routines.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849CFC14244F7563007BD77B /* Routines.storyboard */; };
 		84C10B142336994E00146547 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B132336994E00146547 /* AppDelegate.swift */; };
 		84C10B182336994E00146547 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B172336994E00146547 /* ViewController.swift */; };
 		84C10B1B2336994E00146547 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B192336994E00146547 /* Main.storyboard */; };
@@ -195,6 +197,8 @@
 		8469DE0523A7D0640098A5FD /* good job.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "good job.m4a"; sourceTree = "<group>"; };
 		8469DE0723A7D8DB0098A5FD /* halfway.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = halfway.m4a; sourceTree = "<group>"; };
 		8469DE1923B9105F0098A5FD /* progressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressBar.swift; sourceTree = "<group>"; };
+		849CFC12244F719C007BD77B /* settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = settings.storyboard; sourceTree = "<group>"; };
+		849CFC14244F7563007BD77B /* Routines.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Routines.storyboard; sourceTree = "<group>"; };
 		84C10B102336994E00146547 /* 5M Workout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "5M Workout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C10B132336994E00146547 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C10B172336994E00146547 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -270,8 +274,6 @@
 			children = (
 				84E6EEC623528902001B00D8 /* startup */,
 				84C10B1C2336995000146547 /* Assets.xcassets */,
-				84C10B192336994E00146547 /* Main.storyboard */,
-				84C10B1E2336995000146547 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -360,6 +362,17 @@
 			path = Objects;
 			sourceTree = "<group>";
 		};
+		849CFC11244F7126007BD77B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				849CFC12244F719C007BD77B /* settings.storyboard */,
+				849CFC14244F7563007BD77B /* Routines.storyboard */,
+				84C10B192336994E00146547 /* Main.storyboard */,
+				84C10B1E2336995000146547 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		84C10B072336994E00146547 = {
 			isa = PBXGroup;
 			children = (
@@ -383,6 +396,7 @@
 		84C10B122336994E00146547 /* workoutapp */ = {
 			isa = PBXGroup;
 			children = (
+				849CFC11244F7126007BD77B /* Storyboards */,
 				84092843237CDC8800C695F6 /* Routine Pictures */,
 				84361466233BE0660088ADA8 /* 5M Workout.entitlements */,
 				84C10B2F2336A10000146547 /* Local Videos */,
@@ -575,6 +589,7 @@
 				84C10B4E2336A10000146547 /* InnerTightLift.png in Resources */,
 				84C10B482336A10000146547 /* InnerTightLift.mp4 in Resources */,
 				84C10B4A2336A10000146547 /* doubleChopKneePulls.mp4 in Resources */,
+				849CFC15244F7563007BD77B /* Routines.storyboard in Resources */,
 				8448792623C8E0B800F37788 /* start in.m4a in Resources */,
 				845FD8F6238C32F000E9B1D8 /* butt-kicks.gif in Resources */,
 				845FD8F8238C32F000E9B1D8 /* standing-side-kicks.gif in Resources */,
@@ -613,6 +628,7 @@
 				845FD8EF238C32EF00E9B1D8 /* march-steps.gif in Resources */,
 				84372D4E2339342B00D6586D /* InnerTightLift.jpg in Resources */,
 				84E6EEC723528902001B00D8 /* startup in Resources */,
+				849CFC13244F719C007BD77B /* settings.storyboard in Resources */,
 				845FD8F5238C32F000E9B1D8 /* calf-raise-hold.gif in Resources */,
 				845FD8DE23859FD100E9B1D8 /* plank-hold.gif in Resources */,
 				845FD8DF23859FD100E9B1D8 /* plank-leg-raise.gif in Resources */,
