@@ -73,6 +73,9 @@
 		8469DE1A23B9105F0098A5FD /* progressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8469DE1923B9105F0098A5FD /* progressBar.swift */; };
 		849CFC13244F719C007BD77B /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849CFC12244F719C007BD77B /* settings.storyboard */; };
 		849CFC15244F7563007BD77B /* Routines.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849CFC14244F7563007BD77B /* Routines.storyboard */; };
+		849CFC17244F79FC007BD77B /* Diary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849CFC16244F79FC007BD77B /* Diary.storyboard */; };
+		849CFC1B244F7C15007BD77B /* icons8-diary-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 849CFC1A244F7C15007BD77B /* icons8-diary-50.png */; };
+		849CFC1F24522CB7007BD77B /* DiaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC1E24522CB7007BD77B /* DiaryTableViewController.swift */; };
 		84C10B142336994E00146547 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B132336994E00146547 /* AppDelegate.swift */; };
 		84C10B182336994E00146547 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B172336994E00146547 /* ViewController.swift */; };
 		84C10B1B2336994E00146547 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B192336994E00146547 /* Main.storyboard */; };
@@ -199,6 +202,9 @@
 		8469DE1923B9105F0098A5FD /* progressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressBar.swift; sourceTree = "<group>"; };
 		849CFC12244F719C007BD77B /* settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = settings.storyboard; sourceTree = "<group>"; };
 		849CFC14244F7563007BD77B /* Routines.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Routines.storyboard; sourceTree = "<group>"; };
+		849CFC16244F79FC007BD77B /* Diary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Diary.storyboard; sourceTree = "<group>"; };
+		849CFC1A244F7C15007BD77B /* icons8-diary-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-diary-50.png"; sourceTree = "<group>"; };
+		849CFC1E24522CB7007BD77B /* DiaryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableViewController.swift; sourceTree = "<group>"; };
 		84C10B102336994E00146547 /* 5M Workout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "5M Workout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C10B132336994E00146547 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C10B172336994E00146547 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -336,19 +342,20 @@
 		846446AE23779DAF00F493F0 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				846446A12376008500F493F0 /* TabBarViewController.swift */,
-				846446A523760C9C00F493F0 /* SettingsTableViewController.swift */,
-				84C10B2723369FB300146547 /* NavViewController.swift */,
+				840EAC4723BBF877002D0AF6 /* ActivityViewController.swift */,
+				849CFC1E24522CB7007BD77B /* DiaryTableViewController.swift */,
+				845FD8C4238309A100E9B1D8 /* GifViewController.swift */,
+				84086D3A23CE545F00795C3D /* InteractionTableViewController.swift */,
 				846446B62378AD0100F493F0 /* NameTableViewController.swift */,
-				84E6EEC4235227F3001B00D8 /* SplitViewController.swift */,
-				84C10B2923369FD100146547 /* TableViewController.swift */,
-				84C10B172336994E00146547 /* ViewController.swift */,
+				84C10B2723369FB300146547 /* NavViewController.swift */,
 				8409283D237C8D9700C695F6 /* RoutineCollectionViewController.swift */,
 				843C3DA2237F0798006FE720 /* RoutineViewController.swift */,
+				846446A523760C9C00F493F0 /* SettingsTableViewController.swift */,
+				84E6EEC4235227F3001B00D8 /* SplitViewController.swift */,
 				845FD8C02380995100E9B1D8 /* StartRoutineViewController.swift */,
-				845FD8C4238309A100E9B1D8 /* GifViewController.swift */,
-				840EAC4723BBF877002D0AF6 /* ActivityViewController.swift */,
-				84086D3A23CE545F00795C3D /* InteractionTableViewController.swift */,
+				846446A12376008500F493F0 /* TabBarViewController.swift */,
+				84C10B2923369FD100146547 /* TableViewController.swift */,
+				84C10B172336994E00146547 /* ViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -365,6 +372,8 @@
 		849CFC11244F7126007BD77B /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				849CFC1A244F7C15007BD77B /* icons8-diary-50.png */,
+				849CFC16244F79FC007BD77B /* Diary.storyboard */,
 				849CFC12244F719C007BD77B /* settings.storyboard */,
 				849CFC14244F7563007BD77B /* Routines.storyboard */,
 				84C10B192336994E00146547 /* Main.storyboard */,
@@ -578,8 +587,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849CFC17244F79FC007BD77B /* Diary.storyboard in Resources */,
 				8469DE0423A7CB3A0098A5FD /* beep.wav in Resources */,
 				84092851237CF27F00C695F6 /* lowerBody.png in Resources */,
+				849CFC1B244F7C15007BD77B /* icons8-diary-50.png in Resources */,
 				84092852237CF27F00C695F6 /* abs.png in Resources */,
 				8409284C237CE92500C695F6 /* upperBody.png in Resources */,
 				8448792523C8E0B800F37788 /* rest in.m4a in Resources */,
@@ -739,6 +750,7 @@
 				8409283E237C8D9800C695F6 /* RoutineCollectionViewController.swift in Sources */,
 				843C3DA5237F0961006FE720 /* RoutineTableViewCell.swift in Sources */,
 				845FD8E22385CD4C00E9B1D8 /* Balloon.swift in Sources */,
+				849CFC1F24522CB7007BD77B /* DiaryTableViewController.swift in Sources */,
 				84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */,
 				8407048D23371D6E00961B1E /* StepTableViewCell.swift in Sources */,
 				846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */,

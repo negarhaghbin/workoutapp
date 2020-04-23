@@ -30,11 +30,6 @@ class InteractionTableViewController: UIViewController, UITableViewDelegate, UIT
 
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         switch segmentController.selectedSegmentIndex {
         case 0:
             return routineHistory.count
@@ -46,6 +41,32 @@ class InteractionTableViewController: UIViewController, UITableViewDelegate, UIT
         return 1
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+//        switch segmentController.selectedSegmentIndex {
+//        case 0:
+//            return routineHistory.count
+//        case 1:
+//            return interactions.count
+//        default:
+//            print("unknown value")
+//        }
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch segmentController.selectedSegmentIndex {
+        case 0:
+            return routineHistory[section].dateString
+            
+        case 1:
+            return interactions[section].dateString
+        default:
+            print("unknown value")
+        }
+        return ""
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "InteractionTableCell", for: indexPath) as? InteractionTableViewCell
         else{
@@ -54,15 +75,11 @@ class InteractionTableViewController: UIViewController, UITableViewDelegate, UIT
         
         switch segmentController.selectedSegmentIndex {
         case 0:
-            cell.dateLabel.text = routineHistory[indexPath.row].dateString
-            cell.identityLabel.text = routineHistory[indexPath.row].exerciseType
-            cell.secondsLabel.text = "\(routineHistory[indexPath.row].seconds) s"
-            cell.secondsLabel.isHidden = false
+            cell.dateLabel.text = routineHistory[indexPath.section].exerciseType
+            cell.identityLabel.text = "\(routineHistory[indexPath.section].seconds) s"
             
         case 1:
-            cell.dateLabel.text = interactions[indexPath.row].dateString
-            cell.identityLabel.text = interactions[indexPath.row].identifier
-            cell.secondsLabel.isHidden = true
+            cell.dateLabel.text = interactions[indexPath.section].identifier
         default:
             print("unknown value")
         }
