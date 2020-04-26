@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5659C03FFC5341E18519622C /* Pods_workoutapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E22110DCB59BDDF5D0F7BE4 /* Pods_workoutapp.framework */; };
 		840704892336E4E900961B1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840704882336E4E900961B1E /* SceneDelegate.swift */; };
-		8407048D23371D6E00961B1E /* StepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407048C23371D6E00961B1E /* StepTableViewCell.swift */; };
 		84086D3B23CE545F00795C3D /* InteractionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84086D3A23CE545F00795C3D /* InteractionTableViewController.swift */; };
 		84086D3D23CE562300795C3D /* InteractionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84086D3C23CE562300795C3D /* InteractionTableViewCell.swift */; };
 		8409283E237C8D9800C695F6 /* RoutineCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409283D237C8D9700C695F6 /* RoutineCollectionViewController.swift */; };
@@ -76,6 +75,13 @@
 		849CFC17244F79FC007BD77B /* Diary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849CFC16244F79FC007BD77B /* Diary.storyboard */; };
 		849CFC1B244F7C15007BD77B /* icons8-diary-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 849CFC1A244F7C15007BD77B /* icons8-diary-50.png */; };
 		849CFC1F24522CB7007BD77B /* DiaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC1E24522CB7007BD77B /* DiaryTableViewController.swift */; };
+		849CFC2124523098007BD77B /* CustomeExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC2024523098007BD77B /* CustomeExercise.swift */; };
+		849CFC232452319A007BD77B /* DiaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC222452319A007BD77B /* DiaryItem.swift */; };
+		849CFC25245238FF007BD77B /* NewWorkoutPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC24245238FF007BD77B /* NewWorkoutPopupViewController.swift */; };
+		849CFC2724532000007BD77B /* HideKeyboardExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC2624532000007BD77B /* HideKeyboardExt.swift */; };
+		849CFC29245322E3007BD77B /* AddWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC28245322E3007BD77B /* AddWorkoutViewController.swift */; };
+		849CFC2B2453250A007BD77B /* AddWorkoutTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC2A2453250A007BD77B /* AddWorkoutTableCell.swift */; };
+		849CFC2D24552F57007BD77B /* DiaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC2C24552F57007BD77B /* DiaryTableViewCell.swift */; };
 		84C10B142336994E00146547 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B132336994E00146547 /* AppDelegate.swift */; };
 		84C10B182336994E00146547 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B172336994E00146547 /* ViewController.swift */; };
 		84C10B1B2336994E00146547 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B192336994E00146547 /* Main.storyboard */; };
@@ -136,7 +142,6 @@
 		259771ABF07E8122892F77E4 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		65B1C683DBE4ED97BFBB67D2 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840704882336E4E900961B1E /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8407048C23371D6E00961B1E /* StepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTableViewCell.swift; sourceTree = "<group>"; };
 		84086D3A23CE545F00795C3D /* InteractionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionTableViewController.swift; sourceTree = "<group>"; };
 		84086D3C23CE562300795C3D /* InteractionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionTableViewCell.swift; sourceTree = "<group>"; };
 		8409283D237C8D9700C695F6 /* RoutineCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoutineCollectionViewController.swift; path = "/Users/negar/Desktop/Concordia/workoutapp/workoutapp/View Controllers/RoutineCollectionViewController.swift"; sourceTree = "<absolute>"; };
@@ -205,6 +210,13 @@
 		849CFC16244F79FC007BD77B /* Diary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Diary.storyboard; sourceTree = "<group>"; };
 		849CFC1A244F7C15007BD77B /* icons8-diary-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-diary-50.png"; sourceTree = "<group>"; };
 		849CFC1E24522CB7007BD77B /* DiaryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableViewController.swift; sourceTree = "<group>"; };
+		849CFC2024523098007BD77B /* CustomeExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeExercise.swift; sourceTree = "<group>"; };
+		849CFC222452319A007BD77B /* DiaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryItem.swift; sourceTree = "<group>"; };
+		849CFC24245238FF007BD77B /* NewWorkoutPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutPopupViewController.swift; sourceTree = "<group>"; };
+		849CFC2624532000007BD77B /* HideKeyboardExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardExt.swift; sourceTree = "<group>"; };
+		849CFC28245322E3007BD77B /* AddWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewController.swift; sourceTree = "<group>"; };
+		849CFC2A2453250A007BD77B /* AddWorkoutTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutTableCell.swift; sourceTree = "<group>"; };
+		849CFC2C24552F57007BD77B /* DiaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableViewCell.swift; sourceTree = "<group>"; };
 		84C10B102336994E00146547 /* 5M Workout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "5M Workout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C10B132336994E00146547 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C10B172336994E00146547 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -271,6 +283,8 @@
 				84DF7B6923957E630098A4C7 /* locationHistory.swift */,
 				84DC84BA23A1B4C800B82BCD /* notificationSettings.swift */,
 				8448791F23C67B7800F37788 /* Interaction.swift */,
+				849CFC2024523098007BD77B /* CustomeExercise.swift */,
+				849CFC222452319A007BD77B /* DiaryItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -329,12 +343,13 @@
 		846446A723760CA300F493F0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */,
-				8407048C23371D6E00961B1E /* StepTableViewCell.swift */,
-				8409283F237CD46000C695F6 /* RoutineCollectionViewCell.swift */,
-				843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */,
+				849CFC2A2453250A007BD77B /* AddWorkoutTableCell.swift */,
 				845FD90C2392F53A00E9B1D8 /* HistoryTableViewCell.swift */,
 				84086D3C23CE562300795C3D /* InteractionTableViewCell.swift */,
+				8409283F237CD46000C695F6 /* RoutineCollectionViewCell.swift */,
+				843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */,
+				84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */,
+				849CFC2C24552F57007BD77B /* DiaryTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -343,11 +358,13 @@
 			isa = PBXGroup;
 			children = (
 				840EAC4723BBF877002D0AF6 /* ActivityViewController.swift */,
+				849CFC28245322E3007BD77B /* AddWorkoutViewController.swift */,
 				849CFC1E24522CB7007BD77B /* DiaryTableViewController.swift */,
 				845FD8C4238309A100E9B1D8 /* GifViewController.swift */,
 				84086D3A23CE545F00795C3D /* InteractionTableViewController.swift */,
 				846446B62378AD0100F493F0 /* NameTableViewController.swift */,
 				84C10B2723369FB300146547 /* NavViewController.swift */,
+				849CFC24245238FF007BD77B /* NewWorkoutPopupViewController.swift */,
 				8409283D237C8D9700C695F6 /* RoutineCollectionViewController.swift */,
 				843C3DA2237F0798006FE720 /* RoutineViewController.swift */,
 				846446A523760C9C00F493F0 /* SettingsTableViewController.swift */,
@@ -415,6 +432,7 @@
 				8469DE1923B9105F0098A5FD /* progressBar.swift */,
 				845FD8C623830C1600E9B1D8 /* swift+gif.swift */,
 				84EB32D6244A39AB009816CE /* SettingsViewExt.swift */,
+				849CFC2624532000007BD77B /* HideKeyboardExt.swift */,
 				84C10B212336995000146547 /* Info.plist */,
 				846446AF23779DC500F493F0 /* Objects */,
 				8407048F2337AE4400961B1E /* Resources */,
@@ -728,8 +746,11 @@
 				84086D3B23CE545F00795C3D /* InteractionTableViewController.swift in Sources */,
 				846446B72378AD0100F493F0 /* NameTableViewController.swift in Sources */,
 				8469DE1A23B9105F0098A5FD /* progressBar.swift in Sources */,
+				849CFC25245238FF007BD77B /* NewWorkoutPopupViewController.swift in Sources */,
+				849CFC2724532000007BD77B /* HideKeyboardExt.swift in Sources */,
 				8448792023C67B7800F37788 /* Interaction.swift in Sources */,
 				845FD9092390A35F00E9B1D8 /* dailyRoutine.swift in Sources */,
+				849CFC232452319A007BD77B /* DiaryItem.swift in Sources */,
 				8448791E23C3A9A900F37788 /* dateExt.swift in Sources */,
 				84092847237CE16B00C695F6 /* Image.swift in Sources */,
 				84EB32D3244A03DE009816CE /* AppUtility.swift in Sources */,
@@ -737,6 +758,7 @@
 				84DC84BD23A2F2AA00B82BCD /* User.swift in Sources */,
 				840704892336E4E900961B1E /* SceneDelegate.swift in Sources */,
 				840EAC4823BBF877002D0AF6 /* ActivityViewController.swift in Sources */,
+				849CFC29245322E3007BD77B /* AddWorkoutViewController.swift in Sources */,
 				845FD8C12380995100E9B1D8 /* StartRoutineViewController.swift in Sources */,
 				845FD90D2392F53A00E9B1D8 /* HistoryTableViewCell.swift in Sources */,
 				84086D3D23CE562300795C3D /* InteractionTableViewCell.swift in Sources */,
@@ -747,19 +769,21 @@
 				84DF7B6A23957E630098A4C7 /* locationHistory.swift in Sources */,
 				84C10B2C23369FEB00146547 /* VideoTableViewCell.swift in Sources */,
 				84DC84BB23A1B4C800B82BCD /* notificationSettings.swift in Sources */,
+				849CFC2124523098007BD77B /* CustomeExercise.swift in Sources */,
 				8409283E237C8D9800C695F6 /* RoutineCollectionViewController.swift in Sources */,
 				843C3DA5237F0961006FE720 /* RoutineTableViewCell.swift in Sources */,
 				845FD8E22385CD4C00E9B1D8 /* Balloon.swift in Sources */,
 				849CFC1F24522CB7007BD77B /* DiaryTableViewController.swift in Sources */,
 				84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */,
-				8407048D23371D6E00961B1E /* StepTableViewCell.swift in Sources */,
 				846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */,
 				845FD8CF23844A8A00E9B1D8 /* RoutineSection.swift in Sources */,
 				845FD8C5238309A100E9B1D8 /* GifViewController.swift in Sources */,
+				849CFC2D24552F57007BD77B /* DiaryTableViewCell.swift in Sources */,
 				845FD8C723830C1600E9B1D8 /* swift+gif.swift in Sources */,
 				84C10B2A23369FD100146547 /* TableViewController.swift in Sources */,
 				84092840237CD46000C695F6 /* RoutineCollectionViewCell.swift in Sources */,
 				846446A22376008500F493F0 /* TabBarViewController.swift in Sources */,
+				849CFC2B2453250A007BD77B /* AddWorkoutTableCell.swift in Sources */,
 				845FD8D32384518500E9B1D8 /* ExerciseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

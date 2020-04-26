@@ -18,6 +18,7 @@ class dailyRoutine: Object {
     @objc dynamic var exerciseType : String
     @objc dynamic var seconds : Int
     @objc dynamic var dateString : String
+    @objc dynamic var uuid : String = UUID().uuidString
     
     required init() {
 //        totalBodySeconds = 0
@@ -27,13 +28,13 @@ class dailyRoutine: Object {
         self.exerciseType = ""
         seconds = 0
         let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        df.dateFormat = "yyyy-MM-dd"
         self.dateString = df.string(from: Date())
     }
     
     
     override static func primaryKey() -> String? {
-      return "dateString"
+      return "uuid"
     }
     
     class func hasBeenActiveEnough()->String{

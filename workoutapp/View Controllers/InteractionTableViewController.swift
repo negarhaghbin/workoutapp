@@ -29,7 +29,6 @@ class InteractionTableViewController: UIViewController, UITableViewDelegate, UIT
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         switch segmentController.selectedSegmentIndex {
         case 0:
             return routineHistory.count
@@ -42,16 +41,7 @@ class InteractionTableViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-//        switch segmentController.selectedSegmentIndex {
-//        case 0:
-//            return routineHistory.count
-//        case 1:
-//            return interactions.count
-//        default:
-//            print("unknown value")
-//        }
-        return 1
+        return 3
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -88,25 +78,7 @@ class InteractionTableViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     @IBAction func segmentTapped(_ sender: Any) {
-//        switch segmentController.selectedSegmentIndex {
-//        case 0:
-//            data = dailyRoutine.getDictionary()
-//            for title in titles{
-//                let percentage = (Float(data[title]!)*100.0)/(2*60.0)
-//                percentages.append(percentage)
-//            }
-//        case 1:
-//            data = dailyRoutine.getAllDictionary()
-//            for title in titles{
-//                totalTime.append(Float(data[title]!))
-//            }
-//            max = Int(totalTime.max()!)
-//
-//        default:
-//            print("not familiar segment")
-//        }
         tableView.reloadData()
-        //reloadProgress(index: index)
     }
 
     /*
