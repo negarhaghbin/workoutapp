@@ -18,10 +18,10 @@ enum ExerciseType : String {
 class RoutineSection: NSObject {
     var title: String
     var image : Image
-    var exercises : [ExerciseModel]
+    var exercises : [AppExercise]
     var repetition : Int
     
-    init(title: String, image: Image, exercises:[ExerciseModel]) {
+    init(title: String, image: Image, exercises:[AppExercise]) {
         self.title = title
         self.image = image
         self.exercises = exercises
@@ -79,10 +79,10 @@ class RoutineSection: NSObject {
         for (index, title) in titles.enumerated(){
             sections.append(RoutineSection(title: title, image: images[index], exercises: []))
         }
-        let exercises = ExerciseModel.loadExercises()
+        let exercises = AppExercise.loadExercises()
         for exercise in exercises{
             for section in sections{
-                if section.title == exercise.section{
+                if section.title == exercise.exercise?.type{
                     section.exercises.append(exercise)
                 }
             }
@@ -97,16 +97,16 @@ class RoutineSection: NSObject {
         for (index, title) in titles.enumerated(){
             sections.append(RoutineSection(title: title.rawValue, image: images[index], exercises: []))
         }
-        let exercises = ExerciseModel.loadExercises()
+        let exercises = AppExercise.loadExercises()
         for exercise in exercises{
             for section in sections{
-                if section.title == exercise.section{
+                if section.title == exercise.exercise?.type{
                     if exercise.bothSides{
-                        let exerciseLeft = ExerciseModel(value: exercise)
-                        exerciseLeft.title += "(left)"
+                        let exerciseLeft = AppExercise(value: exercise)
+                        exerciseLeft.exercise?.name += "(left)"
                         section.exercises.append(exerciseLeft)
-                        let exerciseRight = ExerciseModel(value: exercise)
-                        exerciseRight.title += "(right)"
+                        let exerciseRight = AppExercise(value: exercise)
+                        exerciseRight.exercise?.name += "(right)"
                         section.exercises.append(exerciseRight)
                     }
                     else{

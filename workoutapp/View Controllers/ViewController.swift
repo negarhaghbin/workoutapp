@@ -21,7 +21,7 @@ class ViewController: UIViewController, UITableViewDelegate, UIPickerViewDelegat
     @IBOutlet weak var subtitleView: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var youtubeView: WKYTPlayerView!
-    var exercise : ExerciseModel?{
+    var exercise : AppExercise?{
         didSet{
             refreshUI()
         }
@@ -30,7 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UIPickerViewDelegat
     private func refreshUI(){
         UIPicker.delegate = self
         UIPicker.dataSource = self
-        addPickerLabels()
+        addPickerLabels(picker: UIPicker, vc: self)
         if changeDurationAlert.textFields?.count==0{
             createChangeDurationAlert()
         }
@@ -48,7 +48,7 @@ class ViewController: UIViewController, UITableViewDelegate, UIPickerViewDelegat
             }
         }
         
-        titleLabel.text = exercise?.title
+        titleLabel.text = exercise?.exercise?.name
         durationLabel.text = SecondsToString(time: exercise!.durationS)
 //        subtitleView.text=exercise?.getDescription()
         
@@ -74,25 +74,6 @@ class ViewController: UIViewController, UITableViewDelegate, UIPickerViewDelegat
         
     }
     
-    func addPickerLabels(){
-        let font = UIFont.boldSystemFont(ofSize: 20.0)
-        let fontSize: CGFloat = font.pointSize
-        let componentWidth: CGFloat = self.view.frame.width / CGFloat(UIPicker.numberOfComponents)
-        let y = (UIPicker.frame.size.height / 2) - (fontSize / 2)
-
-        let label1 = UILabel(frame: CGRect(x: componentWidth * 0.65, y: y, width: componentWidth * 0.4, height: fontSize))
-        label1.font = font
-        label1.textAlignment = .left
-        label1.text = "min"
-        UIPicker.addSubview(label1)
-
-        let label2 = UILabel(frame: CGRect(x: componentWidth * 1.65, y: y, width: componentWidth * 0.4, height: fontSize))
-        label2.font = font
-        label2.textAlignment = .left
-        label2.text = "sec"
-        UIPicker.addSubview(label2)
-    }
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
@@ -115,7 +96,7 @@ class ViewController: UIViewController, UITableViewDelegate, UIPickerViewDelegat
 }
 
 extension ViewController: ExerciseSelectionDelegate {
-  func exerciseSelected(_ newExercise: ExerciseModel) {
+  func exerciseSelected(_ newExercise: AppExercise) {
     exercise = newExercise
   }
 }

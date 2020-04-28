@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ExerciseSelectionDelegate: class {
-  func exerciseSelected(_ newExercise: ExerciseModel)
+  func exerciseSelected(_ newExercise: AppExercise)
 }
 
 class TableViewController: UITableViewController {
@@ -44,7 +44,7 @@ class TableViewController: UITableViewController {
         }
         
         let exercise = sections[indexPath.section].exercises[indexPath.row]
-        cell.titleLabel.text = exercise.title
+        cell.titleLabel.text = exercise.exercise?.name
         cell.previewImageView.image = UIImage(named: (exercise.gifName + ".gif"))
         return cell
     }

@@ -23,7 +23,7 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    var selectedExercise = ExerciseModel()
+    var selectedExercise = AppExercise()
     
     let RoutineTableReuseIdentifier = "RoutineTableReuseIdentifier"
     @IBOutlet weak var startButton: UIButton!
@@ -69,10 +69,10 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         let exercise = section!.exercises[indexPath.row]
-        cell.title.text = exercise.title
+        cell.title.text = exercise.exercise?.name
         cell.previewImage.image = UIImage(named: (exercise.gifName + ".gif"))
         
-        if(customizedSection?.exercises[indexPath.row].title != ""){
+        if(customizedSection?.exercises[indexPath.row].exercise?.name != ""){
             cell.selectionSwitch.setOn(true, animated: true)
         }
         else{
@@ -90,7 +90,7 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
             customizedSection?.exercises[sender.tag] = section!.exercises[sender.tag]
         }
         else{
-            customizedSection?.exercises[sender.tag] = ExerciseModel()
+            customizedSection?.exercises[sender.tag] = AppExercise()
         }
     }
    
@@ -149,7 +149,7 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
             let vc = segue.destination as? StartRoutineViewController
             // Pass the selected object to the new view controller.
             customizedSection?.exercises = (customizedSection?.exercises.filter {
-                $0.title != ""
+                $0.exercise?.name != ""
                 })!
             vc!.section = customizedSection
         }

@@ -11,20 +11,20 @@ import UIKit
 class DiaryTableViewController: UITableViewController {
     
     @IBOutlet weak var warningView: UIView!
-    var routineHistory : [dailyRoutine] = dailyRoutine.getAll()
+    var diary : [DiaryItem] = DiaryItem.getAll()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if routineHistory.count == 0{
+        if diary.count == 0{
             warningView.isHidden = false
         }
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.estimatedRowHeight = 100
+        diary = DiaryItem.getAll()
+        tableView.reloadData()
+    }
+    
 
     // MARK: - Table view data source
 
@@ -33,19 +33,20 @@ class DiaryTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return routineHistory.count
+        return diary.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as? DiaryTableViewCell{
-            cell.nameLabel.text = routineHistory[indexPath.row].exerciseType
-            cell.durationLabel.text = SecondsToString(time: routineHistory[indexPath.row].seconds)
+            cell.nameLabel.text = diary[indexPath.row].exercise?.name
+            cell.durationLabel.text = diary[indexPath.row].durationS
+            return cell
+        }
+        else{
+            return DiaryTableViewCell()
         }
         
-
-
-        return UITableViewCell()
     }
     
 

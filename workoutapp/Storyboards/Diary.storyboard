@@ -34,27 +34,31 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="aA1-2h-M3N" customClass="DiaryTableViewCell" customModule="_M_Workout" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="99.5" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="99.5" width="414" height="43"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aA1-2h-M3N" id="gfg-52-q1V">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waF-nk-z5f">
-                                            <rect key="frame" x="28" y="11.5" width="111.5" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waF-nk-z5f">
+                                            <rect key="frame" x="28" y="11" width="179" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obx-lV-htg">
-                                            <rect key="frame" x="324" y="11.5" width="80" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 minutes and 3 seconds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obx-lV-htg">
+                                            <rect key="frame" x="207" y="11" width="197" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="waF-nk-z5f" firstAttribute="top" secondItem="gfg-52-q1V" secondAttribute="top" constant="11" id="ALt-J4-NGy"/>
+                                        <constraint firstAttribute="centerX" secondItem="waF-nk-z5f" secondAttribute="trailing" id="BUd-Sc-ZPb"/>
                                         <constraint firstItem="obx-lV-htg" firstAttribute="centerY" secondItem="gfg-52-q1V" secondAttribute="centerY" id="Ci7-rB-Sdk"/>
+                                        <constraint firstAttribute="bottom" secondItem="waF-nk-z5f" secondAttribute="bottom" constant="11" id="PNE-Ip-5RD"/>
+                                        <constraint firstItem="obx-lV-htg" firstAttribute="leading" secondItem="waF-nk-z5f" secondAttribute="trailing" id="TJe-kp-QUf"/>
                                         <constraint firstItem="waF-nk-z5f" firstAttribute="centerY" secondItem="gfg-52-q1V" secondAttribute="centerY" id="VSB-OT-Fkl"/>
                                         <constraint firstAttribute="trailing" secondItem="obx-lV-htg" secondAttribute="trailing" constant="10" id="d9e-4y-OM4"/>
                                         <constraint firstItem="waF-nk-z5f" firstAttribute="leading" secondItem="gfg-52-q1V" secondAttribute="leadingMargin" constant="8" id="gUl-VE-Wvl"/>

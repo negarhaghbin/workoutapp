@@ -21,6 +21,8 @@ class GifViewController: UIViewController {
     
     @IBOutlet weak var totalProgress: UIProgressView!
     @IBOutlet weak var exerciseTitle: UILabel!
+    
+    var exercisesDone : [AppExercise] = []
     var animationTimer: Timer?
     var startTime: TimeInterval?, endTime: TimeInterval?
     let animationDuration = 3.0
@@ -41,7 +43,7 @@ class GifViewController: UIViewController {
     var resumeTapped : Bool = false
     var seconds = 0
     var routineDuration = 0
-    var routineExercises :[ExerciseModel] = []
+    var routineExercises :[AppExercise] = []
     
     
     var section : RoutineSection?{
@@ -64,7 +66,7 @@ class GifViewController: UIViewController {
         loadView()
         gifView.loadGif(name: (section?.exercises[0].gifName)!)
         exerciseSeconds = (section?.exercises[0].durationS)!
-        exerciseTitle.text = (section?.exercises[0].title)!
+        exerciseTitle.text = (section?.exercises[0].exercise?.name)!
         nextLabel.text = "Next: Rest"
         counter.text = self.timeString(time: TimeInterval(self.seconds))
         exerciseCounter.text = self.timeString(time: TimeInterval(self.exerciseSeconds))
@@ -113,7 +115,7 @@ class GifViewController: UIViewController {
                         self.exerciseSeconds = self.restDuration
                         self.gifView.image=UIImage(named: "rest.png")
                         self.exerciseTitle.text = "Rest"
-                        self.nextLabel.text = "Next: \(self.routineExercises[self.currentExerciseIndex+1].title)"
+                        self.nextLabel.text = "Next: \(self.routineExercises[self.currentExerciseIndex+1].exercise?.name)"
                         self.isResting = true
                         self.PB.startOver(duration: self.exerciseSeconds)
                        // self.totalProgress.tintColor = UIColor.yellow
@@ -122,7 +124,7 @@ class GifViewController: UIViewController {
                         self.increaseExerciseIndex()
                         self.exerciseSeconds = (self.routineExercises[self.currentExerciseIndex].durationS)
                         self.gifView.loadGif(name: (self.routineExercises[self.currentExerciseIndex].gifName))
-                        self.exerciseTitle.text = self.routineExercises[self.currentExerciseIndex].title
+                        self.exerciseTitle.text = self.routineExercises[self.currentExerciseIndex].exercise?.name
                         self.nextLabel.text = "Next: Rest"
                         self.isResting = false
                         self.PB.startOver(duration: self.exerciseSeconds)

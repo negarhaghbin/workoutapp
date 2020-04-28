@@ -43,7 +43,7 @@ class AddWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         let exercise = sections[indexPath.section].exercises[indexPath.row]
-        cell.titleLabel.text = exercise.title
+        cell.titleLabel.text = exercise.exercise?.name
         cell.previewImageView.image = UIImage(named: (exercise.gifName + ".gif"))
         return cell
     }

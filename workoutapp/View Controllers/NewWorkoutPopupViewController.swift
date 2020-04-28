@@ -24,7 +24,7 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     @IBOutlet weak var saveButton: UIButton!
     let types=[ExerciseType.total.rawValue, ExerciseType.upper.rawValue, ExerciseType.abs.rawValue, ExerciseType.lower.rawValue]
     
-    var exercise : ExerciseModel?{
+    var exercise : AppExercise?{
         didSet{
             refreshUI()
         }
@@ -39,14 +39,14 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
         // Do any additional setup after loading the view.
     }
     
-    func exerciseSelected(_ newExercise: ExerciseModel) {
+    func exerciseSelected(_ newExercise: AppExercise) {
         exercise = newExercise
     }
     
     private func refreshUI(){
         loadView()
-        nameField.text = exercise?.title
-        typeLabel.text = exercise?.section
+        nameField.text = exercise?.exercise?.name
+        typeLabel.text = exercise?.exercise?.type
         durationLabel.text = SecondsToString(time: exercise!.durationS)
     }
     
@@ -55,6 +55,7 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateLabel.text = dateFormatter.string(from: Date())
+        addPickerLabels(picker: durationPicker, vc: self)
     }
     
     @IBAction func nameFieldChanged(_ sender: UITextField) {
@@ -101,8 +102,14 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     }
     
     @IBAction func save(_ sender: Any) {
-        let ce = CustomeExercise(name: nameField.text!, type: typeLabel.text!)
-        let _ = DiaryItem(e: ce, d: durationLabel.text!, date: dateLabel.text!)
+        var e = Exercise()
+        if Exercise.isNew(name: nameField.text!){
+            e = Exercise(name: nameField.text!, type: typeLabel.text!)
+        }
+        else{
+            e = Exercise.getObject(name: nameField.text!)
+        }
+        let _ = DiaryItem(e: e, d: durationLabel.text!, date: dateLabel.text!)
         dismiss(animated: true)
     }
     

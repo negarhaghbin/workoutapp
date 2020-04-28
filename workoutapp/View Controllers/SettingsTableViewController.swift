@@ -49,7 +49,7 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
         super.viewDidLoad()
         UIPicker.delegate = self
         UIPicker.dataSource = self
-        addPickerLabels()
+        addPickerLabels(picker: UIPicker, vc: self)
         createRestDurationAlert()
         createSendOnAlert()
         createSendAfterAlert()

@@ -36,7 +36,7 @@
 		845FD8C5238309A100E9B1D8 /* GifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C4238309A100E9B1D8 /* GifViewController.swift */; };
 		845FD8C723830C1600E9B1D8 /* swift+gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C623830C1600E9B1D8 /* swift+gif.swift */; };
 		845FD8CF23844A8A00E9B1D8 /* RoutineSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8CE23844A8A00E9B1D8 /* RoutineSection.swift */; };
-		845FD8D32384518500E9B1D8 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8D22384518500E9B1D8 /* ExerciseModel.swift */; };
+		845FD8D32384518500E9B1D8 /* AppExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8D22384518500E9B1D8 /* AppExercise.swift */; };
 		845FD8DB23859FD100E9B1D8 /* raised-leg-hold.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8D523859FD100E9B1D8 /* raised-leg-hold.gif */; };
 		845FD8DC23859FD100E9B1D8 /* crunch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8D623859FD100E9B1D8 /* crunch.gif */; };
 		845FD8DD23859FD100E9B1D8 /* sitting-twists.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8D723859FD100E9B1D8 /* sitting-twists.gif */; };
@@ -75,7 +75,7 @@
 		849CFC17244F79FC007BD77B /* Diary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849CFC16244F79FC007BD77B /* Diary.storyboard */; };
 		849CFC1B244F7C15007BD77B /* icons8-diary-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 849CFC1A244F7C15007BD77B /* icons8-diary-50.png */; };
 		849CFC1F24522CB7007BD77B /* DiaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC1E24522CB7007BD77B /* DiaryTableViewController.swift */; };
-		849CFC2124523098007BD77B /* CustomeExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC2024523098007BD77B /* CustomeExercise.swift */; };
+		849CFC2124523098007BD77B /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC2024523098007BD77B /* Exercise.swift */; };
 		849CFC232452319A007BD77B /* DiaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC222452319A007BD77B /* DiaryItem.swift */; };
 		849CFC25245238FF007BD77B /* NewWorkoutPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC24245238FF007BD77B /* NewWorkoutPopupViewController.swift */; };
 		849CFC2724532000007BD77B /* HideKeyboardExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC2624532000007BD77B /* HideKeyboardExt.swift */; };
@@ -171,7 +171,7 @@
 		845FD8C4238309A100E9B1D8 /* GifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifViewController.swift; sourceTree = "<group>"; };
 		845FD8C623830C1600E9B1D8 /* swift+gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "swift+gif.swift"; sourceTree = "<group>"; };
 		845FD8CE23844A8A00E9B1D8 /* RoutineSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSection.swift; sourceTree = "<group>"; };
-		845FD8D22384518500E9B1D8 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
+		845FD8D22384518500E9B1D8 /* AppExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExercise.swift; sourceTree = "<group>"; };
 		845FD8D523859FD100E9B1D8 /* raised-leg-hold.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "raised-leg-hold.gif"; sourceTree = "<group>"; };
 		845FD8D623859FD100E9B1D8 /* crunch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = crunch.gif; sourceTree = "<group>"; };
 		845FD8D723859FD100E9B1D8 /* sitting-twists.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "sitting-twists.gif"; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 		849CFC16244F79FC007BD77B /* Diary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Diary.storyboard; sourceTree = "<group>"; };
 		849CFC1A244F7C15007BD77B /* icons8-diary-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-diary-50.png"; sourceTree = "<group>"; };
 		849CFC1E24522CB7007BD77B /* DiaryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableViewController.swift; sourceTree = "<group>"; };
-		849CFC2024523098007BD77B /* CustomeExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeExercise.swift; sourceTree = "<group>"; };
+		849CFC2024523098007BD77B /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		849CFC222452319A007BD77B /* DiaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryItem.swift; sourceTree = "<group>"; };
 		849CFC24245238FF007BD77B /* NewWorkoutPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutPopupViewController.swift; sourceTree = "<group>"; };
 		849CFC2624532000007BD77B /* HideKeyboardExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardExt.swift; sourceTree = "<group>"; };
@@ -278,12 +278,12 @@
 			isa = PBXGroup;
 			children = (
 				84DC84BC23A2F2AA00B82BCD /* User.swift */,
-				845FD8D22384518500E9B1D8 /* ExerciseModel.swift */,
+				845FD8D22384518500E9B1D8 /* AppExercise.swift */,
 				845FD9082390A35E00E9B1D8 /* dailyRoutine.swift */,
 				84DF7B6923957E630098A4C7 /* locationHistory.swift */,
 				84DC84BA23A1B4C800B82BCD /* notificationSettings.swift */,
 				8448791F23C67B7800F37788 /* Interaction.swift */,
-				849CFC2024523098007BD77B /* CustomeExercise.swift */,
+				849CFC2024523098007BD77B /* Exercise.swift */,
 				849CFC222452319A007BD77B /* DiaryItem.swift */,
 			);
 			path = Models;
@@ -769,7 +769,7 @@
 				84DF7B6A23957E630098A4C7 /* locationHistory.swift in Sources */,
 				84C10B2C23369FEB00146547 /* VideoTableViewCell.swift in Sources */,
 				84DC84BB23A1B4C800B82BCD /* notificationSettings.swift in Sources */,
-				849CFC2124523098007BD77B /* CustomeExercise.swift in Sources */,
+				849CFC2124523098007BD77B /* Exercise.swift in Sources */,
 				8409283E237C8D9800C695F6 /* RoutineCollectionViewController.swift in Sources */,
 				843C3DA5237F0961006FE720 /* RoutineTableViewCell.swift in Sources */,
 				845FD8E22385CD4C00E9B1D8 /* Balloon.swift in Sources */,
@@ -784,7 +784,7 @@
 				84092840237CD46000C695F6 /* RoutineCollectionViewCell.swift in Sources */,
 				846446A22376008500F493F0 /* TabBarViewController.swift in Sources */,
 				849CFC2B2453250A007BD77B /* AddWorkoutTableCell.swift in Sources */,
-				845FD8D32384518500E9B1D8 /* ExerciseModel.swift in Sources */,
+				845FD8D32384518500E9B1D8 /* AppExercise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

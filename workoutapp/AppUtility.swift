@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 func MinutesToString(time: Int)->String{
     //print(time)
@@ -75,4 +76,23 @@ func SecondsToString(time: Int)->String{
             return "\(minutes) minutes and \(seconds) seconds"
         }
     }
+}
+
+func addPickerLabels(picker: UIPickerView, vc: UIViewController){
+    let font = UIFont.boldSystemFont(ofSize: 20.0)
+    let fontSize: CGFloat = font.pointSize
+    let componentWidth: CGFloat = vc.view.frame.width / CGFloat(picker.numberOfComponents)
+    let y = (picker.frame.size.height / 2) - (fontSize / 2)
+
+    let label1 = UILabel(frame: CGRect(x: componentWidth * 0.65, y: y, width: componentWidth * 0.4, height: fontSize))
+    label1.font = font
+    label1.textAlignment = .left
+    label1.text = "min"
+    picker.addSubview(label1)
+
+    let label2 = UILabel(frame: CGRect(x: componentWidth * 1.65, y: y, width: componentWidth * 0.4, height: fontSize))
+    label2.font = font
+    label2.textAlignment = .left
+    label2.text = "sec"
+    picker.addSubview(label2)
 }
