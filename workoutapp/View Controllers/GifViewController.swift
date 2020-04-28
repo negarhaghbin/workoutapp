@@ -60,11 +60,12 @@ class GifViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         user = try! Realm().object(ofType: User.self, forPrimaryKey: UserDefaults.standard.string(forKey: "uuid"))!
         restDuration = user.restDuration
+        routineDuration = (section!.repetition * (section?.getDuration())!) + ((routineExercises.count-1) * restDuration)
     }
     
     private func refreshUI(){
         loadView()
-        print(section?.exercises)
+        
         gifView.loadGif(name: (section?.exercises[0].gifName)!)
         exerciseSeconds = (section?.exercises[0].durationS)!
         exerciseTitle.text = (section?.exercises[0].exercise?.name)!
@@ -111,6 +112,7 @@ class GifViewController: UIViewController {
                 self.playSound(name: "countdown", extensionType: "wav")
             }
             else if self.exerciseSeconds == 0 {
+                
                 if (self.currentExerciseIndex < ((self.routineExercises.count)-1)){
                     if (!self.isResting){
                         self.exerciseSeconds = self.restDuration
@@ -119,7 +121,8 @@ class GifViewController: UIViewController {
                         self.nextLabel.text = "Next: \(String(describing: self.routineExercises[self.currentExerciseIndex+1].exercise!.name))"
                         self.isResting = true
                         self.PB.startOver(duration: self.exerciseSeconds)
-                       // self.totalProgress.tintColor = UIColor.yellow
+                       //after finishing one exercise
+                       self.exercisesDone.append(self.routineExercises[self.currentExerciseIndex])
                     }
                     else{
                         self.increaseExerciseIndex()
@@ -148,6 +151,12 @@ class GifViewController: UIViewController {
     }
     
     func exitRoutine(){
+        //exiting
+        exercisesDone.append(self.routineExercises[self.currentExerciseIndex])
+        //FIX mogheye kharej shodan faghat tedade second ee ke anjam dade add she
+        
+        DiaryItem.add(appExList: exercisesDone)
+        
         dailyRoutine.add(seconds: self.seconds, sectionTitle: section!.title)
         UIApplication.shared.isIdleTimerDisabled = false
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "NextViewController") as! RoutineCollectionViewController

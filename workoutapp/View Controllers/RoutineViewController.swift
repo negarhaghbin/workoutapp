@@ -72,11 +72,11 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.title.text = exercise.exercise?.name
         cell.previewImage.image = UIImage(named: (exercise.gifName + ".gif"))
         
-        if(customizedSection?.exercises[indexPath.row].exercise?.name != ""){
-            cell.selectionSwitch.setOn(true, animated: true)
+        if(customizedSection?.exercises[indexPath.row].exercise != nil){
+            cell.selectionSwitch.setOn(true, animated: false)
         }
         else{
-            cell.selectionSwitch.setOn(false, animated: true)
+            cell.selectionSwitch.setOn(false, animated: false)
         }
         
         cell.selectionSwitch.tag = indexPath.row

@@ -15,13 +15,13 @@ class DiaryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if diary.count == 0{
-            warningView.isHidden = false
-        }
     }
     override func viewWillAppear(_ animated: Bool) {
         tableView.estimatedRowHeight = 100
         diary = DiaryItem.getAll()
+        if diary.count == 0{
+            warningView.isHidden = false
+        }
         tableView.reloadData()
     }
     
