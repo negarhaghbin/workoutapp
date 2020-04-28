@@ -149,7 +149,7 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
             let vc = segue.destination as? StartRoutineViewController
             // Pass the selected object to the new view controller.
             customizedSection?.exercises = (customizedSection?.exercises.filter {
-                $0.exercise?.name != ""
+                $0.exercise != nil
                 })!
             vc!.section = customizedSection
         }

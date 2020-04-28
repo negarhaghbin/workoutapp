@@ -68,7 +68,7 @@ class RoutineSection: NSObject {
             }
             equipmentsString = temp
         }
-        print(self.getDuration())
+        
         return "  \(SecondsToString(time: self.getDuration())) \u{2022} \(equipmentsString)"
     }
     
@@ -101,17 +101,7 @@ class RoutineSection: NSObject {
         for exercise in exercises{
             for section in sections{
                 if section.title == exercise.exercise?.type{
-                    if exercise.bothSides{
-                        let exerciseLeft = AppExercise(value: exercise)
-                        exerciseLeft.exercise?.name += "(left)"
-                        section.exercises.append(exerciseLeft)
-                        let exerciseRight = AppExercise(value: exercise)
-                        exerciseRight.exercise?.name += "(right)"
-                        section.exercises.append(exerciseRight)
-                    }
-                    else{
                        section.exercises.append(exercise)
-                    }
                     
                 }
             }

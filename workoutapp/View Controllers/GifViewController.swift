@@ -64,6 +64,7 @@ class GifViewController: UIViewController {
     
     private func refreshUI(){
         loadView()
+        print(section?.exercises)
         gifView.loadGif(name: (section?.exercises[0].gifName)!)
         exerciseSeconds = (section?.exercises[0].durationS)!
         exerciseTitle.text = (section?.exercises[0].exercise?.name)!
@@ -115,7 +116,7 @@ class GifViewController: UIViewController {
                         self.exerciseSeconds = self.restDuration
                         self.gifView.image=UIImage(named: "rest.png")
                         self.exerciseTitle.text = "Rest"
-                        self.nextLabel.text = "Next: \(self.routineExercises[self.currentExerciseIndex+1].exercise?.name)"
+                        self.nextLabel.text = "Next: \(String(describing: self.routineExercises[self.currentExerciseIndex+1].exercise!.name))"
                         self.isResting = true
                         self.PB.startOver(duration: self.exerciseSeconds)
                        // self.totalProgress.tintColor = UIColor.yellow

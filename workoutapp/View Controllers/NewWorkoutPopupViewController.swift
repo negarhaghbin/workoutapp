@@ -59,7 +59,6 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     }
     
     @IBAction func nameFieldChanged(_ sender: UITextField) {
-        print(nameField.text)
         if nameField.text == "" {
             saveButton.isHighlighted = true
             saveButton.isEnabled = false

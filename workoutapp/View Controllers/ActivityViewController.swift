@@ -55,7 +55,7 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
             max = Int(totalTime.max()!)
         
         default:
-            print("not familiar segment")
+            print("unknown segment")
         }
     }
     
@@ -83,7 +83,7 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
             else{
                 cell.percentage.text = String(format: "%.2f %%",percentages[indexPath.section])
             }
-            //print(index)
+            
             cell.showToday(percentages[indexPath.section])
             cell.subtitle.isHidden=false
         case 1:
@@ -97,30 +97,11 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
             cell.subtitle.isHidden=true
         
         default:
-            print("not familiar segment")
+            print("unknown segment")
         }
         
         return cell
     }
-    
-//    func reloadProgress(index: Int) {
-//        for indexPath in tView.indexPathsForVisibleRows ?? [] {
-//
-//            if (tView.cellForRow(at: indexPath) as? HistoryTableViewCell) != nil {
-//                switch index {
-//                case 0:
-//                    delegate?.showToday(percentages[indexPath.section])
-//                case 1:
-//                    delegate?.showAllTime(self.totalTime[indexPath.section]/Float(self.max))
-//                       
-//                default:
-//                    print("not familiar segment")
-//                }
-//                
-//               
-//            }
-//        }
-//    }
     
     @IBAction func segmentTapped(_ sender: Any) {
         let index = segmentController.selectedSegmentIndex
@@ -139,10 +120,9 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
             max = Int(totalTime.max()!)
         
         default:
-            print("not familiar segment")
+            print("unknown segment")
         }
         tView.reloadData()
-        //reloadProgress(index: index)
     }
     
     func timeString(seconds:Int) -> String {

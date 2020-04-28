@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 func MinutesToString(time: Int)->String{
-    //print(time)
     let hours = time / 3600
     let minutes = time / 60 % 60
     switch hours {

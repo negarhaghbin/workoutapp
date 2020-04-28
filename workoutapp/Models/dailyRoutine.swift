@@ -108,7 +108,7 @@ class dailyRoutine: Object {
             case ExerciseType.lower.rawValue:
             dict[ExerciseType.lower.rawValue]! += (routine.seconds)
             default:
-                print("doesn't identify exercise type")
+                print("unknown exercise type")
                 
             }
         }
