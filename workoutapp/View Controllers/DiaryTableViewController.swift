@@ -10,18 +10,23 @@ import UIKit
 
 class DiaryTableViewController: UITableViewController {
     
-    @IBOutlet weak var warningView: UIView!
-    var diary : [DiaryItem] = DiaryItem.getAll()
+    @IBOutlet weak var viewLabel: UILabel!
+    var diariesDict : [String:[DiaryItem]] = DiaryItem.getWithDate()
+    var dates : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tableView.estimatedRowHeight = 100
-        diary = DiaryItem.getAll()
-        if diary.count == 0{
-            warningView.isHidden = false
+        diariesDict = DiaryItem.getWithDate()
+        dates = Array(diariesDict.keys).sorted(by: >)
+        if diariesDict.count > 0{
+            viewLabel.text = "Tap to edit."
         }
+        print("here")
         tableView.reloadData()
     }
     
@@ -29,18 +34,18 @@ class DiaryTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return diariesDict.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return diary.count
+        return diariesDict[dates[section]]!.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as? DiaryTableViewCell{
-            cell.nameLabel.text = diary[indexPath.row].exercise?.name
-            cell.durationLabel.text = diary[indexPath.row].durationS
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "diaryCell", for: indexPath) as? DiaryTableViewCell{
+            cell.nameLabel.text = diariesDict[dates[indexPath.section]]![indexPath.row].exercise?.name
+            cell.durationLabel.text = diariesDict[dates[indexPath.section]]![indexPath.row].durationS
             return cell
         }
         else{
@@ -48,6 +53,11 @@ class DiaryTableViewController: UITableViewController {
         }
         
     }
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return dates[section]
+    }
+    
+    
     
 
     /*
@@ -85,14 +95,18 @@ class DiaryTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showDiaryItem", let destination = segue.destination as? NewWorkoutPopupViewController {
+            if let cell = sender as? UITableViewCell, let indexPath = self.tableView.indexPath(for: cell) {
+                let diaryItem = diariesDict[dates[indexPath.section]]![indexPath.row]
+                destination.diaryItem = diaryItem
+            }
+        }
     }
-    */
+    
 
 }

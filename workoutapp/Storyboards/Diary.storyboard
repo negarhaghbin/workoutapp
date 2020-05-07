@@ -7,15 +7,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Diary Table View Controller-->
+        <!--Diary-->
         <scene sceneID="IJh-hV-yGa">
             <objects>
                 <tableViewController id="asQ-Bh-vCH" customClass="DiaryTableViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="V1M-4A-KLt">
+                    <tableView key="view" clipsSubviews="YES" tag="10" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="V1M-4A-KLt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <view key="tableHeaderView" hidden="YES" contentMode="scaleToFill" id="kaf-Fj-ynB">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="kaf-Fj-ynB">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -33,7 +33,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="aA1-2h-M3N" customClass="DiaryTableViewCell" customModule="_M_Workout" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="diaryCell" id="aA1-2h-M3N" customClass="DiaryTableViewCell" customModule="_M_Workout" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="99.5" width="414" height="43"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aA1-2h-M3N" id="gfg-52-q1V">
@@ -67,6 +67,7 @@
                                 <connections>
                                     <outlet property="durationLabel" destination="obx-lV-htg" id="l6b-Cm-h2e"/>
                                     <outlet property="nameLabel" destination="waF-nk-z5f" id="8hZ-O5-Svc"/>
+                                    <segue destination="IZB-b6-2JE" kind="presentation" identifier="showDiaryItem" modalPresentationStyle="fullScreen" id="ghH-0T-wnj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -75,7 +76,7 @@
                             <outlet property="delegate" destination="asQ-Bh-vCH" id="DDk-Qf-ThZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="9ze-Dd-X5n">
+                    <navigationItem key="navigationItem" title="Diary" id="9ze-Dd-X5n">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="frY-yR-nds">
                             <color key="tintColor" red="0.96470588239999999" green="0.31372549020000001" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -84,7 +85,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="warningView" destination="kaf-Fj-ynB" id="tUw-iU-ZMc"/>
+                        <outlet property="viewLabel" destination="ENL-V8-5NX" id="6eX-UX-7e5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ruj-qD-Bry" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -179,12 +180,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7H2-Yt-yIB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1979.7101449275365" y="85.714285714285708"/>
+            <point key="canvasLocation" x="1933" y="-333"/>
         </scene>
         <!--New Workout Popup View Controller-->
         <scene sceneID="kx3-Lz-3H8">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="IZB-b6-2JE" customClass="NewWorkoutPopupViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IZB-b6-2JE" customClass="NewWorkoutPopupViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tnu-gc-kWW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -337,23 +338,23 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8g-H5-MUA">
-                                <rect key="frame" x="0.0" y="615" width="414" height="198"/>
+                                <rect key="frame" x="0.0" y="615" width="414" height="247"/>
                                 <subviews>
                                     <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="GLu-Ww-BSM">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="198"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="247"/>
                                         <connections>
                                             <action selector="changeDate:" destination="IZB-b6-2JE" eventType="valueChanged" id="At1-0U-Slk"/>
                                         </connections>
                                     </datePicker>
                                     <pickerView hidden="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZEv-af-Kws">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="198"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="247"/>
                                         <connections>
                                             <outlet property="dataSource" destination="IZB-b6-2JE" id="Vk7-aa-eNK"/>
                                             <outlet property="delegate" destination="IZB-b6-2JE" id="Neo-wq-gjs"/>
                                         </connections>
                                     </pickerView>
                                     <pickerView hidden="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ir-8N-q0O">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="198"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="247"/>
                                         <connections>
                                             <outlet property="dataSource" destination="IZB-b6-2JE" id="gs9-Nl-dqM"/>
                                             <outlet property="delegate" destination="IZB-b6-2JE" id="7YZ-gf-ATb"/>
@@ -388,15 +389,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vxh-iU-OcH"/>
                     </view>
+                    <navigationItem key="navigationItem" id="NP9-Mm-CQy"/>
                     <connections>
                         <outlet property="dateLabel" destination="Jgh-qS-pbH" id="k4t-vw-Aia"/>
                         <outlet property="datePicker" destination="GLu-Ww-BSM" id="Cov-8G-kcz"/>
                         <outlet property="durationLabel" destination="UZH-dz-Ncy" id="fxm-W1-eaq"/>
                         <outlet property="durationPicker" destination="1Ir-8N-q0O" id="q40-qh-jMA"/>
                         <outlet property="nameField" destination="YL3-Fw-wT3" id="Cxz-XM-hjN"/>
+                        <outlet property="nameLabelLabel" destination="O4b-jX-iyZ" id="gxT-Wn-82V"/>
                         <outlet property="pickerBackground" destination="F8g-H5-MUA" id="7HK-cP-HOa"/>
                         <outlet property="saveButton" destination="xWg-X2-Nti" id="JIt-MK-EUs"/>
                         <outlet property="typeLabel" destination="bq0-hQ-i3h" id="eH8-A3-FtM"/>
+                        <outlet property="typeLabelLabel" destination="8rw-lm-7YV" id="4YL-OI-sSs"/>
                         <outlet property="typePicker" destination="ZEv-af-Kws" id="aLV-UY-9Yq"/>
                     </connections>
                 </viewController>
@@ -422,7 +426,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2747.826086956522" y="98.4375"/>
+            <point key="canvasLocation" x="3084" y="88"/>
         </scene>
         <!--Diary-->
         <scene sceneID="Vvy-3Y-Z5a">
@@ -446,7 +450,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="CTW-zQ-tca"/>
+        <segue reference="ghH-0T-wnj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="alternatingLunges.png" width="666.5" height="486"/>

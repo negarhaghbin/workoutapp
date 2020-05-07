@@ -254,8 +254,8 @@
                     <connections>
                         <segue destination="JT7-yW-amM" kind="relationship" relationship="viewControllers" id="E21-tN-dBk"/>
                         <segue destination="4fP-AN-iIF" kind="relationship" relationship="viewControllers" id="1cL-rj-Gnm"/>
-                        <segue destination="BxW-JM-kI0" kind="relationship" relationship="viewControllers" id="1pi-dF-21a"/>
                         <segue destination="V4v-Ya-CNT" kind="relationship" relationship="viewControllers" id="ypN-Pa-KeI"/>
+                        <segue destination="BxW-JM-kI0" kind="relationship" relationship="viewControllers" id="gC2-1G-etS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dbb-pb-JMh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -270,7 +270,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="maD-9C-8Ou" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3078" y="1173"/>
+            <point key="canvasLocation" x="-2858" y="1173"/>
         </scene>
         <!--Diary-->
         <scene sceneID="VZp-Ng-n6z">
@@ -280,7 +280,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7UQ-BM-FLR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2847" y="1174"/>
+            <point key="canvasLocation" x="-3064" y="1173"/>
         </scene>
     </scenes>
     <resources>

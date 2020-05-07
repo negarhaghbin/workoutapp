@@ -71,44 +71,63 @@ class AppExercise: Object {
         if Exercise.loadExercises() == []{
             Exercise.initExerciseTable()
         }
+        let total =  "Total Body"
+        let upper = "Upper Body"
+        let abs = "Abs"
+        let lower = "Lower Body"
+        
         let realm = try? Realm()
         
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Crunches")!, g: "crunch", v: "MKmrqcoCZ-M", d: 30, eq: "")
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Air Bike Crunches")!, g:"air-bike-crunches",  v:"jKT7-9L935g", d:30, eq:"" )
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Sitting Twists")!, g:"sitting-twists",  v:"wkD8rjkodUI", d:30, eq:"")
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Raised Leg Hold")!, g:"raised-leg-hold",  v:"l4kQd9eWclE", d:30, eq:"")
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "High Plank Hold")!, g:"plank-hold",  v:"fSaYfvSpAMI", d:30, eq:"")
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Plank Leg Raise")!, g:"plank-leg-raise",  v:"IexgiQZetb8", d:30, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Crunches", type: abs))!, g: "crunch", v: "MKmrqcoCZ-M", d: 30, eq: "")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Air Bike Crunches", type: abs))!, g:"air-bike-crunches",  v:"jKT7-9L935g", d:30, eq:"" )
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Sitting Twists", type: abs))!, g:"sitting-twists",  v:"wkD8rjkodUI", d:30, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Raised Leg Hold", type: abs))!, g:"raised-leg-hold",  v:"l4kQd9eWclE", d:30, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "High Plank Hold", type: abs))!, g:"plank-hold",  v:"fSaYfvSpAMI", d:30, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Plank Leg Raise", type: abs))!, g:"plank-leg-raise",  v:"IexgiQZetb8", d:30, eq:"")
             
-            
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Step Jacks")!, g:"step-jacks",  v:"JHdVMkRBuRA", d:40, eq:"")
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Knee to Elbow")!,  g:"knee-to-elbows",  v:"FzH5nGwYQMA", d:30, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Step Jacks", type: total))!, g:"step-jacks",  v:"JHdVMkRBuRA", d:40, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Knee to Elbow", type: total))!,  g:"knee-to-elbows",  v:"FzH5nGwYQMA", d:30, eq:"")
 
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Lunge Step-ups(left)")!, g: "lunge-step-ups", v: "KM6-6xTRpow", d:30, eq: "")
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Lunge Step-ups(right)")!, g: "lunge-step-ups", v: "KM6-6xTRpow", d:30, eq: "")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Lunge Step-ups(left)", type: total))!, g: "lunge-step-ups", v: "KM6-6xTRpow", d:30, eq: "")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Lunge Step-ups(right)", type: total))!, g: "lunge-step-ups", v: "KM6-6xTRpow", d:30, eq: "")
         
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Calf Raise")!, g:"calf-raise",  v:"-M4-G8p8fmc", d:30, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Calf Raise", type: total))!, g:"calf-raise",  v:"-M4-G8p8fmc", d:30, eq:"")
 
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Bend and Twist(left)")!, g: "bend-and-twist", v: "r2RQoVp9fSk", d:30, eq: "")
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Bend and Twist(right)")!, g: "bend-and-twist", v: "r2RQoVp9fSk", d:30, eq: "")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Bend and Twist(left)", type: total))!, g: "bend-and-twist", v: "r2RQoVp9fSk", d:30, eq: "")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Bend and Twist(right)", type: total))!, g: "bend-and-twist", v: "r2RQoVp9fSk", d:30, eq: "")
             
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Butt Kicks")!, g:"butt-kicks",  v:"oMW59TKZvaI", d:20, eq:"")
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "March Steps")!,  g:"march-steps",  v:"dt7FAEYRLC4", d:20, eq:"")
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Calf Raise Hold")!, g:"calf-raise-hold",  v:"-M4-G8p8fmc", d:20, eq:"")
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Standing Side Leg Raise")!,  g:"standing-side-kicks",  v:"9oGUwrTh7Cs", d:20, eq:"")
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Flutter Kicks")!, g:"flutter-kicks",  v:"eEG9uXjx4vQ", d:25, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Butt Kicks", type: lower))!, g:"butt-kicks",  v:"oMW59TKZvaI", d:20, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "March Steps", type: lower))!,  g:"march-steps",  v:"dt7FAEYRLC4", d:20, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Calf Raise Hold", type: lower))!, g:"calf-raise-hold",  v:"-M4-G8p8fmc", d:20, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Standing Side Leg Raise", type: lower))!,  g:"standing-side-kicks",  v:"9oGUwrTh7Cs", d:20, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Flutter Kicks", type: lower))!, g:"flutter-kicks",  v:"eEG9uXjx4vQ", d:25, eq:"")
             
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Clench/Unclench Overhead")!, g:"clench-unclench-overhead",  v:"", d:30, eq:"")
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Clench/Unclench Arms Raised to the Side")!,  g:"clench-unclench-side",  v:"", d:60, eq:"")
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Raised Arm Circles")!, g:"raised-arm-circles",  v:"", d:30, eq:"")
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Arms Raised to the Side Hold")!, g:"hold", v:"", d:60, eq:"")
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Bicep Extensions")!, g:"bicep-extensions", v:"", d:30, eq:"")
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: "Bicep Extensions Hold")!, g:"bicep-extension-hold", v:"", d:60, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Clench/Unclench Overhead", type: upper))!, g:"clench-unclench-overhead",  v:"", d:30, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Clench/Unclench Arms Raised to the Side", type: upper))!,  g:"clench-unclench-side",  v:"", d:60, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Raised Arm Circles", type: upper))!, g:"raised-arm-circles",  v:"", d:30, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Arms Raised to the Side Hold", type: upper))!, g:"hold", v:"", d:60, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Bicep Extensions", type: upper))!, g:"bicep-extensions", v:"", d:30, eq:"")
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Bicep Extensions Hold", type: upper))!, g:"bicep-extension-hold", v:"", d:60, eq:"")
 
     }
     
     class func loadExercises()->[AppExercise]{
         let realm = try? Realm()
         return Array(realm!.objects(AppExercise.self))
+    }
+    
+    class func hasExercise(name: String, type: String) -> Bool{
+        let realm = try? Realm()
+        var ck = Exercise.getCompoundKey(name: name, type: type)
+        let e = Exercise.getObject(ck: ck)
+        let predicate = NSPredicate(format: "exercise = %@", e)
+        
+        var result = realm!.objects(AppExercise.self).filter(predicate).first
+        if (result != nil){
+            return true
+        }
+        else{
+            return false
+        }
     }
 }

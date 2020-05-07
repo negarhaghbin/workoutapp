@@ -22,9 +22,11 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     @IBOutlet weak var durationLabel: UILabel!
     
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var nameLabelLabel: UILabel!
+    @IBOutlet weak var typeLabelLabel: UILabel!
     let types=[ExerciseType.total.rawValue, ExerciseType.upper.rawValue, ExerciseType.abs.rawValue, ExerciseType.lower.rawValue]
     
-    var exercise : AppExercise?{
+    var diaryItem : DiaryItem?{
         didSet{
             refreshUI()
         }
@@ -40,22 +42,37 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     }
     
     func exerciseSelected(_ newExercise: AppExercise) {
-        exercise = newExercise
+        diaryItem!.exercise = newExercise.exercise
+        diaryItem?.durationS = SecondsToString(time: newExercise.durationS)
     }
     
     private func refreshUI(){
         loadView()
-        nameField.text = exercise?.exercise?.name
-        typeLabel.text = exercise?.exercise?.type
-        durationLabel.text = SecondsToString(time: exercise!.durationS)
+        nameField.text = diaryItem?.exercise?.name
+        typeLabel.text = diaryItem?.exercise?.type
+        durationLabel.text = diaryItem!.durationS
+        dateLabel.text = diaryItem?.dateString
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.dismissKey()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateLabel.text = dateFormatter.string(from: Date())
+        if dateLabel.text == "Label"{
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateLabel.text = dateFormatter.string(from: Date())
+        }
         addPickerLabels(picker: durationPicker, vc: self)
+        if (nameField.text != "" && AppExercise.hasExercise(name: nameField.text!, type: typeLabel.text!)){
+            nameField.isEnabled = false
+            nameField.isUserInteractionEnabled = false
+            typeLabel.isEnabled = false
+            typeLabel.isUserInteractionEnabled = false
+            nameLabelLabel.isEnabled = false
+            nameLabelLabel.isUserInteractionEnabled = false
+            typeLabelLabel.isEnabled = false
+            typeLabelLabel.isUserInteractionEnabled = false
+        }
+        
     }
     
     @IBAction func nameFieldChanged(_ sender: UITextField) {
@@ -102,14 +119,21 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     
     @IBAction func save(_ sender: Any) {
         var e = Exercise()
-        if Exercise.isNew(name: nameField.text!){
+        if Exercise.isNew(ck: Exercise.getCompoundKey(name: nameField.text!, type: typeLabel.text!)){
             e = Exercise(name: nameField.text!, type: typeLabel.text!)
         }
         else{
-            e = Exercise.getObject(name: nameField.text!)
+            e = Exercise.getObject(ck: Exercise.getCompoundKey(name: nameField.text!, type: typeLabel.text!))
         }
-        let _ = DiaryItem(e: e, d: durationLabel.text!, date: dateLabel.text!)
+        if diaryItem != nil{
+            DiaryItem.update(uuid: diaryItem!.uuid, e: e, d: durationLabel.text!, date: dateLabel.text!)
+        }
+        else{
+            diaryItem = DiaryItem(e: e, d: durationLabel.text!, date: dateLabel.text!)
+        }
+        
         dismiss(animated: true)
+        //_ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func cancel(_ sender: Any) {
