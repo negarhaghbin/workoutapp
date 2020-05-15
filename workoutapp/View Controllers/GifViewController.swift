@@ -152,10 +152,19 @@ class GifViewController: UIViewController {
     
     func exitRoutine(){
         //exiting
-        exercisesDone.append(self.routineExercises[self.currentExerciseIndex])
-        //FIX mogheye kharej shodan faghat tedade second ee ke anjam dade add she
-        
-        DiaryItem.add(appExList: exercisesDone)
+        if (!isResting){
+            if (exerciseSeconds == 0){
+                exercisesDone.append(self.routineExercises[self.currentExerciseIndex])
+                DiaryItem.add(appExList: exercisesDone)
+            }
+            else{
+                DiaryItem(e: self.routineExercises[self.currentExerciseIndex].exercise, d: SecondsToString(time: (self.routineExercises[self.currentExerciseIndex].durationS - exerciseSeconds)) )
+            }
+            
+        }
+        else{
+            DiaryItem.add(appExList: exercisesDone)
+        }
         
         dailyRoutine.add(seconds: self.seconds, sectionTitle: section!.title)
         UIApplication.shared.isIdleTimerDisabled = false

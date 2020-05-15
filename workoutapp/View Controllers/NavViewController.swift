@@ -13,7 +13,7 @@ import RealmSwift
 class NavViewController: UINavigationController{
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+//        print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         if isNewUser(){
             askName()
@@ -26,7 +26,6 @@ class NavViewController: UINavigationController{
         if defaults.string(forKey: "isAppAlreadyLaunchedOnce") != nil{
             return false
         }
-        
         return true
     }
         

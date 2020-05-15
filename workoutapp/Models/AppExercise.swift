@@ -108,6 +108,7 @@ class AppExercise: Object {
         AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Arms Raised to the Side Hold", type: upper))!, g:"hold", v:"", d:60, eq:"")
         AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Bicep Extensions", type: upper))!, g:"bicep-extensions", v:"", d:30, eq:"")
         AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Bicep Extensions Hold", type: upper))!, g:"bicep-extension-hold", v:"", d:60, eq:"")
+        
 
     }
     
@@ -118,11 +119,11 @@ class AppExercise: Object {
     
     class func hasExercise(name: String, type: String) -> Bool{
         let realm = try? Realm()
-        var ck = Exercise.getCompoundKey(name: name, type: type)
+        let ck = Exercise.getCompoundKey(name: name, type: type)
         let e = Exercise.getObject(ck: ck)
         let predicate = NSPredicate(format: "exercise = %@", e)
         
-        var result = realm!.objects(AppExercise.self).filter(predicate).first
+        let result = realm!.objects(AppExercise.self).filter(predicate).first
         if (result != nil){
             return true
         }

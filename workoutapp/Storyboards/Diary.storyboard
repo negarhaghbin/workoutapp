@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j6r-Zc-fmF">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -190,6 +190,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8g-H5-MUA">
+                                <rect key="frame" x="0.0" y="616.5" width="414" height="245.5"/>
+                                <subviews>
+                                    <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="GLu-Ww-BSM">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="245.5"/>
+                                        <connections>
+                                            <action selector="changeDate:" destination="IZB-b6-2JE" eventType="valueChanged" id="At1-0U-Slk"/>
+                                        </connections>
+                                    </datePicker>
+                                    <pickerView hidden="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZEv-af-Kws">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="245.5"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="IZB-b6-2JE" id="Vk7-aa-eNK"/>
+                                            <outlet property="delegate" destination="IZB-b6-2JE" id="Neo-wq-gjs"/>
+                                        </connections>
+                                    </pickerView>
+                                    <pickerView hidden="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ir-8N-q0O">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="245.5"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="IZB-b6-2JE" id="gs9-Nl-dqM"/>
+                                            <outlet property="delegate" destination="IZB-b6-2JE" id="7YZ-gf-ATb"/>
+                                        </connections>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="0.75358518835616439" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="1Ir-8N-q0O" firstAttribute="top" secondItem="F8g-H5-MUA" secondAttribute="top" id="06l-TX-bOe"/>
+                                    <constraint firstItem="1Ir-8N-q0O" firstAttribute="leading" secondItem="F8g-H5-MUA" secondAttribute="leading" id="3LY-hb-8Gp"/>
+                                    <constraint firstAttribute="trailing" secondItem="GLu-Ww-BSM" secondAttribute="trailing" id="9wI-hX-X1z"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZEv-af-Kws" secondAttribute="trailing" id="A0N-vp-c0M"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZEv-af-Kws" secondAttribute="bottom" id="I7b-Ee-sHB"/>
+                                    <constraint firstItem="GLu-Ww-BSM" firstAttribute="top" secondItem="F8g-H5-MUA" secondAttribute="top" id="KUA-3N-eAW"/>
+                                    <constraint firstAttribute="bottom" secondItem="1Ir-8N-q0O" secondAttribute="bottom" id="d74-KK-LS8"/>
+                                    <constraint firstItem="ZEv-af-Kws" firstAttribute="leading" secondItem="F8g-H5-MUA" secondAttribute="leading" id="ez4-kW-qUN"/>
+                                    <constraint firstItem="ZEv-af-Kws" firstAttribute="top" secondItem="F8g-H5-MUA" secondAttribute="top" id="iOn-jZ-AC4"/>
+                                    <constraint firstAttribute="bottom" secondItem="GLu-Ww-BSM" secondAttribute="bottom" id="tY1-3x-yWv"/>
+                                    <constraint firstItem="GLu-Ww-BSM" firstAttribute="leading" secondItem="F8g-H5-MUA" secondAttribute="leading" id="vFc-bj-j8S"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Ir-8N-q0O" secondAttribute="trailing" id="wVY-Ga-2Wc"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5jN-WC-nQn">
                                 <rect key="frame" x="17" y="289" width="380" height="318"/>
                                 <subviews>
@@ -337,55 +377,17 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8g-H5-MUA">
-                                <rect key="frame" x="0.0" y="615" width="414" height="247"/>
-                                <subviews>
-                                    <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="GLu-Ww-BSM">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="247"/>
-                                        <connections>
-                                            <action selector="changeDate:" destination="IZB-b6-2JE" eventType="valueChanged" id="At1-0U-Slk"/>
-                                        </connections>
-                                    </datePicker>
-                                    <pickerView hidden="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZEv-af-Kws">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="247"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="IZB-b6-2JE" id="Vk7-aa-eNK"/>
-                                            <outlet property="delegate" destination="IZB-b6-2JE" id="Neo-wq-gjs"/>
-                                        </connections>
-                                    </pickerView>
-                                    <pickerView hidden="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ir-8N-q0O">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="247"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="IZB-b6-2JE" id="gs9-Nl-dqM"/>
-                                            <outlet property="delegate" destination="IZB-b6-2JE" id="7YZ-gf-ATb"/>
-                                        </connections>
-                                    </pickerView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="1Ir-8N-q0O" firstAttribute="top" secondItem="F8g-H5-MUA" secondAttribute="top" id="06l-TX-bOe"/>
-                                    <constraint firstItem="1Ir-8N-q0O" firstAttribute="leading" secondItem="F8g-H5-MUA" secondAttribute="leading" id="3LY-hb-8Gp"/>
-                                    <constraint firstAttribute="trailing" secondItem="GLu-Ww-BSM" secondAttribute="trailing" id="9wI-hX-X1z"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZEv-af-Kws" secondAttribute="trailing" id="A0N-vp-c0M"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZEv-af-Kws" secondAttribute="bottom" id="I7b-Ee-sHB"/>
-                                    <constraint firstItem="GLu-Ww-BSM" firstAttribute="top" secondItem="F8g-H5-MUA" secondAttribute="top" id="KUA-3N-eAW"/>
-                                    <constraint firstAttribute="bottom" secondItem="1Ir-8N-q0O" secondAttribute="bottom" id="d74-KK-LS8"/>
-                                    <constraint firstItem="ZEv-af-Kws" firstAttribute="leading" secondItem="F8g-H5-MUA" secondAttribute="leading" id="ez4-kW-qUN"/>
-                                    <constraint firstItem="ZEv-af-Kws" firstAttribute="top" secondItem="F8g-H5-MUA" secondAttribute="top" id="iOn-jZ-AC4"/>
-                                    <constraint firstAttribute="bottom" secondItem="GLu-Ww-BSM" secondAttribute="bottom" id="tY1-3x-yWv"/>
-                                    <constraint firstItem="GLu-Ww-BSM" firstAttribute="leading" secondItem="F8g-H5-MUA" secondAttribute="leading" id="vFc-bj-j8S"/>
-                                    <constraint firstAttribute="trailing" secondItem="1Ir-8N-q0O" secondAttribute="trailing" id="wVY-Ga-2Wc"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="F8g-H5-MUA" firstAttribute="trailing" secondItem="vxh-iU-OcH" secondAttribute="trailing" id="01X-MA-Z4e"/>
                             <constraint firstItem="F8g-H5-MUA" firstAttribute="bottom" secondItem="vxh-iU-OcH" secondAttribute="bottom" id="6Ob-yi-O1f"/>
-                            <constraint firstItem="F8g-H5-MUA" firstAttribute="top" secondItem="5jN-WC-nQn" secondAttribute="bottom" constant="8" id="fXj-Ni-K6N"/>
+                            <constraint firstItem="vxh-iU-OcH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5jN-WC-nQn" secondAttribute="trailing" constant="10" id="a9U-v2-3ep"/>
                             <constraint firstItem="5jN-WC-nQn" firstAttribute="centerY" secondItem="tnu-gc-kWW" secondAttribute="centerY" id="hOv-OA-hqi"/>
                             <constraint firstItem="F8g-H5-MUA" firstAttribute="leading" secondItem="vxh-iU-OcH" secondAttribute="leading" id="m0F-gO-BbW"/>
+                            <constraint firstItem="F8g-H5-MUA" firstAttribute="height" secondItem="vxh-iU-OcH" secondAttribute="height" multiplier="0.3" id="sl5-i8-Uzp"/>
                             <constraint firstItem="5jN-WC-nQn" firstAttribute="centerX" secondItem="tnu-gc-kWW" secondAttribute="centerX" id="wXm-73-GsD"/>
+                            <constraint firstItem="5jN-WC-nQn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vxh-iU-OcH" secondAttribute="leading" constant="17" id="yhy-Se-XkA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vxh-iU-OcH"/>
                     </view>

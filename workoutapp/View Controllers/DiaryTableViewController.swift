@@ -11,7 +11,7 @@ import UIKit
 class DiaryTableViewController: UITableViewController {
     
     @IBOutlet weak var viewLabel: UILabel!
-    var diariesDict : [String:[DiaryItem]] = DiaryItem.getWithDate()
+    lazy var diariesDict : [String:[DiaryItem]] = DiaryItem.getWithDate()
     var dates : [String] = []
     
     override func viewDidLoad() {
@@ -23,12 +23,14 @@ class DiaryTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 100
         diariesDict = DiaryItem.getWithDate()
         dates = Array(diariesDict.keys).sorted(by: >)
+        
         if diariesDict.count > 0{
             viewLabel.text = "Tap to edit."
         }
-        print("here")
         tableView.reloadData()
     }
+    
+    
     
 
     // MARK: - Table view data source
