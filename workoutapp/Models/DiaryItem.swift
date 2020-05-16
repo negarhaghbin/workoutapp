@@ -110,6 +110,19 @@ class DiaryItem: Object {
     }
     
     private class func getAll() -> [DiaryItem]{
+        addSteps()
+        let realm = try! Realm()
+        let allDiaryItems = realm.objects(DiaryItem.self)
+        return Array(allDiaryItems)
+    }
+    
+    class func add(appExList: [AppExercise]){
+        for item in appExList {
+            DiaryItem(e: item.exercise, d: Duration(d: SecondsToString(time: item.durationS)))
+        }
+    }
+    
+    class func addSteps(){
         if HKHealthStore.isHealthDataAvailable() {
             let stepsCount = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!
 
@@ -132,16 +145,6 @@ class DiaryItem: Object {
         else{
             print("health not available")
         }
-        
-        let realm = try! Realm()
-        let allDiaryItems = realm.objects(DiaryItem.self)
-        return Array(allDiaryItems)
-    }
-    
-    class func add(appExList: [AppExercise]){
-        for item in appExList {
-            DiaryItem(e: item.exercise, d: Duration(d: SecondsToString(time: item.durationS)))
-        }
     }
     
     private class func updateSteps(sd: Int){ //alan faghat male emruz ro update mikne
@@ -159,7 +162,7 @@ class DiaryItem: Object {
             
         }
         else{
-            se = DiaryItem(e: stepsEx , d: Duration(sc: 1, isc: sd))
+            se = DiaryItem(e: stepsEx , d: Duration(isc: sd))
         }
 
         

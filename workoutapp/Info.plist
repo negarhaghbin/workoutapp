@@ -25,11 +25,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
-	<string>By accessing your health record, this app can tell you if you've been active enough.</string>
+	<string>By accessing your health record, this app can add your step counts to diary.</string>
 	<key>NSHealthShareUsageDescription</key>
-	<string>By accessing your health record, this app can tell you if you've been active enough.</string>
+	<string>By accessing your health record, this app can tell you if you&apos;ve been active enough.</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>By accessing your health record, this app can tell you if you've been active enough.</string>
+	<string>By accessing your health record, this app can tell you if you&apos;ve been active enough.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>By accessing your location, this app can find you a good place to exercise.</string>
 	<key>NSLocationUsageDescription</key>
