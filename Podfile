@@ -18,5 +18,6 @@ target 'workoutapp' do
   #pod 'OneSignal', '>= 2.6.2', '< 3.0'
   pod 'RealmSwift'
   pod "YoutubePlayer-in-WKWebView", "~> 0.3.0"
+  pod "SearchTextField"
   #pod 'YouTubePlayer'
 end

@@ -328,10 +328,10 @@
                                             <action selector="cancel:" destination="IZB-b6-2JE" eventType="touchUpInside" id="bt4-H4-WeL"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YL3-Fw-wT3" userLabel="nameField">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YL3-Fw-wT3" userLabel="nameField" customClass="SearchTextField" customModule="SearchTextField">
                                         <rect key="frame" x="190" y="109" width="175" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                                         <connections>
                                             <action selector="nameFieldChanged:" destination="IZB-b6-2JE" eventType="editingDidBegin" id="1Mn-3t-cpm"/>
                                             <action selector="nameFieldChanged:" destination="IZB-b6-2JE" eventType="editingDidEnd" id="AEd-cv-2NL"/>

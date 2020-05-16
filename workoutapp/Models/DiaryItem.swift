@@ -118,7 +118,7 @@ class DiaryItem: Object {
     
     class func add(appExList: [AppExercise]){
         for item in appExList {
-            DiaryItem(e: item.exercise, d: Duration(d: SecondsToString(time: item.durationS)))
+            DiaryItem(e: item.exercise, d: Duration(sd: item.durationS))
         }
     }
     
@@ -151,21 +151,17 @@ class DiaryItem: Object {
         let realm = try! Realm()
         let ck = Exercise.getCompoundKey(name: "Steps", type: "Lower Body")
         let stepsEx = Exercise.getObject(ck: ck)
-
         var se = DiaryItem()
-        
         let predicate = NSPredicate(format: "dateString = %@ AND exercise = %@", Date().makeString(), stepsEx)
         let todayStepsDiaryItems = realm.objects(DiaryItem.self).filter(predicate)
+        
         if todayStepsDiaryItems.count > 0{
             se = todayStepsDiaryItems.first!
             DiaryItem.update(uuid: se.uuid, e: se.exercise!, d: Duration(isc: sd), date: se.dateString)
-            
         }
         else{
             se = DiaryItem(e: stepsEx , d: Duration(isc: sd))
         }
-
-        
     }
     
     

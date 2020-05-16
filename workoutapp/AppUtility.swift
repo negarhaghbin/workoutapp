@@ -77,6 +77,21 @@ func SecondsToString(time: Int)->String{
     }
 }
 
+func reverSecondsToString(time: String)->Int{
+    let components = time.components(separatedBy: " ")
+    if components.count>2{
+        return ((Int(components[0])!*60) + Int(components[3])!)
+    }
+    else{
+        if (components[1] == "minutes" || components[1] == "minute"){
+            return Int(components[0])!*60
+        }
+        else{
+            return Int(components[0])!
+        }
+    }
+}
+
 func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{
     UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
     image.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: newSize.width, height: newSize.height)))

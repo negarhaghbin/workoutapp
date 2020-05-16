@@ -12,21 +12,21 @@ import RealmSwift
 class Duration: Object {
     @objc dynamic var setCount : Int = 0
     @objc dynamic var inSetCount : Int = 0
-    @objc dynamic var durationS: String = ""
+    @objc dynamic var secDuration: Int = 0
     
     convenience init(sc: Int? = {
         return 0
         }(), isc:Int? = {
         return 0
-        }(), d: String? = {
-        return ""
-    }()) {
+        }(), sd: Int? = {
+        return 0
+        }()) {
         self.init()
         let realm = try! Realm()
         try! realm.write {
             self.setCount = sc!
             self.inSetCount = isc!
-            self.durationS = d!
+            self.secDuration = sd!
         }
     }
     
@@ -44,12 +44,21 @@ class Duration: Object {
         }
     }
     
+    func getTimeDuration()->String{
+        if (secDuration==0){
+            return ""
+        }
+        else{
+            return SecondsToString(time: secDuration)
+        }
+    }
+        
     func getDuration()->String{
-        if (durationS == ""){
+        if (getTimeDuration() == ""){
             return getCount()
         }
         else{
-            return durationS
+            return getTimeDuration()
         }
     }
 }

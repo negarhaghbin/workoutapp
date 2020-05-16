@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import SearchTextField
 
 class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate {
     
     //var datePicker: UIDatePicker = UIDatePicker()
     
     @IBOutlet weak var pickerBackground: UIView!
-    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var nameField: SearchTextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var typePicker: UIPickerView!
     @IBOutlet weak var durationPicker: UIPickerView!
@@ -26,6 +27,8 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     @IBOutlet weak var typeLabelLabel: UILabel!
     @IBOutlet weak var countField: UITextField!
     let types=[ExerciseType.total.rawValue, ExerciseType.upper.rawValue, ExerciseType.abs.rawValue, ExerciseType.lower.rawValue]
+    let exercises = Exercise.loadExercises()
+    var exerciseNames : [String] = []
     
     var countable = false
     
@@ -46,7 +49,7 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     
     func exerciseSelected(_ newExercise: AppExercise) {
         diaryItem!.exercise = newExercise.exercise
-        diaryItem?.duration!.durationS = SecondsToString(time: newExercise.durationS)
+        diaryItem?.duration!.secDuration = newExercise.durationS
     }
     
     private func refreshUI(){
@@ -54,7 +57,7 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
         nameField.text = diaryItem?.exercise?.name
         typeLabel.text = diaryItem?.exercise?.type
         dateLabel.text = diaryItem?.dateString
-        if (diaryItem?.duration?.durationS == ""){
+        if (diaryItem?.duration?.getTimeDuration() == ""){
             countable = true
             countField.isHidden = false
             durationLabel.isHidden = true
@@ -75,6 +78,13 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
             dateFormatter.dateFormat = "yyyy-MM-dd"
             dateLabel.text = dateFormatter.string(from: Date())
         }
+        for exercise in exercises{
+            exerciseNames.append(exercise.name)
+        }
+        print(exerciseNames)
+        nameField.filterStrings(exerciseNames)
+        countField.isHidden = true
+        durationLabel.isHidden = false
         addPickerLabels(picker: durationPicker, vc: self)
         if (nameField.text != "" && AppExercise.hasExercise(name: nameField.text!, type: typeLabel.text!)){
             nameField.isEnabled = false
@@ -95,6 +105,9 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
             saveButton.isEnabled = false
         }
         else{
+            if let index = exerciseNames.firstIndex(of: nameField.text!){
+                typeLabel.text = exercises[index].type
+            }
             saveButton.isHighlighted = false
             saveButton.isEnabled = true
         }
@@ -144,7 +157,7 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
                 DiaryItem.update(uuid: diaryItem!.uuid, e: e, d: Duration(isc: Int(countField.text!)), date: dateLabel.text!)
             }
             else{
-                DiaryItem.update(uuid: diaryItem!.uuid, e: e, d: Duration(d: durationLabel.text), date: dateLabel.text!)
+                DiaryItem.update(uuid: diaryItem!.uuid, e: e, d: Duration(sd: reverSecondsToString(time: durationLabel.text!)), date: dateLabel.text!)
             }
             
         }
@@ -153,7 +166,7 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
                 diaryItem = DiaryItem(e: e, d: Duration(isc: Int(countField.text!)), date: dateLabel.text!)
             }
             else{
-                diaryItem = DiaryItem(e: e, d: Duration(d: durationLabel.text!), date: dateLabel.text!)
+                diaryItem = DiaryItem(e: e, d: Duration(sd: reverSecondsToString(time: durationLabel.text!)), date: dateLabel.text!)
             }
             
         }
