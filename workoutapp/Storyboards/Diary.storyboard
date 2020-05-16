@@ -337,6 +337,11 @@
                                             <action selector="nameFieldChanged:" destination="IZB-b6-2JE" eventType="editingDidEnd" id="AEd-cv-2NL"/>
                                         </connections>
                                     </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4oW-5V-1gb" userLabel="countField">
+                                        <rect key="frame" x="190" y="190" width="175" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -358,6 +363,8 @@
                                     <constraint firstItem="UZH-dz-Ncy" firstAttribute="centerY" secondItem="WZn-DB-14N" secondAttribute="centerY" id="fgx-85-KFk"/>
                                     <constraint firstItem="WZn-DB-14N" firstAttribute="leading" secondItem="5jN-WC-nQn" secondAttribute="leading" constant="15" id="ibQ-M8-PBG"/>
                                     <constraint firstItem="O4b-jX-iyZ" firstAttribute="leading" secondItem="5jN-WC-nQn" secondAttribute="leading" constant="15" id="krT-4x-HLf"/>
+                                    <constraint firstItem="4oW-5V-1gb" firstAttribute="trailing" secondItem="YL3-Fw-wT3" secondAttribute="trailing" id="lVi-et-GC8"/>
+                                    <constraint firstItem="4oW-5V-1gb" firstAttribute="centerY" secondItem="WZn-DB-14N" secondAttribute="centerY" id="lxe-Lo-d10"/>
                                     <constraint firstAttribute="trailing" secondItem="Jgh-qS-pbH" secondAttribute="trailing" constant="15" id="mad-H1-jw5"/>
                                     <constraint firstItem="bq0-hQ-i3h" firstAttribute="centerY" secondItem="8rw-lm-7YV" secondAttribute="centerY" id="mdg-VU-4ve"/>
                                     <constraint firstItem="WZn-DB-14N" firstAttribute="top" secondItem="8rw-lm-7YV" secondAttribute="bottom" constant="20" id="nsS-6F-WwF"/>
@@ -367,6 +374,7 @@
                                     <constraint firstAttribute="height" constant="318" id="qe3-0z-K3F"/>
                                     <constraint firstItem="kfV-0s-Km7" firstAttribute="trailing" secondItem="5jN-WC-nQn" secondAttribute="centerX" constant="-80" id="r1F-NL-4yq"/>
                                     <constraint firstAttribute="bottom" secondItem="kfV-0s-Km7" secondAttribute="bottom" constant="20" id="sh2-8b-OXv"/>
+                                    <constraint firstItem="4oW-5V-1gb" firstAttribute="leading" secondItem="YL3-Fw-wT3" secondAttribute="leading" id="tjj-l9-wUB"/>
                                     <constraint firstItem="O4b-jX-iyZ" firstAttribute="centerY" secondItem="YL3-Fw-wT3" secondAttribute="centerY" id="tk4-3O-qvO"/>
                                     <constraint firstItem="aLl-Iw-dFb" firstAttribute="leading" secondItem="5jN-WC-nQn" secondAttribute="leading" constant="15" id="udB-Jv-Nsl"/>
                                     <constraint firstAttribute="centerX" secondItem="xWg-X2-Nti" secondAttribute="leading" constant="-80" id="zRP-wP-Egh"/>
@@ -393,6 +401,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="NP9-Mm-CQy"/>
                     <connections>
+                        <outlet property="countField" destination="4oW-5V-1gb" id="cx4-4J-TLB"/>
                         <outlet property="dateLabel" destination="Jgh-qS-pbH" id="k4t-vw-Aia"/>
                         <outlet property="datePicker" destination="GLu-Ww-BSM" id="Cov-8G-kcz"/>
                         <outlet property="durationLabel" destination="UZH-dz-Ncy" id="fxm-W1-eaq"/>
@@ -428,7 +437,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3084" y="88"/>
+            <point key="canvasLocation" x="3082.608695652174" y="87.723214285714278"/>
         </scene>
         <!--Diary-->
         <scene sceneID="Vvy-3Y-Z5a">

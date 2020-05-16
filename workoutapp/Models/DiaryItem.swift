@@ -10,15 +10,14 @@ import Foundation
 import RealmSwift
 import HealthKit
 
-let STEPPERSEC = 1.67
 let healthStore = HKHealthStore()
 
 class DiaryItem: Object {
     
     @objc dynamic var uuid : String = ""
-    
+
     @objc dynamic var exercise: Exercise?
-    @objc dynamic var durationS: String = ""
+    @objc dynamic var duration : Duration? = Duration()
     @objc dynamic var dateString : String = {
         return Date().makeString()
     }()
@@ -27,7 +26,7 @@ class DiaryItem: Object {
       return "uuid"
     }
     
-    convenience init(e: Exercise?, d: String, date: String? = {
+    convenience init(e: Exercise?, d:Duration , date: String? = {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
         return df.string(from: Date())
@@ -37,13 +36,13 @@ class DiaryItem: Object {
         try! realm.write {
             self.uuid = UUID().uuidString
             self.exercise = e
-            self.durationS = d
+            self.duration = d
             self.dateString = date!
             realm.add(self)
         }
     }
     
-    class func initWithoutAdd(e: Exercise?, d: String, date: String? = {
+    class func initWithoutAdd(e: Exercise?, d: Duration, date: String? = {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
         return df.string(from: Date())
@@ -52,7 +51,7 @@ class DiaryItem: Object {
         let realm = try! Realm()
         try! realm.write {
             di.exercise = e
-            di.durationS = d
+            di.duration = d
             di.dateString = date!
             //realm.add(self)
         }
@@ -66,20 +65,20 @@ class DiaryItem: Object {
         return true
     }
     
-    class func update(uuid: String, e: Exercise, d: String, date: String){
+    class func update(uuid: String, e: Exercise, d: Duration, date: String){
         let realm = try! Realm()
         var obj = realm.object(ofType: DiaryItem.self, forPrimaryKey: uuid)
         try! realm.write {
             if obj != nil{
                 obj!.exercise = e
-                obj!.durationS = d
+                obj!.duration = d
                 obj!.dateString = date
             }
             else{
                 obj = DiaryItem()
                 obj!.uuid = UUID().uuidString
                 obj!.exercise = e
-                obj!.durationS = d
+                obj!.duration = d
                 obj!.dateString = date
                 realm.add(obj!)
             }
@@ -117,7 +116,7 @@ class DiaryItem: Object {
             healthStore.requestAuthorization(toShare: [], read: [stepsCount]) { (success, error) in
                 if success {
                     getStepsCount(forSpecificDate: Date()){ steps in
-                        updateSteps(sd: steps)
+                        updateSteps(sd: Int(steps))
                     }
                     
                 }
@@ -141,11 +140,11 @@ class DiaryItem: Object {
     
     class func add(appExList: [AppExercise]){
         for item in appExList {
-            DiaryItem(e: item.exercise, d:SecondsToString(time: item.durationS))
+            DiaryItem(e: item.exercise, d: Duration(d: SecondsToString(time: item.durationS)))
         }
     }
     
-    private class func updateSteps(sd: String){ //alan faghat male emruz ro update mikne
+    private class func updateSteps(sd: Int){ //alan faghat male emruz ro update mikne
         let realm = try! Realm()
         let ck = Exercise.getCompoundKey(name: "Steps", type: "Lower Body")
         let stepsEx = Exercise.getObject(ck: ck)
@@ -156,23 +155,18 @@ class DiaryItem: Object {
         let todayStepsDiaryItems = realm.objects(DiaryItem.self).filter(predicate)
         if todayStepsDiaryItems.count > 0{
             se = todayStepsDiaryItems.first!
-            DiaryItem.update(uuid: se.uuid, e: se.exercise!, d: sd, date: se.dateString)
+            DiaryItem.update(uuid: se.uuid, e: se.exercise!, d: Duration(isc: sd), date: se.dateString)
             
         }
         else{
-            se = DiaryItem(e: stepsEx , d: sd)
+            se = DiaryItem(e: stepsEx , d: Duration(sc: 1, isc: sd))
         }
 
         
     }
     
-    private class func getStepDuration(steps: Double)->String{
-        let d = steps/STEPPERSEC
-        return SecondsToString(time: Int(d))
-    }
     
-    
-    private class func getStepsCount(forSpecificDate:Date, completion: @escaping (String) -> Void) {
+    private class func getStepsCount(forSpecificDate:Date, completion: @escaping (Double) -> Void) {
         let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
         let (start, end) = getWholeDate(date: forSpecificDate)
 
@@ -180,10 +174,10 @@ class DiaryItem: Object {
 
         let query = HKStatisticsQuery(quantityType: stepsQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
             guard let result = result, let sum = result.sumQuantity() else {
-                completion("empty")
+                completion(0.0)
                 return
             }
-            completion(DiaryItem.getStepDuration(steps: Double(sum.doubleValue(for: HKUnit.count()))))
+            completion(Double(sum.doubleValue(for: HKUnit.count())))
         }
 
         healthStore.execute(query)

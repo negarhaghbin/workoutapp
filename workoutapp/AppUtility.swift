@@ -89,7 +89,7 @@ func addPickerLabels(picker: UIPickerView, vc: UIViewController){
     let font = UIFont.boldSystemFont(ofSize: 20.0)
     let fontSize: CGFloat = font.pointSize
     let componentWidth: CGFloat = vc.view.frame.width / CGFloat(picker.numberOfComponents)
-    let y = (picker.frame.size.height / 2) - (fontSize / 2)
+    var y = (picker.frame.size.height / 2) - (fontSize / 2)
 
     let label1 = UILabel(frame: CGRect(x: componentWidth * 0.65, y: y, width: componentWidth * 0.4, height: fontSize))
     label1.font = font

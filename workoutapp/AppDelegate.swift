@@ -85,7 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
         }
-        
           guard granted else { return }
           self?.center.getNotificationSettings { settings in
             guard settings.authorizationStatus == .authorized else { return }
@@ -94,6 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
           }
       }
+        
     }
     
     func isNewUser()->Bool{
@@ -105,6 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
             return true
         }
+        
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

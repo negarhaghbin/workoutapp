@@ -24,7 +24,10 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var nameLabelLabel: UILabel!
     @IBOutlet weak var typeLabelLabel: UILabel!
+    @IBOutlet weak var countField: UITextField!
     let types=[ExerciseType.total.rawValue, ExerciseType.upper.rawValue, ExerciseType.abs.rawValue, ExerciseType.lower.rawValue]
+    
+    var countable = false
     
     var diaryItem : DiaryItem?{
         didSet{
@@ -43,15 +46,26 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     
     func exerciseSelected(_ newExercise: AppExercise) {
         diaryItem!.exercise = newExercise.exercise
-        diaryItem?.durationS = SecondsToString(time: newExercise.durationS)
+        diaryItem?.duration!.durationS = SecondsToString(time: newExercise.durationS)
     }
     
     private func refreshUI(){
         loadView()
         nameField.text = diaryItem?.exercise?.name
         typeLabel.text = diaryItem?.exercise?.type
-        durationLabel.text = diaryItem!.durationS
         dateLabel.text = diaryItem?.dateString
+        if (diaryItem?.duration?.durationS == ""){
+            countable = true
+            countField.isHidden = false
+            durationLabel.isHidden = true
+            countField.text = diaryItem!.duration?.getDuration()
+            countField.keyboardType = .numberPad
+        }
+        else{
+            countField.isHidden = true
+            durationLabel.isHidden = false
+            durationLabel.text = diaryItem!.duration?.getDuration()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -126,10 +140,22 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
             e = Exercise.getObject(ck: Exercise.getCompoundKey(name: nameField.text!, type: typeLabel.text!))
         }
         if diaryItem != nil{
-            DiaryItem.update(uuid: diaryItem!.uuid, e: e, d: durationLabel.text!, date: dateLabel.text!)
+            if countable{
+                DiaryItem.update(uuid: diaryItem!.uuid, e: e, d: Duration(isc: Int(countField.text!)), date: dateLabel.text!)
+            }
+            else{
+                DiaryItem.update(uuid: diaryItem!.uuid, e: e, d: Duration(d: durationLabel.text), date: dateLabel.text!)
+            }
+            
         }
         else{
-            diaryItem = DiaryItem(e: e, d: durationLabel.text!, date: dateLabel.text!)
+            if countable{
+                diaryItem = DiaryItem(e: e, d: Duration(isc: Int(countField.text!)), date: dateLabel.text!)
+            }
+            else{
+                diaryItem = DiaryItem(e: e, d: Duration(d: durationLabel.text!), date: dateLabel.text!)
+            }
+            
         }
         
         dismiss(animated: true)

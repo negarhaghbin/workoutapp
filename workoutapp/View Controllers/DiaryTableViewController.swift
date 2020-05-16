@@ -47,7 +47,13 @@ class DiaryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "diaryCell", for: indexPath) as? DiaryTableViewCell{
             cell.nameLabel.text = diariesDict[dates[indexPath.section]]![indexPath.row].exercise?.name
-            cell.durationLabel.text = diariesDict[dates[indexPath.section]]![indexPath.row].durationS
+            var duration = diariesDict[dates[indexPath.section]]![indexPath.row].duration
+            cell.durationLabel.text = duration?.getDuration()
+            if diariesDict[dates[indexPath.section]]![indexPath.row].exercise?.name == "Steps"{
+                cell.isUserInteractionEnabled = false
+                cell.durationLabel.isEnabled = false
+            }
+            
             return cell
         }
         else{

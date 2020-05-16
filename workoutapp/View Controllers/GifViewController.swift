@@ -158,7 +158,7 @@ class GifViewController: UIViewController {
                 DiaryItem.add(appExList: exercisesDone)
             }
             else{
-                DiaryItem(e: self.routineExercises[self.currentExerciseIndex].exercise, d: SecondsToString(time: (self.routineExercises[self.currentExerciseIndex].durationS - exerciseSeconds)) )
+                DiaryItem(e: self.routineExercises[self.currentExerciseIndex].exercise, d: Duration(d: SecondsToString(time: (self.routineExercises[self.currentExerciseIndex].durationS - exerciseSeconds))))
             }
             
         }
