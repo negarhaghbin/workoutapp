@@ -150,6 +150,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         print(response.notification.request.identifier)
         let tap = Interaction()
         tap.add(identifier: response.notification.request.identifier)
+        
+        // MARK: should display activity page
         if response.notification.request.identifier == Notification.Activity.rawValue {
              let tabbarController = UIApplication.shared.windows.first?.rootViewController as! TabBarViewController
             tabbarController.selectedIndex = 2

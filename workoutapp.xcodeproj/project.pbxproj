@@ -70,6 +70,17 @@
 		8469DE0623A7D0640098A5FD /* good job.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8469DE0523A7D0640098A5FD /* good job.m4a */; };
 		8469DE0823A7D8DC0098A5FD /* halfway.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8469DE0723A7D8DB0098A5FD /* halfway.m4a */; };
 		8469DE1A23B9105F0098A5FD /* progressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8469DE1923B9105F0098A5FD /* progressBar.swift */; };
+		848D683A2471C3A70041445F /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848D68392471C3A70041445F /* APIRequest.swift */; };
+		848D683C2471C3DF0041445F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848D683B2471C3DF0041445F /* Message.swift */; };
+		848D683E2471C9B20041445F /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848D683D2471C9B20041445F /* WelcomeViewController.swift */; };
+		848D68482471FA900041445F /* markus-spiske-KWQ2kQtxiKE-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 848D68402471FA8F0041445F /* markus-spiske-KWQ2kQtxiKE-unsplash.jpg */; };
+		848D68492471FA900041445F /* victor-freitas-qZ-U9z4TQ6A-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 848D68412471FA8F0041445F /* victor-freitas-qZ-U9z4TQ6A-unsplash.jpg */; };
+		848D684A2471FA900041445F /* bruno-nascimento-PHIgYUGQPvU-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 848D68422471FA8F0041445F /* bruno-nascimento-PHIgYUGQPvU-unsplash.jpg */; };
+		848D684B2471FA900041445F /* x-N4QTBfNQ8Nk-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 848D68432471FA8F0041445F /* x-N4QTBfNQ8Nk-unsplash.jpg */; };
+		848D684C2471FA900041445F /* marc-najera-Cj2d2IUEPDM-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 848D68442471FA8F0041445F /* marc-najera-Cj2d2IUEPDM-unsplash.jpg */; };
+		848D684D2471FA900041445F /* clique-images-hSB2HmJYaTo-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 848D68452471FA8F0041445F /* clique-images-hSB2HmJYaTo-unsplash.jpg */; };
+		848D684E2471FA900041445F /* engin-akyurt-yBwF4KOKwO4-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 848D68462471FA8F0041445F /* engin-akyurt-yBwF4KOKwO4-unsplash.jpg */; };
+		848D684F2471FA900041445F /* tommy-boudreau-diO0a_ZEiEE-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 848D68472471FA8F0041445F /* tommy-boudreau-diO0a_ZEiEE-unsplash.jpg */; };
 		849CFC13244F719C007BD77B /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849CFC12244F719C007BD77B /* settings.storyboard */; };
 		849CFC15244F7563007BD77B /* Routines.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849CFC14244F7563007BD77B /* Routines.storyboard */; };
 		849CFC17244F79FC007BD77B /* Diary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849CFC16244F79FC007BD77B /* Diary.storyboard */; };
@@ -206,6 +217,17 @@
 		8469DE0523A7D0640098A5FD /* good job.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "good job.m4a"; sourceTree = "<group>"; };
 		8469DE0723A7D8DB0098A5FD /* halfway.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = halfway.m4a; sourceTree = "<group>"; };
 		8469DE1923B9105F0098A5FD /* progressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressBar.swift; sourceTree = "<group>"; };
+		848D68392471C3A70041445F /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		848D683B2471C3DF0041445F /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		848D683D2471C9B20041445F /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		848D68402471FA8F0041445F /* markus-spiske-KWQ2kQtxiKE-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "markus-spiske-KWQ2kQtxiKE-unsplash.jpg"; sourceTree = "<group>"; };
+		848D68412471FA8F0041445F /* victor-freitas-qZ-U9z4TQ6A-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "victor-freitas-qZ-U9z4TQ6A-unsplash.jpg"; sourceTree = "<group>"; };
+		848D68422471FA8F0041445F /* bruno-nascimento-PHIgYUGQPvU-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bruno-nascimento-PHIgYUGQPvU-unsplash.jpg"; sourceTree = "<group>"; };
+		848D68432471FA8F0041445F /* x-N4QTBfNQ8Nk-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "x-N4QTBfNQ8Nk-unsplash.jpg"; sourceTree = "<group>"; };
+		848D68442471FA8F0041445F /* marc-najera-Cj2d2IUEPDM-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "marc-najera-Cj2d2IUEPDM-unsplash.jpg"; sourceTree = "<group>"; };
+		848D68452471FA8F0041445F /* clique-images-hSB2HmJYaTo-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "clique-images-hSB2HmJYaTo-unsplash.jpg"; sourceTree = "<group>"; };
+		848D68462471FA8F0041445F /* engin-akyurt-yBwF4KOKwO4-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "engin-akyurt-yBwF4KOKwO4-unsplash.jpg"; sourceTree = "<group>"; };
+		848D68472471FA8F0041445F /* tommy-boudreau-diO0a_ZEiEE-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tommy-boudreau-diO0a_ZEiEE-unsplash.jpg"; sourceTree = "<group>"; };
 		849CFC12244F719C007BD77B /* settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = settings.storyboard; sourceTree = "<group>"; };
 		849CFC14244F7563007BD77B /* Routines.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Routines.storyboard; sourceTree = "<group>"; };
 		849CFC16244F79FC007BD77B /* Diary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Diary.storyboard; sourceTree = "<group>"; };
@@ -376,6 +398,7 @@
 				846446A12376008500F493F0 /* TabBarViewController.swift */,
 				84C10B2923369FD100146547 /* TableViewController.swift */,
 				84C10B172336994E00146547 /* ViewController.swift */,
+				848D683D2471C9B20041445F /* WelcomeViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -387,6 +410,21 @@
 				845FD8CE23844A8A00E9B1D8 /* RoutineSection.swift */,
 			);
 			path = Objects;
+			sourceTree = "<group>";
+		};
+		848D683F2471FA8F0041445F /* Welcome page */ = {
+			isa = PBXGroup;
+			children = (
+				848D68402471FA8F0041445F /* markus-spiske-KWQ2kQtxiKE-unsplash.jpg */,
+				848D68412471FA8F0041445F /* victor-freitas-qZ-U9z4TQ6A-unsplash.jpg */,
+				848D68422471FA8F0041445F /* bruno-nascimento-PHIgYUGQPvU-unsplash.jpg */,
+				848D68432471FA8F0041445F /* x-N4QTBfNQ8Nk-unsplash.jpg */,
+				848D68442471FA8F0041445F /* marc-najera-Cj2d2IUEPDM-unsplash.jpg */,
+				848D68452471FA8F0041445F /* clique-images-hSB2HmJYaTo-unsplash.jpg */,
+				848D68462471FA8F0041445F /* engin-akyurt-yBwF4KOKwO4-unsplash.jpg */,
+				848D68472471FA8F0041445F /* tommy-boudreau-diO0a_ZEiEE-unsplash.jpg */,
+			);
+			path = "Welcome page";
 			sourceTree = "<group>";
 		};
 		849CFC11244F7126007BD77B /* Storyboards */ = {
@@ -425,6 +463,8 @@
 		84C10B122336994E00146547 /* workoutapp */ = {
 			isa = PBXGroup;
 			children = (
+				848D683B2471C3DF0041445F /* Message.swift */,
+				848D68392471C3A70041445F /* APIRequest.swift */,
 				849CFC11244F7126007BD77B /* Storyboards */,
 				84092843237CDC8800C695F6 /* Routine Pictures */,
 				84361466233BE0660088ADA8 /* 5M Workout.entitlements */,
@@ -452,6 +492,7 @@
 		84C10B2F2336A10000146547 /* Local Videos */ = {
 			isa = PBXGroup;
 			children = (
+				848D683F2471FA8F0041445F /* Welcome page */,
 				8448792323C8E0B700F37788 /* rest in.m4a */,
 				8448792423C8E0B800F37788 /* start in.m4a */,
 				8448792123C8DB3300F37788 /* countdown.wav */,
@@ -634,14 +675,19 @@
 				84C10B472336A10000146547 /* alternatingLunges.mp4 in Resources */,
 				8448792223C8DB3400F37788 /* countdown.wav in Resources */,
 				845FD901238C6C9800E9B1D8 /* bicep-extension-hold.gif in Resources */,
+				848D68482471FA900041445F /* markus-spiske-KWQ2kQtxiKE-unsplash.jpg in Resources */,
 				845FD902238C6C9800E9B1D8 /* clench-unclench-side.gif in Resources */,
 				84C10B4F2336A10000146547 /* alternatingLunges.png in Resources */,
 				84C10B502336A10000146547 /* stepsAndPulls.png in Resources */,
 				84C10B202336995000146547 /* LaunchScreen.storyboard in Resources */,
 				845FD8FA238C673200E9B1D8 /* clench-unclench-overhead.gif in Resources */,
+				848D684F2471FA900041445F /* tommy-boudreau-diO0a_ZEiEE-unsplash.jpg in Resources */,
+				848D684D2471FA900041445F /* clique-images-hSB2HmJYaTo-unsplash.jpg in Resources */,
+				848D68492471FA900041445F /* victor-freitas-qZ-U9z4TQ6A-unsplash.jpg in Resources */,
 				8469DE0823A7D8DC0098A5FD /* halfway.m4a in Resources */,
 				845FD903238C6C9800E9B1D8 /* raised-arm-circles.gif in Resources */,
 				845FD8F4238C32F000E9B1D8 /* calf-raise.gif in Resources */,
+				848D684E2471FA900041445F /* engin-akyurt-yBwF4KOKwO4-unsplash.jpg in Resources */,
 				84C10B1D2336995000146547 /* Assets.xcassets in Resources */,
 				84372D4D2339342B00D6586D /* stepsAndPulls.jpg in Resources */,
 				845FD8DC23859FD100E9B1D8 /* crunch.gif in Resources */,
@@ -651,7 +697,9 @@
 				845FD8F3238C32F000E9B1D8 /* knee-to-elbows.gif in Resources */,
 				845FD8F1238C32F000E9B1D8 /* step-jacks.gif in Resources */,
 				84C10B4D2336A10000146547 /* doubleChopKneePulls.png in Resources */,
+				848D684A2471FA900041445F /* bruno-nascimento-PHIgYUGQPvU-unsplash.jpg in Resources */,
 				845FD904238C6C9800E9B1D8 /* hold.gif in Resources */,
+				848D684B2471FA900041445F /* x-N4QTBfNQ8Nk-unsplash.jpg in Resources */,
 				845FD8DB23859FD100E9B1D8 /* raised-leg-hold.gif in Resources */,
 				84C10B1B2336994E00146547 /* Main.storyboard in Resources */,
 				84372D4F2339342B00D6586D /* armCircles.jpg in Resources */,
@@ -665,6 +713,7 @@
 				845FD8DE23859FD100E9B1D8 /* plank-hold.gif in Resources */,
 				845FD8DF23859FD100E9B1D8 /* plank-leg-raise.gif in Resources */,
 				84372D4C2339342A00D6586D /* alternatingLunges.jpg in Resources */,
+				848D684C2471FA900041445F /* marc-najera-Cj2d2IUEPDM-unsplash.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +800,7 @@
 				8469DE1A23B9105F0098A5FD /* progressBar.swift in Sources */,
 				849CFC25245238FF007BD77B /* NewWorkoutPopupViewController.swift in Sources */,
 				849CFC2724532000007BD77B /* HideKeyboardExt.swift in Sources */,
+				848D683E2471C9B20041445F /* WelcomeViewController.swift in Sources */,
 				8448792023C67B7800F37788 /* Interaction.swift in Sources */,
 				845FD9092390A35F00E9B1D8 /* dailyRoutine.swift in Sources */,
 				849CFC232452319A007BD77B /* DiaryItem.swift in Sources */,
@@ -758,12 +808,14 @@
 				84092847237CE16B00C695F6 /* Image.swift in Sources */,
 				84EB32D3244A03DE009816CE /* AppUtility.swift in Sources */,
 				84C10B182336994E00146547 /* ViewController.swift in Sources */,
+				848D683C2471C3DF0041445F /* Message.swift in Sources */,
 				84DC84BD23A2F2AA00B82BCD /* User.swift in Sources */,
 				840704892336E4E900961B1E /* SceneDelegate.swift in Sources */,
 				840EAC4823BBF877002D0AF6 /* ActivityViewController.swift in Sources */,
 				849CFC29245322E3007BD77B /* AddWorkoutViewController.swift in Sources */,
 				845FD8C12380995100E9B1D8 /* StartRoutineViewController.swift in Sources */,
 				845FD90D2392F53A00E9B1D8 /* HistoryTableViewCell.swift in Sources */,
+				848D683A2471C3A70041445F /* APIRequest.swift in Sources */,
 				84086D3D23CE562300795C3D /* InteractionTableViewCell.swift in Sources */,
 				84C10B142336994E00146547 /* AppDelegate.swift in Sources */,
 				84EB32D7244A39AB009816CE /* SettingsViewExt.swift in Sources */,
