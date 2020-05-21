@@ -10,15 +10,17 @@ import UIKit
 
 class AchievementsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var badges = Badge.getAll()
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return badges.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "achCell", for: indexPath) as? AchievementsTableViewCell{
-            cell.title.text = "yes"
+            cell.title.text = badges[indexPath.row].title
+            cell.badgeImage.image = UIImage(named: badges[indexPath.row].imageName)
             return cell
         }
         else{

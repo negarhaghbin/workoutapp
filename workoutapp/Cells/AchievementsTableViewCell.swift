@@ -10,6 +10,7 @@ import UIKit
 
 class AchievementsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var badgeImage: UIImageView!
     @IBOutlet weak var title: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

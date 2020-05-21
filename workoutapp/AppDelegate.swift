@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if AppExercise.loadExercises() == []{
             AppExercise.initAppExerciseTable()
+            Badge.fillBadgeTable()
         }
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         

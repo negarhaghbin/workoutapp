@@ -26,8 +26,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="137"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clique-images-hSB2HmJYaTo-unsplash.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="LdU-hb-Cfd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="207" height="137"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="abs_boronz.png" translatesAutoresizingMaskIntoConstraints="NO" id="LdU-hb-Cfd">
+                                                    <rect key="frame" x="0.0" y="5" width="207" height="127"/>
                                                 </imageView>
                                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tVl-Gj-rj0">
                                                     <rect key="frame" x="227" y="94" width="167" height="12"/>
@@ -46,17 +46,18 @@
                                                 <constraint firstItem="qBR-UR-5sl" firstAttribute="leading" secondItem="LdU-hb-Cfd" secondAttribute="trailing" constant="20" id="JpR-Oz-k1S"/>
                                                 <constraint firstItem="LdU-hb-Cfd" firstAttribute="leading" secondItem="IYe-Px-sQ5" secondAttribute="leading" id="Ki9-eJ-Rg9"/>
                                                 <constraint firstItem="qBR-UR-5sl" firstAttribute="top" secondItem="IYe-Px-sQ5" secondAttribute="topMargin" constant="20" id="LOL-9M-fOS"/>
-                                                <constraint firstItem="LdU-hb-Cfd" firstAttribute="top" secondItem="IYe-Px-sQ5" secondAttribute="top" id="Myi-jE-x7i"/>
                                                 <constraint firstItem="LdU-hb-Cfd" firstAttribute="width" secondItem="IYe-Px-sQ5" secondAttribute="height" multiplier="207:137" id="Sva-yY-aC8"/>
                                                 <constraint firstAttribute="trailing" secondItem="tVl-Gj-rj0" secondAttribute="trailing" constant="20" id="TbT-2S-Dky"/>
+                                                <constraint firstAttribute="bottom" secondItem="LdU-hb-Cfd" secondAttribute="bottom" constant="5" id="UbA-F4-W7A"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="qBR-UR-5sl" secondAttribute="trailing" constant="20" id="YHR-7U-QEj"/>
                                                 <constraint firstItem="LdU-hb-Cfd" firstAttribute="trailing" secondItem="IYe-Px-sQ5" secondAttribute="trailing" multiplier="0.5" id="aZw-Vp-utz"/>
-                                                <constraint firstAttribute="bottom" secondItem="LdU-hb-Cfd" secondAttribute="bottom" id="s7H-AK-48F"/>
+                                                <constraint firstItem="LdU-hb-Cfd" firstAttribute="top" secondItem="IYe-Px-sQ5" secondAttribute="top" constant="5" id="f17-mI-Qre"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="tVl-Gj-rj0" secondAttribute="bottom" constant="20" id="tba-ro-IcT"/>
                                                 <constraint firstItem="tVl-Gj-rj0" firstAttribute="leading" secondItem="LdU-hb-Cfd" secondAttribute="trailing" constant="20" id="uhb-Pk-VQP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="badgeImage" destination="LdU-hb-Cfd" id="Ewv-K2-Zz6"/>
                                             <outlet property="title" destination="qBR-UR-5sl" id="mmn-fB-xRG"/>
                                         </connections>
                                     </tableViewCell>
@@ -86,7 +87,7 @@
         <scene sceneID="XAe-hX-aPA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZhV-cG-ADl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Achievements" image="square.and.arrow.down" catalog="system" id="k96-HD-9Cg"/>
+                    <tabBarItem key="tabBarItem" title="Achievements" image="flame" catalog="system" id="k96-HD-9Cg"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qsT-Ew-gK5">
@@ -104,7 +105,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="clique-images-hSB2HmJYaTo-unsplash.jpg" width="3188" height="4777"/>
-        <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
+        <image name="abs_boronz.png" width="384" height="384"/>
+        <image name="flame" catalog="system" width="109" height="128"/>
     </resources>
 </document>
