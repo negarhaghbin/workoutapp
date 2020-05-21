@@ -81,10 +81,16 @@
 		848D684D2471FA900041445F /* clique-images-hSB2HmJYaTo-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 848D68452471FA8F0041445F /* clique-images-hSB2HmJYaTo-unsplash.jpg */; };
 		848D684E2471FA900041445F /* engin-akyurt-yBwF4KOKwO4-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 848D68462471FA8F0041445F /* engin-akyurt-yBwF4KOKwO4-unsplash.jpg */; };
 		848D684F2471FA900041445F /* tommy-boudreau-diO0a_ZEiEE-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 848D68472471FA8F0041445F /* tommy-boudreau-diO0a_ZEiEE-unsplash.jpg */; };
+		848D685E2474DD0E0041445F /* ConsentDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848D685D2474DD0E0041445F /* ConsentDocument.swift */; };
+		848D68612474E0710041445F /* ConsentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848D68602474E0710041445F /* ConsentTask.swift */; };
+		848D68632474E1D90041445F /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848D68622474E1D90041445F /* ConsentViewController.swift */; };
+		848D6865247603710041445F /* Achievements.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848D6864247603710041445F /* Achievements.storyboard */; };
+		848D6867247604C80041445F /* icons8-medal-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 848D6866247604C80041445F /* icons8-medal-50.png */; };
+		848D686A247607C30041445F /* AchievementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848D6869247607C30041445F /* AchievementsViewController.swift */; };
+		848D686C2476092C0041445F /* AchievementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848D686B2476092C0041445F /* AchievementsTableViewCell.swift */; };
 		849CFC13244F719C007BD77B /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849CFC12244F719C007BD77B /* settings.storyboard */; };
 		849CFC15244F7563007BD77B /* Routines.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849CFC14244F7563007BD77B /* Routines.storyboard */; };
 		849CFC17244F79FC007BD77B /* Diary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849CFC16244F79FC007BD77B /* Diary.storyboard */; };
-		849CFC1B244F7C15007BD77B /* icons8-diary-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 849CFC1A244F7C15007BD77B /* icons8-diary-50.png */; };
 		849CFC1F24522CB7007BD77B /* DiaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC1E24522CB7007BD77B /* DiaryTableViewController.swift */; };
 		849CFC2124523098007BD77B /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC2024523098007BD77B /* Exercise.swift */; };
 		849CFC232452319A007BD77B /* DiaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC222452319A007BD77B /* DiaryItem.swift */; };
@@ -136,6 +142,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		848D685C2474DC7C0041445F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		84DD804A237319A700B16601 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -228,10 +244,17 @@
 		848D68452471FA8F0041445F /* clique-images-hSB2HmJYaTo-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "clique-images-hSB2HmJYaTo-unsplash.jpg"; sourceTree = "<group>"; };
 		848D68462471FA8F0041445F /* engin-akyurt-yBwF4KOKwO4-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "engin-akyurt-yBwF4KOKwO4-unsplash.jpg"; sourceTree = "<group>"; };
 		848D68472471FA8F0041445F /* tommy-boudreau-diO0a_ZEiEE-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tommy-boudreau-diO0a_ZEiEE-unsplash.jpg"; sourceTree = "<group>"; };
+		848D685D2474DD0E0041445F /* ConsentDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentDocument.swift; sourceTree = "<group>"; };
+		848D68602474E0710041445F /* ConsentTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTask.swift; sourceTree = "<group>"; };
+		848D68622474E1D90041445F /* ConsentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewController.swift; sourceTree = "<group>"; };
+		848D6864247603710041445F /* Achievements.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Achievements.storyboard; sourceTree = "<group>"; };
+		848D6866247604C80041445F /* icons8-medal-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-medal-50.png"; sourceTree = "<group>"; };
+		848D68682476051C0041445F /* icons8-medal-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icons8-medal-50.png"; path = "workoutapp/Local Videos/icons8-medal-50.png"; sourceTree = "<group>"; };
+		848D6869247607C30041445F /* AchievementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsViewController.swift; sourceTree = "<group>"; };
+		848D686B2476092C0041445F /* AchievementsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsTableViewCell.swift; sourceTree = "<group>"; };
 		849CFC12244F719C007BD77B /* settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = settings.storyboard; sourceTree = "<group>"; };
 		849CFC14244F7563007BD77B /* Routines.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Routines.storyboard; sourceTree = "<group>"; };
 		849CFC16244F79FC007BD77B /* Diary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Diary.storyboard; sourceTree = "<group>"; };
-		849CFC1A244F7C15007BD77B /* icons8-diary-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-diary-50.png"; sourceTree = "<group>"; };
 		849CFC1E24522CB7007BD77B /* DiaryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableViewController.swift; sourceTree = "<group>"; };
 		849CFC2024523098007BD77B /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		849CFC222452319A007BD77B /* DiaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryItem.swift; sourceTree = "<group>"; };
@@ -375,6 +398,7 @@
 				843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */,
 				84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */,
 				849CFC2C24552F57007BD77B /* DiaryTableViewCell.swift */,
+				848D686B2476092C0041445F /* AchievementsTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -399,6 +423,8 @@
 				84C10B2923369FD100146547 /* TableViewController.swift */,
 				84C10B172336994E00146547 /* ViewController.swift */,
 				848D683D2471C9B20041445F /* WelcomeViewController.swift */,
+				848D68622474E1D90041445F /* ConsentViewController.swift */,
+				848D6869247607C30041445F /* AchievementsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -427,15 +453,24 @@
 			path = "Welcome page";
 			sourceTree = "<group>";
 		};
+		848D685F2474E0590041445F /* Consent */ = {
+			isa = PBXGroup;
+			children = (
+				848D685D2474DD0E0041445F /* ConsentDocument.swift */,
+				848D68602474E0710041445F /* ConsentTask.swift */,
+			);
+			path = Consent;
+			sourceTree = "<group>";
+		};
 		849CFC11244F7126007BD77B /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				849CFC1A244F7C15007BD77B /* icons8-diary-50.png */,
 				849CFC16244F79FC007BD77B /* Diary.storyboard */,
 				849CFC12244F719C007BD77B /* settings.storyboard */,
 				849CFC14244F7563007BD77B /* Routines.storyboard */,
 				84C10B192336994E00146547 /* Main.storyboard */,
 				84C10B1E2336995000146547 /* LaunchScreen.storyboard */,
+				848D6864247603710041445F /* Achievements.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -443,6 +478,7 @@
 		84C10B072336994E00146547 = {
 			isa = PBXGroup;
 			children = (
+				848D68682476051C0041445F /* icons8-medal-50.png */,
 				84C10B122336994E00146547 /* workoutapp */,
 				84DD8043237319A700B16601 /* OneSignalNotificationServiceExtension */,
 				84C10B112336994E00146547 /* Products */,
@@ -485,6 +521,7 @@
 				84092841237CDC1700C695F6 /* File */,
 				8448791D23C3A9A800F37788 /* dateExt.swift */,
 				84EB32D2244A03DE009816CE /* AppUtility.swift */,
+				848D685F2474E0590041445F /* Consent */,
 			);
 			path = workoutapp;
 			sourceTree = "<group>";
@@ -492,6 +529,7 @@
 		84C10B2F2336A10000146547 /* Local Videos */ = {
 			isa = PBXGroup;
 			children = (
+				848D6866247604C80041445F /* icons8-medal-50.png */,
 				848D683F2471FA8F0041445F /* Welcome page */,
 				8448792323C8E0B700F37788 /* rest in.m4a */,
 				8448792423C8E0B800F37788 /* start in.m4a */,
@@ -578,6 +616,7 @@
 				84C10B0E2336994E00146547 /* Resources */,
 				84DD804A237319A700B16601 /* Embed App Extensions */,
 				73CA80EFC8F7FB34885713F4 /* [CP] Embed Pods Frameworks */,
+				848D685C2474DC7C0041445F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -649,14 +688,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				848D6867247604C80041445F /* icons8-medal-50.png in Resources */,
 				849CFC17244F79FC007BD77B /* Diary.storyboard in Resources */,
 				8469DE0423A7CB3A0098A5FD /* beep.wav in Resources */,
 				84092851237CF27F00C695F6 /* lowerBody.png in Resources */,
-				849CFC1B244F7C15007BD77B /* icons8-diary-50.png in Resources */,
 				84092852237CF27F00C695F6 /* abs.png in Resources */,
 				8409284C237CE92500C695F6 /* upperBody.png in Resources */,
 				8448792523C8E0B800F37788 /* rest in.m4a in Resources */,
 				845FD8E023859FD100E9B1D8 /* air-bike-crunches.gif in Resources */,
+				848D6865247603710041445F /* Achievements.storyboard in Resources */,
 				845FD8F0238C32F000E9B1D8 /* lunge-step-ups.gif in Resources */,
 				84092853237CF27F00C695F6 /* totalBody.png in Resources */,
 				84C10B4E2336A10000146547 /* InnerTightLift.png in Resources */,
@@ -799,11 +839,13 @@
 				846446B72378AD0100F493F0 /* NameTableViewController.swift in Sources */,
 				8469DE1A23B9105F0098A5FD /* progressBar.swift in Sources */,
 				849CFC25245238FF007BD77B /* NewWorkoutPopupViewController.swift in Sources */,
+				848D686A247607C30041445F /* AchievementsViewController.swift in Sources */,
 				849CFC2724532000007BD77B /* HideKeyboardExt.swift in Sources */,
 				848D683E2471C9B20041445F /* WelcomeViewController.swift in Sources */,
 				8448792023C67B7800F37788 /* Interaction.swift in Sources */,
 				845FD9092390A35F00E9B1D8 /* dailyRoutine.swift in Sources */,
 				849CFC232452319A007BD77B /* DiaryItem.swift in Sources */,
+				848D68612474E0710041445F /* ConsentTask.swift in Sources */,
 				8448791E23C3A9A900F37788 /* dateExt.swift in Sources */,
 				84092847237CE16B00C695F6 /* Image.swift in Sources */,
 				84EB32D3244A03DE009816CE /* AppUtility.swift in Sources */,
@@ -812,6 +854,7 @@
 				84DC84BD23A2F2AA00B82BCD /* User.swift in Sources */,
 				840704892336E4E900961B1E /* SceneDelegate.swift in Sources */,
 				840EAC4823BBF877002D0AF6 /* ActivityViewController.swift in Sources */,
+				848D686C2476092C0041445F /* AchievementsTableViewCell.swift in Sources */,
 				849CFC29245322E3007BD77B /* AddWorkoutViewController.swift in Sources */,
 				845FD8C12380995100E9B1D8 /* StartRoutineViewController.swift in Sources */,
 				845FD90D2392F53A00E9B1D8 /* HistoryTableViewCell.swift in Sources */,
@@ -820,6 +863,7 @@
 				84C10B142336994E00146547 /* AppDelegate.swift in Sources */,
 				84EB32D7244A39AB009816CE /* SettingsViewExt.swift in Sources */,
 				843C3DA3237F0798006FE720 /* RoutineViewController.swift in Sources */,
+				848D685E2474DD0E0041445F /* ConsentDocument.swift in Sources */,
 				84C10B2823369FB300146547 /* NavViewController.swift in Sources */,
 				84E76C09246F0D750041311F /* Duration.swift in Sources */,
 				84DF7B6A23957E630098A4C7 /* locationHistory.swift in Sources */,
@@ -837,6 +881,7 @@
 				849CFC2D24552F57007BD77B /* DiaryTableViewCell.swift in Sources */,
 				845FD8C723830C1600E9B1D8 /* swift+gif.swift in Sources */,
 				84C10B2A23369FD100146547 /* TableViewController.swift in Sources */,
+				848D68632474E1D90041445F /* ConsentViewController.swift in Sources */,
 				84092840237CD46000C695F6 /* RoutineCollectionViewCell.swift in Sources */,
 				846446A22376008500F493F0 /* TabBarViewController.swift in Sources */,
 				849CFC2B2453250A007BD77B /* AddWorkoutTableCell.swift in Sources */,
