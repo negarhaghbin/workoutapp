@@ -141,6 +141,13 @@
 		84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6EEC4235227F3001B00D8 /* SplitViewController.swift */; };
 		84E6EEC723528902001B00D8 /* startup in Resources */ = {isa = PBXBuildFile; fileRef = 84E6EEC623528902001B00D8 /* startup */; };
 		84E76C09246F0D750041311F /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E76C08246F0D750041311F /* Duration.swift */; };
+		84E90D2B248170F900F6106D /* steps_silver.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E90D25248170F900F6106D /* steps_silver.png */; };
+		84E90D2C248170F900F6106D /* steps_gold.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E90D26248170F900F6106D /* steps_gold.png */; };
+		84E90D2D248170F900F6106D /* notif_location.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E90D27248170F900F6106D /* notif_location.png */; };
+		84E90D2E248170F900F6106D /* notif_time.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E90D28248170F900F6106D /* notif_time.png */; };
+		84E90D2F248170F900F6106D /* notif_activity.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E90D29248170F900F6106D /* notif_activity.png */; };
+		84E90D30248170F900F6106D /* steps_boronz.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E90D2A248170F900F6106D /* steps_boronz.png */; };
+		84E90D322481E19000F6106D /* diary_header.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E90D312481E19000F6106D /* diary_header.png */; };
 		84EB32D3244A03DE009816CE /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB32D2244A03DE009816CE /* AppUtility.swift */; };
 		84EB32D7244A39AB009816CE /* SettingsViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB32D6244A39AB009816CE /* SettingsViewExt.swift */; };
 		FBC816195429A1F687D666FD /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1C683DBE4ED97BFBB67D2 /* Pods_OneSignalNotificationServiceExtension.framework */; };
@@ -323,6 +330,14 @@
 		84E6EEC4235227F3001B00D8 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		84E6EEC623528902001B00D8 /* startup */ = {isa = PBXFileReference; lastKnownFileType = file; path = startup; sourceTree = "<group>"; };
 		84E76C08246F0D750041311F /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
+		84E90D25248170F900F6106D /* steps_silver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = steps_silver.png; sourceTree = "<group>"; };
+		84E90D26248170F900F6106D /* steps_gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = steps_gold.png; sourceTree = "<group>"; };
+		84E90D27248170F900F6106D /* notif_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notif_location.png; sourceTree = "<group>"; };
+		84E90D28248170F900F6106D /* notif_time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notif_time.png; sourceTree = "<group>"; };
+		84E90D29248170F900F6106D /* notif_activity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notif_activity.png; sourceTree = "<group>"; };
+		84E90D2A248170F900F6106D /* steps_boronz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = steps_boronz.png; sourceTree = "<group>"; };
+		84E90D312481E19000F6106D /* diary_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diary_header.png; sourceTree = "<group>"; };
+		84E90D332481E1B800F6106D /* diary_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = diary_header.png; path = "workoutapp/Local Videos/diary_header.png"; sourceTree = "<group>"; };
 		84EB32D2244A03DE009816CE /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		84EB32D6244A39AB009816CE /* SettingsViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewExt.swift; path = /Users/negar/Desktop/Concordia/workoutapp/workoutapp/SettingsViewExt.swift; sourceTree = "<absolute>"; };
 		AD8ED2DAAEEFF97A4D28B7DE /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
@@ -393,6 +408,12 @@
 		8418086024762F2C00786224 /* Badges */ = {
 			isa = PBXGroup;
 			children = (
+				84E90D29248170F900F6106D /* notif_activity.png */,
+				84E90D27248170F900F6106D /* notif_location.png */,
+				84E90D28248170F900F6106D /* notif_time.png */,
+				84E90D2A248170F900F6106D /* steps_boronz.png */,
+				84E90D26248170F900F6106D /* steps_gold.png */,
+				84E90D25248170F900F6106D /* steps_silver.png */,
 				841808722476D8CC00786224 /* abs_boronz.png */,
 				8418087E2476D8CD00786224 /* abs_gold.png */,
 				841808712476D8CC00786224 /* abs_silver.png */,
@@ -523,6 +544,7 @@
 		84C10B072336994E00146547 = {
 			isa = PBXGroup;
 			children = (
+				84E90D332481E1B800F6106D /* diary_header.png */,
 				848D68682476051C0041445F /* icons8-medal-50.png */,
 				84C10B122336994E00146547 /* workoutapp */,
 				84DD8043237319A700B16601 /* OneSignalNotificationServiceExtension */,
@@ -573,6 +595,7 @@
 		84C10B2F2336A10000146547 /* Local Videos */ = {
 			isa = PBXGroup;
 			children = (
+				84E90D312481E19000F6106D /* diary_header.png */,
 				8418086024762F2C00786224 /* Badges */,
 				848D6866247604C80041445F /* icons8-medal-50.png */,
 				848D683F2471FA8F0041445F /* Welcome page */,
@@ -733,6 +756,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84E90D322481E19000F6106D /* diary_header.png in Resources */,
 				8418088F2476D8CD00786224 /* lower_gold.png in Resources */,
 				841808872476D8CD00786224 /* strike_14days.png in Resources */,
 				848D6867247604C80041445F /* icons8-medal-50.png in Resources */,
@@ -745,9 +769,11 @@
 				845FD8E023859FD100E9B1D8 /* air-bike-crunches.gif in Resources */,
 				848D6865247603710041445F /* Achievements.storyboard in Resources */,
 				845FD8F0238C32F000E9B1D8 /* lunge-step-ups.gif in Resources */,
+				84E90D2F248170F900F6106D /* notif_activity.png in Resources */,
 				84092853237CF27F00C695F6 /* totalBody.png in Resources */,
 				84C10B4E2336A10000146547 /* InnerTightLift.png in Resources */,
 				84C10B482336A10000146547 /* InnerTightLift.mp4 in Resources */,
+				84E90D2E248170F900F6106D /* notif_time.png in Resources */,
 				84C10B4A2336A10000146547 /* doubleChopKneePulls.mp4 in Resources */,
 				849CFC15244F7563007BD77B /* Routines.storyboard in Resources */,
 				8448792623C8E0B800F37788 /* start in.m4a in Resources */,
@@ -759,11 +785,13 @@
 				84C10B492336A10000146547 /* stepsAndPulls.mp4 in Resources */,
 				845FD8DD23859FD100E9B1D8 /* sitting-twists.gif in Resources */,
 				84092842237CDC1700C695F6 /* File in Resources */,
+				84E90D2D248170F900F6106D /* notif_location.png in Resources */,
 				845FD8F7238C32F000E9B1D8 /* flutter-kicks.gif in Resources */,
 				845FD900238C6C9800E9B1D8 /* bicep-extensions.gif in Resources */,
 				84C10B472336A10000146547 /* alternatingLunges.mp4 in Resources */,
 				8448792223C8DB3400F37788 /* countdown.wav in Resources */,
 				845FD901238C6C9800E9B1D8 /* bicep-extension-hold.gif in Resources */,
+				84E90D2B248170F900F6106D /* steps_silver.png in Resources */,
 				848D68482471FA900041445F /* markus-spiske-KWQ2kQtxiKE-unsplash.jpg in Resources */,
 				845FD902238C6C9800E9B1D8 /* clench-unclench-side.gif in Resources */,
 				841808882476D8CD00786224 /* upper_silver.png in Resources */,
@@ -789,6 +817,7 @@
 				84C10B4C2336A10000146547 /* armCircles.png in Resources */,
 				845FD8F2238C32F000E9B1D8 /* bend-and-twist.gif in Resources */,
 				845FD8F3238C32F000E9B1D8 /* knee-to-elbows.gif in Resources */,
+				84E90D2C248170F900F6106D /* steps_gold.png in Resources */,
 				845FD8F1238C32F000E9B1D8 /* step-jacks.gif in Resources */,
 				84C10B4D2336A10000146547 /* doubleChopKneePulls.png in Resources */,
 				848D684A2471FA900041445F /* bruno-nascimento-PHIgYUGQPvU-unsplash.jpg in Resources */,
@@ -803,6 +832,7 @@
 				845FD8E42385D76200E9B1D8 /* rest.png in Resources */,
 				84372D4B2339342A00D6586D /* doubleChopKneePulls.jpg in Resources */,
 				845FD8EF238C32EF00E9B1D8 /* march-steps.gif in Resources */,
+				84E90D30248170F900F6106D /* steps_boronz.png in Resources */,
 				84372D4E2339342B00D6586D /* InnerTightLift.jpg in Resources */,
 				84E6EEC723528902001B00D8 /* startup in Resources */,
 				849CFC13244F719C007BD77B /* settings.storyboard in Resources */,

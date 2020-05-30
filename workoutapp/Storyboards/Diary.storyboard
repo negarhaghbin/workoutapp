@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j6r-Zc-fmF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Exl-Hu-Rr7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -7,91 +7,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Diary-->
-        <scene sceneID="IJh-hV-yGa">
-            <objects>
-                <tableViewController id="asQ-Bh-vCH" customClass="DiaryTableViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" tag="10" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="V1M-4A-KLt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="kaf-Fj-ynB">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No history available." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENL-V8-5NX">
-                                    <rect key="frame" x="130" y="11.5" width="154" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstItem="ENL-V8-5NX" firstAttribute="centerY" secondItem="kaf-Fj-ynB" secondAttribute="centerY" id="nh4-ND-xiD"/>
-                                <constraint firstItem="ENL-V8-5NX" firstAttribute="centerX" secondItem="kaf-Fj-ynB" secondAttribute="centerX" id="rrW-Zu-Y6g"/>
-                            </constraints>
-                        </view>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="diaryCell" id="aA1-2h-M3N" customClass="DiaryTableViewCell" customModule="_M_Workout" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="99.5" width="414" height="43"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aA1-2h-M3N" id="gfg-52-q1V">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waF-nk-z5f">
-                                            <rect key="frame" x="28" y="11" width="179" height="21"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 minutes and 3 seconds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obx-lV-htg">
-                                            <rect key="frame" x="207" y="11" width="197" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="waF-nk-z5f" firstAttribute="top" secondItem="gfg-52-q1V" secondAttribute="top" constant="11" id="ALt-J4-NGy"/>
-                                        <constraint firstAttribute="centerX" secondItem="waF-nk-z5f" secondAttribute="trailing" id="BUd-Sc-ZPb"/>
-                                        <constraint firstItem="obx-lV-htg" firstAttribute="centerY" secondItem="gfg-52-q1V" secondAttribute="centerY" id="Ci7-rB-Sdk"/>
-                                        <constraint firstAttribute="bottom" secondItem="waF-nk-z5f" secondAttribute="bottom" constant="11" id="PNE-Ip-5RD"/>
-                                        <constraint firstItem="obx-lV-htg" firstAttribute="leading" secondItem="waF-nk-z5f" secondAttribute="trailing" id="TJe-kp-QUf"/>
-                                        <constraint firstItem="waF-nk-z5f" firstAttribute="centerY" secondItem="gfg-52-q1V" secondAttribute="centerY" id="VSB-OT-Fkl"/>
-                                        <constraint firstAttribute="trailing" secondItem="obx-lV-htg" secondAttribute="trailing" constant="10" id="d9e-4y-OM4"/>
-                                        <constraint firstItem="waF-nk-z5f" firstAttribute="leading" secondItem="gfg-52-q1V" secondAttribute="leadingMargin" constant="8" id="gUl-VE-Wvl"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="durationLabel" destination="obx-lV-htg" id="l6b-Cm-h2e"/>
-                                    <outlet property="nameLabel" destination="waF-nk-z5f" id="8hZ-O5-Svc"/>
-                                    <segue destination="IZB-b6-2JE" kind="presentation" identifier="showDiaryItem" modalPresentationStyle="fullScreen" id="ghH-0T-wnj"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="asQ-Bh-vCH" id="r5N-NL-wT2"/>
-                            <outlet property="delegate" destination="asQ-Bh-vCH" id="DDk-Qf-ThZ"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Diary" id="9ze-Dd-X5n">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="frY-yR-nds">
-                            <color key="tintColor" red="0.96470588239999999" green="0.31372549020000001" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="zbN-l6-OD8" kind="show" id="Zp6-NP-Gdd"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="viewLabel" destination="ENL-V8-5NX" id="6eX-UX-7e5"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ruj-qD-Bry" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1095.6521739130435" y="88.392857142857139"/>
-        </scene>
         <!--Add Workout View Controller-->
         <scene sceneID="MOM-Zf-13d">
             <objects>
@@ -440,24 +355,131 @@
             <point key="canvasLocation" x="3082.608695652174" y="87.723214285714278"/>
         </scene>
         <!--Diary-->
-        <scene sceneID="Vvy-3Y-Z5a">
+        <scene sceneID="Myw-3M-dU2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j6r-Zc-fmF" sceneMemberID="viewController">
+                <viewController id="p3F-gj-tLi" customClass="DiaryTableViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SSC-E8-LqI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="diary_header.png" translatesAutoresizingMaskIntoConstraints="NO" id="K63-sf-sry">
+                                <rect key="frame" x="0.0" y="88" width="414" height="139"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" tag="10" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="V1M-4A-KLt">
+                                <rect key="frame" x="0.0" y="235" width="414" height="661"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="kaf-Fj-ynB">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No history available." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENL-V8-5NX">
+                                            <rect key="frame" x="130" y="11.5" width="154" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="ENL-V8-5NX" firstAttribute="centerY" secondItem="kaf-Fj-ynB" secondAttribute="centerY" id="nh4-ND-xiD"/>
+                                        <constraint firstItem="ENL-V8-5NX" firstAttribute="centerX" secondItem="kaf-Fj-ynB" secondAttribute="centerX" id="rrW-Zu-Y6g"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="diaryCell" id="aA1-2h-M3N" customClass="DiaryTableViewCell" customModule="_M_Workout" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="99.5" width="414" height="43"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aA1-2h-M3N" id="gfg-52-q1V">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waF-nk-z5f">
+                                                    <rect key="frame" x="28" y="11" width="179" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 minutes and 3 seconds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obx-lV-htg">
+                                                    <rect key="frame" x="207" y="11" width="197" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="waF-nk-z5f" firstAttribute="top" secondItem="gfg-52-q1V" secondAttribute="top" constant="11" id="ALt-J4-NGy"/>
+                                                <constraint firstAttribute="centerX" secondItem="waF-nk-z5f" secondAttribute="trailing" id="BUd-Sc-ZPb"/>
+                                                <constraint firstItem="obx-lV-htg" firstAttribute="centerY" secondItem="gfg-52-q1V" secondAttribute="centerY" id="Ci7-rB-Sdk"/>
+                                                <constraint firstAttribute="bottom" secondItem="waF-nk-z5f" secondAttribute="bottom" constant="11" id="PNE-Ip-5RD"/>
+                                                <constraint firstItem="obx-lV-htg" firstAttribute="leading" secondItem="waF-nk-z5f" secondAttribute="trailing" id="TJe-kp-QUf"/>
+                                                <constraint firstItem="waF-nk-z5f" firstAttribute="centerY" secondItem="gfg-52-q1V" secondAttribute="centerY" id="VSB-OT-Fkl"/>
+                                                <constraint firstAttribute="trailing" secondItem="obx-lV-htg" secondAttribute="trailing" constant="10" id="d9e-4y-OM4"/>
+                                                <constraint firstItem="waF-nk-z5f" firstAttribute="leading" secondItem="gfg-52-q1V" secondAttribute="leadingMargin" constant="8" id="gUl-VE-Wvl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="durationLabel" destination="obx-lV-htg" id="l6b-Cm-h2e"/>
+                                            <outlet property="nameLabel" destination="waF-nk-z5f" id="8hZ-O5-Svc"/>
+                                            <segue destination="IZB-b6-2JE" kind="presentation" identifier="showDiaryItem" modalPresentationStyle="fullScreen" id="ghH-0T-wnj"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="p3F-gj-tLi" id="6pA-JS-A0x"/>
+                                    <outlet property="delegate" destination="p3F-gj-tLi" id="OQU-QY-Jbs"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="V1M-4A-KLt" secondAttribute="bottom" id="H0y-yn-ovG"/>
+                            <constraint firstItem="V1M-4A-KLt" firstAttribute="top" secondItem="K63-sf-sry" secondAttribute="bottom" id="HQ4-mn-0L5"/>
+                            <constraint firstItem="V1M-4A-KLt" firstAttribute="centerX" secondItem="SSC-E8-LqI" secondAttribute="centerX" id="Okc-jf-ZP6"/>
+                            <constraint firstItem="K63-sf-sry" firstAttribute="leading" secondItem="ttr-YM-rHB" secondAttribute="leading" id="TKt-u4-DKI"/>
+                            <constraint firstItem="V1M-4A-KLt" firstAttribute="leading" secondItem="ttr-YM-rHB" secondAttribute="leading" id="Y9f-uR-Plq"/>
+                            <constraint firstItem="K63-sf-sry" firstAttribute="trailing" secondItem="ttr-YM-rHB" secondAttribute="trailing" id="edl-r5-cjt"/>
+                            <constraint firstItem="K63-sf-sry" firstAttribute="top" secondItem="ttr-YM-rHB" secondAttribute="top" id="ifE-pl-hIX"/>
+                            <constraint firstItem="V1M-4A-KLt" firstAttribute="trailing" secondItem="ttr-YM-rHB" secondAttribute="trailing" id="kUZ-k7-mtk"/>
+                            <constraint firstItem="K63-sf-sry" firstAttribute="width" secondItem="SSC-E8-LqI" secondAttribute="width" id="qwe-4V-7Gz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ttr-YM-rHB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Diary" id="yft-S8-pgF">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="QRd-jZ-NPr">
+                            <color key="tintColor" red="0.96470588239999999" green="0.31372549020000001" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="zbN-l6-OD8" kind="show" id="Rdp-Yw-tvH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="V1M-4A-KLt" id="tCL-bh-7Ru"/>
+                        <outlet property="viewLabel" destination="ENL-V8-5NX" id="wLn-sW-t8H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W90-79-jFi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1007.2463768115942" y="-1.3392857142857142"/>
+        </scene>
+        <!--Diary-->
+        <scene sceneID="YCm-Cy-2vY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Exl-Hu-Rr7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Diary" image="pencil.and.ellipsis.rectangle" catalog="system" id="igU-68-kAq"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9Ko-i5-38e">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cKw-Zf-Wc6">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="asQ-Bh-vCH" kind="relationship" relationship="rootViewController" id="Ihl-lV-DjO"/>
+                        <segue destination="p3F-gj-tLi" kind="relationship" relationship="rootViewController" id="Gmt-kn-UBY"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Eay-zp-slB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p6q-pt-b6t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="185.50724637681162" y="88.392857142857139"/>
+            <point key="canvasLocation" x="175" y="-1"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -465,6 +487,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="alternatingLunges.png" width="666.5" height="486"/>
+        <image name="diary_header.png" width="283.44000244140625" height="94.319999694824219"/>
         <image name="pencil.and.ellipsis.rectangle" catalog="system" width="128" height="81"/>
     </resources>
 </document>

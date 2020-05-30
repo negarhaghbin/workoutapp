@@ -10,7 +10,8 @@ import UIKit
 import RealmSwift
 
 class WelcomeViewController: UIViewController {
-
+    let realm = try! Realm()
+    
     @IBOutlet weak var helloLabel: UILabel!
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
@@ -18,7 +19,11 @@ class WelcomeViewController: UIViewController {
     
     var images = ["markus-spiske-KWQ2kQtxiKE-unsplash", "victor-freitas-qZ-U9z4TQ6A-unsplash", "bruno-nascimento-PHIgYUGQPvU-unsplash", "x-N4QTBfNQ8Nk-unsplash", "marc-najera-Cj2d2IUEPDM-unsplash", "clique-images-hSB2HmJYaTo-unsplash", "engin-akyurt-yBwF4KOKwO4-unsplash", "tommy-boudreau-diO0a_ZEiEE-unsplash"]
     
-    var name = ""
+    var user : User?{
+        didSet{
+            refreshUI()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,15 +57,34 @@ class WelcomeViewController: UIViewController {
             askName()
         }
         else{
-            let user = try! Realm().object(ofType: User.self, forPrimaryKey: UserDefaults.standard.string(forKey: "uuid"))!
-            name = user.name
+            let u = realm.object(ofType: User.self, forPrimaryKey: UserDefaults.standard.string(forKey: "uuid"))!
+            self.user = u
         }
-        self.helloLabel.text = "Hello \(name)!"
     }
     
+    func refreshUI(){
+        self.helloLabel.text = "Hello \(user!.name)!"
+        user!.manageStrike{ () -> () in
+            var badge : Badge?
+            switch user!.strike {
+            case 3:
+                badge = realm.object(ofType: Badge.self, forPrimaryKey: "3 days")
+            case 7:
+                badge = realm.object(ofType: Badge.self, forPrimaryKey: "7 days")
+            case 14:
+                badge = realm.object(ofType: Badge.self, forPrimaryKey: "14 days")
+            case 30:
+                badge = realm.object(ofType: Badge.self, forPrimaryKey: "30 days")
+            default:
+                print("No badge available")
+            }
+            
+            if (badge != nil){
+                badge!.achieved()
+            }
+        }
+    }
     
-    
-        
     func isNewUser()->Bool{
         let defaults = UserDefaults.standard
         if defaults.string(forKey: "isAppAlreadyLaunchedOnce") != nil{
@@ -78,13 +102,14 @@ class WelcomeViewController: UIViewController {
         })
             
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
-            User.createUser(name: "Awsome me")
+            self.user = User(n: "Awsome me")
+            self.user!.add()
         }))
 
         alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { action in
             if let name = alert.textFields?.first?.text {
-                self.name = name
-                User.createUser(name: name)
+                self.user = User(n: name)
+                self.user?.add()
             }
         }))
             

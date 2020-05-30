@@ -13,12 +13,15 @@ class Duration: Object {
     @objc dynamic var setCount : Int = 0
     @objc dynamic var inSetCount : Int = 0
     @objc dynamic var secDuration: Int = 0
+    @objc dynamic var strike: Int = 0
     
     convenience init(sc: Int? = {
         return 0
         }(), isc:Int? = {
         return 0
         }(), sd: Int? = {
+        return 0
+        }(), strike: Int? = {
         return 0
         }()) {
         self.init()
@@ -27,6 +30,7 @@ class Duration: Object {
             self.setCount = sc!
             self.inSetCount = isc!
             self.secDuration = sd!
+            self.strike = strike!
         }
     }
     
@@ -59,6 +63,13 @@ class Duration: Object {
         }
         else{
             return getTimeDuration()
+        }
+    }
+    
+    func increaseStrike(){
+       let realm = try! Realm()
+        try! realm.write {
+            self.strike = self.strike + 1
         }
     }
 }

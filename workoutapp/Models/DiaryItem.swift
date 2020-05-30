@@ -86,6 +86,7 @@ class DiaryItem: Object {
         }
     }
     
+    
     class func getWithDate() -> [String:[DiaryItem]] {
         var result : [String:[DiaryItem]] = [:]
         let all = getAll()

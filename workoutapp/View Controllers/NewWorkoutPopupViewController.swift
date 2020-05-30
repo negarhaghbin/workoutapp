@@ -148,6 +148,7 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
         var e = Exercise()
         if Exercise.isNew(ck: Exercise.getCompoundKey(name: nameField.text!, type: typeLabel.text!)){
             e = Exercise(name: nameField.text!, type: typeLabel.text!)
+            e.add()
         }
         else{
             e = Exercise.getObject(ck: Exercise.getCompoundKey(name: nameField.text!, type: typeLabel.text!))

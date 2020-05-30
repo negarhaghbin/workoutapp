@@ -25,6 +25,12 @@ class Exercise: Object {
             self.name = name
             self.type = type
             self.compoundKey = compoundKeyValue()
+        }
+    }
+    
+    func add(){
+        let realm = try! Realm()
+        try! realm.write {
             realm.add(self)
         }
     }
@@ -49,35 +55,35 @@ class Exercise: Object {
         let abs = "Abs"
         let lower = "Lower Body"
         
-        Exercise(name: "Crunches", type: abs)
-        Exercise(name: "Air Bike Crunches", type: abs)
-        Exercise(name: "Sitting Twists", type: abs)
-        Exercise(name: "Raised Leg Hold", type: abs)
-        Exercise(name: "High Plank Hold", type: abs)
-        Exercise(name: "Plank Leg Raise", type: abs)
+        Exercise(name: "Crunches", type: abs).add()
+        Exercise(name: "Air Bike Crunches", type: abs).add()
+        Exercise(name: "Sitting Twists", type: abs).add()
+        Exercise(name: "Raised Leg Hold", type: abs).add()
+        Exercise(name: "High Plank Hold", type: abs).add()
+        Exercise(name: "Plank Leg Raise", type: abs).add()
         
         
-        Exercise(name: "Step Jacks", type: total)
-        Exercise(name: "Knee to Elbow", type: total)
-        Exercise(name: "Lunge Step-ups(left)", type: total)
-        Exercise(name: "Lunge Step-ups(right)", type: total)
-        Exercise(name: "Calf Raise", type: total)
-        Exercise(name: "Bend and Twist(left)", type: total)
-        Exercise(name: "Bend and Twist(right)", type: total)
+        Exercise(name: "Step Jacks", type: total).add()
+        Exercise(name: "Knee to Elbow", type: total).add()
+        Exercise(name: "Lunge Step-ups(left)", type: total).add()
+        Exercise(name: "Lunge Step-ups(right)", type: total).add()
+        Exercise(name: "Calf Raise", type: total).add()
+        Exercise(name: "Bend and Twist(left)", type: total).add()
+        Exercise(name: "Bend and Twist(right)", type: total).add()
         
-        Exercise(name: "Butt Kicks", type: lower)
-        Exercise(name: "March Steps", type: lower)
-        Exercise(name: "Calf Raise Hold", type: lower)
-        Exercise(name: "Standing Side Leg Raise", type: lower)
-        Exercise(name: "Flutter Kicks", type: lower)
-        Exercise(name: "Steps", type: lower)
+        Exercise(name: "Butt Kicks", type: lower).add()
+        Exercise(name: "March Steps", type: lower).add()
+        Exercise(name: "Calf Raise Hold", type: lower).add()
+        Exercise(name: "Standing Side Leg Raise", type: lower).add()
+        Exercise(name: "Flutter Kicks", type: lower).add()
+        Exercise(name: "Steps", type: lower).add()
         
-        Exercise(name: "Clench/Unclench Overhead", type: upper)
-        Exercise(name: "Clench/Unclench Arms Raised to the Side", type: upper)
-        Exercise(name: "Raised Arm Circles", type: upper)
-        Exercise(name: "Arms Raised to the Side Hold", type: upper)
-        Exercise(name: "Bicep Extensions", type: upper)
-        Exercise(name: "Bicep Extensions Hold", type: upper)
+        Exercise(name: "Clench/Unclench Overhead", type: upper).add()
+        Exercise(name: "Clench/Unclench Arms Raised to the Side", type: upper).add()
+        Exercise(name: "Raised Arm Circles", type: upper).add()
+        Exercise(name: "Arms Raised to the Side Hold", type: upper).add()
+        Exercise(name: "Bicep Extensions", type: upper).add()
+        Exercise(name: "Bicep Extensions Hold", type: upper).add()
         
     }
     
