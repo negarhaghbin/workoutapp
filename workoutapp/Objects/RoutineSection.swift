@@ -8,13 +8,6 @@
 
 import UIKit
 
-enum ExerciseType : String {
-    case total = "Total Body"
-    case upper = "Upper Body"
-    case abs = "Abs"
-    case lower = "Lower Body"
-}
-
 class RoutineSection: NSObject {
     var title: String
     var image : Image

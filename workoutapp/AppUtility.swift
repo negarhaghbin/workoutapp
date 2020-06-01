@@ -9,6 +9,26 @@
 import Foundation
 import UIKit
 
+enum ExerciseType : String {
+    case total = "Total Body"
+    case upper = "Upper Body"
+    case abs = "Abs"
+    case lower = "Lower Body"
+}
+enum BadgeDuration : Int {
+    //15 * 60 = 900
+    case bronze = 10
+    //60 * 60 = 3600
+    case silver = 3600
+    //3 * 60 * 60 = 3600
+    case gold = 10800
+    
+    case bronzeS = 10000
+    case silverS = 100000
+    case goldS = 300000
+    
+}
+
 func MinutesToString(time: Int)->String{
     let hours = time / 3600
     let minutes = time / 60 % 60

@@ -110,6 +110,29 @@ class DiaryItem: Object {
         return result
     }
     
+    class func getWithType() -> [String:[DiaryItem]] {
+        var result : [String:[DiaryItem]] = [:]
+        let all = getAll()
+        var types : Set<String> = []
+        for item in all {
+            types.insert(item.exercise!.type)
+        }
+        
+        //var datesArray = Array(dates)
+        
+        for type in types{
+            result[type] = []
+        }
+        
+        for item in all{
+            var temp: [DiaryItem] = result[item.exercise!.type]!
+            temp.append(item)
+            result.updateValue(temp, forKey: item.exercise!.type)!
+        }
+        
+        return result
+    }
+    
     private class func getAll() -> [DiaryItem]{
         addSteps()
         let realm = try! Realm()

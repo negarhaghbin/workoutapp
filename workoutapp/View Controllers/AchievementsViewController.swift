@@ -10,13 +10,19 @@ import UIKit
 
 class AchievementsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var notAchieved = Badge.getNotAchieved()
-    var achieved = Badge.getAchieved()
+    var notAchieved : [Badge] = []
+    var achieved : [Badge] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        Badge.update()
+        notAchieved = Badge.getNotAchieved()
+        achieved = Badge.getAchieved()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
