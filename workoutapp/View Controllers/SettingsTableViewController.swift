@@ -90,13 +90,13 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 && indexPath.row == 0{
-            present(restDurationAlert, animated: true, completion: nil)
+            present(restDurationAlert, animated: true)
         }
         else if indexPath.section == 2 && indexPath.row == 2{
-            present(sendAfterAlert, animated: true, completion: nil)
+            present(sendAfterAlert, animated: true)
         }
         else if indexPath.section == 2 && indexPath.row == 4{
-            present(sendOnAlert, animated: true, completion: nil)
+            present(sendOnAlert, animated: true)
         }
     }
     

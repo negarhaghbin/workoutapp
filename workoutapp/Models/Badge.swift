@@ -75,13 +75,19 @@ class Badge: Object {
     }
     
     func achieved(){
-        let realm = try! Realm()
-        try! realm.write {
-            self.isAchieved = true
+        if (!self.isAchieved){
+            let realm = try! Realm()
+            let name = self.imageName.dropLast(4)
+            try! realm.write {
+                self.isAchieved = true
+                self.imageName = "\(name)_done.png"
+            }
+            print(self.imageName)
         }
+        
     }
     
-    class func update(){
+    class func update(completion: () -> ()){
         let diary = DiaryItem.getWithType()
         
         for (type, items) in diary{
@@ -91,6 +97,7 @@ class Badge: Object {
             }
             updateBadge(type: type, duration: temp)
         }
+        completion()
         
     }
     

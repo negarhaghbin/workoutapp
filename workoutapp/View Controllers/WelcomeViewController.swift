@@ -113,7 +113,7 @@ class WelcomeViewController: UIViewController {
             }
         }))
             
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
     }
     
     

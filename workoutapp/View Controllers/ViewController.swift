@@ -91,7 +91,7 @@ class ViewController: UIViewController, UITableViewDelegate, UIPickerViewDelegat
     }
     
     @IBAction func changeDuration(_ sender: Any) {
-        present(changeDurationAlert, animated: false, completion: nil)
+        present(changeDurationAlert, animated: false)
     }
 }
 
