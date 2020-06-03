@@ -145,19 +145,52 @@ class Badge: Object {
     
     class func update(completion: () -> ()){
         let diary = DiaryItem.getWithType()
-        
+        var totalSteps = 0
         for (type, items) in diary{
             var temp = 0
             for item in items{
                 temp += item.duration!.secDuration
+                if type == ExerciseType.lower.rawValue{
+                    if item.exercise?.name == "Steps"{
+                        totalSteps += item.duration!.inSetCount
+                    }
+                }
             }
-            updateBadge(type: type, duration: temp)
+            updateBadge(type: type, duration: temp, steps: totalSteps)
         }
         completion()
         
     }
     
-    private class func updateBadge(type: String, duration: Int){
+    private class func manageStepsBadge(steps: Int){
+        let realm = try! Realm()
+        var badge : Badge?
+        
+        if steps >= BadgeDuration.bronzeS.rawValue{
+            if steps < BadgeDuration.silverS.rawValue{
+                badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.bronzeShoes.rawValue)
+                badge!.achieved()
+            }
+            else{
+                if steps < BadgeDuration.goldS.rawValue {
+                    badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.bronzeShoes.rawValue)
+                    badge!.achieved()
+                    badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.silverShoes.rawValue)
+                    badge!.achieved()
+                }
+                else{
+                    badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.bronzeShoes.rawValue)
+                    badge!.achieved()
+                    badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.silverShoes.rawValue)
+                    badge!.achieved()
+                    badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.goldShoes.rawValue)
+                    badge!.achieved()
+                }
+            }
+        }
+    }
+    
+    private class func updateBadge(type: String, duration: Int, steps: Int){
         let realm = try! Realm()
         var name = ""
         switch type {
@@ -165,6 +198,7 @@ class Badge: Object {
             name = "Arms"
         case ExerciseType.lower.rawValue:
             name = "Legs"
+            manageStepsBadge(steps: steps)
         case ExerciseType.total.rawValue:
             name = "Body"
         case ExerciseType.abs.rawValue:
