@@ -153,6 +153,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         tap.add(identifier: response.notification.request.identifier)
         
         // MARK: should display activity page
+        Badge.achieved(notificationID: response.notification.request.identifier)
         if response.notification.request.identifier == Notification.Activity.rawValue {
              let tabbarController = UIApplication.shared.windows.first?.rootViewController as! TabBarViewController
             tabbarController.selectedIndex = 2

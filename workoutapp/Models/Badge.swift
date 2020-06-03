@@ -9,6 +9,35 @@
 import Foundation
 import RealmSwift
 
+
+enum BadgeTitle : String{
+    case bronzeAbs = "Bronze Abs"
+    case bronzeLegs = "Bronze Legs"
+    case bronzeArms = "Bronze Arms"
+    case bronzeBody = "Bronze Body"
+    case bronzeShoes = "Bronze Shoes"
+    
+    case silverAbs = "Silver Abs"
+    case silverLegs = "Silver Legs"
+    case silverArms = "Silver Arms"
+    case silverBody = "Silver Body"
+    case silverShoes = "Silver Shoes"
+    
+    case goldAbs = "Golden Abs"
+    case goldLegs = "Golden Legs"
+    case goldArms = "Golden Arms"
+    case goldBody = "Golden Body"
+    case goldShoes = "Golden Shoes"
+    
+    case strike3 = "3 days"
+    case strike7 = "7 days"
+    case strike14 = "14 days"
+    case strike30 = "30 days"
+    
+    case notifActivity = "Activity Notification!"
+    case notifLocation = "Location Notification!"
+    case notifTime = "Time Notification!"
+}
 class Badge: Object {
     @objc dynamic var imageName : String = ""
     @objc dynamic var title : String = ""
@@ -38,25 +67,34 @@ class Badge: Object {
     }
     
     class func fillBadgeTable(){
-        Badge(iname: "abs_boronz.png", title: "Bronze Abs", d: Duration(sd: BadgeDuration.bronze.rawValue)).add()
-        Badge(iname: "abs_silver.png", title: "Silver Abs", d: Duration(sd: BadgeDuration.silver.rawValue)).add()
-        Badge(iname: "abs_gold.png", title: "Golden Abs", d: Duration(sd: BadgeDuration.gold.rawValue)).add()
-        Badge(iname: "lower_boronz.png", title: "Bronze Legs", d: Duration(sd: BadgeDuration.bronze.rawValue)).add()
-        Badge(iname: "lower_silver.png", title: "Silver Legs", d: Duration(sd: BadgeDuration.silver.rawValue)).add()
-        Badge(iname: "lower_gold.png", title: "Golden Legs", d: Duration(sd: BadgeDuration.gold.rawValue)).add()
-        Badge(iname: "upper_boronz.png", title: "Bronze Arms", d: Duration(sd: BadgeDuration.bronze.rawValue)).add()
-        Badge(iname: "upper_silver.png", title: "Silver Arms", d: Duration(sd: BadgeDuration.silver.rawValue)).add()
-        Badge(iname: "upper_gold.png", title: "Golden Arms", d: Duration(sd: BadgeDuration.gold.rawValue)).add()
-        Badge(iname: "total_boronz.png", title: "Bronze Body", d: Duration(sd: BadgeDuration.bronze.rawValue)).add()
-        Badge(iname: "total_silver.png", title: "Silver Body", d: Duration(sd: BadgeDuration.silver.rawValue)).add()
-        Badge(iname: "total_gold.png", title: "Golden Body", d: Duration(sd: BadgeDuration.gold.rawValue)).add()
-        Badge(iname: "strike_3days.png", title: "3 days", d: Duration(strike: 3)).add()
-        Badge(iname: "strike_7days.png", title: "7 days", d: Duration(strike: 7)).add()
-        Badge(iname: "strike_14days.png", title: "14 days", d: Duration(strike: 14)).add()
-        Badge(iname: "strike_30days.png", title: "30 days", d: Duration(strike: 30)).add()
-        Badge(iname: "steps_boronz.png", title: "Bronze Shoes", d: Duration(isc: BadgeDuration.bronzeS.rawValue)).add()
-        Badge(iname: "steps_silver.png", title: "Silver Shoes", d: Duration(isc: BadgeDuration.silverS.rawValue)).add()
-        Badge(iname: "steps_gold.png", title: "Golden Shoes", d: Duration(isc: BadgeDuration.goldS.rawValue)).add()
+        Badge(iname: "abs_boronz.png", title: BadgeTitle.bronzeAbs.rawValue, d: Duration(sd: BadgeDuration.bronze.rawValue)).add()
+        Badge(iname: "abs_silver.png", title: BadgeTitle.silverAbs.rawValue, d: Duration(sd: BadgeDuration.silver.rawValue)).add()
+        Badge(iname: "abs_gold.png", title: BadgeTitle.goldAbs.rawValue, d: Duration(sd: BadgeDuration.gold.rawValue)).add()
+        
+        Badge(iname: "lower_boronz.png", title: BadgeTitle.bronzeLegs.rawValue, d: Duration(sd: BadgeDuration.bronze.rawValue)).add()
+        Badge(iname: "lower_silver.png", title: BadgeTitle.silverLegs.rawValue, d: Duration(sd: BadgeDuration.silver.rawValue)).add()
+        Badge(iname: "lower_gold.png", title: BadgeTitle.goldLegs.rawValue, d: Duration(sd: BadgeDuration.gold.rawValue)).add()
+        
+        Badge(iname: "upper_boronz.png", title: BadgeTitle.bronzeArms.rawValue, d: Duration(sd: BadgeDuration.bronze.rawValue)).add()
+        Badge(iname: "upper_silver.png", title: BadgeTitle.silverArms.rawValue, d: Duration(sd: BadgeDuration.silver.rawValue)).add()
+        Badge(iname: "upper_gold.png", title: BadgeTitle.goldArms.rawValue, d: Duration(sd: BadgeDuration.gold.rawValue)).add()
+        
+        Badge(iname: "total_boronz.png", title: BadgeTitle.bronzeBody.rawValue, d: Duration(sd: BadgeDuration.bronze.rawValue)).add()
+        Badge(iname: "total_silver.png", title: BadgeTitle.silverBody.rawValue, d: Duration(sd: BadgeDuration.silver.rawValue)).add()
+        Badge(iname: "total_gold.png", title: BadgeTitle.goldBody.rawValue, d: Duration(sd: BadgeDuration.gold.rawValue)).add()
+        
+        Badge(iname: "strike_3days.png", title: BadgeTitle.strike3.rawValue, d: Duration(strike: 3)).add()
+        Badge(iname: "strike_7days.png", title: BadgeTitle.strike7.rawValue, d: Duration(strike: 7)).add()
+        Badge(iname: "strike_14days.png", title: BadgeTitle.strike14.rawValue, d: Duration(strike: 14)).add()
+        Badge(iname: "strike_30days.png", title: BadgeTitle.strike30.rawValue, d: Duration(strike: 30)).add()
+        
+        Badge(iname: "steps_boronz.png", title: BadgeTitle.bronzeShoes.rawValue, d: Duration(isc: BadgeDuration.bronzeS.rawValue)).add()
+        Badge(iname: "steps_silver.png", title: BadgeTitle.silverShoes.rawValue, d: Duration(isc: BadgeDuration.silverS.rawValue)).add()
+        Badge(iname: "steps_gold.png", title: BadgeTitle.goldShoes.rawValue, d: Duration(isc: BadgeDuration.goldS.rawValue)).add()
+        
+        Badge(iname: "notif_activity.png", title: BadgeTitle.notifActivity.rawValue, d: Duration(isc: 1)).add()
+        Badge(iname: "notif_location.png", title: BadgeTitle.notifLocation.rawValue, d: Duration(isc: 1)).add()
+        Badge(iname: "notif_time.png", title: BadgeTitle.notifTime.rawValue, d: Duration(isc: 1)).add()
     }
     
     class func getAll() -> [Badge]{
@@ -85,6 +123,24 @@ class Badge: Object {
             print(self.imageName)
         }
         
+    }
+    
+    class func achieved(notificationID: String){
+        let realm = try! Realm()
+        var badge : Badge?
+        
+        switch notificationID {
+        case Notification.Activity.rawValue:
+            badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.notifActivity.rawValue)
+        case Notification.Time.rawValue:
+            badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.notifTime.rawValue)
+        case Notification.Location.rawValue:
+            badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.notifLocation.rawValue)
+        default:
+            print("unknown notification badge")
+        }
+        
+        badge!.achieved()
     }
     
     class func update(completion: () -> ()){

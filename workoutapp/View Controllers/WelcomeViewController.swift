@@ -68,13 +68,13 @@ class WelcomeViewController: UIViewController {
             var badge : Badge?
             switch user!.strike {
             case 3:
-                badge = realm.object(ofType: Badge.self, forPrimaryKey: "3 days")
+                badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.strike3.rawValue)
             case 7:
-                badge = realm.object(ofType: Badge.self, forPrimaryKey: "7 days")
+                badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.strike7.rawValue)
             case 14:
-                badge = realm.object(ofType: Badge.self, forPrimaryKey: "14 days")
+                badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.strike14.rawValue)
             case 30:
-                badge = realm.object(ofType: Badge.self, forPrimaryKey: "30 days")
+                badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.strike30.rawValue)
             default:
                 print("No badge available")
             }
