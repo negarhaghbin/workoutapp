@@ -13,8 +13,17 @@ class progressBar: NSObject {
     let trackLayer = CAShapeLayer()
     
     func create(view: UIView, duration: Int){
-        let center = view.center
-        let circularPath = UIBezierPath(arcCenter: center, radius: view.frame.width/4, startAngle: -CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: true)
+        let center = CGPoint(x:view.center.x, y:view.center.y*15/14)
+        var radius = CGFloat(0)
+        let width = view.frame.width
+        let height = view.frame.height
+        if (  width > height){
+            radius = height/4
+        }
+        else{
+            radius = width/4
+        }
+        let circularPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: -CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: true)
         trackLayer.path = circularPath.cgPath
         trackLayer.strokeColor = UIColor.systemGray6.cgColor
         trackLayer.lineWidth = 10
