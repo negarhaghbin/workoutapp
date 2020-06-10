@@ -67,34 +67,34 @@ class Badge: Object {
     }
     
     class func fillBadgeTable(){
-        Badge(iname: "abs_boronz.png", title: BadgeTitle.bronzeAbs.rawValue, d: Duration(sd: BadgeDuration.bronze.rawValue)).add()
-        Badge(iname: "abs_silver.png", title: BadgeTitle.silverAbs.rawValue, d: Duration(sd: BadgeDuration.silver.rawValue)).add()
-        Badge(iname: "abs_gold.png", title: BadgeTitle.goldAbs.rawValue, d: Duration(sd: BadgeDuration.gold.rawValue)).add()
+        Badge(iname: "abs_boronz.png", title: BadgeTitle.bronzeAbs.rawValue, d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
+        Badge(iname: "abs_silver.png", title: BadgeTitle.silverAbs.rawValue, d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
+        Badge(iname: "abs_gold.png", title: BadgeTitle.goldAbs.rawValue, d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
         
-        Badge(iname: "lower_boronz.png", title: BadgeTitle.bronzeLegs.rawValue, d: Duration(sd: BadgeDuration.bronze.rawValue)).add()
-        Badge(iname: "lower_silver.png", title: BadgeTitle.silverLegs.rawValue, d: Duration(sd: BadgeDuration.silver.rawValue)).add()
-        Badge(iname: "lower_gold.png", title: BadgeTitle.goldLegs.rawValue, d: Duration(sd: BadgeDuration.gold.rawValue)).add()
+        Badge(iname: "lower_boronz.png", title: BadgeTitle.bronzeLegs.rawValue, d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
+        Badge(iname: "lower_silver.png", title: BadgeTitle.silverLegs.rawValue, d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
+        Badge(iname: "lower_gold.png", title: BadgeTitle.goldLegs.rawValue, d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
         
-        Badge(iname: "upper_boronz.png", title: BadgeTitle.bronzeArms.rawValue, d: Duration(sd: BadgeDuration.bronze.rawValue)).add()
-        Badge(iname: "upper_silver.png", title: BadgeTitle.silverArms.rawValue, d: Duration(sd: BadgeDuration.silver.rawValue)).add()
-        Badge(iname: "upper_gold.png", title: BadgeTitle.goldArms.rawValue, d: Duration(sd: BadgeDuration.gold.rawValue)).add()
+        Badge(iname: "upper_boronz.png", title: BadgeTitle.bronzeArms.rawValue, d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
+        Badge(iname: "upper_silver.png", title: BadgeTitle.silverArms.rawValue, d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
+        Badge(iname: "upper_gold.png", title: BadgeTitle.goldArms.rawValue, d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
         
-        Badge(iname: "total_boronz.png", title: BadgeTitle.bronzeBody.rawValue, d: Duration(sd: BadgeDuration.bronze.rawValue)).add()
-        Badge(iname: "total_silver.png", title: BadgeTitle.silverBody.rawValue, d: Duration(sd: BadgeDuration.silver.rawValue)).add()
-        Badge(iname: "total_gold.png", title: BadgeTitle.goldBody.rawValue, d: Duration(sd: BadgeDuration.gold.rawValue)).add()
+        Badge(iname: "total_boronz.png", title: BadgeTitle.bronzeBody.rawValue, d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
+        Badge(iname: "total_silver.png", title: BadgeTitle.silverBody.rawValue, d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
+        Badge(iname: "total_gold.png", title: BadgeTitle.goldBody.rawValue, d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
         
         Badge(iname: "strike_3days.png", title: BadgeTitle.strike3.rawValue, d: Duration(strike: 3)).add()
         Badge(iname: "strike_7days.png", title: BadgeTitle.strike7.rawValue, d: Duration(strike: 7)).add()
         Badge(iname: "strike_14days.png", title: BadgeTitle.strike14.rawValue, d: Duration(strike: 14)).add()
         Badge(iname: "strike_30days.png", title: BadgeTitle.strike30.rawValue, d: Duration(strike: 30)).add()
         
-        Badge(iname: "steps_boronz.png", title: BadgeTitle.bronzeShoes.rawValue, d: Duration(isc: BadgeDuration.bronzeS.rawValue)).add()
-        Badge(iname: "steps_silver.png", title: BadgeTitle.silverShoes.rawValue, d: Duration(isc: BadgeDuration.silverS.rawValue)).add()
-        Badge(iname: "steps_gold.png", title: BadgeTitle.goldShoes.rawValue, d: Duration(isc: BadgeDuration.goldS.rawValue)).add()
+        Badge(iname: "steps_boronz.png", title: BadgeTitle.bronzeShoes.rawValue, d: Duration(countPerSet: BadgeDuration.bronzeS.rawValue)).add()
+        Badge(iname: "steps_silver.png", title: BadgeTitle.silverShoes.rawValue, d: Duration(countPerSet: BadgeDuration.silverS.rawValue)).add()
+        Badge(iname: "steps_gold.png", title: BadgeTitle.goldShoes.rawValue, d: Duration(countPerSet: BadgeDuration.goldS.rawValue)).add()
         
-        Badge(iname: "notif_activity.png", title: BadgeTitle.notifActivity.rawValue, d: Duration(isc: 1)).add()
-        Badge(iname: "notif_location.png", title: BadgeTitle.notifLocation.rawValue, d: Duration(isc: 1)).add()
-        Badge(iname: "notif_time.png", title: BadgeTitle.notifTime.rawValue, d: Duration(isc: 1)).add()
+        Badge(iname: "notif_activity.png", title: BadgeTitle.notifActivity.rawValue, d: Duration(countPerSet: 1)).add()
+        Badge(iname: "notif_location.png", title: BadgeTitle.notifLocation.rawValue, d: Duration(countPerSet: 1)).add()
+        Badge(iname: "notif_time.png", title: BadgeTitle.notifTime.rawValue, d: Duration(countPerSet: 1)).add()
     }
     
     class func getAll() -> [Badge]{
@@ -149,10 +149,10 @@ class Badge: Object {
         for (type, items) in diary{
             var temp = 0
             for item in items{
-                temp += item.duration!.secDuration
+                temp += item.duration!.durationInSeconds
                 if type == ExerciseType.lower.rawValue{
                     if item.exercise?.name == "Steps"{
-                        totalSteps += item.duration!.inSetCount
+                        totalSteps += item.duration!.countPerSet
                     }
                 }
             }

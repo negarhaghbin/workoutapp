@@ -29,7 +29,7 @@ class RoutineSection: NSObject {
     func getDuration()->Int{
         var duration = 0
         for exercise in exercises{
-            duration += exercise.durationS
+            duration += exercise.durationInSeconds!.durationInSeconds
         }
         return duration
     }

@@ -10,16 +10,16 @@ import Foundation
 import RealmSwift
 
 class Duration: Object {
-    @objc dynamic var setCount : Int = 0
-    @objc dynamic var inSetCount : Int = 0
-    @objc dynamic var secDuration: Int = 0
+    @objc dynamic var numberOfSets : Int = 0
+    @objc dynamic var countPerSet : Int = 0
+    @objc dynamic var durationInSeconds: Int = 0
     @objc dynamic var strike: Int = 0
     
-    convenience init(sc: Int? = {
+    convenience init(numberOfSets: Int? = {
         return 0
-        }(), isc:Int? = {
+        }(), countPerSet:Int? = {
         return 0
-        }(), sd: Int? = {
+        }(), durationInSeconds: Int? = {
         return 0
         }(), strike: Int? = {
         return 0
@@ -27,33 +27,33 @@ class Duration: Object {
         self.init()
         let realm = try! Realm()
         try! realm.write {
-            self.setCount = sc!
-            self.inSetCount = isc!
-            self.secDuration = sd!
+            self.numberOfSets = numberOfSets!
+            self.countPerSet = countPerSet!
+            self.durationInSeconds = durationInSeconds!
             self.strike = strike!
         }
     }
     
     private func getCount()->String{
-        if (setCount == 0){
-            if (inSetCount == 0){
+        if (numberOfSets == 0){
+            if (countPerSet == 0){
                 return "No sets"
             }
             else{
-                return "\(self.inSetCount)"
+                return "\(self.countPerSet)"
             }
         }
         else{
-            return "\(self.setCount) sets of \(self.inSetCount)"
+            return "\(self.numberOfSets) sets of \(self.countPerSet)"
         }
     }
     
     func getTimeDuration()->String{
-        if (secDuration==0){
+        if (durationInSeconds==0){
             return ""
         }
         else{
-            return SecondsToString(time: secDuration)
+            return SecondsToString(time: durationInSeconds)
         }
     }
         

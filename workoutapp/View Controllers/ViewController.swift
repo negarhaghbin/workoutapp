@@ -49,7 +49,7 @@ class ViewController: UIViewController, UITableViewDelegate, UIPickerViewDelegat
         }
         
         titleLabel.text = exercise?.exercise?.name
-        durationLabel.text = SecondsToString(time: exercise!.durationS)
+        durationLabel.text = exercise!.durationInSeconds!.getDuration()
 //        subtitleView.text=exercise?.getDescription()
         
     }

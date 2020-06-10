@@ -142,7 +142,7 @@ class DiaryItem: Object {
     
     class func add(appExList: [AppExercise]){
         for item in appExList {
-            DiaryItem(e: item.exercise, d: Duration(sd: item.durationS))
+            DiaryItem(e: item.exercise, d: Duration(durationInSeconds: item.durationInSeconds?.durationInSeconds))
         }
     }
     
@@ -181,10 +181,10 @@ class DiaryItem: Object {
         
         if todayStepsDiaryItems.count > 0{
             se = todayStepsDiaryItems.first!
-            DiaryItem.update(uuid: se.uuid, e: se.exercise!, d: Duration(isc: sd), date: se.dateString)
+            DiaryItem.update(uuid: se.uuid, e: se.exercise!, d: Duration(countPerSet: sd), date: se.dateString)
         }
         else{
-            se = DiaryItem(e: stepsEx , d: Duration(isc: sd))
+            se = DiaryItem(e: stepsEx , d: Duration(countPerSet: sd))
         }
     }
     

@@ -49,7 +49,7 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     
     func exerciseSelected(_ newExercise: AppExercise) {
         diaryItem!.exercise = newExercise.exercise
-        diaryItem?.duration!.secDuration = newExercise.durationS
+        diaryItem?.duration!.durationInSeconds = newExercise.durationInSeconds!.durationInSeconds
     }
     
     private func refreshUI(){
@@ -155,19 +155,19 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
         }
         if diaryItem != nil{
             if countable{
-                DiaryItem.update(uuid: diaryItem!.uuid, e: e, d: Duration(isc: Int(countField.text!)), date: dateLabel.text!)
+                DiaryItem.update(uuid: diaryItem!.uuid, e: e, d: Duration(countPerSet: Int(countField.text!)), date: dateLabel.text!)
             }
             else{
-                DiaryItem.update(uuid: diaryItem!.uuid, e: e, d: Duration(sd: reverSecondsToString(time: durationLabel.text!)), date: dateLabel.text!)
+                DiaryItem.update(uuid: diaryItem!.uuid, e: e, d: Duration(durationInSeconds: reverSecondsToString(time: durationLabel.text!)), date: dateLabel.text!)
             }
             
         }
         else{
             if countable{
-                diaryItem = DiaryItem(e: e, d: Duration(isc: Int(countField.text!)), date: dateLabel.text!)
+                diaryItem = DiaryItem(e: e, d: Duration(countPerSet: Int(countField.text!)), date: dateLabel.text!)
             }
             else{
-                diaryItem = DiaryItem(e: e, d: Duration(sd: reverSecondsToString(time: durationLabel.text!)), date: dateLabel.text!)
+                diaryItem = DiaryItem(e: e, d: Duration(durationInSeconds: reverSecondsToString(time: durationLabel.text!)), date: dateLabel.text!)
             }
             
         }

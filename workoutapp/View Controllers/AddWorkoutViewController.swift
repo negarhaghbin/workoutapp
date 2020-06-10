@@ -62,7 +62,7 @@ class AddWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
             let vc = segue.destination as! NewWorkoutPopupViewController
             let cell = sender as! AddWorkoutTableCell
             let indexPath = self.tableView!.indexPath(for: cell)
-            let diaryItem = DiaryItem.initWithoutAdd(e: sections[indexPath!.section].exercises[indexPath!.row].exercise, d: Duration(sd: sections[indexPath!.section].exercises[indexPath!.row].durationS))
+            let diaryItem = DiaryItem.initWithoutAdd(e: sections[indexPath!.section].exercises[indexPath!.row].exercise, d: Duration(durationInSeconds: sections[indexPath!.section].exercises[indexPath!.row].durationInSeconds?.durationInSeconds))
             vc.diaryItem = diaryItem
         }
     }

@@ -67,7 +67,7 @@ class GifViewController: UIViewController {
         loadView()
         
         gifView.loadGif(name: (section?.exercises[0].gifName)!)
-        exerciseSeconds = (section?.exercises[0].durationS)!
+        exerciseSeconds = (section?.exercises[0].durationInSeconds?.durationInSeconds)!
         exerciseTitle.text = (section?.exercises[0].exercise?.name)!
         nextLabel.text = "Next: Rest"
         counter.text = self.timeString(time: TimeInterval(self.seconds))
@@ -126,7 +126,7 @@ class GifViewController: UIViewController {
                     }
                     else{
                         self.increaseExerciseIndex()
-                        self.exerciseSeconds = (self.routineExercises[self.currentExerciseIndex].durationS)
+                        self.exerciseSeconds = (self.routineExercises[self.currentExerciseIndex].durationInSeconds!.durationInSeconds)
                         self.gifView.loadGif(name: (self.routineExercises[self.currentExerciseIndex].gifName))
                         self.exerciseTitle.text = self.routineExercises[self.currentExerciseIndex].exercise?.name
                         self.nextLabel.text = "Next: Rest"
@@ -158,7 +158,7 @@ class GifViewController: UIViewController {
                 DiaryItem.add(appExList: exercisesDone)
             }
             else{
-                DiaryItem(e: self.routineExercises[self.currentExerciseIndex].exercise, d: Duration(sd:  self.routineExercises[self.currentExerciseIndex].durationS - exerciseSeconds))
+                DiaryItem(e: self.routineExercises[self.currentExerciseIndex].exercise, d: Duration(durationInSeconds:  self.routineExercises[self.currentExerciseIndex].durationInSeconds!.durationInSeconds - exerciseSeconds))
             }
             
         }
