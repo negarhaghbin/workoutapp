@@ -45,6 +45,7 @@ class Badge: Object {
     @objc dynamic var duration : Duration?
     @objc dynamic var isAchieved : Bool = false
     @objc dynamic var progress : Duration? = Duration()
+    @objc dynamic var isNewlyAchieved : Bool = false
     
     convenience init(imageName: String, title: String, specification: String, d: Duration) {
         self.init()
@@ -109,9 +110,25 @@ class Badge: Object {
         return Array(realm.objects(Badge.self).filter("isAchieved == true"))
     }
     
+    class func getNewlyAchieved() -> [Badge]{
+        let realm = try! Realm()
+        return Array(realm.objects(Badge.self).filter("isNewlyAchieved == true"))
+    }
+    
     class func getNotAchieved() -> [Badge]{
         let realm = try! Realm()
         return Array(realm.objects(Badge.self).filter("isAchieved == false"))
+    }
+    
+    class func resetNewlyAchieved(){
+        let newlyAchieved = getNewlyAchieved()
+        let realm = try! Realm()
+        try! realm.write {
+            for badge in newlyAchieved{
+                badge.isNewlyAchieved = false
+            }
+        }
+        
     }
     
     func achieved(){
@@ -120,6 +137,7 @@ class Badge: Object {
             let name = self.imageName.dropLast(4)
             try! realm.write {
                 self.isAchieved = true
+                self.isNewlyAchieved = true
                 self.imageName = "\(name)_done.png"
             }
             print(self.imageName)

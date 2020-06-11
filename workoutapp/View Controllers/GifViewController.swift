@@ -23,10 +23,7 @@ class GifViewController: UIViewController {
     @IBOutlet weak var exerciseTitle: UILabel!
     
     var exercisesDone : [AppExercise] = []
-    var animationTimer: Timer?
-    var startTime: TimeInterval?, endTime: TimeInterval?
-    let animationDuration = 3.0
-    var height: CGFloat = 0
+    
     
     var player: AVAudioPlayer?
     
@@ -173,7 +170,7 @@ class GifViewController: UIViewController {
             action in
             self.exitRoutine()
         }))
-        showCongratulationAnimation()
+        showCongratulationAnimation(balloon: balloon)
         playSound(name: "good job", extensionType: "m4a")
         self.present(alert, animated: true)
         
@@ -256,42 +253,4 @@ class GifViewController: UIViewController {
     }
     */
 
-}
-
-extension GifViewController{
-    func showCongratulationAnimation() {
-        height = UIScreen.main.bounds.height + balloon.frame.size.height
-        balloon.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: height + balloon.frame.size.height / 2)
-        balloon.isHidden = false
-        startTime = Date().timeIntervalSince1970
-        endTime = animationDuration + startTime!
-        animationTimer = Timer.scheduledTimer(withTimeInterval: 1 / 60, repeats: true) { timer in
-            self.updateAnimation()
-        }
-    }
-    
-    func updateAnimation() {
-        guard
-            let endTime = endTime,
-            let startTime = startTime
-            else {
-              return
-          }
-          let now = Date().timeIntervalSince1970
-
-          
-          if now >= endTime {
-            animationTimer?.invalidate()
-            balloon.isHidden = true
-          }
-
-          
-          let percentage = (now - startTime) * 100 / animationDuration
-          let y = height - ((height + balloon.frame.height / 2) / 100 *
-            CGFloat(percentage))
-
-          
-          balloon.center = CGPoint(x: balloon.center.x +
-            CGFloat.random(in: -0.5...0.5), y: y)
-    }
 }

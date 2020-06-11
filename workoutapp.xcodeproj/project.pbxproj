@@ -49,6 +49,8 @@
 		8448792223C8DB3400F37788 /* countdown.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8448792123C8DB3300F37788 /* countdown.wav */; };
 		8448792523C8E0B800F37788 /* rest in.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8448792323C8E0B700F37788 /* rest in.m4a */; };
 		8448792623C8E0B800F37788 /* start in.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8448792423C8E0B800F37788 /* start in.m4a */; };
+		845D4D172492DC880025217A /* BalloonAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D4D162492DC880025217A /* BalloonAnimation.swift */; };
+		845D4D192492EBBE0025217A /* AlertController+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D4D182492EBBE0025217A /* AlertController+Image.swift */; };
 		845FD8C12380995100E9B1D8 /* StartRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C02380995100E9B1D8 /* StartRoutineViewController.swift */; };
 		845FD8C5238309A100E9B1D8 /* GifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C4238309A100E9B1D8 /* GifViewController.swift */; };
 		845FD8C723830C1600E9B1D8 /* swift+gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD8C623830C1600E9B1D8 /* swift+gif.swift */; };
@@ -253,6 +255,8 @@
 		8448792123C8DB3300F37788 /* countdown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = countdown.wav; sourceTree = "<group>"; };
 		8448792323C8E0B700F37788 /* rest in.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rest in.m4a"; sourceTree = "<group>"; };
 		8448792423C8E0B800F37788 /* start in.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "start in.m4a"; sourceTree = "<group>"; };
+		845D4D162492DC880025217A /* BalloonAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonAnimation.swift; sourceTree = "<group>"; };
+		845D4D182492EBBE0025217A /* AlertController+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertController+Image.swift"; sourceTree = "<group>"; };
 		845FD8C02380995100E9B1D8 /* StartRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRoutineViewController.swift; sourceTree = "<group>"; };
 		845FD8C4238309A100E9B1D8 /* GifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifViewController.swift; sourceTree = "<group>"; };
 		845FD8C623830C1600E9B1D8 /* swift+gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "swift+gif.swift"; sourceTree = "<group>"; };
@@ -637,12 +641,14 @@
 				84EB32D6244A39AB009816CE /* SettingsViewExt.swift */,
 				849CFC2624532000007BD77B /* HideKeyboardExt.swift */,
 				84C10B212336995000146547 /* Info.plist */,
+				845D4D182492EBBE0025217A /* AlertController+Image.swift */,
 				846446AF23779DC500F493F0 /* Objects */,
 				8407048F2337AE4400961B1E /* Resources */,
 				846446AE23779DAF00F493F0 /* View Controllers */,
 				846446A723760CA300F493F0 /* Cells */,
 				8407048E2337AE2700961B1E /* Models */,
 				84092841237CDC1700C695F6 /* File */,
+				845D4D162492DC880025217A /* BalloonAnimation.swift */,
 				8448791D23C3A9A800F37788 /* dateExt.swift */,
 				84EB32D2244A03DE009816CE /* AppUtility.swift */,
 			);
@@ -1040,11 +1046,13 @@
 				841808922476D8E900786224 /* Badge.swift in Sources */,
 				845FD8E22385CD4C00E9B1D8 /* Balloon.swift in Sources */,
 				849CFC1F24522CB7007BD77B /* DiaryTableViewController.swift in Sources */,
+				845D4D192492EBBE0025217A /* AlertController+Image.swift in Sources */,
 				84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */,
 				841808942476DB7600786224 /* Achievements.swift in Sources */,
 				846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */,
 				845FD8CF23844A8A00E9B1D8 /* RoutineSection.swift in Sources */,
 				845FD8C5238309A100E9B1D8 /* GifViewController.swift in Sources */,
+				845D4D172492DC880025217A /* BalloonAnimation.swift in Sources */,
 				849CFC2D24552F57007BD77B /* DiaryTableViewCell.swift in Sources */,
 				845FD8C723830C1600E9B1D8 /* swift+gif.swift in Sources */,
 				84C10B2A23369FD100146547 /* TableViewController.swift in Sources */,

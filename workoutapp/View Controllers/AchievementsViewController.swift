@@ -13,6 +13,8 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     var notAchieved : [Badge] = []
     var achieved : [Badge] = []
+    var newlyAchieved : [Badge] = []
+    //@IBOutlet weak var balloon: Balloon!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +26,38 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
         Badge.update{()->() in
             notAchieved = Badge.getNotAchieved()
             achieved = Badge.getAchieved()
+            newlyAchieved = Badge.getNewlyAchieved()
+            Badge.resetNewlyAchieved()
+            showCongragulationsMessage(newlyAchieved: newlyAchieved)
+            
         }
         tableView.reloadData()
         
     }
+    
+    func showCongragulationsMessage(newlyAchieved: [Badge]){
+        guard self.newlyAchieved.count > 0 else { return }
+        let badge = self.newlyAchieved.first
+        
+        func removeAndShowNextMessage() {
+            self.newlyAchieved.removeFirst()
+            self.showCongragulationsMessage(newlyAchieved: newlyAchieved)
+        }
+        
+        let alert = UIAlertController(title: "Congradulations!", message: "You have succesfully achieved \(badge!.title) badge.", preferredStyle: .alert)
+        
+        let alertImage = UIImage(named: badge!.imageName)
+        alert.addImage(image: alertImage!)
+        alert.addAction(UIAlertAction(title: "Hooray!", style: .default){ (action) in
+                removeAndShowNextMessage()
+        })
+        
+        
+        //alert.view.addSubview(alertImageView)
+            
+    //        playSound(name: "good job", extensionType: "m4a")
+            self.present(alert, animated: true)
+        }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
