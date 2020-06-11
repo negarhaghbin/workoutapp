@@ -19,7 +19,6 @@
 		84092851237CF27F00C695F6 /* lowerBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 8409284D237CF27E00C695F6 /* lowerBody.png */; };
 		84092852237CF27F00C695F6 /* abs.png in Resources */ = {isa = PBXBuildFile; fileRef = 8409284E237CF27E00C695F6 /* abs.png */; };
 		84092853237CF27F00C695F6 /* totalBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 84092850237CF27E00C695F6 /* totalBody.png */; };
-		840EAC4823BBF877002D0AF6 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840EAC4723BBF877002D0AF6 /* ActivityViewController.swift */; };
 		841808812476D8CD00786224 /* abs_silver.png in Resources */ = {isa = PBXBuildFile; fileRef = 841808712476D8CC00786224 /* abs_silver.png */; };
 		841808822476D8CD00786224 /* abs_boronz.png in Resources */ = {isa = PBXBuildFile; fileRef = 841808722476D8CC00786224 /* abs_boronz.png */; };
 		841808832476D8CD00786224 /* streak_30days.png in Resources */ = {isa = PBXBuildFile; fileRef = 841808732476D8CC00786224 /* streak_30days.png */; };
@@ -80,7 +79,6 @@
 		845FD903238C6C9800E9B1D8 /* raised-arm-circles.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8FE238C6C9700E9B1D8 /* raised-arm-circles.gif */; };
 		845FD904238C6C9800E9B1D8 /* hold.gif in Resources */ = {isa = PBXBuildFile; fileRef = 845FD8FF238C6C9800E9B1D8 /* hold.gif */; };
 		845FD9092390A35F00E9B1D8 /* dailyRoutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD9082390A35E00E9B1D8 /* dailyRoutine.swift */; };
-		845FD90D2392F53A00E9B1D8 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FD90C2392F53A00E9B1D8 /* HistoryTableViewCell.swift */; };
 		846446A22376008500F493F0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A12376008500F493F0 /* TabBarViewController.swift */; };
 		846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446A523760C9C00F493F0 /* SettingsTableViewController.swift */; };
 		846446B72378AD0100F493F0 /* NameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846446B62378AD0100F493F0 /* NameTableViewController.swift */; };
@@ -224,7 +222,6 @@
 		8409284E237CF27E00C695F6 /* abs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abs.png; sourceTree = "<group>"; };
 		8409284F237CF27E00C695F6 /* upperBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upperBody.png; sourceTree = "<group>"; };
 		84092850237CF27E00C695F6 /* totalBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = totalBody.png; sourceTree = "<group>"; };
-		840EAC4723BBF877002D0AF6 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		841808712476D8CC00786224 /* abs_silver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abs_silver.png; sourceTree = "<group>"; };
 		841808722476D8CC00786224 /* abs_boronz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abs_boronz.png; sourceTree = "<group>"; };
 		841808732476D8CC00786224 /* streak_30days.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = streak_30days.png; sourceTree = "<group>"; };
@@ -286,7 +283,6 @@
 		845FD8FE238C6C9700E9B1D8 /* raised-arm-circles.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "raised-arm-circles.gif"; sourceTree = "<group>"; };
 		845FD8FF238C6C9800E9B1D8 /* hold.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hold.gif; sourceTree = "<group>"; };
 		845FD9082390A35E00E9B1D8 /* dailyRoutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dailyRoutine.swift; sourceTree = "<group>"; };
-		845FD90C2392F53A00E9B1D8 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		846446A12376008500F493F0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		846446A523760C9C00F493F0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		846446B62378AD0100F493F0 /* NameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewController.swift; sourceTree = "<group>"; };
@@ -531,7 +527,6 @@
 			isa = PBXGroup;
 			children = (
 				849CFC2A2453250A007BD77B /* AddWorkoutTableCell.swift */,
-				845FD90C2392F53A00E9B1D8 /* HistoryTableViewCell.swift */,
 				84086D3C23CE562300795C3D /* InteractionTableViewCell.swift */,
 				8409283F237CD46000C695F6 /* RoutineCollectionViewCell.swift */,
 				843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */,
@@ -545,7 +540,6 @@
 		846446AE23779DAF00F493F0 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				840EAC4723BBF877002D0AF6 /* ActivityViewController.swift */,
 				849CFC28245322E3007BD77B /* AddWorkoutViewController.swift */,
 				849CFC1E24522CB7007BD77B /* DiaryTableViewController.swift */,
 				845FD8C4238309A100E9B1D8 /* GifViewController.swift */,
@@ -1027,11 +1021,9 @@
 				848D683C2471C3DF0041445F /* Message.swift in Sources */,
 				84DC84BD23A2F2AA00B82BCD /* User.swift in Sources */,
 				840704892336E4E900961B1E /* SceneDelegate.swift in Sources */,
-				840EAC4823BBF877002D0AF6 /* ActivityViewController.swift in Sources */,
 				848D686C2476092C0041445F /* AchievementsTableViewCell.swift in Sources */,
 				849CFC29245322E3007BD77B /* AddWorkoutViewController.swift in Sources */,
 				845FD8C12380995100E9B1D8 /* StartRoutineViewController.swift in Sources */,
-				845FD90D2392F53A00E9B1D8 /* HistoryTableViewCell.swift in Sources */,
 				848D683A2471C3A70041445F /* APIRequest.swift in Sources */,
 				84086D3D23CE562300795C3D /* InteractionTableViewCell.swift in Sources */,
 				84C10B142336994E00146547 /* AppDelegate.swift in Sources */,

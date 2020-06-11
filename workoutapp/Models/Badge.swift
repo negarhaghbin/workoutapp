@@ -274,13 +274,14 @@ class Badge: Object {
             else{
                 progressInNumber = Float(self.progress!.durationInSeconds) / Float(self.duration!.durationInSeconds)
                 
-                progressInString = "\(secondsToMinutes(seconds:  self.progress!.durationInSeconds))/\(Int(secondsToMinutes(seconds: self.duration!.durationInSeconds)))"
+                progressInString = String(format: "%.1f/\(Int(secondsToMinutes(seconds: self.duration!.durationInSeconds)))", secondsToMinutes(seconds:  self.progress!.durationInSeconds))
+                
             }
         }
         else{
             if(!self.title.contains("Notification")){
                 progressInNumber = Float(self.progress!.countPerSet) / Float(self.duration!.countPerSet)
-                progressInString = "\(thousandsToKs(number: self.progress!.countPerSet))K/\(Int(thousandsToKs(number: self.duration!.countPerSet)))K"
+                progressInString = String(format: "%.1fK/\(Int(thousandsToKs(number: self.duration!.countPerSet)))K", thousandsToKs(number: self.progress!.countPerSet))
                 
             }
             else{
