@@ -68,8 +68,9 @@ class AppExercise: Object {
     
     func setDuration(d: Int){
         let realm = try! Realm()
+        let duration = Duration(durationInSeconds: d)
         try! realm.write {
-            self.durationInSeconds = Duration(durationInSeconds: d)
+            self.durationInSeconds = duration
         }
     }
     

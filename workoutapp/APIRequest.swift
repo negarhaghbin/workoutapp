@@ -26,7 +26,6 @@ struct APIRequest{
     }
     
     func save(completion: @escaping(Result<Message, APIError>) -> Void){
-        do {
             var urlRequest = URLRequest(url: resourceURL)
             urlRequest.httpMethod = "GET"
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -47,8 +46,5 @@ struct APIRequest{
                 }
             }
             dataTask.resume()
-        }catch{
-            completion(.failure(.encodingProblem))
-        }
     }
 }

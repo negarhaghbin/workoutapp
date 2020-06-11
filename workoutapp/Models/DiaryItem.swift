@@ -38,24 +38,15 @@ class DiaryItem: Object {
             self.exercise = e
             self.duration = d
             self.dateString = date!
-            realm.add(self)
+            //realm.add(self)
         }
     }
     
-    class func initWithoutAdd(e: Exercise?, d: Duration, date: String? = {
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd"
-        return df.string(from: Date())
-    }()) -> DiaryItem {
-        let di = DiaryItem()
+    func add(){
         let realm = try! Realm()
         try! realm.write {
-            di.exercise = e
-            di.duration = d
-            di.dateString = date!
-            //realm.add(self)
+            realm.add(self)
         }
-        return di
     }
     
     func isNew() -> Bool{
@@ -142,7 +133,7 @@ class DiaryItem: Object {
     
     class func add(appExList: [AppExercise]){
         for item in appExList {
-            DiaryItem(e: item.exercise, d: Duration(durationInSeconds: item.durationInSeconds?.durationInSeconds))
+            DiaryItem(e: item.exercise, d: Duration(durationInSeconds: item.durationInSeconds?.durationInSeconds)).add()
         }
     }
     
@@ -185,6 +176,7 @@ class DiaryItem: Object {
         }
         else{
             se = DiaryItem(e: stepsEx , d: Duration(countPerSet: sd))
+            se.add()
         }
     }
     

@@ -112,7 +112,6 @@ class GifViewController: UIViewController {
                 self.playSound(name: "countdown", extensionType: "wav")
             }
             else if self.exerciseSeconds == 0 {
-                
                 if (self.currentExerciseIndex < ((self.routineExercises.count)-1)){
                     if (!self.isResting){
                         self.exerciseSeconds = self.restDuration
@@ -152,18 +151,12 @@ class GifViewController: UIViewController {
     
     func exitRoutine(){
         //exiting
-        if (!isResting){
-            if (exerciseSeconds == 0){
-                exercisesDone.append(self.routineExercises[self.currentExerciseIndex])
-                DiaryItem.add(appExList: exercisesDone)
-            }
-            else{
-                DiaryItem(e: self.routineExercises[self.currentExerciseIndex].exercise, d: Duration(durationInSeconds:  self.routineExercises[self.currentExerciseIndex].durationInSeconds!.durationInSeconds - exerciseSeconds))
-            }
-            
+        if (!isResting && exerciseSeconds == 0){
+            exercisesDone.append(self.routineExercises[self.currentExerciseIndex])
         }
-        else{
-            DiaryItem.add(appExList: exercisesDone)
+        DiaryItem.add(appExList: exercisesDone)
+        if (!isResting && exerciseSeconds != 0){
+            DiaryItem(e: self.routineExercises[self.currentExerciseIndex].exercise, d: Duration(durationInSeconds:  self.routineExercises[self.currentExerciseIndex].durationInSeconds!.durationInSeconds - exerciseSeconds)).add()
         }
         
         dailyRoutine.add(seconds: self.seconds, sectionTitle: section!.title)

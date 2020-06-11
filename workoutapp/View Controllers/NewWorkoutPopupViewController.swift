@@ -169,6 +169,7 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
             else{
                 diaryItem = DiaryItem(e: e, d: Duration(durationInSeconds: reverSecondsToString(time: durationLabel.text!)), date: dateLabel.text!)
             }
+            diaryItem!.add()
             
         }
         
