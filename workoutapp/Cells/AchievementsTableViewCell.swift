@@ -10,8 +10,11 @@ import UIKit
 
 class AchievementsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var badgeImage: UIImageView!
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var progressBar: UIProgressView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

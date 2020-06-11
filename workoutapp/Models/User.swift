@@ -13,7 +13,7 @@ class User: Object {
     @objc dynamic var name = ""
     @objc dynamic var uuid : String = UUID().uuidString
     @objc dynamic var restDuration : Int = 20
-    @objc dynamic var strike : Int = 0
+    @objc dynamic var streak : Int = 0
     @objc dynamic var lastLogin : String = {
         return Date().makeString()
     }()
@@ -45,17 +45,17 @@ class User: Object {
         }
     }
     
-    func manageStrike(completion: () -> ()){
+    func manageStreak(completion: () -> ()){
         let realm = try! Realm()
         if (self.lastLogin != Date.yesterday.makeString()){
             try! realm.write {
-                self.strike = 1
+                self.streak = 1
                 self.lastLogin = Date().makeString()
             }
         }
         else{
             try! realm.write {
-                self.strike = self.strike + 1
+                self.streak = self.streak + 1
                 self.lastLogin = Date().makeString()
             }
         }

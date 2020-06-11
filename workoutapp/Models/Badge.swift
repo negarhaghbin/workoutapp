@@ -29,10 +29,10 @@ enum BadgeTitle : String{
     case goldBody = "Golden Body"
     case goldShoes = "Golden Shoes"
     
-    case strike3 = "3 days"
-    case strike7 = "7 days"
-    case strike14 = "14 days"
-    case strike30 = "30 days"
+    case streak3 = "3 days"
+    case streak7 = "7 days"
+    case streak14 = "14 days"
+    case streak30 = "30 days"
     
     case notifActivity = "Activity Notification!"
     case notifLocation = "Location Notification!"
@@ -41,16 +41,18 @@ enum BadgeTitle : String{
 class Badge: Object {
     @objc dynamic var imageName : String = ""
     @objc dynamic var title : String = ""
-    //description?
+    @objc dynamic var specification : String = ""
     @objc dynamic var duration : Duration?
     @objc dynamic var isAchieved : Bool = false
+    @objc dynamic var progress : Duration? = Duration()
     
-    convenience init(iname: String, title: String, d: Duration) {
+    convenience init(imageName: String, title: String, specification: String, d: Duration) {
         self.init()
         let realm = try! Realm()
         try! realm.write {
-            self.imageName = iname
+            self.imageName = imageName
             self.title = title
+            self.specification = specification
             self.duration = d
         }
     }
@@ -67,34 +69,34 @@ class Badge: Object {
     }
     
     class func fillBadgeTable(){
-        Badge(iname: "abs_boronz.png", title: BadgeTitle.bronzeAbs.rawValue, d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
-        Badge(iname: "abs_silver.png", title: BadgeTitle.silverAbs.rawValue, d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
-        Badge(iname: "abs_gold.png", title: BadgeTitle.goldAbs.rawValue, d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
+        Badge(imageName: "abs_boronz.png", title: BadgeTitle.bronzeAbs.rawValue, specification:"Complete 15 minutes of abs workouts.", d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
+        Badge(imageName: "abs_silver.png", title: BadgeTitle.silverAbs.rawValue, specification:"Complete 1 hour of abs workouts.",d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
+        Badge(imageName: "abs_gold.png", title: BadgeTitle.goldAbs.rawValue, specification:"Complete 3 hours of abs workouts.",d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
         
-        Badge(iname: "lower_boronz.png", title: BadgeTitle.bronzeLegs.rawValue, d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
-        Badge(iname: "lower_silver.png", title: BadgeTitle.silverLegs.rawValue, d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
-        Badge(iname: "lower_gold.png", title: BadgeTitle.goldLegs.rawValue, d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
+        Badge(imageName: "lower_boronz.png", title: BadgeTitle.bronzeLegs.rawValue, specification:"Complete 15 minutes of lower body workouts.",d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
+        Badge(imageName: "lower_silver.png", title: BadgeTitle.silverLegs.rawValue, specification:"Complete 1 hour of lower body workouts.",d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
+        Badge(imageName: "lower_gold.png", title: BadgeTitle.goldLegs.rawValue, specification:"Complete 3 hours of abs workouts.", d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
         
-        Badge(iname: "upper_boronz.png", title: BadgeTitle.bronzeArms.rawValue, d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
-        Badge(iname: "upper_silver.png", title: BadgeTitle.silverArms.rawValue, d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
-        Badge(iname: "upper_gold.png", title: BadgeTitle.goldArms.rawValue, d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
+        Badge(imageName: "upper_boronz.png", title: BadgeTitle.bronzeArms.rawValue, specification:"Complete 15 minutes of upper body workouts.",d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
+        Badge(imageName: "upper_silver.png", title: BadgeTitle.silverArms.rawValue, specification:"Complete 1 hour of abs workouts.",d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
+        Badge(imageName: "upper_gold.png", title: BadgeTitle.goldArms.rawValue, specification:"Complete 3 hours of upper body workouts.",d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
         
-        Badge(iname: "total_boronz.png", title: BadgeTitle.bronzeBody.rawValue, d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
-        Badge(iname: "total_silver.png", title: BadgeTitle.silverBody.rawValue, d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
-        Badge(iname: "total_gold.png", title: BadgeTitle.goldBody.rawValue, d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
+        Badge(imageName: "total_boronz.png", title: BadgeTitle.bronzeBody.rawValue, specification:"Complete 15 minutes of total body workouts.", d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
+        Badge(imageName: "total_silver.png", title: BadgeTitle.silverBody.rawValue, specification:"Complete 1 hour of total body workouts.", d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
+        Badge(imageName: "total_gold.png", title: BadgeTitle.goldBody.rawValue, specification:"Complete 3 hours of total body workouts.", d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
         
-        Badge(iname: "strike_3days.png", title: BadgeTitle.strike3.rawValue, d: Duration(strike: 3)).add()
-        Badge(iname: "strike_7days.png", title: BadgeTitle.strike7.rawValue, d: Duration(strike: 7)).add()
-        Badge(iname: "strike_14days.png", title: BadgeTitle.strike14.rawValue, d: Duration(strike: 14)).add()
-        Badge(iname: "strike_30days.png", title: BadgeTitle.strike30.rawValue, d: Duration(strike: 30)).add()
+        Badge(imageName: "streak_3days.png", title: BadgeTitle.streak3.rawValue, specification:"Reach a 3 day streak.", d: Duration(streak: 3)).add()
+        Badge(imageName: "streak_7days.png", title: BadgeTitle.streak7.rawValue, specification:"Reach a 7 day streak.", d: Duration(streak: 7)).add()
+        Badge(imageName: "streak_14days.png", title: BadgeTitle.streak14.rawValue, specification:"Reach a 14 day streak.", d: Duration(streak: 14)).add()
+        Badge(imageName: "streak_30days.png", title: BadgeTitle.streak30.rawValue, specification:"Reach a 30 day streak.", d: Duration(streak: 30)).add()
         
-        Badge(iname: "steps_boronz.png", title: BadgeTitle.bronzeShoes.rawValue, d: Duration(countPerSet: BadgeDuration.bronzeS.rawValue)).add()
-        Badge(iname: "steps_silver.png", title: BadgeTitle.silverShoes.rawValue, d: Duration(countPerSet: BadgeDuration.silverS.rawValue)).add()
-        Badge(iname: "steps_gold.png", title: BadgeTitle.goldShoes.rawValue, d: Duration(countPerSet: BadgeDuration.goldS.rawValue)).add()
+        Badge(imageName: "steps_boronz.png", title: BadgeTitle.bronzeShoes.rawValue, specification:"Complete 10k steps.", d: Duration(countPerSet: BadgeDuration.bronzeS.rawValue)).add()
+        Badge(imageName: "steps_silver.png", title: BadgeTitle.silverShoes.rawValue, specification:"Complete 100k steps.", d: Duration(countPerSet: BadgeDuration.silverS.rawValue)).add()
+        Badge(imageName: "steps_gold.png", title: BadgeTitle.goldShoes.rawValue, specification:"Complete 300k steps.", d: Duration(countPerSet: BadgeDuration.goldS.rawValue)).add()
         
-        Badge(iname: "notif_activity.png", title: BadgeTitle.notifActivity.rawValue, d: Duration(countPerSet: 1)).add()
-        Badge(iname: "notif_location.png", title: BadgeTitle.notifLocation.rawValue, d: Duration(countPerSet: 1)).add()
-        Badge(iname: "notif_time.png", title: BadgeTitle.notifTime.rawValue, d: Duration(countPerSet: 1)).add()
+        Badge(imageName: "notif_activity.png", title: BadgeTitle.notifActivity.rawValue, specification:"Tap on an activity-based notification.", d: Duration(countPerSet: 1)).add()
+        Badge(imageName: "notif_location.png", title: BadgeTitle.notifLocation.rawValue, specification:"Tap on a location-based notification.", d: Duration(countPerSet: 1)).add()
+        Badge(imageName: "notif_time.png", title: BadgeTitle.notifTime.rawValue, specification:"Tap on a time-based notification.", d: Duration(countPerSet: 1)).add()
     }
     
     class func getAll() -> [Badge]{
@@ -212,6 +214,8 @@ class Badge: Object {
             if duration<BadgeDuration.silver.rawValue{
                 badge = realm.object(ofType: Badge.self, forPrimaryKey: "Bronze \(name)")
                 badge!.achieved()
+                badge = realm.object(ofType: Badge.self, forPrimaryKey: "Silver \(name)")
+                badge!.updateProgress(duration: duration)
             }
             else{
                 if duration<BadgeDuration.gold.rawValue{
@@ -219,6 +223,8 @@ class Badge: Object {
                     badge!.achieved()
                     badge = realm.object(ofType: Badge.self, forPrimaryKey: "Bronze \(name)")
                     badge!.achieved()
+                    badge = realm.object(ofType: Badge.self, forPrimaryKey: "Golden \(name)")
+                    badge!.updateProgress(duration: duration)
                 }
                 else{
                     badge = realm.object(ofType: Badge.self, forPrimaryKey: "Golden \(name)")
@@ -231,5 +237,57 @@ class Badge: Object {
             }
             
         }
+        else{
+            badge = realm.object(ofType: Badge.self, forPrimaryKey: "Bronze \(name)")
+            badge!.updateProgress(duration: duration)
+        }
+    }
+    
+    func updateProgress(duration: Int){
+        var progress : Duration?
+        let realm = try! Realm()
+        if (self.isAchieved){
+            progress = self.duration
+        }
+        else{
+            progress = Duration(durationInSeconds: duration)
+        }
+        try! realm.write {
+            self.progress = progress
+        }
+        
+    }
+    
+    func getProgressBetween0and1()->(Float,String){
+        var progressInNumber = Float(0.0)
+        var progressInString = "0"
+        if duration?.countPerSet == 0{
+            if duration?.durationInSeconds == 0{
+                if duration?.streak == 0{
+                    print("unknown progress!!")
+                }
+                else{
+                    progressInNumber = (Float(self.progress!.streak) / Float(self.duration!.streak))
+                    progressInString = "\(self.progress!.streak)/\(self.duration!.streak)"
+                }
+            }
+            else{
+                progressInNumber = Float(self.progress!.durationInSeconds) / Float(self.duration!.durationInSeconds)
+                
+                progressInString = "\(secondsToMinutes(seconds:  self.progress!.durationInSeconds))/\(Int(secondsToMinutes(seconds: self.duration!.durationInSeconds)))"
+            }
+        }
+        else{
+            if(!self.title.contains("Notification")){
+                progressInNumber = Float(self.progress!.countPerSet) / Float(self.duration!.countPerSet)
+                progressInString = "\(thousandsToKs(number: self.progress!.countPerSet))K/\(Int(thousandsToKs(number: self.duration!.countPerSet)))K"
+                
+            }
+            else{
+                progressInNumber = Float(self.progress!.countPerSet) / Float(self.duration!.countPerSet)
+                progressInString = "\(self.progress!.countPerSet)/\( self.duration!.countPerSet)"
+            }
+        }
+        return (progressInNumber,progressInString)
     }
 }

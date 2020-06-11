@@ -13,7 +13,7 @@ class Duration: Object {
     @objc dynamic var numberOfSets : Int = 0
     @objc dynamic var countPerSet : Int = 0
     @objc dynamic var durationInSeconds: Int = 0
-    @objc dynamic var strike: Int = 0
+    @objc dynamic var streak: Int = 0
     
     convenience init(numberOfSets: Int? = {
         return 0
@@ -21,7 +21,7 @@ class Duration: Object {
         return 0
         }(), durationInSeconds: Int? = {
         return 0
-        }(), strike: Int? = {
+        }(), streak: Int? = {
         return 0
         }()) {
         self.init()
@@ -30,7 +30,7 @@ class Duration: Object {
             self.numberOfSets = numberOfSets!
             self.countPerSet = countPerSet!
             self.durationInSeconds = durationInSeconds!
-            self.strike = strike!
+            self.streak = streak!
         }
     }
     
@@ -66,10 +66,10 @@ class Duration: Object {
         }
     }
     
-    func increaseStrike(){
+    func increaseStreak(){
        let realm = try! Realm()
         try! realm.write {
-            self.strike = self.strike + 1
+            self.streak = self.streak + 1
         }
     }
 }

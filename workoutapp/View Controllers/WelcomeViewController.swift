@@ -64,17 +64,17 @@ class WelcomeViewController: UIViewController {
     
     func refreshUI(){
         self.helloLabel.text = "Hello \(user!.name)!"
-        user!.manageStrike{ () -> () in
+        user!.manageStreak{ () -> () in
             var badge : Badge?
-            switch user!.strike {
+            switch user!.streak {
             case 3:
-                badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.strike3.rawValue)
+                badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.streak3.rawValue)
             case 7:
-                badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.strike7.rawValue)
+                badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.streak7.rawValue)
             case 14:
-                badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.strike14.rawValue)
+                badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.streak14.rawValue)
             case 30:
-                badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.strike30.rawValue)
+                badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.streak30.rawValue)
             default:
                 print("No badge available")
             }

@@ -17,13 +17,16 @@ enum ExerciseType : String {
 }
 enum BadgeDuration : Int {
     //15 * 60 = 900
-    case bronze = 10
+    case bronze = 900
     //60 * 60 = 3600
     case silver = 3600
-    //3 * 60 * 60 = 3600
+    //3 * 60 * 60 = 10800
     case gold = 10800
     
+    //10000
     case bronzeS = 10000
+    
+    //100000
     case silverS = 100000
     case goldS = 300000
     
@@ -95,6 +98,14 @@ func SecondsToString(time: Int)->String{
             return "\(minutes) minutes and \(seconds) seconds"
         }
     }
+}
+
+func secondsToMinutes(seconds: Int)->Float{
+    return Float(seconds)/60.0
+}
+
+func thousandsToKs(number: Int)->Float{
+    return Float(number)/1000.0
 }
 
 func reverSecondsToString(time: String)->Int{

@@ -48,10 +48,14 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
             case 0:
                 cell.title.text = achieved[indexPath.row].title
                 cell.badgeImage.image = UIImage(named: achieved[indexPath.row].imageName)
+                cell.descriptionLabel.text = achieved[indexPath.row].specification
+                setProgressForAchievedBadge(cell: cell, indexPath: indexPath)
                 return cell
             default:
                 cell.title.text = notAchieved[indexPath.row].title
                 cell.badgeImage.image = UIImage(named: notAchieved[indexPath.row].imageName)
+                cell.descriptionLabel.text = notAchieved[indexPath.row].specification
+                setProgressForNotAchievedBadge(cell: cell, indexPath: indexPath)
                 return cell
             }
         }
@@ -68,6 +72,17 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
         default:
             return "Upcoming"
         }
+    }
+    
+    func setProgressForNotAchievedBadge(cell: AchievementsTableViewCell, indexPath: IndexPath){
+        let progress = notAchieved[indexPath.row].getProgressBetween0and1()
+        cell.progressBar?.setProgress(progress.0, animated: false)
+        cell.progressLabel.text = progress.1
+    }
+    
+    func setProgressForAchievedBadge(cell: AchievementsTableViewCell, indexPath: IndexPath){
+        cell.progressBar?.setProgress(1, animated: false)
+        cell.progressLabel.text = achieved[indexPath.row].getProgressBetween0and1().1
     }
     
 
