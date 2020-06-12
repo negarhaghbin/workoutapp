@@ -15,7 +15,7 @@ class User: Object {
     @objc dynamic var restDuration : Int = 20
     @objc dynamic var streak : Int = 0
     @objc dynamic var lastLogin : String = {
-        return Date().makeString()
+        return Date().makeDateString()
     }()
     
     override static func primaryKey() -> String? {
@@ -47,16 +47,16 @@ class User: Object {
     
     func manageStreak(completion: () -> ()){
         let realm = try! Realm()
-        if (self.lastLogin != Date.yesterday.makeString()){
+        if (self.lastLogin != Date.yesterday.makeDateString()){
             try! realm.write {
                 self.streak = 1
-                self.lastLogin = Date().makeString()
+                self.lastLogin = Date().makeDateString()
             }
         }
         else{
             try! realm.write {
                 self.streak = self.streak + 1
-                self.lastLogin = Date().makeString()
+                self.lastLogin = Date().makeDateString()
             }
         }
         completion()

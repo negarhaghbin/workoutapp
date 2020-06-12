@@ -19,7 +19,7 @@ class DiaryItem: Object {
     @objc dynamic var exercise: Exercise?
     @objc dynamic var duration : Duration? = Duration()
     @objc dynamic var dateString : String = {
-        return Date().makeString()
+        return Date().makeDateString()
     }()
     
     override static func primaryKey() -> String? {
@@ -167,7 +167,7 @@ class DiaryItem: Object {
         let ck = Exercise.getCompoundKey(name: "Steps", type: "Lower Body")
         let stepsEx = Exercise.getObject(ck: ck)
         var se = DiaryItem()
-        let predicate = NSPredicate(format: "dateString = %@ AND exercise = %@", Date().makeString(), stepsEx)
+        let predicate = NSPredicate(format: "dateString = %@ AND exercise = %@", Date().makeDateString(), stepsEx)
         let todayStepsDiaryItems = realm.objects(DiaryItem.self).filter(predicate)
         
         if todayStepsDiaryItems.count > 0{

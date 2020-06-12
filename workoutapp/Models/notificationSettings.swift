@@ -11,6 +11,14 @@ import RealmSwift
 import UserNotifications
 import CoreLocation
 
+enum NotificationCategoryID : String{
+    case snoozable = "SNOOZABLE"
+}
+enum NotificationActionID : String{
+    case notToday = "NOT_TODAY"
+    case snooze = "SNOOZE"
+}
+
 class notificationSettings: Object {
     @objc dynamic var activity : Bool = true
     @objc dynamic var location : Bool = true
@@ -67,6 +75,7 @@ class notificationSettings: Object {
     // MARK: Time Notification
     
      func setUpTimeNotification(){
+        
         let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
         
@@ -84,6 +93,7 @@ class notificationSettings: Object {
         
         content.body = "Tap to start now."
         content.sound = UNNotificationSound.default
+        content.categoryIdentifier = NotificationCategoryID.snoozable.rawValue
 
         var date = DateComponents()
         let timeArray = time.split(separator: ":")
@@ -110,7 +120,8 @@ class notificationSettings: Object {
         }
         
         content.sound = UNNotificationSound.default
-        content.categoryIdentifier = Notification.Activity.rawValue
+        //content.categoryIdentifier = Notification.Activity.rawValue
+        content.categoryIdentifier = NotificationCategoryID.snoozable.rawValue
 
         var date = DateComponents()
         _ = time.split(separator: ":")
@@ -121,17 +132,38 @@ class notificationSettings: Object {
         let request = UNNotificationRequest(identifier: Notification.Activity.rawValue, content: content, trigger: trigger)
         center.add(request)
     }
-    // MARK: Location Notification
+    
+    class func setupSnoozedNotification(){
+        let center = UNUserNotificationCenter.current()
+        let content = UNMutableNotificationContent()
+        
+        content.title = "It's time to do your daily exercises!"
+        
+        content.body = "Tap to start now."
+        content.sound = UNNotificationSound.default
+        content.categoryIdentifier = NotificationCategoryID.snoozable.rawValue
+        
+        let calendar = Calendar.current
+        let date = calendar.date(byAdding: .hour, value: 1, to: Date())
+        
+        let dateComponent = calendar.dateComponents([.hour,.minute], from: date!)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
+
+        let request = UNNotificationRequest(identifier: Notification.Time.rawValue, content: content, trigger: trigger)
+        center.add(request)
+    }
     
     class func cancelNotification(identifier: String){
-        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
+        let center = UNUserNotificationCenter.current()
+        center.getPendingNotificationRequests { notificationRequests in
            var identifiers: [String] = []
-           for notification:UNNotificationRequest in notificationRequests {
-               if notification.identifier == identifier {
-                  identifiers.append(notification.identifier)
+           for notificationRequest in notificationRequests {
+               if notificationRequest.identifier == identifier {
+                  identifiers.append(notificationRequest.identifier)
                }
            }
-     UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+            center.removePendingNotificationRequests(withIdentifiers: identifiers)
         }
     }
     

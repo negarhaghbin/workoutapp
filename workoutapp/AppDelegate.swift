@@ -72,6 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         if granted{
+            self!.addNotificationCategories()
             OperationQueue.main.addOperation{
                 // Ask for Authorisation from the User.
                 AppDelegate.locationManager.requestAlwaysAuthorization()
@@ -95,6 +96,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
           }
       }
+        
+    }
+    
+    func addNotificationCategories(){
+        let notTodayAction = UNNotificationAction(identifier: NotificationActionID.notToday.rawValue,
+                                                  title: "Not feeling it today",
+                                                  options: UNNotificationActionOptions(rawValue: 0))
+        
+        let snoozeAction = UNNotificationAction(identifier: NotificationActionID.snooze.rawValue,
+                                                title: "Remind me in 1 hour",
+                                                options: UNNotificationActionOptions(rawValue: 0))
+        
+        let snoozableCategory =
+              UNNotificationCategory(identifier: NotificationCategoryID.snoozable.rawValue,
+              actions: [notTodayAction, snoozeAction],
+              intentIdentifiers: [],
+              hiddenPreviewsBodyPlaceholder: "",
+              options: .customDismissAction)
+        
+        center.setNotificationCategories([snoozableCategory])
         
     }
     
@@ -148,18 +169,30 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
-        print(response.notification.request.identifier)
-        let tap = Interaction()
-        tap.add(identifier: response.notification.request.identifier)
+
+        Interaction(identifier: response.notification.request.identifier).add()
+        
+        Badge.achieved(notificationID: response.notification.request.identifier)
         
         // MARK: should display activity page
-        Badge.achieved(notificationID: response.notification.request.identifier)
         if response.notification.request.identifier == Notification.Activity.rawValue {
              let tabbarController = UIApplication.shared.windows.first?.rootViewController as! TabBarViewController
             tabbarController.selectedIndex = 2
-            let nav = tabbarController.viewControllers![2] as! UINavigationController
-            nav.viewControllers.first?.performSegue(withIdentifier: "history", sender:Any?.self)
         }
+        
+        switch response.actionIdentifier {
+        case NotificationActionID.notToday.rawValue:
+            center.removeAllPendingNotificationRequests()
+            break
+               
+        case NotificationActionID.snooze.rawValue:
+            notificationSettings.setupSnoozedNotification()
+            break
+            
+        default:
+            break
+        }
+        
         completionHandler()
     }
     
@@ -207,6 +240,7 @@ extension AppDelegate: CLLocationManagerDelegate {
             content.title = "Are you ready to do some exercises?"
             content.body = "Tap to start now."
             content.sound = .default
+            content.categoryIdentifier = NotificationCategoryID.snoozable.rawValue
 
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (TimeInterval(sendAfter)), repeats: false)
 

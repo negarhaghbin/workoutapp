@@ -26,9 +26,16 @@ extension Date {
     var isLastDayOfMonth: Bool {
         return dayAfter.month != month
     }
-    func makeString()->String{
+    
+    func makeDateString()->String{
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
+        return df.string(from: self)
+    }
+    
+    func makeDateTimeString()->String{
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return df.string(from: self)
     }
 }
