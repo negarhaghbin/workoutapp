@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import YouTubePlayer
 import YoutubePlayer_in_WKWebView
 import SystemConfiguration
 
@@ -50,7 +49,6 @@ class ViewController: UIViewController, UITableViewDelegate, UIPickerViewDelegat
         
         titleLabel.text = exercise?.exercise?.name
         durationLabel.text = exercise!.durationInSeconds!.getDuration()
-//        subtitleView.text=exercise?.getDescription()
         
     }
     

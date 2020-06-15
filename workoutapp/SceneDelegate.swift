@@ -14,30 +14,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-//        guard
-//          let tabBarController = window?.rootViewController as? UITabBarController,
-//          let welcomeController = tabBarController.viewControllers?.first as? UISplitViewController,
-//          let leftNavController = splitViewController.viewControllers.first
-//            as? UINavigationController,
-//          let masterViewController = leftNavController.viewControllers.first
-//            as? TableViewController,
-//          let detailViewController = (splitViewController.viewControllers.last as? UINavigationController)?.topViewController as? ViewController
-//          else { return() }
-        
-        
-        
-//        let firstExercise = masterViewController.sections.first?.exercises.first
-//        detailViewController.exercise = firstExercise
-//        masterViewController.delegate = detailViewController
-//        detailViewController.navigationItem.leftItemsSupplementBackButton = true
-//        detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
-        
-        
-        
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-//        guard let _ = (scene as? UIWindowScene) else { return }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

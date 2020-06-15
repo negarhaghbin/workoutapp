@@ -128,11 +128,9 @@ class GifViewController: UIViewController {
                         self.nextLabel.text = "Next: Rest"
                         self.isResting = false
                         self.PB.startOver(duration: self.exerciseSeconds)
-                        //self.totalProgress.tintColor = UIColor.systemGreen
                     }
                 }
                 else{
-                    //self.finishRoutine()
                     self.exerciseTimer.invalidate()
                 }
                 
@@ -147,7 +145,6 @@ class GifViewController: UIViewController {
     }
     
     func exitRoutine(){
-        //exiting
         if (!isResting && exerciseSeconds == 0){
             exercisesDone.append(self.routineExercises[self.currentExerciseIndex])
         }
@@ -242,15 +239,4 @@ class GifViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

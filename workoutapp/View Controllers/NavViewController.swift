@@ -13,7 +13,6 @@ import RealmSwift
 class NavViewController: UINavigationController{
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         if isNewUser(){
             askName()

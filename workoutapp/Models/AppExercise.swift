@@ -18,7 +18,6 @@ class AppExercise: Object {
     @objc dynamic var videoURLString : String = ""
     @objc dynamic var durationInSeconds : Duration?
     @objc dynamic var equipmentsString : String = ""
-    //@objc dynamic var bothSides : Bool = false
     
     var equipments : Array<String> = []
     
@@ -35,7 +34,6 @@ class AppExercise: Object {
             self.videoURLString = v
             self.durationInSeconds = d
             self.equipmentsString = eq
-            //self.bothSides = b
         }
     }
     

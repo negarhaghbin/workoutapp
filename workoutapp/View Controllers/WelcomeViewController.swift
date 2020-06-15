@@ -46,9 +46,6 @@ class WelcomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        let url = URL(string: "http://negarhaghbin.ir/welcomePageImages/bruno-nascimento-PHIgYUGQPvU-unsplash.jpg")
-//        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-//        self.backgroundImage.image = UIImage(data: data!)
         self.backgroundImage.image = UIImage(named: self.images.randomElement()! + ".jpg")
     }
     
@@ -115,18 +112,5 @@ class WelcomeViewController: UIViewController {
             
         present(alert, animated: true)
     }
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

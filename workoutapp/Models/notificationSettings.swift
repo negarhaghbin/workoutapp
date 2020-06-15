@@ -79,9 +79,7 @@ class notificationSettings: Object {
         let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
         
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd"
-        let yesterday = df.string(from: Date.yesterday)
+        let yesterday = Date.yesterday.makeDateString()
         
         if (try! Realm().object(ofType: dailyRoutine.self, forPrimaryKey: yesterday)) != nil{
             content.title = "It's time to do your daily exercises!"

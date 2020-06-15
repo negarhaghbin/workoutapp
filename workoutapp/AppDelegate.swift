@@ -10,7 +10,6 @@ import UIKit
 import UserNotifications
 import CoreLocation
 import RealmSwift
-//import HealthKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -169,15 +168,16 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        let ACTIVITY_TAB_INDEX = 2
 
         Interaction(identifier: response.notification.request.identifier).add()
         
         Badge.achieved(notificationID: response.notification.request.identifier)
         
-        // MARK: should display activity page
         if response.notification.request.identifier == Notification.Activity.rawValue {
              let tabbarController = UIApplication.shared.windows.first?.rootViewController as! TabBarViewController
-            tabbarController.selectedIndex = 2
+            tabbarController.selectedIndex = ACTIVITY_TAB_INDEX
         }
         
         switch response.actionIdentifier {
@@ -227,13 +227,16 @@ extension AppDelegate: CLLocationManagerDelegate {
         
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         let LocalAppSettings = notificationSettings.getSettings()
-        //let todayRoutine = dailyRoutine.getToday()
-        let activityResult  = dailyRoutine.hasBeenActiveEnough()
-        if  activityResult == "yes"{
+        if  DiaryItem.hasBeenActiveEnoughInTotal(){
             notificationSettings.cancelNotification(identifier: Notification.Activity.rawValue)
         }
         else{
-            LocalAppSettings.setUpActivityNotification(activity: activityResult)
+            for type in [ExerciseType.total.rawValue, ExerciseType.abs.rawValue, ExerciseType.lower.rawValue, ExerciseType.upper.rawValue]{
+                if !DiaryItem.hasBeenActiveEnough(In: type){
+                    LocalAppSettings.setUpActivityNotification(activity: type)
+                    break
+                }
+            }
         }
             let sendAfter = LocalAppSettings.locationSendAfter
             let content = UNMutableNotificationContent()

@@ -54,7 +54,7 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
         createSendOnAlert()
         createSendAfterAlert()
         user = try! Realm().object(ofType: User.self, forPrimaryKey: UserDefaults.standard.string(forKey: "uuid"))!
-        //appSettings = try! Realm().objects(notificationSettings.self).first!
+
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(viewWillAppear(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
 
@@ -102,7 +102,6 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
     
     private func refreshUI(authorization: Bool){
         appSettings = try! Realm().objects(notificationSettings.self).first!
-        //print(appSettings.locationSendAfter)
         sendAfterTime.text =
             MinutesToString(time: appSettings.locationSendAfter)
         timeLabel.text = appSettings.time
@@ -159,7 +158,6 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         if !notifAuthorized{
             presentSettingsAlert(option: "Notifications")
@@ -260,13 +258,11 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
         if segue.identifier == "edit" {
             let vc = segue.destination as! NameTableViewController
             vc.user = user
         }
         
-        // Pass the selected object to the new view controller.
     }
     
 

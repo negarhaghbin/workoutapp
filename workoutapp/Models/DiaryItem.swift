@@ -38,7 +38,6 @@ class DiaryItem: Object {
             self.exercise = e
             self.duration = d
             self.dateString = date!
-            //realm.add(self)
         }
     }
     
@@ -77,48 +76,54 @@ class DiaryItem: Object {
         }
     }
     
+    class func hasBeenActiveEnough(In: String) -> Bool{
+        let todaysDiaryTypeDurationDictionary = getDurationForTodayByType()
+        let REQUIRED_ACTIVE_SECONDS = 100
+        for (type, duration) in todaysDiaryTypeDurationDictionary{
+            if In == type{
+                if duration < REQUIRED_ACTIVE_SECONDS{
+                    return false
+                }
+                else{
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    class func hasBeenActiveEnoughInTotal() -> Bool{
+        for type in [ExerciseType.total.rawValue, ExerciseType.abs.rawValue, ExerciseType.lower.rawValue, ExerciseType.upper.rawValue]{
+            if !DiaryItem.hasBeenActiveEnough(In: type){
+                return false
+            }
+        }
+        return true
+    }
     
     class func getWithDate() -> [String:[DiaryItem]] {
-        var result : [String:[DiaryItem]] = [:]
         let all = getAll()
-        var dates : Set<String> = []
-        for item in all {
-            dates.insert(item.dateString)
-        }
-        
-        //var datesArray = Array(dates)
-        
-        for date in dates{
-            result[date] = []
-        }
-        
-        for item in all{
-            var temp: [DiaryItem] = result[item.dateString]!
-            temp.append(item)
-            result.updateValue(temp, forKey: item.dateString)!
-        }
-        
-        return result
+        return Dictionary(grouping: all, by: {$0.dateString})
     }
     
     class func getWithType() -> [String:[DiaryItem]] {
-        var result : [String:[DiaryItem]] = [:]
         let all = getAll()
-        var types : Set<String> = []
-        for item in all {
-            types.insert(item.exercise!.type)
-        }
+        return Dictionary(grouping: all, by: {$0.exercise!.type})
+    }
+    
+    class func getDurationForTodayByType() -> [String:Int] {
+        let todaysDiaryItems = getWithDate()[Date().makeDateString()]
+        let byType = Dictionary(grouping: todaysDiaryItems!, by: {$0.exercise!.type})
+        var result : [String:Int] = [:]
         
-        //var datesArray = Array(dates)
-        
-        for type in types{
-            result[type] = []
-        }
-        
-        for item in all{
-            var temp: [DiaryItem] = result[item.exercise!.type]!
-            temp.append(item)
-            result.updateValue(temp, forKey: item.exercise!.type)!
+        for (type, diaryItems) in byType{
+            var duration = 0
+            for diaryItem in diaryItems{
+                if diaryItem.exercise?.name != "Steps"{
+                    duration += diaryItem.duration!.durationInSeconds
+                }
+            }
+            result[type]=duration
         }
         
         return result
@@ -169,7 +174,7 @@ class DiaryItem: Object {
         var se = DiaryItem()
         let predicate = NSPredicate(format: "dateString = %@ AND exercise = %@", Date().makeDateString(), stepsEx)
         let todayStepsDiaryItems = realm.objects(DiaryItem.self).filter(predicate)
-        
+        print("stepsssss: \(todayStepsDiaryItems)")
         if todayStepsDiaryItems.count > 0{
             se = todayStepsDiaryItems.first!
             DiaryItem.update(uuid: se.uuid, e: se.exercise!, d: Duration(countPerSet: sd), date: se.dateString)

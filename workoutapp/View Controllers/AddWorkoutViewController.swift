@@ -19,8 +19,6 @@ class AddWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -55,8 +53,6 @@ class AddWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
     
 
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "oldWorkout" {
             let vc = segue.destination as! NewWorkoutPopupViewController

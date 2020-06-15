@@ -40,7 +40,6 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.title = section?.title
         descriptionLabel.text = section?.getDescription()
         customizedSection = RoutineSection(title: section!.title, image: section!.image, exercises: section!.exercises)
-        //customizedSection = section!.copy() as? RoutineSection
     }
 
     // MARK: - Table view data source
@@ -133,13 +132,10 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
        }
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
         if segue.identifier == "startRoutine" {
             let vc = segue.destination as? StartRoutineViewController
-            // Pass the selected object to the new view controller.
+
             customizedSection?.exercises = (customizedSection?.exercises.filter {
                 $0.exercise != nil
                 })!

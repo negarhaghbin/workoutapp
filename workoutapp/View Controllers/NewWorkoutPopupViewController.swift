@@ -10,9 +10,6 @@ import UIKit
 import SearchTextField
 
 class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate {
-    
-    //var datePicker: UIDatePicker = UIDatePicker()
-    
     @IBOutlet weak var pickerBackground: UIView!
     @IBOutlet weak var nameField: SearchTextField!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -43,8 +40,6 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
         typeLabel.text = types[0]
         saveButton.isHighlighted = true
         saveButton.isEnabled = false
-
-        // Do any additional setup after loading the view.
     }
     
     func exerciseSelected(_ newExercise: AppExercise) {
@@ -81,7 +76,6 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
         for exercise in exercises{
             exerciseNames.append(exercise.name)
         }
-        print(exerciseNames)
         nameField.filterStrings(exerciseNames)
         countField.isHidden = true
         durationLabel.isHidden = false
@@ -174,21 +168,11 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
         }
         
         dismiss(animated: true)
-        //_ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func cancel(_ sender: Any) {
         dismiss(animated: true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

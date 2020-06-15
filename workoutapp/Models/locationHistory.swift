@@ -53,7 +53,7 @@ class location: Object {
         let locationManager = CLLocationManager()
         let center = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
         _ = locationManager.maximumRegionMonitoringDistance
-        //find the best radius**********************
+        // TODO: find the best radius**********************
         return CLCircularRegion(center: center, radius: 10.0, identifier: "")
     }
     

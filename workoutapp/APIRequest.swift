@@ -1,6 +1,6 @@
 //
 //  APIRequest.swift
-//  neblinaAR
+//  workoutapp
 //
 //  Created by Negar on 2020-03-19.
 //  Copyright © 2020 Negar. All rights reserved.
@@ -32,13 +32,11 @@ struct APIRequest{
             
             let dataTask = URLSession.shared.dataTask(with: urlRequest){
                 data, response, _ in
-                //print(response)
                 guard let httpResponse = response as? HTTPURLResponse,  httpResponse.statusCode == 200, let jsonData = data else{
                     completion(.failure(.responseProblem))
                     return
                 }
                 do{
-                    print(jsonData)
                     let messageData = try JSONDecoder().decode(Message.self, from: jsonData)
                     completion(.success(messageData))
                 }catch{

@@ -35,7 +35,6 @@ class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
 
     // MARK: - Table view data source
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return diariesDict.count
     }
@@ -68,8 +67,6 @@ class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDiaryItem", let destination = segue.destination as? NewWorkoutPopupViewController {
             if let cell = sender as? UITableViewCell, let indexPath = self.tableView.indexPath(for: cell) {

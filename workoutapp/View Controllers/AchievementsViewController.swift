@@ -14,12 +14,9 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
     var notAchieved : [Badge] = []
     var achieved : [Badge] = []
     var newlyAchieved : [Badge] = []
-    //@IBOutlet weak var balloon: Balloon!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,11 +48,6 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
         alert.addAction(UIAlertAction(title: "Hooray!", style: .default){ (action) in
                 removeAndShowNextMessage()
         })
-        
-        
-        //alert.view.addSubview(alertImageView)
-            
-    //        playSound(name: "good job", extensionType: "m4a")
             self.present(alert, animated: true)
         }
     
@@ -114,16 +106,5 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
         cell.progressBar?.setProgress(1, animated: false)
         cell.progressLabel.text = achieved[indexPath.row].getProgressBetween0and1().1
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
