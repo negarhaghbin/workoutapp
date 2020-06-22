@@ -29,7 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = UIColor(displayP3Red: 0.96, green: 0.31, blue: 0.67, alpha: 1.0)
         center.delegate = self
         registerForPushNotifications()
-        DiaryItem.addSteps()
+        Step.askAuthorization {
+            Step.update()
+        }
         return true
     }
     

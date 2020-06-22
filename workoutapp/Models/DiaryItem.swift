@@ -76,6 +76,13 @@ class DiaryItem: Object {
         }
     }
     
+    func delete(){
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(self)
+        }
+    }
+    
     class func hasBeenActiveEnough(In: String) -> Bool{
         let todaysDiaryTypeDurationDictionary = getDurationForTodayByType()
         let REQUIRED_ACTIVE_SECONDS = 100
@@ -119,9 +126,7 @@ class DiaryItem: Object {
         for (type, diaryItems) in byType{
             var duration = 0
             for diaryItem in diaryItems{
-                if diaryItem.exercise?.name != "Steps"{
-                    duration += diaryItem.duration!.durationInSeconds
-                }
+                duration += diaryItem.duration!.durationInSeconds
             }
             result[type]=duration
         }
@@ -130,7 +135,6 @@ class DiaryItem: Object {
     }
     
     private class func getAll() -> [DiaryItem]{
-        addSteps()
         let realm = try! Realm()
         let allDiaryItems = realm.objects(DiaryItem.self)
         return Array(allDiaryItems)
@@ -141,76 +145,5 @@ class DiaryItem: Object {
             DiaryItem(e: item.exercise, d: Duration(durationInSeconds: item.durationInSeconds?.durationInSeconds)).add()
         }
     }
-    
-    class func addSteps(){
-        if HKHealthStore.isHealthDataAvailable() {
-            let stepsCount = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!
-
-            healthStore.requestAuthorization(toShare: [], read: [stepsCount]) { (success, error) in
-                if success {
-                    getStepsCount(forSpecificDate: Date()){ steps in
-                        updateSteps(sd: Int(steps))
-                    }
-                    
-                }
-                else {
-                    if error != nil {
-                        print(error ?? "")
-                    }
-                    print("Permission denied.")
-                }
-            }
-            
-        }
-        else{
-            print("health not available")
-        }
-    }
-    
-    private class func updateSteps(sd: Int){ //alan faghat male emruz ro update mikne
-        let realm = try! Realm()
-        let ck = Exercise.getCompoundKey(name: "Steps", type: "Lower Body")
-        let stepsEx = Exercise.getObject(ck: ck)
-        var se = DiaryItem()
-        let predicate = NSPredicate(format: "dateString = %@ AND exercise = %@", Date().makeDateString(), stepsEx)
-        let todayStepsDiaryItems = realm.objects(DiaryItem.self).filter(predicate)
-        print("stepsssss: \(todayStepsDiaryItems)")
-        if todayStepsDiaryItems.count > 0{
-            se = todayStepsDiaryItems.first!
-            DiaryItem.update(uuid: se.uuid, e: se.exercise!, d: Duration(countPerSet: sd), date: se.dateString)
-        }
-        else{
-            se = DiaryItem(e: stepsEx , d: Duration(countPerSet: sd))
-            se.add()
-        }
-    }
-    
-    
-    private class func getStepsCount(forSpecificDate:Date, completion: @escaping (Double) -> Void) {
-        let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
-        let (start, end) = getWholeDate(date: forSpecificDate)
-
-        let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
-
-        let query = HKStatisticsQuery(quantityType: stepsQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
-            guard let result = result, let sum = result.sumQuantity() else {
-                completion(0.0)
-                return
-            }
-            completion(Double(sum.doubleValue(for: HKUnit.count())))
-        }
-
-        healthStore.execute(query)
-    }
-
-    private class func getWholeDate(date : Date) -> (startDate:Date, endDate: Date) {
-        var startDate = date
-        var length = TimeInterval()
-        _ = Calendar.current.dateInterval(of: .day, start: &startDate, interval: &length, for: startDate)
-        let endDate:Date = startDate.addingTimeInterval(length)
-        return (startDate,endDate)
-    }
-    
-    
     
 }

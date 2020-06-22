@@ -38,4 +38,16 @@ extension Date {
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return df.string(from: self)
     }
+    
+    func getWholeDate() -> (startDate:Date, endDate: Date) {
+        var startDate = self
+        var length = TimeInterval()
+        _ = Calendar.current.dateInterval(of: .day, start: &startDate, interval: &length, for: startDate)
+        let endDate:Date = startDate.addingTimeInterval(length)
+        return (startDate,endDate)
+    }
+    
+    func isBetween(_ date1: Date, and date2: Date) -> Bool {
+        return (min(date1, date2) ... max(date1, date2)).contains(self)
+    }
 }

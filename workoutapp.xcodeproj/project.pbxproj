@@ -36,7 +36,7 @@
 		8418088F2476D8CD00786224 /* lower_gold.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418087F2476D8CD00786224 /* lower_gold.png */; };
 		841808902476D8CD00786224 /* lower_boronz.png in Resources */ = {isa = PBXBuildFile; fileRef = 841808802476D8CD00786224 /* lower_boronz.png */; };
 		841808922476D8E900786224 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841808912476D8E900786224 /* Badge.swift */; };
-		841808942476DB7600786224 /* Achievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841808932476DB7600786224 /* Achievements.swift */; };
+		841808942476DB7600786224 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841808932476DB7600786224 /* Step.swift */; };
 		84372D4B2339342A00D6586D /* doubleChopKneePulls.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D462339342A00D6586D /* doubleChopKneePulls.jpg */; };
 		84372D4C2339342A00D6586D /* alternatingLunges.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D472339342A00D6586D /* alternatingLunges.jpg */; };
 		84372D4D2339342B00D6586D /* stepsAndPulls.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84372D482339342A00D6586D /* stepsAndPulls.jpg */; };
@@ -241,7 +241,7 @@
 		8418087F2476D8CD00786224 /* lower_gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lower_gold.png; sourceTree = "<group>"; };
 		841808802476D8CD00786224 /* lower_boronz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lower_boronz.png; sourceTree = "<group>"; };
 		841808912476D8E900786224 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
-		841808932476DB7600786224 /* Achievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievements.swift; sourceTree = "<group>"; };
+		841808932476DB7600786224 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		84361466233BE0660088ADA8 /* 5M Workout.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "5M Workout.entitlements"; sourceTree = "<group>"; };
 		84372D462339342A00D6586D /* doubleChopKneePulls.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = doubleChopKneePulls.jpg; sourceTree = "<group>"; };
 		84372D472339342A00D6586D /* alternatingLunges.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = alternatingLunges.jpg; sourceTree = "<group>"; };
@@ -421,7 +421,7 @@
 				849CFC222452319A007BD77B /* DiaryItem.swift */,
 				84E76C08246F0D750041311F /* Duration.swift */,
 				841808912476D8E900786224 /* Badge.swift */,
-				841808932476DB7600786224 /* Achievements.swift */,
+				841808932476DB7600786224 /* Step.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1048,7 +1048,7 @@
 				849CFC1F24522CB7007BD77B /* DiaryTableViewController.swift in Sources */,
 				845D4D192492EBBE0025217A /* AlertController+Image.swift in Sources */,
 				84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */,
-				841808942476DB7600786224 /* Achievements.swift in Sources */,
+				841808942476DB7600786224 /* Step.swift in Sources */,
 				846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */,
 				845FD8CF23844A8A00E9B1D8 /* RoutineSection.swift in Sources */,
 				845FD8C5238309A100E9B1D8 /* GifViewController.swift in Sources */,

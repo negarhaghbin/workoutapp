@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import HealthKit
 
 class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var viewLabel: UILabel!
     lazy var diariesDict : [String:[DiaryItem]] = DiaryItem.getWithDate()
+    lazy var steps : [String:[Step]] = Step.getWithDate()
     var dates : [String] = []
     
     override func viewDidLoad() {
@@ -23,9 +25,10 @@ class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewWillAppear(animated)
         tableView.estimatedRowHeight = 100
         diariesDict = DiaryItem.getWithDate()
-        dates = Array(diariesDict.keys).sorted(by: >)
+        steps = Step.getWithDate()
+        dates = Array(steps.keys).sorted(by: >)
         
-        if diariesDict.count > 0{
+        if diariesDict.count+steps.count > 0{
             viewLabel.text = "Tap to edit."
         }
         tableView.reloadData()
@@ -36,22 +39,31 @@ class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
-        return diariesDict.count
+        return max(diariesDict.count, steps.count)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return diariesDict[dates[section]]!.count
+        if let specifiedDateWorkouts = diariesDict[dates[section]], let specifiedDateSteps = steps[dates[section]]{
+            return (specifiedDateWorkouts.count + specifiedDateSteps.count)
+        }
+        else{
+            return 1
+        }
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "diaryCell", for: indexPath) as? DiaryTableViewCell{
-            cell.nameLabel.text = diariesDict[dates[indexPath.section]]![indexPath.row].exercise?.name
-            let duration = diariesDict[dates[indexPath.section]]![indexPath.row].duration
-            cell.durationLabel.text = duration?.getDuration()
-            if diariesDict[dates[indexPath.section]]![indexPath.row].exercise?.name == "Steps"{
+            if indexPath.row == 0{
+                cell.nameLabel.text = "Steps"
+                cell.durationLabel.text = String(steps[dates[indexPath.section]]!.first!.count)
                 cell.isUserInteractionEnabled = false
                 cell.durationLabel.isEnabled = false
+            }
+            else{
+                cell.nameLabel.text = diariesDict[dates[indexPath.section]]![indexPath.row-1].exercise?.name
+                let duration = diariesDict[dates[indexPath.section]]![indexPath.row-1].duration
+                cell.durationLabel.text = duration?.getDuration()
             }
             
             return cell
@@ -63,6 +75,25 @@ class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return dates[section]
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if indexPath.row != 0{
+            if editingStyle == .delete {
+                diariesDict[dates[indexPath.section]]![indexPath.row-1].delete()
+                diariesDict[dates[indexPath.section]]!.remove(at: indexPath.row-1)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.row == 0{
+            return false
+        }
+        else{
+            return true
+        }
     }
     
     

@@ -49,6 +49,7 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     
     private func refreshUI(){
         loadView()
+        datePicker.maximumDate = Date()
         nameField.text = diaryItem?.exercise?.name
         typeLabel.text = diaryItem?.exercise?.type
         dateLabel.text = diaryItem?.dateString
@@ -130,9 +131,7 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     }
     @IBAction func changeDate(_ sender: UIDatePicker) {
         datePicker.date = sender.date
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateLabel.text = dateFormatter.string(from: sender.date)
+        dateLabel.text = sender.date.makeDateString()
     }
 
     @IBAction func changeName(_ sender: Any) {
