@@ -15,6 +15,9 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
     var achieved : [Badge] = []
     var newlyAchieved : [Badge] = []
     
+    let ACHIEVED_SECTION = 0
+    let UPCOMING_SECTION = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -53,7 +56,7 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0:
+        case ACHIEVED_SECTION:
             return achieved.count
         default:
             return notAchieved.count
@@ -67,7 +70,7 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "achCell", for: indexPath) as? AchievementsTableViewCell{
             switch indexPath.section {
-            case 0:
+            case ACHIEVED_SECTION:
                 cell.title.text = achieved[indexPath.row].title
                 cell.badgeImage.image = UIImage(named: achieved[indexPath.row].imageName)
                 cell.descriptionLabel.text = achieved[indexPath.row].specification
@@ -89,7 +92,7 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case 0:
+        case ACHIEVED_SECTION:
             return "Achieved"
         default:
             return "Upcoming"

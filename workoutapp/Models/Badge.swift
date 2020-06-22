@@ -139,6 +139,8 @@ class Badge: Object {
                 self.isAchieved = true
                 self.isNewlyAchieved = true
                 self.imageName = "\(name)_done.png"
+                //not sure about this line
+                self.progress = self.duration
             }
             print(self.imageName)
         }
@@ -165,34 +167,31 @@ class Badge: Object {
     
     class func update(completion: () -> ()){
         let diary = DiaryItem.getWithType()
-        var totalSteps = 0
+        manageStepsBadge()
         for (type, items) in diary{
             var temp = 0
             for item in items{
                 temp += item.duration!.durationInSeconds
-                if type == ExerciseType.lower.rawValue{
-                    if item.exercise?.name == "Steps"{
-                        totalSteps += item.duration!.countPerSet
-                    }
-                }
             }
-            updateBadge(type: type, duration: temp, steps: totalSteps)
+            updateBadge(type: type, duration: temp)
         }
         completion()
         
     }
     
-    private class func manageStepsBadge(steps: Int){
+    private class func manageStepsBadge(){
+        let totalStepCounts = Step.getTotalStepsCount()
+        
         let realm = try! Realm()
         var badge : Badge?
         
-        if steps >= BadgeDuration.bronzeS.rawValue{
-            if steps < BadgeDuration.silverS.rawValue{
+        if totalStepCounts >= BadgeDuration.bronzeS.rawValue{
+            if totalStepCounts < BadgeDuration.silverS.rawValue{
                 badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.bronzeShoes.rawValue)
                 badge!.achieved()
             }
             else{
-                if steps < BadgeDuration.goldS.rawValue {
+                if totalStepCounts < BadgeDuration.goldS.rawValue {
                     badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.bronzeShoes.rawValue)
                     badge!.achieved()
                     badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.silverShoes.rawValue)
@@ -210,7 +209,7 @@ class Badge: Object {
         }
     }
     
-    private class func updateBadge(type: String, duration: Int, steps: Int){
+    private class func updateBadge(type: String, duration: Int){
         let realm = try! Realm()
         var name = ""
         switch type {
@@ -218,7 +217,7 @@ class Badge: Object {
             name = "Arms"
         case ExerciseType.lower.rawValue:
             name = "Legs"
-            manageStepsBadge(steps: steps)
+//            manageStepsBadge(steps: steps)
         case ExerciseType.total.rawValue:
             name = "Body"
         case ExerciseType.abs.rawValue:
