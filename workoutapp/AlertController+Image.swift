@@ -32,12 +32,13 @@ extension UIAlertController{
     func addImage(image: UIImage){
         let maxSize = CGSize(width: 100, height: 100)
         let imageSize = image.size
-        let ratio = maxSize.width / imageSize.width
+        
+        let ratio = CGFloat(maxSize.width / imageSize.width)
+        
         let scaledSize = CGSize(width: imageSize.width * ratio , height: imageSize.height * ratio)
         var resizedImage = image.imageWithSize(scaledSize)
         
-        let left = (maxSize.width - resizedImage.size.width) / 2
-        resizedImage = resizedImage.withAlignmentRectInsets(UIEdgeInsets(top: 0,left: -left,bottom: 0,right: 0))
+        resizedImage = resizedImage.withAlignmentRectInsets(UIEdgeInsets(top: 0,left: -75,bottom: 0,right: 0))
         
         let imageAction = UIAlertAction(title: "", style: .default, handler: nil)
         imageAction.isEnabled = false

@@ -173,14 +173,20 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         let ACTIVITY_TAB_INDEX = 2
 
-        Interaction(identifier: response.notification.request.identifier).add()
+        let interaction = Interaction(identifier: response.notification.request.identifier)
+        interaction.add()
         
         Badge.achieved(notificationID: response.notification.request.identifier)
         
+        
+        let storyboard = UIStoryboard(name: "NotificationLaunch", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "NotificationStoryboard") as! NotificationLauncherViewController
+        vc.interaction = interaction
         if response.notification.request.identifier == Notification.Activity.rawValue {
-             let tabbarController = UIApplication.shared.windows.first?.rootViewController as! TabBarViewController
-            tabbarController.selectedIndex = ACTIVITY_TAB_INDEX
+            vc.nextViewControllerTabIndex = ACTIVITY_TAB_INDEX
         }
+        
+        UIApplication.shared.windows.first?.rootViewController = vc
         
         switch response.actionIdentifier {
         case NotificationActionID.notToday.rawValue:

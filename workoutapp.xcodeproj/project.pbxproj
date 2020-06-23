@@ -87,9 +87,12 @@
 		8464598A24A1472D004C7B34 /* neutral.png in Resources */ = {isa = PBXBuildFile; fileRef = 8464598724A1472D004C7B34 /* neutral.png */; };
 		8464598B24A1472D004C7B34 /* sad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8464598824A1472D004C7B34 /* sad.png */; };
 		8464598C24A1472D004C7B34 /* smile.png in Resources */ = {isa = PBXBuildFile; fileRef = 8464598924A1472D004C7B34 /* smile.png */; };
-		8464598E24A15225004C7B34 /* party in Resources */ = {isa = PBXBuildFile; fileRef = 8464598D24A15225004C7B34 /* party */; };
 		8464599024A15480004C7B34 /* party.png in Resources */ = {isa = PBXBuildFile; fileRef = 8464598F24A1547F004C7B34 /* party.png */; };
 		8464599224A155E4004C7B34 /* WorkoutCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464599124A155E4004C7B34 /* WorkoutCompleteViewController.swift */; };
+		8464599424A24E51004C7B34 /* NotificationLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8464599324A24E51004C7B34 /* NotificationLaunch.storyboard */; };
+		8464599824A251A4004C7B34 /* dislike.png in Resources */ = {isa = PBXBuildFile; fileRef = 8464599624A251A4004C7B34 /* dislike.png */; };
+		8464599924A251A4004C7B34 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 8464599724A251A4004C7B34 /* like.png */; };
+		8464599B24A253B5004C7B34 /* NotificationLauncherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464599A24A253B5004C7B34 /* NotificationLauncherViewController.swift */; };
 		8469DE0423A7CB3A0098A5FD /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8469DE0323A7CB390098A5FD /* beep.wav */; };
 		8469DE0623A7D0640098A5FD /* good job.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8469DE0523A7D0640098A5FD /* good job.m4a */; };
 		8469DE0823A7D8DC0098A5FD /* halfway.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8469DE0723A7D8DB0098A5FD /* halfway.m4a */; };
@@ -277,9 +280,12 @@
 		8464598724A1472D004C7B34 /* neutral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = neutral.png; sourceTree = "<group>"; };
 		8464598824A1472D004C7B34 /* sad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sad.png; sourceTree = "<group>"; };
 		8464598924A1472D004C7B34 /* smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smile.png; sourceTree = "<group>"; };
-		8464598D24A15225004C7B34 /* party */ = {isa = PBXFileReference; lastKnownFileType = file; path = party; sourceTree = "<group>"; };
 		8464598F24A1547F004C7B34 /* party.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = party.png; sourceTree = "<group>"; };
 		8464599124A155E4004C7B34 /* WorkoutCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCompleteViewController.swift; sourceTree = "<group>"; };
+		8464599324A24E51004C7B34 /* NotificationLaunch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotificationLaunch.storyboard; sourceTree = "<group>"; };
+		8464599624A251A4004C7B34 /* dislike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dislike.png; sourceTree = "<group>"; };
+		8464599724A251A4004C7B34 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
+		8464599A24A253B5004C7B34 /* NotificationLauncherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLauncherViewController.swift; sourceTree = "<group>"; };
 		8469DE0323A7CB390098A5FD /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
 		8469DE0523A7D0640098A5FD /* good job.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "good job.m4a"; sourceTree = "<group>"; };
 		8469DE0723A7D8DB0098A5FD /* halfway.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = halfway.m4a; sourceTree = "<group>"; };
@@ -552,6 +558,7 @@
 				848D683D2471C9B20041445F /* WelcomeViewController.swift */,
 				848D6869247607C30041445F /* AchievementsViewController.swift */,
 				8464599124A155E4004C7B34 /* WorkoutCompleteViewController.swift */,
+				8464599A24A253B5004C7B34 /* NotificationLauncherViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -573,6 +580,15 @@
 				8464598924A1472D004C7B34 /* smile.png */,
 			);
 			path = smily;
+			sourceTree = "<group>";
+		};
+		8464599524A251A4004C7B34 /* likeDislike */ = {
+			isa = PBXGroup;
+			children = (
+				8464599624A251A4004C7B34 /* dislike.png */,
+				8464599724A251A4004C7B34 /* like.png */,
+			);
+			path = likeDislike;
 			sourceTree = "<group>";
 		};
 		848D683F2471FA8F0041445F /* Welcome page */ = {
@@ -599,6 +615,7 @@
 				84C10B192336994E00146547 /* Main.storyboard */,
 				849CFC14244F7563007BD77B /* Routines.storyboard */,
 				849CFC12244F719C007BD77B /* settings.storyboard */,
+				8464599324A24E51004C7B34 /* NotificationLaunch.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -659,8 +676,8 @@
 		84C10B2F2336A10000146547 /* Local Videos */ = {
 			isa = PBXGroup;
 			children = (
+				8464599524A251A4004C7B34 /* likeDislike */,
 				8464598F24A1547F004C7B34 /* party.png */,
-				8464598D24A15225004C7B34 /* party */,
 				8464598624A1472D004C7B34 /* smily */,
 				84E90D312481E19000F6106D /* diary_header.png */,
 				8418086024762F2C00786224 /* Badges */,
@@ -844,6 +861,7 @@
 				84A3EEB12486A7CE006B3EA1 /* notif_time_done.png in Resources */,
 				84C10B4E2336A10000146547 /* InnerTightLift.png in Resources */,
 				84A3EEBC2486A7CE006B3EA1 /* abs_silver_done.png in Resources */,
+				8464599824A251A4004C7B34 /* dislike.png in Resources */,
 				84C10B482336A10000146547 /* InnerTightLift.mp4 in Resources */,
 				84E90D2E248170F900F6106D /* notif_time.png in Resources */,
 				84C10B4A2336A10000146547 /* doubleChopKneePulls.mp4 in Resources */,
@@ -855,7 +873,7 @@
 				845FD8F8238C32F000E9B1D8 /* standing-side-kicks.gif in Resources */,
 				8418088A2476D8CD00786224 /* streak_3days.png in Resources */,
 				84A3EEC62486B105006B3EA1 /* upper_boronz_done.png in Resources */,
-				8464598E24A15225004C7B34 /* party in Resources */,
+				8464599424A24E51004C7B34 /* NotificationLaunch.storyboard in Resources */,
 				8469DE0623A7D0640098A5FD /* good job.m4a in Resources */,
 				8464598B24A1472D004C7B34 /* sad.png in Resources */,
 				84C10B492336A10000146547 /* stepsAndPulls.mp4 in Resources */,
@@ -921,6 +939,7 @@
 				84C10B1B2336994E00146547 /* Main.storyboard in Resources */,
 				84372D4F2339342B00D6586D /* armCircles.jpg in Resources */,
 				845FD8E42385D76200E9B1D8 /* rest.png in Resources */,
+				8464599924A251A4004C7B34 /* like.png in Resources */,
 				84372D4B2339342A00D6586D /* doubleChopKneePulls.jpg in Resources */,
 				845FD8EF238C32EF00E9B1D8 /* march-steps.gif in Resources */,
 				84E90D30248170F900F6106D /* steps_boronz.png in Resources */,
@@ -1060,6 +1079,7 @@
 				846446A623760C9C00F493F0 /* SettingsTableViewController.swift in Sources */,
 				845FD8CF23844A8A00E9B1D8 /* RoutineSection.swift in Sources */,
 				845FD8C5238309A100E9B1D8 /* GifViewController.swift in Sources */,
+				8464599B24A253B5004C7B34 /* NotificationLauncherViewController.swift in Sources */,
 				845D4D172492DC880025217A /* BalloonAnimation.swift in Sources */,
 				849CFC2D24552F57007BD77B /* DiaryTableViewCell.swift in Sources */,
 				845FD8C723830C1600E9B1D8 /* swift+gif.swift in Sources */,

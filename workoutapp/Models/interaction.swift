@@ -15,6 +15,7 @@ class Interaction: Object {
     @objc dynamic var dateString : String = {
         return Date().makeDateTimeString()
     }()
+    @objc dynamic var wasUseful : Bool = false
     
     convenience init(identifier: String) {
         self.init()
@@ -28,6 +29,13 @@ class Interaction: Object {
         let realm = try! Realm()
         try! realm.write {
             realm.add(self)
+        }
+    }
+    
+    func setWasUseful(wasUseful: Bool){
+        let realm = try! Realm()
+        try! realm.write {
+            self.wasUseful = wasUseful
         }
     }
     

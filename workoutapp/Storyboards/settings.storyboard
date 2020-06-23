@@ -462,7 +462,7 @@
             </objects>
             <point key="canvasLocation" x="-322" y="2682"/>
         </scene>
-        <!--Interaction Table View Controller-->
+        <!--Notification Interactions-->
         <scene sceneID="gaZ-PH-OOa">
             <objects>
                 <viewController id="et5-1u-Z5M" customClass="InteractionTableViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
@@ -471,7 +471,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="64" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5Jf-K5-0Um">
-                                <rect key="frame" x="0.0" y="135" width="414" height="678"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="InteractionTableCell" rowHeight="64" id="tgU-ic-iyO" customClass="InteractionTableViewCell" customModule="_M_Workout" customModuleProvider="target">
@@ -502,6 +502,11 @@
                                                 <constraint firstItem="JlU-3t-cNc" firstAttribute="leading" secondItem="7il-uE-x5H" secondAttribute="leadingMargin" id="v7l-Vl-MMr"/>
                                                 <constraint firstItem="5V1-7I-Arx" firstAttribute="centerY" secondItem="7il-uE-x5H" secondAttribute="centerY" id="w9Y-zG-0PT"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="5V1-7I-Arx"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateLabel" destination="JlU-3t-cNc" id="HaV-je-8JN"/>
@@ -514,39 +519,25 @@
                                     <outlet property="delegate" destination="et5-1u-Z5M" id="W9V-Ow-UIY"/>
                                 </connections>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kq4-iu-lNs">
-                                <rect key="frame" x="16" y="96" width="382" height="32"/>
-                                <segments>
-                                    <segment title="Workout"/>
-                                    <segment title="Interaction"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentTapped:" destination="et5-1u-Z5M" eventType="valueChanged" id="Vjw-e3-mXh"/>
-                                </connections>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="5Jf-K5-0Um" firstAttribute="leading" secondItem="sUR-a2-uRm" secondAttribute="leading" id="0MT-sz-NXN"/>
-                            <constraint firstItem="sUR-a2-uRm" firstAttribute="trailing" secondItem="kq4-iu-lNs" secondAttribute="trailing" constant="16" id="1NS-nO-uWc"/>
+                            <constraint firstItem="5Jf-K5-0Um" firstAttribute="bottom" secondItem="sUR-a2-uRm" secondAttribute="bottom" id="1q1-FZ-wDA"/>
                             <constraint firstItem="sUR-a2-uRm" firstAttribute="bottom" secondItem="5Jf-K5-0Um" secondAttribute="bottom" id="FBk-Bg-7zf"/>
                             <constraint firstItem="sUR-a2-uRm" firstAttribute="trailing" secondItem="5Jf-K5-0Um" secondAttribute="trailing" id="QtG-dJ-FAU"/>
-                            <constraint firstItem="kq4-iu-lNs" firstAttribute="top" secondItem="sUR-a2-uRm" secondAttribute="top" constant="8" id="d6R-pN-pYE"/>
-                            <constraint firstItem="5Jf-K5-0Um" firstAttribute="top" secondItem="kq4-iu-lNs" secondAttribute="bottom" constant="8" id="lHd-8c-uZa"/>
-                            <constraint firstItem="kq4-iu-lNs" firstAttribute="centerX" secondItem="uCp-fE-7sa" secondAttribute="centerX" id="sUe-3Y-hM4"/>
-                            <constraint firstItem="kq4-iu-lNs" firstAttribute="leading" secondItem="sUR-a2-uRm" secondAttribute="leading" constant="16" id="vVG-bi-bBH"/>
+                            <constraint firstItem="5Jf-K5-0Um" firstAttribute="top" secondItem="sUR-a2-uRm" secondAttribute="top" id="kTd-m3-8ys"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sUR-a2-uRm"/>
                     </view>
-                    <navigationItem key="navigationItem" id="DKh-wM-ILW"/>
+                    <navigationItem key="navigationItem" title="Notification Interactions" id="DKh-wM-ILW"/>
                     <connections>
-                        <outlet property="segmentController" destination="kq4-iu-lNs" id="JHg-BH-0eB"/>
                         <outlet property="tableView" destination="5Jf-K5-0Um" id="iSl-yf-jXA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ix6-XR-QCb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2093" y="3381"/>
+            <point key="canvasLocation" x="2092.753623188406" y="3380.3571428571427"/>
         </scene>
     </scenes>
     <resources>
