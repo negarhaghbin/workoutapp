@@ -27,8 +27,6 @@ class GifViewController: UIViewController {
     
     var player: AVAudioPlayer?
     
-    @IBOutlet weak var balloon: Balloon!
-    
     var user : User = User()
     var PB = progressBar()
     var restDuration = 10
@@ -145,15 +143,7 @@ class GifViewController: UIViewController {
     }
     
     func exitRoutine(){
-        if (!isResting && exerciseSeconds == 0){
-            exercisesDone.append(self.routineExercises[self.currentExerciseIndex])
-        }
-        DiaryItem.add(appExList: exercisesDone)
-        if (!isResting && exerciseSeconds != 0){
-            DiaryItem(e: self.routineExercises[self.currentExerciseIndex].exercise, d: Duration(durationInSeconds:  self.routineExercises[self.currentExerciseIndex].durationInSeconds!.durationInSeconds - exerciseSeconds)).add()
-        }
-        
-        dailyRoutine.add(seconds: self.seconds, sectionTitle: section!.title)
+       addExercisesToDiary()
         UIApplication.shared.isIdleTimerDisabled = false
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "NextViewController") as! RoutineCollectionViewController
         let viewcontrollers = [vc]
@@ -161,18 +151,24 @@ class GifViewController: UIViewController {
     }
     
     func finishRoutine(){
-        let alert = UIAlertController(title: "Well done!", message: "You have succesfully finished your today's workout.", preferredStyle: .alert)
-
-        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: {
-            action in
-            self.exitRoutine()
-        }))
-        showCongratulationAnimation(balloon: balloon)
+        addExercisesToDiary()
+        UIApplication.shared.isIdleTimerDisabled = false
         playSound(name: "good job", extensionType: "m4a")
-        self.present(alert, animated: true)
-        
+        self.performSegue(withIdentifier: "wellDone", sender:Any?.self)
     }
     
+    func addExercisesToDiary(){
+        if (!isResting && exerciseSeconds == 0){
+            exercisesDone.append(self.routineExercises[self.currentExerciseIndex])
+        }
+        DiaryItem.add(appExList: exercisesDone)
+        if (!isResting && exerciseSeconds != 0){
+            let lastExercise = self.routineExercises[self.currentExerciseIndex].exercise
+            let remainingDuration = Duration(durationInSeconds:  self.routineExercises[self.currentExerciseIndex].durationInSeconds!.durationInSeconds - exerciseSeconds)
+            DiaryItem(e: lastExercise, d: remainingDuration).add()
+        }
+        dailyRoutine.add(seconds: self.seconds, sectionTitle: section!.title)
+    }
     
     func timeString(time:TimeInterval) -> String {
         let minutes = Int(time) / 60 % 60
@@ -237,6 +233,14 @@ class GifViewController: UIViewController {
 
         } catch let error {
             print(error.localizedDescription)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "wellDone", let destination = segue.destination as? WorkoutCompleteViewController{
+            destination.exercisesCount = currentExerciseIndex+1
+            destination.durationInSeconds = seconds
+            
         }
     }
 }

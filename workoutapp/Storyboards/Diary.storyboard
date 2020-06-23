@@ -106,23 +106,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8g-H5-MUA">
-                                <rect key="frame" x="0.0" y="616.5" width="414" height="245.5"/>
+                                <rect key="frame" x="0.0" y="582.5" width="414" height="230.5"/>
                                 <subviews>
                                     <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="GLu-Ww-BSM">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="245.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="230.5"/>
                                         <connections>
                                             <action selector="changeDate:" destination="IZB-b6-2JE" eventType="valueChanged" id="At1-0U-Slk"/>
                                         </connections>
                                     </datePicker>
                                     <pickerView hidden="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZEv-af-Kws">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="245.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="230.5"/>
                                         <connections>
                                             <outlet property="dataSource" destination="IZB-b6-2JE" id="Vk7-aa-eNK"/>
                                             <outlet property="delegate" destination="IZB-b6-2JE" id="Neo-wq-gjs"/>
                                         </connections>
                                     </pickerView>
                                     <pickerView hidden="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ir-8N-q0O">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="245.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="230.5"/>
                                         <connections>
                                             <outlet property="dataSource" destination="IZB-b6-2JE" id="gs9-Nl-dqM"/>
                                             <outlet property="delegate" destination="IZB-b6-2JE" id="7YZ-gf-ATb"/>
@@ -386,7 +386,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="diaryCell" rowHeight="64" translatesAutoresizingMaskIntoConstraints="NO" id="aA1-2h-M3N" customClass="DiaryTableViewCell" customModule="_M_Workout" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="diaryCell" rowHeight="64" translatesAutoresizingMaskIntoConstraints="NO" id="aA1-2h-M3N" customClass="DiaryTableViewCell" customModule="_M_Workout" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="99.5" width="414" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aA1-2h-M3N" id="gfg-52-q1V">
@@ -483,7 +483,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ghH-0T-wnj"/>
+        <segue reference="XOl-IK-swy"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="alternatingLunges.png" width="666.5" height="486"/>
