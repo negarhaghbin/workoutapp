@@ -11,23 +11,30 @@ import RealmSwift
 import CoreLocation
 
 class Interaction: Object {
-    @objc dynamic var identifier : String
-    @objc dynamic var dateString : String
+    @objc dynamic var identifier : String = ""
+    @objc dynamic var dateString : String = {
+        return Date().makeDateTimeString()
+    }()
     
-    required init() {
-        identifier = ""
-
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        self.dateString = df.string(from: Date())
-    }
-    
-    func add(identifier: String){
+    convenience init(identifier: String) {
+        self.init()
         let realm = try! Realm()
         try! realm.write {
             self.identifier = identifier
+        }
+    }
+    
+    func add(){
+        let realm = try! Realm()
+        try! realm.write {
             realm.add(self)
         }
+    }
+    
+    class func getAll() -> [Interaction]{
+        let realm = try! Realm()
+        let allInteractions = realm.objects(Interaction.self)
+        return Array(allInteractions)
     }
     
 }
