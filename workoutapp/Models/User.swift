@@ -48,9 +48,11 @@ class User: Object {
     func manageStreak(completion: () -> ()){
         let realm = try! Realm()
         if (self.lastLogin != Date.yesterday.makeDateString()){
-            try! realm.write {
-                self.streak = 1
-                self.lastLogin = Date().makeDateString()
+            if lastLoginIsBefore(date: Date.yesterday.makeDateString()){
+                try! realm.write {
+                    self.streak = 1
+                    self.lastLogin = Date().makeDateString()
+                }
             }
         }
         else{
@@ -61,5 +63,26 @@ class User: Object {
         }
         completion()
         
+    }
+    
+    func lastLoginIsBefore(date: String)->Bool{
+        let lastLoginTuple = stringToDate(dateString: lastLogin)
+        let dateTuple = stringToDate(dateString: date)
+        if lastLoginTuple.0 < dateTuple.0{
+            return true
+        }
+        else{
+            if lastLoginTuple.1<dateTuple.1{
+                return true
+            }
+            else{
+                if lastLoginTuple.2 < dateTuple.2{
+                    return true
+                }
+                else{
+                    return false
+                }
+            }
+        }
     }
 }

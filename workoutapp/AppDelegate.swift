@@ -229,7 +229,7 @@ extension AppDelegate: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             guard let currentLocation: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-            //print("locations = \(currentLocation.latitude) \(currentLocation.longitude)")
+            print("locations = \(currentLocation.latitude) \(currentLocation.longitude)")
     }
     
         
@@ -257,6 +257,7 @@ extension AppDelegate: CLLocationManagerDelegate {
 
             let request = UNNotificationRequest(identifier: Notification.Location.rawValue, content: content, trigger: trigger)
             center.add(request, withCompletionHandler: nil)
+        print("entered region")
     }
         
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {

@@ -17,7 +17,7 @@ enum ExerciseType : String {
 }
 enum BadgeDuration : Int {
     //15 * 60 = 900
-    case bronze = 900
+    case bronze = 3
     //60 * 60 = 3600
     case silver = 3600
     //3 * 60 * 60 = 10800
@@ -148,4 +148,9 @@ func addPickerLabels(picker: UIPickerView, vc: UIViewController){
     label2.textAlignment = .left
     label2.text = "sec"
     picker.addSubview(label2)
+}
+
+func stringToDate(dateString: String)->(String, String, String){
+    let result = dateString.split(separator: "-")
+    return (String(result[0]), String(result[1]), String(result[2]))
 }

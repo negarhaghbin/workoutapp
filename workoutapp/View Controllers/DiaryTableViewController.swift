@@ -68,8 +68,13 @@ class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableVi
         if let cell = tableView.dequeueReusableCell(withIdentifier: "diaryCell", for: indexPath) as? DiaryTableViewCell{
             if indexPath.row == STEPS_ROW{
                 cell.nameLabel.text = "Steps"
-                if let step = steps[dates[indexPath.section]]{
-                    cell.durationLabel.text = String(step.first!.count)
+                if let step = steps[dates[indexPath.section]] {
+                    if step.first!.count == -1{
+                        cell.durationLabel.text = "Not Available"
+                    }
+                    else{
+                        cell.durationLabel.text = String(step.first!.count)
+                    }
                 }
                 else{
                     cell.durationLabel.text = "Not Available"

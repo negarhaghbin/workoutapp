@@ -41,12 +41,8 @@ class WelcomeViewController: UIViewController {
                 print("An error occured: \(error)")
             }
         })
-
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         self.backgroundImage.image = UIImage(named: self.images.randomElement()! + ".jpg")
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -93,9 +89,26 @@ class WelcomeViewController: UIViewController {
         
     func askName(){
         let alert = UIAlertController(title: "What's your name?", message: nil, preferredStyle: .alert)
-            
+          
+        let saveAction = UIAlertAction(title: "Save", style: .default, handler: { action in
+            if let name = alert.textFields?.first?.text {
+                self.user = User(n: name)
+                self.user?.add()
+            }
+        })
+        saveAction.isEnabled = false
+        
         alert.addTextField(configurationHandler: { textField in
             textField.placeholder = "Awsome me"
+            
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using:
+                {_ in
+                    let textCount = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
+                    let textIsNotEmpty = textCount > 0
+                    
+                    saveAction.isEnabled = textIsNotEmpty
+                
+            })
         })
             
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
@@ -103,12 +116,7 @@ class WelcomeViewController: UIViewController {
             self.user!.add()
         }))
 
-        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { action in
-            if let name = alert.textFields?.first?.text {
-                self.user = User(n: name)
-                self.user?.add()
-            }
-        }))
+        alert.addAction(saveAction)
             
         present(alert, animated: true)
     }
