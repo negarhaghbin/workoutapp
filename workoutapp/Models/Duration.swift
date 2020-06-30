@@ -72,4 +72,8 @@ class Duration: Object {
             self.streak = self.streak + 1
         }
     }
+    
+    static func +(left: Duration, right: Duration)->Duration{
+        return Duration(numberOfSets: left.numberOfSets + right.numberOfSets, countPerSet: left.countPerSet+right.countPerSet, durationInSeconds: left.durationInSeconds+right.durationInSeconds, streak: left.streak+right.streak)
+    }
 }

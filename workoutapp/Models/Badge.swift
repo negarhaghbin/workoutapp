@@ -168,10 +168,12 @@ class Badge: Object {
     class func update(completion: () -> ()){
         let diary = DiaryItem.getWithType()
         manageStepsBadge()
+        let user = try! Realm().object(ofType: User.self, forPrimaryKey: UserDefaults.standard.string(forKey: "uuid"))!
+        updateStreaksProgress(newStreak: user.streak)
         for (type, items) in diary{
-            var temp = 0
+            var temp = Duration()
             for item in items{
-                temp += item.duration!.durationInSeconds
+                temp = temp + item.duration!
             }
             updateBadge(type: type, duration: temp)
         }
@@ -209,15 +211,13 @@ class Badge: Object {
         }
     }
     
-    private class func updateBadge(type: String, duration: Int){
-        let realm = try! Realm()
+    private class func updateBadge(type: String, duration: Duration){
         var name = ""
         switch type {
         case ExerciseType.upper.rawValue:
             name = "Arms"
         case ExerciseType.lower.rawValue:
             name = "Legs"
-//            manageStepsBadge(steps: steps)
         case ExerciseType.total.rawValue:
             name = "Body"
         case ExerciseType.abs.rawValue:
@@ -225,17 +225,22 @@ class Badge: Object {
         default:
             print("unknown")
         }
-        
+
+        manageWorkoutBadges(name: name, duration: duration)
+    }
+    
+    private class func manageWorkoutBadges(name: String, duration: Duration){
+        let realm = try! Realm()
         var badge : Badge?
-        if duration >= BadgeDuration.bronze.rawValue{
-            if duration<BadgeDuration.silver.rawValue{
+        if duration.durationInSeconds >= BadgeDuration.bronze.rawValue{
+            if duration.durationInSeconds<BadgeDuration.silver.rawValue{
                 badge = realm.object(ofType: Badge.self, forPrimaryKey: "Bronze \(name)")
                 badge!.achieved()
                 badge = realm.object(ofType: Badge.self, forPrimaryKey: "Silver \(name)")
                 badge!.updateProgress(duration: duration)
             }
             else{
-                if duration<BadgeDuration.gold.rawValue{
+                if duration.durationInSeconds<BadgeDuration.gold.rawValue{
                     badge = realm.object(ofType: Badge.self, forPrimaryKey: "Silver \(name)")
                     badge!.achieved()
                     badge = realm.object(ofType: Badge.self, forPrimaryKey: "Bronze \(name)")
@@ -260,14 +265,28 @@ class Badge: Object {
         }
     }
     
-    func updateProgress(duration: Int){
+    private class func updateStreaksProgress(newStreak: Int){
+        let realm = try! Realm()
+        var streakBadges : [Badge] = []
+        streakBadges.append(realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.streak3.rawValue)!)
+        streakBadges.append(realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.streak7.rawValue)!)
+        streakBadges.append(realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.streak14.rawValue)!)
+        streakBadges.append(realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.streak30.rawValue)!)
+        
+        for badge in streakBadges{
+            badge.updateProgress(duration: Duration(streak:newStreak))
+        }
+        
+    }
+    
+    private func updateProgress(duration: Duration){
         var progress : Duration?
         let realm = try! Realm()
         if (self.isAchieved){
             progress = self.duration
         }
         else{
-            progress = Duration(durationInSeconds: duration)
+            progress = duration
         }
         try! realm.write {
             self.progress = progress
