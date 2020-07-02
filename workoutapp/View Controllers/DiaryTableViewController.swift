@@ -55,7 +55,7 @@ class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 return (specifiedDateWorkouts.count + specifiedDateSteps.count)
             }
             else{
-                return specifiedDateWorkouts.count
+                return specifiedDateWorkouts.count + 1 //showing steps row anyways
             }
         }
         else{
@@ -124,7 +124,7 @@ class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDiaryItem", let destination = segue.destination as? NewWorkoutPopupViewController {
             if let cell = sender as? UITableViewCell, let indexPath = self.tableView.indexPath(for: cell) {
-                let diaryItem = diariesDict[dates[indexPath.section]]![indexPath.row]
+                let diaryItem = diariesDict[dates[indexPath.section]]![indexPath.row-1]
                 destination.diaryItem = diaryItem
             }
         }

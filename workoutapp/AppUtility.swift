@@ -134,8 +134,11 @@ func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{
 func addPickerLabels(picker: UIPickerView, vc: UIViewController){
     let font = UIFont.boldSystemFont(ofSize: 20.0)
     let fontSize: CGFloat = font.pointSize
-    let componentWidth: CGFloat = vc.view.frame.width / CGFloat(picker.numberOfComponents)
-    let y = (picker.frame.size.height / 2) - (fontSize / 2)
+    let componentWidth: CGFloat = CGFloat(vc.view.frame.width) / CGFloat(picker.numberOfComponents)
+    var y = CGFloat(picker.frame.height/2) - (fontSize/2)
+    if vc is NewWorkoutPopupViewController{
+        y = CGFloat(vc.view.frame.height)*0.15 - (fontSize)
+    }
 
     let label1 = UILabel(frame: CGRect(x: componentWidth * 0.65, y: y, width: componentWidth * 0.4, height: fontSize))
     label1.font = font

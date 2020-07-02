@@ -70,9 +70,7 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     override func viewWillAppear(_ animated: Bool) {
         self.dismissKey()
         if dateLabel.text == "Label"{
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            dateLabel.text = dateFormatter.string(from: Date())
+            dateLabel.text = Date().makeDateString()
         }
         for exercise in exercises{
             exerciseNames.append(exercise.name)
