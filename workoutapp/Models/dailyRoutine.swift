@@ -9,16 +9,40 @@
 import Foundation
 import RealmSwift
 
+enum RoutineFeeling: String{
+    case good = "good"
+    case neutral = "neutral"
+    case bad = "bad"
+}
+
 class dailyRoutine: Object {
     @objc dynamic var exerciseType : String
     @objc dynamic var seconds : Int
     @objc dynamic var dateString : String
     @objc dynamic var uuid : String = UUID().uuidString
+    @objc dynamic var feeling : String
     
     required init() {
-        self.exerciseType = ""
+        exerciseType = ""
         seconds = 0
-        self.dateString = Date().makeDateString()
+        dateString = Date().makeDateString()
+        feeling = ""
+    }
+    
+    convenience init(exerciseType: String, durationInSeconds:Int , date: String? = {
+        return Date().makeDateString()
+        }(), feeling: String? = {
+        return ""
+        }()) {
+        self.init()
+        let realm = try! Realm()
+        try! realm.write {
+            self.exerciseType = exerciseType
+            self.seconds = durationInSeconds
+            self.dateString = date!
+            self.uuid = UUID().uuidString
+            self.feeling = feeling!
+        }
     }
     
     
@@ -33,13 +57,17 @@ class dailyRoutine: Object {
         return Array(allRoutines)
     }
     
-    class func add(seconds: Int, sectionTitle: String){
+    func add(){
         let realm = try! Realm()
-        let newRoutine = dailyRoutine()
         try! realm.write {
-            newRoutine.exerciseType = sectionTitle
-            newRoutine.seconds = seconds
-            realm.add(newRoutine)
+            realm.add(self)
+        }
+    }
+    
+    func setFeeling(feeling: String){
+        let realm = try! Realm()
+        try! realm.write {
+            self.feeling = feeling
         }
     }
     

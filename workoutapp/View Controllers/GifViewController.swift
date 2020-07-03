@@ -40,6 +40,8 @@ class GifViewController: UIViewController {
     var routineDuration = 0
     var routineExercises :[AppExercise] = []
     
+    var completedRoutine : dailyRoutine?
+    
     
     var section : RoutineSection?{
         didSet{
@@ -167,7 +169,9 @@ class GifViewController: UIViewController {
             let remainingDuration = Duration(durationInSeconds:  self.routineExercises[self.currentExerciseIndex].durationInSeconds!.durationInSeconds - exerciseSeconds)
             DiaryItem(e: lastExercise, d: remainingDuration).add()
         }
-        dailyRoutine.add(seconds: self.seconds, sectionTitle: section!.title)
+        
+        completedRoutine = dailyRoutine(exerciseType: section!.title, durationInSeconds: self.seconds)
+        completedRoutine!.add()
     }
     
     func timeString(time:TimeInterval) -> String {
@@ -238,6 +242,7 @@ class GifViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "wellDone", let destination = segue.destination as? WorkoutCompleteViewController{
+            destination.completedRoutine = completedRoutine
             destination.exercisesCount = currentExerciseIndex+1
             destination.durationInSeconds = seconds
             

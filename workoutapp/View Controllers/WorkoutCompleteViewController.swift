@@ -21,6 +21,9 @@ class WorkoutCompleteViewController: UIViewController {
     @IBOutlet weak var enjoyButton: UIButton!
     @IBOutlet weak var nuetralButton: UIButton!
     
+    var completedRoutine : dailyRoutine?
+    var feeling = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,19 +40,23 @@ class WorkoutCompleteViewController: UIViewController {
         didNotEnjoyButton.backgroundColor = UIColor(displayP3Red: 0.96, green: 0.31, blue: 0.67, alpha: 1.0)
         enjoyButton.backgroundColor = UIColor.black
         nuetralButton.backgroundColor = UIColor.black
+        feeling = RoutineFeeling.bad.rawValue
     }
     @IBAction func feltNeutral(_ sender: Any) {
         nuetralButton.backgroundColor = UIColor(displayP3Red: 0.96, green: 0.31, blue: 0.67, alpha: 1.0)
         enjoyButton.backgroundColor = UIColor.black
         didNotEnjoyButton.backgroundColor = UIColor.black
+        feeling = RoutineFeeling.neutral.rawValue
     }
     @IBAction func enjoyed(_ sender: Any) {
         enjoyButton.backgroundColor = UIColor(displayP3Red: 0.96, green: 0.31, blue: 0.67, alpha: 1.0)
         didNotEnjoyButton.backgroundColor = UIColor.black
         nuetralButton.backgroundColor = UIColor.black
+        feeling = RoutineFeeling.good.rawValue
     }
     
     @IBAction func done(_ sender: Any) {
+        completedRoutine?.setFeeling(feeling: feeling)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "NextViewController") as! RoutineCollectionViewController
         let viewcontrollers = [vc]
         self.navigationController!.setViewControllers(viewcontrollers, animated: true)

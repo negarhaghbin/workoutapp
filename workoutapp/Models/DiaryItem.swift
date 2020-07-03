@@ -27,9 +27,7 @@ class DiaryItem: Object {
     }
     
     convenience init(e: Exercise?, d:Duration , date: String? = {
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd"
-        return df.string(from: Date())
+        return Date().makeDateString()
     }()) {
         self.init()
         let realm = try! Realm()
