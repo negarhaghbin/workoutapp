@@ -95,8 +95,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detailed history" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQZ-yL-m7R">
-                                                    <rect key="frame" x="20" y="13" width="120" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interacted notifications history" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQZ-yL-m7R">
+                                                    <rect key="frame" x="20" y="13" width="233" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -481,13 +481,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Push ups" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JlU-3t-cNc">
-                                                    <rect key="frame" x="20" y="11" width="74" height="42"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Push ups" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JlU-3t-cNc" userLabel="type label">
+                                                    <rect key="frame" x="20" y="11" width="187" height="42"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5V1-7I-Arx">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5V1-7I-Arx" userLabel="usefulLabel">
                                                     <rect key="frame" x="207" y="22" width="187" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -498,19 +498,16 @@
                                                 <constraint firstAttribute="trailing" secondItem="5V1-7I-Arx" secondAttribute="trailing" constant="20" id="7Ec-47-cIb"/>
                                                 <constraint firstItem="5V1-7I-Arx" firstAttribute="leading" secondItem="7il-uE-x5H" secondAttribute="centerX" id="L7H-cm-1bt"/>
                                                 <constraint firstItem="JlU-3t-cNc" firstAttribute="top" secondItem="7il-uE-x5H" secondAttribute="topMargin" id="cDQ-aw-nK0"/>
+                                                <constraint firstItem="5V1-7I-Arx" firstAttribute="leading" secondItem="7il-uE-x5H" secondAttribute="centerX" id="e4m-C2-IfL"/>
                                                 <constraint firstItem="JlU-3t-cNc" firstAttribute="centerY" secondItem="7il-uE-x5H" secondAttribute="centerY" id="gmV-YB-xN6"/>
+                                                <constraint firstItem="JlU-3t-cNc" firstAttribute="trailing" secondItem="7il-uE-x5H" secondAttribute="centerX" id="la5-6b-pSp"/>
                                                 <constraint firstItem="JlU-3t-cNc" firstAttribute="leading" secondItem="7il-uE-x5H" secondAttribute="leadingMargin" id="v7l-Vl-MMr"/>
                                                 <constraint firstItem="5V1-7I-Arx" firstAttribute="centerY" secondItem="7il-uE-x5H" secondAttribute="centerY" id="w9Y-zG-0PT"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="subviews">
-                                                    <exclude reference="5V1-7I-Arx"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="dateLabel" destination="JlU-3t-cNc" id="HaV-je-8JN"/>
-                                            <outlet property="identityLabel" destination="5V1-7I-Arx" id="Z36-p0-5Bz"/>
+                                            <outlet property="typeLabel" destination="JlU-3t-cNc" id="yjl-vi-ny3"/>
+                                            <outlet property="usefulLabel" destination="5V1-7I-Arx" id="88z-kh-sKU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

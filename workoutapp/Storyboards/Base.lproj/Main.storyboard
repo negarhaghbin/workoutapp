@@ -91,14 +91,19 @@
                             <constraint firstItem="l1S-DP-3dU" firstAttribute="top" secondItem="lWS-xL-PVp" secondAttribute="bottom" constant="8" id="RCK-SN-WkQ"/>
                             <constraint firstItem="l1S-DP-3dU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Xtv-8B-kmV"/>
                             <constraint firstItem="lWS-xL-PVp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aJq-42-olI"/>
-                            <constraint firstItem="RVw-Y2-ebf" firstAttribute="top" secondItem="l1S-DP-3dU" secondAttribute="bottom" constant="8" id="bh5-qL-Ub2"/>
                             <constraint firstItem="lWS-xL-PVp" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="idQ-qH-fL4"/>
                             <constraint firstItem="9Ee-sX-YH4" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="iw9-wO-18x"/>
+                            <constraint firstItem="RVw-Y2-ebf" firstAttribute="top" secondItem="lWS-xL-PVp" secondAttribute="bottom" constant="36.329999999999998" id="kHg-Au-hgT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="l1S-DP-3dU" secondAttribute="trailing" constant="20" id="kia-jV-8z1"/>
                             <constraint firstItem="9Ee-sX-YH4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="kwF-xE-otj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RVw-Y2-ebf" secondAttribute="trailing" constant="8" id="nz6-XD-jVO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="l1S-DP-3dU"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="cn5-Q7-haP"/>
                     <connections>

@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Achievements View Controller-->
+        <!--Achievements-->
         <scene sceneID="Chi-HO-YD7">
             <objects>
                 <viewController id="QT4-dy-JBn" customClass="AchievementsViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
@@ -99,7 +99,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vbr-Aq-73R"/>
                     </view>
-                    <navigationItem key="navigationItem" id="c7p-Mt-Uf3"/>
+                    <navigationItem key="navigationItem" title="Achievements" id="c7p-Mt-Uf3"/>
                     <connections>
                         <outlet property="tableView" destination="xI9-JN-CaY" id="nZO-pg-94V"/>
                     </connections>

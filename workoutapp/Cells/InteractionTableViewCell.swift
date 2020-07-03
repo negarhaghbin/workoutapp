@@ -10,8 +10,8 @@ import UIKit
 
 class InteractionTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var identityLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var usefulLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }

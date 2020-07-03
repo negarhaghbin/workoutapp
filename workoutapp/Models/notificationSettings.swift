@@ -81,7 +81,9 @@ class notificationSettings: Object {
         
         let yesterday = Date.yesterday.makeDateString()
         
-        if (try! Realm().object(ofType: dailyRoutine.self, forPrimaryKey: yesterday)) != nil{
+        let yesterdayExercises = try! Realm().objects(DiaryItem.self).filter("dateString == \"\(yesterday)\"")
+        
+        if yesterdayExercises.count > 0{
             content.title = "It's time to do your daily exercises!"
         }
         
