@@ -117,19 +117,24 @@ class DiaryItem: Object {
     }
     
     class func getDurationForTodayByType() -> [String:Int] {
-        let todaysDiaryItems = getWithDate()[Date().makeDateString()]
-        let byType = Dictionary(grouping: todaysDiaryItems!, by: {$0.exercise!.type})
-        var result : [String:Int] = [:]
-        
-        for (type, diaryItems) in byType{
-            var duration = 0
-            for diaryItem in diaryItems{
-                duration += diaryItem.duration!.durationInSeconds
+        if let todaysDiaryItems = getWithDate()[Date().makeDateString()]{
+            let byType = Dictionary(grouping: todaysDiaryItems, by: {$0.exercise!.type})
+            var result : [String:Int] = [:]
+            
+            for (type, diaryItems) in byType{
+                var duration = 0
+                for diaryItem in diaryItems{
+                    duration += diaryItem.duration!.durationInSeconds
+                }
+                result[type]=duration
             }
-            result[type]=duration
+            return result
+        }
+        else{
+            return ["\(ExerciseType.abs.rawValue)":0,  "\(ExerciseType.total.rawValue)":0,"\(ExerciseType.upper.rawValue)":0, "\(ExerciseType.lower.rawValue)":0,]
         }
         
-        return result
+        
     }
     
     private class func getAll() -> [DiaryItem]{

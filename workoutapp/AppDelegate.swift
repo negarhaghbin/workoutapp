@@ -255,8 +255,8 @@ extension AppDelegate: CLLocationManagerDelegate {
 
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (TimeInterval(sendAfter)), repeats: false)
 
-            let request = UNNotificationRequest(identifier: Notification.Location.rawValue, content: content, trigger: trigger)
-            center.add(request, withCompletionHandler: nil)
+        let request = UNNotificationRequest(identifier: Notification.Location.rawValue, content: content, trigger: trigger)
+        center.add(request, withCompletionHandler: nil)
         print("entered region")
     }
         
