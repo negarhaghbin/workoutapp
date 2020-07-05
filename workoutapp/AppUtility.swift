@@ -17,7 +17,7 @@ enum ExerciseType : String {
 }
 enum BadgeDuration : Int {
     //15 * 60 = 900
-    case bronze = 3
+    case bronze = 900
     //60 * 60 = 3600
     case silver = 3600
     //3 * 60 * 60 = 10800

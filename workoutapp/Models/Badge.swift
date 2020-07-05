@@ -190,25 +190,44 @@ class Badge: Object {
         if totalStepCounts >= BadgeDuration.bronzeS.rawValue{
             if totalStepCounts < BadgeDuration.silverS.rawValue{
                 badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.bronzeShoes.rawValue)
-                badge!.achieved()
+                if (!badge!.isAchieved){
+                    badge!.achieved()
+                }
             }
             else{
                 if totalStepCounts < BadgeDuration.goldS.rawValue {
                     badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.bronzeShoes.rawValue)
-                    badge!.achieved()
+                    if (!badge!.isAchieved){
+                        badge!.achieved()
+                    }
                     badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.silverShoes.rawValue)
-                    badge!.achieved()
+                    if (!badge!.isAchieved){
+                        badge!.achieved()
+                    }
                 }
                 else{
                     badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.bronzeShoes.rawValue)
-                    badge!.achieved()
+                    if (!badge!.isAchieved){
+                        badge!.achieved()
+                    }
                     badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.silverShoes.rawValue)
-                    badge!.achieved()
+                    if (!badge!.isAchieved){
+                        badge!.achieved()
+                    }
                     badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.goldShoes.rawValue)
-                    badge!.achieved()
+                    if (!badge!.isAchieved){
+                        badge!.achieved()
+                    }
                 }
             }
         }
+        let duration = Duration(countPerSet: totalStepCounts)
+        badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.bronzeShoes.rawValue)
+        badge!.updateProgress(duration: duration)
+        badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.silverShoes.rawValue)
+        badge!.updateProgress(duration: duration)
+        badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.goldShoes.rawValue)
+        badge!.updateProgress(duration: duration)
     }
     
     private class func updateBadge(type: String, duration: Duration){
@@ -235,34 +254,45 @@ class Badge: Object {
         if duration.durationInSeconds >= BadgeDuration.bronze.rawValue{
             if duration.durationInSeconds<BadgeDuration.silver.rawValue{
                 badge = realm.object(ofType: Badge.self, forPrimaryKey: "Bronze \(name)")
-                badge!.achieved()
-                badge = realm.object(ofType: Badge.self, forPrimaryKey: "Silver \(name)")
-                badge!.updateProgress(duration: duration)
+                if (!badge!.isAchieved){
+                    badge!.achieved()
+                }
             }
             else{
                 if duration.durationInSeconds<BadgeDuration.gold.rawValue{
                     badge = realm.object(ofType: Badge.self, forPrimaryKey: "Silver \(name)")
-                    badge!.achieved()
+                    if (!badge!.isAchieved){
+                        badge!.achieved()
+                    }
                     badge = realm.object(ofType: Badge.self, forPrimaryKey: "Bronze \(name)")
-                    badge!.achieved()
-                    badge = realm.object(ofType: Badge.self, forPrimaryKey: "Golden \(name)")
-                    badge!.updateProgress(duration: duration)
+                    if (!badge!.isAchieved){
+                        badge!.achieved()
+                    }
                 }
                 else{
                     badge = realm.object(ofType: Badge.self, forPrimaryKey: "Golden \(name)")
-                    badge!.achieved()
+                    if (!badge!.isAchieved){
+                        badge!.achieved()
+                    }
                     badge = realm.object(ofType: Badge.self, forPrimaryKey: "Silver \(name)")
-                    badge!.achieved()
+                    if (!badge!.isAchieved){
+                        badge!.achieved()
+                    }
                     badge = realm.object(ofType: Badge.self, forPrimaryKey: "Bronze \(name)")
-                    badge!.achieved()
+                    if (!badge!.isAchieved){
+                        badge!.achieved()
+                    }
                 }
             }
             
         }
-        else{
-            badge = realm.object(ofType: Badge.self, forPrimaryKey: "Bronze \(name)")
-            badge!.updateProgress(duration: duration)
-        }
+        badge = realm.object(ofType: Badge.self, forPrimaryKey: "Bronze \(name)")
+        badge!.updateProgress(duration: duration)
+        badge = realm.object(ofType: Badge.self, forPrimaryKey: "Golden \(name)")
+        badge!.updateProgress(duration: duration)
+        badge = realm.object(ofType: Badge.self, forPrimaryKey: "Silver \(name)")
+        badge!.updateProgress(duration: duration)
+        
     }
     
     private class func updateStreaksProgress(newStreak: Int){

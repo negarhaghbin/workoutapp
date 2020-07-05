@@ -2,11 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
 		<string>com.SO.apprefresh</string>
@@ -29,12 +24,17 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
 	<string>By accessing your health record, this app can add your step counts to diary.</string>
 	<key>NSHealthShareUsageDescription</key>
-	<string>By accessing your health record, this app can tell you if you&apos;ve been active enough.</string>
+	<string>By accessing your health record, this app can tell you if you've been active enough.</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>By accessing your health record, this app can tell you if you&apos;ve been active enough.</string>
+	<string>By accessing your health record, this app can tell you if you've been active enough.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>By accessing your location, this app can find you a good place to exercise.</string>
 	<key>NSLocationUsageDescription</key>

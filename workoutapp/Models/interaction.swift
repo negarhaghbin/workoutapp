@@ -13,7 +13,8 @@ import CoreLocation
 class Interaction: Object {
     @objc dynamic var identifier : String = ""
     @objc dynamic var dateString : String = {
-        return Date().makeDateTimeString()
+        //return Date().makeDateTimeString()
+        return Date().makeDateString()
     }()
     @objc dynamic var wasUseful : Bool = false
     
@@ -43,6 +44,11 @@ class Interaction: Object {
         let realm = try! Realm()
         let allInteractions = realm.objects(Interaction.self)
         return Array(allInteractions)
+    }
+    
+    class func getWithDate() -> [String:[Interaction]] {
+        let all = getAll()
+        return Dictionary(grouping: all, by: {$0.dateString})
     }
     
 }
