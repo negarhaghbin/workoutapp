@@ -142,7 +142,7 @@ class Badge: Object {
                 //not sure about this line
                 self.progress = self.duration
             }
-            print(self.imageName)
+//            print(self.imageName)
         }
         
     }

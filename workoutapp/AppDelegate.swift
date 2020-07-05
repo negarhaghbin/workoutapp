@@ -257,7 +257,7 @@ extension AppDelegate: CLLocationManagerDelegate {
 
         let request = UNNotificationRequest(identifier: Notification.Location.rawValue, content: content, trigger: trigger)
         center.add(request, withCompletionHandler: nil)
-        print("entered region")
+//        print("entered region")
     }
         
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
