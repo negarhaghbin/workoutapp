@@ -93,13 +93,13 @@ class AppExercise: Object {
         AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Step Jacks", type: total))!, g:"step-jacks",  v:"JHdVMkRBuRA", d: Duration(durationInSeconds: 40), eq:"").add()
         AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Knee to Elbow", type: total))!,  g:"knee-to-elbows",  v:"FzH5nGwYQMA", d: Duration(durationInSeconds: 30), eq:"").add()
 
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Lunge Step-ups(left)", type: total))!, g: "lunge-step-ups", v: "KM6-6xTRpow", d: Duration(durationInSeconds: 30), eq: "").add()
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Lunge Step-ups(right)", type: total))!, g: "lunge-step-ups", v: "KM6-6xTRpow", d: Duration(durationInSeconds: 30), eq: "").add()
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Lunge Step-ups (Left)", type: total))!, g: "lunge-step-ups", v: "KM6-6xTRpow", d: Duration(durationInSeconds: 30), eq: "").add()
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Lunge Step-ups (Right)", type: total))!, g: "lunge-step-ups", v: "KM6-6xTRpow", d: Duration(durationInSeconds: 30), eq: "").add()
         
         AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Calf Raise", type: total))!, g:"calf-raise",  v:"-M4-G8p8fmc", d: Duration(durationInSeconds: 30), eq:"").add()
 
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Bend and Twist(left)", type: total))!, g: "bend-and-twist", v: "r2RQoVp9fSk", d: Duration(durationInSeconds: 30), eq: "").add()
-        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Bend and Twist(right)", type: total))!, g: "bend-and-twist", v: "r2RQoVp9fSk", d: Duration(durationInSeconds: 30), eq: "").add()
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Bend and Twist (Left)", type: total))!, g: "bend-and-twist", v: "r2RQoVp9fSk", d: Duration(durationInSeconds: 30), eq: "").add()
+        AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Bend and Twist (Right)", type: total))!, g: "bend-and-twist", v: "r2RQoVp9fSk", d: Duration(durationInSeconds: 30), eq: "").add()
             
         AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "Butt Kicks", type: lower))!, g:"butt-kicks",  v:"oMW59TKZvaI", d: Duration(durationInSeconds: 20), eq:"").add()
         AppExercise(e: realm!.object(ofType: Exercise.self, forPrimaryKey: Exercise.getCompoundKey(name: "March Steps", type: lower))!,  g:"march-steps",  v:"dt7FAEYRLC4", d: Duration(durationInSeconds: 20), eq:"").add()

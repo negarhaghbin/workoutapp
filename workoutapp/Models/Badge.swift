@@ -70,21 +70,21 @@ class Badge: Object {
     }
     
     class func fillBadgeTable(){
-        Badge(imageName: "abs_boronz.png", title: BadgeTitle.bronzeAbs.rawValue, specification:"Complete 15 minutes of abs workouts.", d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
-        Badge(imageName: "abs_silver.png", title: BadgeTitle.silverAbs.rawValue, specification:"Complete 1 hour of abs workouts.",d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
-        Badge(imageName: "abs_gold.png", title: BadgeTitle.goldAbs.rawValue, specification:"Complete 3 hours of abs workouts.",d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
+        Badge(imageName: "abs_boronz.png", title: BadgeTitle.bronzeAbs.rawValue, specification:"Complete 15 minutes of \(ExerciseType.abs.rawValue.lowercased()) workouts.", d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
+        Badge(imageName: "abs_silver.png", title: BadgeTitle.silverAbs.rawValue, specification:"Complete 1 hour of \(ExerciseType.abs.rawValue.lowercased()) workouts.",d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
+        Badge(imageName: "abs_gold.png", title: BadgeTitle.goldAbs.rawValue, specification:"Complete 3 hours of \(ExerciseType.abs.rawValue.lowercased()) workouts.",d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
         
-        Badge(imageName: "lower_boronz.png", title: BadgeTitle.bronzeLegs.rawValue, specification:"Complete 15 minutes of lower body workouts.",d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
-        Badge(imageName: "lower_silver.png", title: BadgeTitle.silverLegs.rawValue, specification:"Complete 1 hour of lower body workouts.",d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
-        Badge(imageName: "lower_gold.png", title: BadgeTitle.goldLegs.rawValue, specification:"Complete 3 hours of abs workouts.", d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
+        Badge(imageName: "lower_boronz.png", title: BadgeTitle.bronzeLegs.rawValue, specification:"Complete 15 minutes of \(ExerciseType.lower.rawValue.lowercased()) workouts.",d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
+        Badge(imageName: "lower_silver.png", title: BadgeTitle.silverLegs.rawValue, specification:"Complete 1 hour of \(ExerciseType.lower.rawValue.lowercased()) workouts.",d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
+        Badge(imageName: "lower_gold.png", title: BadgeTitle.goldLegs.rawValue, specification:"Complete 3 hours of \(ExerciseType.lower.rawValue.lowercased()) workouts.", d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
         
-        Badge(imageName: "upper_boronz.png", title: BadgeTitle.bronzeArms.rawValue, specification:"Complete 15 minutes of upper body workouts.",d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
-        Badge(imageName: "upper_silver.png", title: BadgeTitle.silverArms.rawValue, specification:"Complete 1 hour of abs workouts.",d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
-        Badge(imageName: "upper_gold.png", title: BadgeTitle.goldArms.rawValue, specification:"Complete 3 hours of upper body workouts.",d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
+        Badge(imageName: "upper_boronz.png", title: BadgeTitle.bronzeArms.rawValue, specification:"Complete 15 minutes of \(ExerciseType.upper.rawValue.lowercased()) workouts.",d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
+        Badge(imageName: "upper_silver.png", title: BadgeTitle.silverArms.rawValue, specification:"Complete 1 hour of \(ExerciseType.upper.rawValue.lowercased()) workouts.",d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
+        Badge(imageName: "upper_gold.png", title: BadgeTitle.goldArms.rawValue, specification:"Complete 3 hours of \(ExerciseType.upper.rawValue.lowercased()) workouts.",d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
         
-        Badge(imageName: "total_boronz.png", title: BadgeTitle.bronzeBody.rawValue, specification:"Complete 15 minutes of total body workouts.", d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
-        Badge(imageName: "total_silver.png", title: BadgeTitle.silverBody.rawValue, specification:"Complete 1 hour of total body workouts.", d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
-        Badge(imageName: "total_gold.png", title: BadgeTitle.goldBody.rawValue, specification:"Complete 3 hours of total body workouts.", d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
+        Badge(imageName: "total_boronz.png", title: BadgeTitle.bronzeBody.rawValue, specification:"Complete 15 minutes of \(ExerciseType.total.rawValue.lowercased()) workouts.", d: Duration(durationInSeconds: BadgeDuration.bronze.rawValue)).add()
+        Badge(imageName: "total_silver.png", title: BadgeTitle.silverBody.rawValue, specification:"Complete 1 hour of \(ExerciseType.total.rawValue.lowercased()) workouts.", d: Duration(durationInSeconds: BadgeDuration.silver.rawValue)).add()
+        Badge(imageName: "total_gold.png", title: BadgeTitle.goldBody.rawValue, specification:"Complete 3 hours of \(ExerciseType.total.rawValue.lowercased()) workouts.", d: Duration(durationInSeconds: BadgeDuration.gold.rawValue)).add()
         
         Badge(imageName: "streak_3days.png", title: BadgeTitle.streak3.rawValue, specification:"Reach a 3 day streak.", d: Duration(streak: 3)).add()
         Badge(imageName: "streak_7days.png", title: BadgeTitle.streak7.rawValue, specification:"Reach a 7 day streak.", d: Duration(streak: 7)).add()

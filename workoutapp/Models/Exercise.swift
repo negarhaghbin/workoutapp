@@ -65,11 +65,11 @@ class Exercise: Object {
         
         Exercise(name: "Step Jacks", type: total).add()
         Exercise(name: "Knee to Elbow", type: total).add()
-        Exercise(name: "Lunge Step-ups(left)", type: total).add()
-        Exercise(name: "Lunge Step-ups(right)", type: total).add()
+        Exercise(name: "Lunge Step-ups (Left)", type: total).add()
+        Exercise(name: "Lunge Step-ups (Right)", type: total).add()
         Exercise(name: "Calf Raise", type: total).add()
-        Exercise(name: "Bend and Twist(left)", type: total).add()
-        Exercise(name: "Bend and Twist(right)", type: total).add()
+        Exercise(name: "Bend and Twist (Left)", type: total).add()
+        Exercise(name: "Bend and Twist (Right)", type: total).add()
         
         Exercise(name: "Butt Kicks", type: lower).add()
         Exercise(name: "March Steps", type: lower).add()
