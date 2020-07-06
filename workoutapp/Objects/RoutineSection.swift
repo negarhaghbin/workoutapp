@@ -18,7 +18,7 @@ class RoutineSection: NSObject {
         self.title = title
         self.image = image
         self.exercises = exercises
-        self.repetition = 3
+        self.repetition = 1
         super.init()
     }
     

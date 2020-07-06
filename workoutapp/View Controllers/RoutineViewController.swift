@@ -10,13 +10,17 @@ import UIKit
 import CoreLocation
 
 
-class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    
     
     var section : RoutineSection?{
         didSet{
             refreshUI()
         }
     }
+    
+    let repetitionAlert = UIAlertController(title: "Select the number of repetitions", message: "", preferredStyle: .alert)
+    var repetitionPicker: UIPickerView = UIPickerView()
     
     var customizedSection : RoutineSection? = nil
     let locationManager = CLLocationManager()
@@ -40,6 +44,8 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.title = section?.title
         descriptionLabel.text = section?.getDescription()
         customizedSection = RoutineSection(title: section!.title, image: section!.image, exercises: section!.exercises)
+        repetitionPicker.delegate = self
+        repetitionPicker.dataSource = self
     }
 
     // MARK: - Table view data source
@@ -122,18 +128,16 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         startAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         
-        let repetitionAlert = UIAlertController(title: "Select the number of repetition", message: "", preferredStyle: .alert)
-        
         repetitionAlert.addTextField(configurationHandler: {
             textField in
-            textField.keyboardType = .numberPad
+            textField.inputView = self.repetitionPicker
             textField.text = String(self.customizedSection!.repetition)
             
         })
         
         repetitionAlert.addAction(UIAlertAction(title: "Done", style: .default, handler: {
             action in
-            self.customizedSection?.repetition = Int((repetitionAlert.textFields!.first!.text)!)!
+            self.customizedSection?.repetition = Int((self.repetitionAlert.textFields!.first!.text)!)!
             self.present(startAlert, animated: true)
            }))
         
@@ -170,3 +174,21 @@ extension RoutineViewController: RoutineSelectionDelegate {
   }
 }
 
+extension RoutineViewController: UIPickerViewDelegate, UIPickerViewDataSource  {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 50
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String(row+1)
+       
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        repetitionAlert.textFields?.first?.text = String(pickerView.selectedRow(inComponent: 0)+1)
+    }
+}
