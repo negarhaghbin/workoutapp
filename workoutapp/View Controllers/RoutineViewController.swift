@@ -83,6 +83,15 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         else{
             customizedSection?.exercises[sender.tag] = AppExercise()
         }
+        
+        if (customizedSection?.exercises.filter{$0.exercise != nil})!.count == 0{
+            startButton.backgroundColor = UIColor.systemGray2
+            startButton.isEnabled = false
+        }
+        else{
+            startButton.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.3137254902, blue: 0.6666666667, alpha: 1)
+            startButton.isEnabled = true
+        }
     }
    
     @IBAction func start(_ sender: Any) {
