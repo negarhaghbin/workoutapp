@@ -25,11 +25,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eur-Rh-qQQ">
-                                        <rect key="frame" x="240.5" y="157" width="80" height="80"/>
+                                        <rect key="frame" x="250.5" y="139.5" width="60" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="Pwb-Hl-7yl"/>
-                                            <constraint firstAttribute="width" constant="80" id="efD-lY-fd8"/>
+                                            <constraint firstAttribute="height" constant="60" id="Pwb-Hl-7yl"/>
+                                            <constraint firstAttribute="width" constant="60" id="efD-lY-fd8"/>
                                         </constraints>
                                         <state key="normal" image="like.png"/>
                                         <connections>
@@ -37,11 +37,11 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4b-ex-FkS">
-                                        <rect key="frame" x="53.5" y="182" width="80" height="80"/>
+                                        <rect key="frame" x="63.5" y="154.5" width="60" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="8Qq-Zm-iXY"/>
-                                            <constraint firstAttribute="width" constant="80" id="EpB-bg-OLe"/>
+                                            <constraint firstAttribute="height" constant="60" id="8Qq-Zm-iXY"/>
+                                            <constraint firstAttribute="width" constant="60" id="EpB-bg-OLe"/>
                                         </constraints>
                                         <state key="normal" image="dislike.png"/>
                                         <connections>
@@ -65,7 +65,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nip-ey-oGA">
                                         <rect key="frame" x="64" y="285" width="246" height="53"/>
-                                        <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
                                         <state key="normal" title="Done">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -86,13 +86,13 @@
                                     <constraint firstItem="nip-ey-oGA" firstAttribute="height" secondItem="FrD-N8-V4b" secondAttribute="height" multiplier="0.149296" id="JgJ-Y4-8Xt"/>
                                     <constraint firstAttribute="trailing" secondItem="Jxx-Nf-vsv" secondAttribute="trailing" id="KcU-Of-1Ae"/>
                                     <constraint firstItem="Eur-Rh-qQQ" firstAttribute="centerX" secondItem="FrD-N8-V4b" secondAttribute="centerX" multiplier="1.5" id="S75-nn-ykV"/>
-                                    <constraint firstAttribute="centerY" secondItem="A4b-ex-FkS" secondAttribute="centerY" multiplier="0.8" id="V8x-Wm-Bxs"/>
+                                    <constraint firstAttribute="centerY" secondItem="A4b-ex-FkS" secondAttribute="centerY" constant="-7" id="V8x-Wm-Bxs"/>
                                     <constraint firstAttribute="bottom" secondItem="nip-ey-oGA" secondAttribute="bottom" multiplier="1.05" id="acJ-nb-VY6"/>
                                     <constraint firstAttribute="trailing" secondItem="2SF-hL-UBk" secondAttribute="trailing" constant="8" id="cch-xs-XgO"/>
                                     <constraint firstItem="A4b-ex-FkS" firstAttribute="centerX" secondItem="FrD-N8-V4b" secondAttribute="centerX" multiplier="0.5" id="dA9-y3-60p"/>
                                     <constraint firstItem="Jxx-Nf-vsv" firstAttribute="centerY" secondItem="FrD-N8-V4b" secondAttribute="centerY" multiplier="0.5" id="jXG-fR-qu4"/>
                                     <constraint firstItem="2SF-hL-UBk" firstAttribute="top" secondItem="FrD-N8-V4b" secondAttribute="top" constant="8" id="l2P-j6-chI"/>
-                                    <constraint firstAttribute="centerY" secondItem="Eur-Rh-qQQ" secondAttribute="centerY" multiplier="0.8" constant="20" id="tAp-tO-10Q"/>
+                                    <constraint firstAttribute="centerY" secondItem="Eur-Rh-qQQ" secondAttribute="centerY" constant="8" id="tAp-tO-10Q"/>
                                     <constraint firstItem="Jxx-Nf-vsv" firstAttribute="leading" secondItem="FrD-N8-V4b" secondAttribute="leading" id="tbS-Fh-It2"/>
                                     <constraint firstItem="nip-ey-oGA" firstAttribute="width" secondItem="FrD-N8-V4b" secondAttribute="width" multiplier="0.657754" id="yw5-di-abX"/>
                                 </constraints>

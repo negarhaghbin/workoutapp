@@ -44,7 +44,7 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
             self.showCongragulationsMessage(newlyAchieved: newlyAchieved)
         }
         
-        let alert = UIAlertController(title: "Congradulations!", message: "You have succesfully achieved \(badge!.title) badge.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Congratulations!", message: "You have successfully achieved \(badge!.title) badge.", preferredStyle: .alert)
         
         let alertImage = UIImage(named: badge!.imageName)
         alert.addImage(image: alertImage!)

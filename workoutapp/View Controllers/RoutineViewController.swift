@@ -91,7 +91,7 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         if (customizedSection?.exercises.filter{$0.exercise != nil})!.count == 0{
-            startButton.backgroundColor = UIColor.systemGray2
+            startButton.backgroundColor = UIColor.systemGray3
             startButton.isEnabled = false
         }
         else{
