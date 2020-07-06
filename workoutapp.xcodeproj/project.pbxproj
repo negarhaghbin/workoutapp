@@ -163,6 +163,7 @@
 		84C10B2823369FB300146547 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B2723369FB300146547 /* NavViewController.swift */; };
 		84C10B2A23369FD100146547 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B2923369FD100146547 /* TableViewController.swift */; };
 		84C10B2C23369FEB00146547 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */; };
+		84D83E0C24B3C11500BF1375 /* roundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D83E0B24B3C11500BF1375 /* roundCorners.swift */; };
 		84DC84BB23A1B4C800B82BCD /* notificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC84BA23A1B4C800B82BCD /* notificationSettings.swift */; };
 		84DC84BD23A2F2AA00B82BCD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC84BC23A2F2AA00B82BCD /* User.swift */; };
 		84DD8045237319A700B16601 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD8044237319A700B16601 /* NotificationService.swift */; };
@@ -349,6 +350,7 @@
 		84C10B2723369FB300146547 /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		84C10B2923369FD100146547 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
+		84D83E0B24B3C11500BF1375 /* roundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roundCorners.swift; sourceTree = "<group>"; };
 		84DC84BA23A1B4C800B82BCD /* notificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationSettings.swift; sourceTree = "<group>"; };
 		84DC84BC23A2F2AA00B82BCD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84DD8042237319A700B16601 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -678,6 +680,7 @@
 				845D4D162492DC880025217A /* BalloonAnimation.swift */,
 				8448791D23C3A9A800F37788 /* dateExt.swift */,
 				84EB32D2244A03DE009816CE /* AppUtility.swift */,
+				84D83E0B24B3C11500BF1375 /* roundCorners.swift */,
 			);
 			path = workoutapp;
 			sourceTree = "<group>";
@@ -1010,6 +1013,7 @@
 				84086D3D23CE562300795C3D /* InteractionTableViewCell.swift in Sources */,
 				84C10B142336994E00146547 /* AppDelegate.swift in Sources */,
 				84EB32D7244A39AB009816CE /* SettingsViewExt.swift in Sources */,
+				84D83E0C24B3C11500BF1375 /* roundCorners.swift in Sources */,
 				843C3DA3237F0798006FE720 /* RoutineViewController.swift in Sources */,
 				84C10B2823369FB300146547 /* NavViewController.swift in Sources */,
 				84E76C09246F0D750041311F /* Duration.swift in Sources */,

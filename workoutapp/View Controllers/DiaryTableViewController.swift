@@ -126,6 +126,7 @@ class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableVi
             if let cell = sender as? UITableViewCell, let indexPath = self.tableView.indexPath(for: cell) {
                 let diaryItem = diariesDict[dates[indexPath.section]]![indexPath.row-1]
                 destination.diaryItem = diaryItem
+                destination.boxTitle.text = "Edit a workout"
             }
         }
     }

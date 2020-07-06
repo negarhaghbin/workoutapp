@@ -10,6 +10,7 @@ import UIKit
 import SearchTextField
 
 class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate {
+    @IBOutlet weak var boxTitle: UILabel!
     @IBOutlet weak var pickerBackground: UIView!
     @IBOutlet weak var nameField: SearchTextField!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -40,6 +41,7 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
         typeLabel.text = types[0]
         saveButton.isHighlighted = true
         saveButton.isEnabled = false
+        
     }
     
     func exerciseSelected(_ newExercise: AppExercise) {
@@ -49,6 +51,7 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     
     private func refreshUI(){
         loadView()
+        boxTitle.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
         datePicker.maximumDate = Date()
         nameField.text = diaryItem?.exercise?.name
         typeLabel.text = diaryItem?.exercise?.type
