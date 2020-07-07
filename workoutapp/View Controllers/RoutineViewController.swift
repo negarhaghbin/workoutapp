@@ -44,6 +44,8 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.title = section?.title
         descriptionLabel.text = section?.getDescription()
         customizedSection = RoutineSection(title: section!.title, image: section!.image, exercises: section!.exercises)
+        let startAlert = createStartAlert()
+        createRepetitionAlert(startAlert: startAlert)
         repetitionPicker.delegate = self
         repetitionPicker.dataSource = self
     }
@@ -99,8 +101,8 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
             startButton.isEnabled = true
         }
     }
-   
-    @IBAction func start(_ sender: Any) {
+    
+    func createStartAlert()->UIAlertController{
         let startAlert = UIAlertController(title: "Are you ready?", message: "Your workout will start shortly after choosing yes.", preferredStyle: .alert)
         
         startAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
@@ -127,7 +129,10 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
             }))
         
         startAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-        
+        return startAlert
+    }
+    
+    func createRepetitionAlert(startAlert: UIAlertController){
         repetitionAlert.addTextField(configurationHandler: {
             textField in
             textField.inputView = self.repetitionPicker
@@ -140,7 +145,9 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.customizedSection?.repetition = Int((self.repetitionAlert.textFields!.first!.text)!)!
             self.present(startAlert, animated: true)
            }))
-        
+    }
+    
+    @IBAction func start(_ sender: Any) {
         self.present(repetitionAlert, animated: true)
        }
     
