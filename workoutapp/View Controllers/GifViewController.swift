@@ -52,27 +52,48 @@ class GifViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIScene.willDeactivateNotification, object: nil)
+    }
+    
+    @objc func appMovedToBackground() {
+        print("App moved to background!")
+        pauseRoutine()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        user = try! Realm().object(ofType: User.self, forPrimaryKey: UserDefaults.standard.string(forKey: "uuid"))!
-        restDuration = user.restDuration
-        routineDuration = (section!.repetition * (section?.getDuration())!) + ((routineExercises.count-1) * restDuration)
+        
     }
     
     private func refreshUI(){
         loadView()
+        user = try! Realm().object(ofType: User.self, forPrimaryKey: UserDefaults.standard.string(forKey: "uuid"))!
+        restDuration = user.restDuration
         
-        gifView.loadGif(name: (section?.exercises[0].gifName)!)
-        exerciseSeconds = (section?.exercises[0].durationInSeconds?.durationInSeconds)!
-        exerciseTitle.text = (section?.exercises[0].exercise?.name)!
-        nextLabel.text = "Next: Rest"
+        let currentExercise = section?.exercises[currentExerciseIndex]
+        gifView.loadGif(name: (currentExercise?.gifName)!)
+        exerciseSeconds = (currentExercise!.durationInSeconds?.durationInSeconds)!
+        exerciseTitle.text = (currentExercise!.exercise?.name)!
+        
         counter.text = self.timeString(time: TimeInterval(self.seconds))
         exerciseCounter.text = self.timeString(time: TimeInterval(self.exerciseSeconds))
         for _ in 1...Int(section!.repetition){
             routineExercises += section!.exercises
         }
         routineDuration = (section!.repetition * (section?.getDuration())!) + ((routineExercises.count-1) * restDuration)
+        
+        if (restDuration != 0 || (currentExerciseIndex == ((routineExercises.count)-1))){
+            nextLabel.text = "Next: Rest"
+        }
+        else if (currentExerciseIndex < ((routineExercises.count)-1)){
+            print(routineExercises)
+            nextLabel.text = "Next: \(String(describing: routineExercises[currentExerciseIndex+1].exercise!.name))"
+        }
         
         runTimer()
         totalProgress.progress = 0.0
@@ -81,8 +102,8 @@ class GifViewController: UIViewController {
         
     }
     
+    
     func runTimer(){
-        
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.seconds += 1
             self.totalProgress.progress += (1.0/Float(self.routineDuration))
@@ -96,9 +117,11 @@ class GifViewController: UIViewController {
             }
         }
         exerciseTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            self.exerciseSeconds -= 1
+            if self.exerciseSeconds != 0{
+                self.exerciseSeconds -= 1
+            }
             if self.exerciseSeconds == 4{
-                if (!self.isResting){
+                if self.canRest(){
                     self.playSound(name: "rest in", extensionType: "m4a")
                 }
                 else{
@@ -108,26 +131,13 @@ class GifViewController: UIViewController {
             else if self.exerciseSeconds == 3{
                 self.playSound(name: "countdown", extensionType: "wav")
             }
-            else if self.exerciseSeconds == 0 {
+            else if self.exerciseSeconds < 1 {
                 if (self.currentExerciseIndex < ((self.routineExercises.count)-1)){
-                    if (!self.isResting){
-                        self.exerciseSeconds = self.restDuration
-                        self.gifView.image=UIImage(named: "rest.png")
-                        self.exerciseTitle.text = "Rest"
-                        self.nextLabel.text = "Next: \(String(describing: self.routineExercises[self.currentExerciseIndex+1].exercise!.name))"
-                        self.isResting = true
-                        self.PB.startOver(duration: self.exerciseSeconds)
-                       //after finishing one exercise
-                       self.exercisesDone.append(self.routineExercises[self.currentExerciseIndex])
+                    if (self.canRest()){
+                        self.userWillRest()
                     }
                     else{
-                        self.increaseExerciseIndex()
-                        self.exerciseSeconds = (self.routineExercises[self.currentExerciseIndex].durationInSeconds!.durationInSeconds)
-                        self.gifView.loadGif(name: (self.routineExercises[self.currentExerciseIndex].gifName))
-                        self.exerciseTitle.text = self.routineExercises[self.currentExerciseIndex].exercise?.name
-                        self.nextLabel.text = "Next: Rest"
-                        self.isResting = false
-                        self.PB.startOver(duration: self.exerciseSeconds)
+                        self.userWillDoNextExercise()
                     }
                 }
                 else{
@@ -138,6 +148,37 @@ class GifViewController: UIViewController {
             self.exerciseCounter.text = self.timeString(time: TimeInterval(self.exerciseSeconds))
 
         }
+    }
+    
+    func canRest()->Bool{
+        return (!isResting && (restDuration != 0))
+    }
+    
+    func userWillRest(){
+        exerciseSeconds = restDuration
+         gifView.image=UIImage(named: "rest.png")
+         exerciseTitle.text = "Rest"
+         nextLabel.text = "Next: \(String(describing: self.routineExercises[self.currentExerciseIndex+1].exercise!.name))"
+         isResting = true
+         PB.startOver(duration: self.exerciseSeconds)
+        //after finishing one exercise
+        exercisesDone.append(self.routineExercises[self.currentExerciseIndex])
+    }
+    
+    func userWillDoNextExercise(){
+        increaseExerciseIndex()
+        let currentExercise = routineExercises[currentExerciseIndex]
+        exerciseSeconds = (currentExercise.durationInSeconds!.durationInSeconds)
+        gifView.loadGif(name: (currentExercise.gifName))
+        exerciseTitle.text = currentExercise.exercise?.name
+        if (restDuration != 0 || (currentExerciseIndex == ((routineExercises.count)-1))){
+            nextLabel.text = "Next: Rest"
+        }
+        else if (currentExerciseIndex < ((routineExercises.count)-1)){
+            nextLabel.text = "Next: \(String(describing: routineExercises[currentExerciseIndex+1].exercise!.name))"
+        }
+        isResting = false
+        PB.startOver(duration: exerciseSeconds)
     }
     
     func increaseExerciseIndex(){
