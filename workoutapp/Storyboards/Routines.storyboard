@@ -279,8 +279,10 @@
                                     <constraint firstAttribute="width" constant="54" id="ZzP-Bd-97Y"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" backgroundImage="pause.fill" catalog="system"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="pause.fill" catalog="system">
+                                    <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="togglePlay:" destination="JFI-u9-rpU" eventType="touchUpInside" id="Cmz-3e-GiC"/>
                                 </connections>
@@ -291,9 +293,9 @@
                                     <constraint firstAttribute="width" constant="70" id="c5g-Wg-vEl"/>
                                     <constraint firstAttribute="height" constant="70" id="kyR-5c-C8V"/>
                                 </constraints>
-                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" backgroundImage="stop.fill" catalog="system">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="quitRoutine:" destination="JFI-u9-rpU" eventType="touchUpInside" id="sjI-Po-OCk"/>
@@ -316,7 +318,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="QWo-tf-Jxr" secondAttribute="trailing" id="2eP-vr-gcs"/>
                             <constraint firstItem="RGx-5l-FB0" firstAttribute="centerX" secondItem="Khh-iB-dsT" secondAttribute="centerX" id="3iN-DQ-b9E"/>

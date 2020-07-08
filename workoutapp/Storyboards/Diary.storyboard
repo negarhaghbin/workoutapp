@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="SGK-C8-KRM">
-                                <rect key="frame" x="0.0" y="163" width="414" height="733"/>
+                                <rect key="frame" x="0.0" y="183" width="414" height="713"/>
                                 <color key="sectionIndexBackgroundColor" red="0.96470588239999999" green="0.090196078430000007" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="addWorkoutCell" rowHeight="150" id="KoN-PE-w82" customClass="AddWorkoutTableCell" customModule="_M_Workout" customModuleProvider="target">
@@ -27,7 +27,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bend-and-twist.gif" translatesAutoresizingMaskIntoConstraints="NO" id="cn3-kg-SiK" userLabel="previewImageView">
-                                                    <rect key="frame" x="20" y="7" width="149.5" height="136"/>
+                                                    <rect key="frame" x="20" y="5" width="149.5" height="140"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5FT-GI-EPZ" userLabel="titleLabel">
                                                     <rect key="frame" x="177.5" y="48" width="176.5" height="55"/>
@@ -43,7 +43,7 @@
                                                 <constraint firstItem="5FT-GI-EPZ" firstAttribute="top" secondItem="v5r-co-E6N" secondAttribute="topMargin" constant="37" id="US9-NP-ZJz"/>
                                                 <constraint firstItem="cn3-kg-SiK" firstAttribute="leading" secondItem="v5r-co-E6N" secondAttribute="leadingMargin" id="cLG-k5-WLR"/>
                                                 <constraint firstItem="5FT-GI-EPZ" firstAttribute="leading" secondItem="cn3-kg-SiK" secondAttribute="trailing" constant="8" id="gR5-Ef-xSV"/>
-                                                <constraint firstItem="cn3-kg-SiK" firstAttribute="top" secondItem="v5r-co-E6N" secondAttribute="topMargin" constant="-4" id="hJb-5c-gii"/>
+                                                <constraint firstItem="cn3-kg-SiK" firstAttribute="top" secondItem="v5r-co-E6N" secondAttribute="top" constant="5" id="hJb-5c-gii"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="5FT-GI-EPZ" secondAttribute="bottom" constant="36" id="hih-3d-ztp"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -63,12 +63,16 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMn-aA-3TI">
-                                <rect key="frame" x="20" y="108" width="374" height="35"/>
-                                <color key="backgroundColor" red="0.96470588239999999" green="0.31372549020000001" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="108" width="374" height="75"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="UhB-Aa-D2H"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                <color key="tintColor" white="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Add new workout">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.96470588239999999" green="0.31372549020000001" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="   Add New Workout" image="plus" catalog="system">
+                                    <color key="titleColor" red="0.96470588239999999" green="0.31372549020000001" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -80,14 +84,14 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="SGK-C8-KRM" secondAttribute="bottom" id="04h-PM-N9a"/>
                             <constraint firstItem="GMn-aA-3TI" firstAttribute="top" secondItem="KEK-8t-sKx" secondAttribute="top" constant="20" id="IFj-2s-BdO"/>
                             <constraint firstItem="KEK-8t-sKx" firstAttribute="trailing" secondItem="SGK-C8-KRM" secondAttribute="trailing" id="KIr-wb-6Gu"/>
-                            <constraint firstItem="KEK-8t-sKx" firstAttribute="trailing" secondItem="GMn-aA-3TI" secondAttribute="trailing" constant="20" id="Tqp-P2-G1T"/>
-                            <constraint firstItem="GMn-aA-3TI" firstAttribute="leading" secondItem="KEK-8t-sKx" secondAttribute="leading" constant="20" id="Wr8-8e-ib7"/>
-                            <constraint firstItem="SGK-C8-KRM" firstAttribute="top" secondItem="GMn-aA-3TI" secondAttribute="bottom" constant="20" id="nP5-lm-2pM"/>
+                            <constraint firstItem="GMn-aA-3TI" firstAttribute="leading" secondItem="SGK-C8-KRM" secondAttribute="leadingMargin" id="Wr8-8e-ib7"/>
+                            <constraint firstItem="SGK-C8-KRM" firstAttribute="top" secondItem="GMn-aA-3TI" secondAttribute="bottom" id="nP5-lm-2pM"/>
+                            <constraint firstItem="GMn-aA-3TI" firstAttribute="trailing" secondItem="SGK-C8-KRM" secondAttribute="trailingMargin" id="x0n-tU-tVX"/>
                             <constraint firstItem="SGK-C8-KRM" firstAttribute="leading" secondItem="KEK-8t-sKx" secondAttribute="leading" id="yqL-cP-d2u"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KEK-8t-sKx"/>
@@ -99,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7H2-Yt-yIB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1933" y="-333"/>
+            <point key="canvasLocation" x="1931.8840579710147" y="-333.48214285714283"/>
         </scene>
         <!--New Workout Popup View Controller-->
         <scene sceneID="kx3-Lz-3H8">
@@ -110,23 +114,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8g-H5-MUA">
-                                <rect key="frame" x="0.0" y="616.5" width="414" height="245.5"/>
+                                <rect key="frame" x="0.0" y="582.5" width="414" height="230.5"/>
                                 <subviews>
                                     <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="GLu-Ww-BSM">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="245.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="230.5"/>
                                         <connections>
                                             <action selector="changeDate:" destination="IZB-b6-2JE" eventType="valueChanged" id="At1-0U-Slk"/>
                                         </connections>
                                     </datePicker>
                                     <pickerView hidden="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZEv-af-Kws">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="245.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="230.5"/>
                                         <connections>
                                             <outlet property="dataSource" destination="IZB-b6-2JE" id="Vk7-aa-eNK"/>
                                             <outlet property="delegate" destination="IZB-b6-2JE" id="Neo-wq-gjs"/>
                                         </connections>
                                     </pickerView>
                                     <pickerView hidden="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ir-8N-q0O">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="245.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="230.5"/>
                                         <connections>
                                             <outlet property="dataSource" destination="IZB-b6-2JE" id="gs9-Nl-dqM"/>
                                             <outlet property="delegate" destination="IZB-b6-2JE" id="7YZ-gf-ATb"/>
@@ -390,7 +394,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="diaryCell" rowHeight="64" translatesAutoresizingMaskIntoConstraints="NO" id="aA1-2h-M3N" customClass="DiaryTableViewCell" customModule="_M_Workout" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="diaryCell" rowHeight="64" translatesAutoresizingMaskIntoConstraints="NO" id="aA1-2h-M3N" customClass="DiaryTableViewCell" customModule="_M_Workout" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="99.5" width="414" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aA1-2h-M3N" id="gfg-52-q1V">
@@ -487,11 +491,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ghH-0T-wnj"/>
+        <segue reference="CTW-zQ-tca"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bend-and-twist.gif" width="304" height="336"/>
         <image name="diary_header.png" width="283.44000244140625" height="96.239997863769531"/>
         <image name="pencil.and.ellipsis.rectangle" catalog="system" width="128" height="81"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
     </resources>
 </document>
