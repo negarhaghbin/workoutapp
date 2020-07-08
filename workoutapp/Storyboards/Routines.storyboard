@@ -274,7 +274,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGy-oq-hgC">
-                                <rect key="frame" x="237" y="675" width="54" height="66"/>
+                                <rect key="frame" x="237" y="720.5" width="54" height="66"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="54" id="ZzP-Bd-97Y"/>
                                 </constraints>
@@ -286,7 +286,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZ3-6B-99H">
-                                <rect key="frame" x="110" y="675" width="70" height="66"/>
+                                <rect key="frame" x="110" y="720.5" width="70" height="66"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="c5g-Wg-vEl"/>
                                     <constraint firstAttribute="height" constant="70" id="kyR-5c-C8V"/>
@@ -300,17 +300,17 @@
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QWo-tf-Jxr">
-                                <rect key="frame" x="20" y="631" width="374" height="2"/>
+                                <rect key="frame" x="20" y="676.5" width="374" height="2"/>
                                 <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzh-jf-Cn3">
-                                <rect key="frame" x="20" y="603.5" width="374" height="19.5"/>
+                                <rect key="frame" x="20" y="649" width="374" height="19.5"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next: Crunches" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGx-5l-FB0">
-                                <rect key="frame" x="20" y="573" width="374" height="22.5"/>
+                                <rect key="frame" x="20" y="618.5" width="374" height="22.5"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -326,7 +326,7 @@
                             <constraint firstItem="hG5-Yd-C2O" firstAttribute="leading" secondItem="0cv-l8-sWx" secondAttribute="leading" id="Eru-qu-qrj"/>
                             <constraint firstItem="hG5-Yd-C2O" firstAttribute="centerX" secondItem="Khh-iB-dsT" secondAttribute="centerX" id="LJH-d0-h1u"/>
                             <constraint firstItem="QWo-tf-Jxr" firstAttribute="trailing" secondItem="Wzh-jf-Cn3" secondAttribute="trailing" id="LQW-Uw-LIf"/>
-                            <constraint firstItem="0cv-l8-sWx" firstAttribute="bottom" secondItem="AZ3-6B-99H" secondAttribute="bottom" constant="69.999999999999773" id="MWr-oO-87D"/>
+                            <constraint firstItem="AZ3-6B-99H" firstAttribute="bottom" secondItem="0cv-l8-sWx" secondAttribute="bottom" multiplier="0.97" id="MWr-oO-87D"/>
                             <constraint firstItem="UGy-oq-hgC" firstAttribute="top" secondItem="QWo-tf-Jxr" secondAttribute="bottom" constant="40" id="ODK-Vb-iF5"/>
                             <constraint firstItem="QWo-tf-Jxr" firstAttribute="centerX" secondItem="Khh-iB-dsT" secondAttribute="centerX" id="OL3-uj-2mQ"/>
                             <constraint firstItem="HcQ-Nc-Oeb" firstAttribute="centerX" secondItem="Khh-iB-dsT" secondAttribute="centerX" id="PPz-no-MI9"/>
@@ -337,7 +337,7 @@
                             <constraint firstItem="Wzh-jf-Cn3" firstAttribute="centerX" secondItem="Khh-iB-dsT" secondAttribute="centerX" id="VOh-bL-x4A"/>
                             <constraint firstItem="QWo-tf-Jxr" firstAttribute="top" secondItem="Wzh-jf-Cn3" secondAttribute="bottom" constant="8" id="VTR-Ee-bzl"/>
                             <constraint firstItem="Wzh-jf-Cn3" firstAttribute="leading" secondItem="QWo-tf-Jxr" secondAttribute="leading" id="Vns-3p-vZG"/>
-                            <constraint firstItem="0cv-l8-sWx" firstAttribute="bottom" secondItem="UGy-oq-hgC" secondAttribute="bottom" constant="69.999999999999886" id="Xfw-Uf-rIr"/>
+                            <constraint firstItem="UGy-oq-hgC" firstAttribute="bottom" secondItem="0cv-l8-sWx" secondAttribute="bottom" multiplier="0.97" id="Xfw-Uf-rIr"/>
                             <constraint firstItem="hG5-Yd-C2O" firstAttribute="height" secondItem="Khh-iB-dsT" secondAttribute="height" multiplier="0.24" id="cok-k6-Fm2"/>
                             <constraint firstItem="RGx-5l-FB0" firstAttribute="leading" secondItem="Wzh-jf-Cn3" secondAttribute="leading" id="hmp-WI-C0L"/>
                             <constraint firstItem="hG5-Yd-C2O" firstAttribute="width" secondItem="Khh-iB-dsT" secondAttribute="width" id="ifP-Le-cjy"/>

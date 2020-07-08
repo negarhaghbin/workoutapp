@@ -36,7 +36,7 @@ class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableVi
         
         
         if diariesDict.count+steps.count > 0{
-            viewLabel.text = "Tap to edit."
+            viewLabel.text = "Tap on an exercise to edit"
         }
         tableView.reloadData()
     }
@@ -82,6 +82,7 @@ class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 
                 cell.isUserInteractionEnabled = false
                 cell.durationLabel.isEnabled = false
+                cell.nameLabel.isEnabled = false
             }
             else{
                 cell.nameLabel.text = diariesDict[dates[indexPath.section]]![indexPath.row-1].exercise?.name
