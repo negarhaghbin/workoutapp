@@ -137,7 +137,7 @@
                                         </connections>
                                     </pickerView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="0.75358518835616439" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="1Ir-8N-q0O" firstAttribute="top" secondItem="F8g-H5-MUA" secondAttribute="top" id="06l-TX-bOe"/>
                                     <constraint firstItem="1Ir-8N-q0O" firstAttribute="leading" secondItem="F8g-H5-MUA" secondAttribute="leading" id="3LY-hb-8Gp"/>
@@ -154,7 +154,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5jN-WC-nQn">
-                                <rect key="frame" x="17" y="289" width="380" height="318"/>
+                                <rect key="frame" x="17" y="199.5" width="380" height="318"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLl-Iw-dFb">
                                         <rect key="frame" x="15" y="75" width="37" height="22.5"/>
@@ -184,7 +184,7 @@
                                         <rect key="frame" x="283" y="160" width="82" height="22.5"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="jcG-XS-y7z" appends="YES" id="ly8-M8-qrr"/>
@@ -194,7 +194,7 @@
                                         <rect key="frame" x="171" y="202.5" width="194" height="22.5"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="LzF-cz-643" appends="YES" id="7wE-nE-CZ6"/>
@@ -204,7 +204,7 @@
                                         <rect key="frame" x="323" y="75" width="42" height="22.5"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="cnD-k6-4uM" appends="YES" id="Lwa-cc-fBN"/>
@@ -250,7 +250,8 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YL3-Fw-wT3" userLabel="nameField" customClass="SearchTextField" customModule="SearchTextField">
-                                        <rect key="frame" x="190" y="112" width="175" height="34"/>
+                                        <rect key="frame" x="190" y="111.5" width="175" height="34"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                                         <connections>
@@ -259,7 +260,8 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4oW-5V-1gb" userLabel="countField">
-                                        <rect key="frame" x="190" y="197" width="175" height="34"/>
+                                        <rect key="frame" x="190" y="196.5" width="175" height="34"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -313,7 +315,7 @@
                             <constraint firstItem="F8g-H5-MUA" firstAttribute="trailing" secondItem="vxh-iU-OcH" secondAttribute="trailing" id="01X-MA-Z4e"/>
                             <constraint firstItem="F8g-H5-MUA" firstAttribute="bottom" secondItem="vxh-iU-OcH" secondAttribute="bottom" id="6Ob-yi-O1f"/>
                             <constraint firstItem="vxh-iU-OcH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5jN-WC-nQn" secondAttribute="trailing" constant="10" id="a9U-v2-3ep"/>
-                            <constraint firstItem="5jN-WC-nQn" firstAttribute="centerY" secondItem="tnu-gc-kWW" secondAttribute="centerY" id="hOv-OA-hqi"/>
+                            <constraint firstItem="5jN-WC-nQn" firstAttribute="centerY" secondItem="tnu-gc-kWW" secondAttribute="centerY" multiplier="0.8" id="hOv-OA-hqi"/>
                             <constraint firstItem="F8g-H5-MUA" firstAttribute="leading" secondItem="vxh-iU-OcH" secondAttribute="leading" id="m0F-gO-BbW"/>
                             <constraint firstItem="F8g-H5-MUA" firstAttribute="height" secondItem="vxh-iU-OcH" secondAttribute="height" multiplier="0.3" id="sl5-i8-Uzp"/>
                             <constraint firstItem="5jN-WC-nQn" firstAttribute="centerX" secondItem="tnu-gc-kWW" secondAttribute="centerX" id="wXm-73-GsD"/>

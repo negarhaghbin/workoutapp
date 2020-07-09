@@ -33,6 +33,8 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
     @IBOutlet weak var sendAfterTime: UILabel!
     let locationManager = CLLocationManager()
     
+    @IBOutlet weak var sendAfterTitleLabel: UILabel!
+    @IBOutlet weak var sendOnTitleLabel: UILabel!
     
     @IBOutlet weak var restLabel: UILabel!
     @IBOutlet weak var sendAfterCell: UITableViewCell!
@@ -113,19 +115,23 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
             if self.locationSwitch.isOn{
                 self.locationAuthorization()
                 self.sendAfterTime.isEnabled = true
+                self.sendAfterTitleLabel.isEnabled = true
                 self.sendAfterCell.isUserInteractionEnabled = true
             }
             else{
                 self.sendAfterTime.isEnabled = false
+                self.sendAfterTitleLabel.isEnabled = false
                 self.sendAfterCell.isUserInteractionEnabled = false
             }
             self.activitySwitch.setOn(self.appSettings.activity, animated: false)
             if(self.timeSwitch.isOn){
                 self.timeLabel.isEnabled = true
+                self.sendOnTitleLabel.isEnabled = true
                 self.setTimeCell.isUserInteractionEnabled = true
             }
             else{
                 self.timeLabel.isEnabled = false
+                self.sendOnTitleLabel.isEnabled = false
                 self.setTimeCell.isUserInteractionEnabled = false
             }
         }
@@ -133,9 +139,11 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
             self.timeSwitch.setOn(false, animated: false)
             self.locationSwitch.setOn(false, animated: false)
             self.sendAfterTime.isEnabled = false
+            self.sendAfterTitleLabel.isEnabled = false
             self.sendAfterCell.isUserInteractionEnabled = false
             self.activitySwitch.setOn(false, animated: false)
             self.timeLabel.isEnabled = false
+            self.sendOnTitleLabel.isEnabled = false
             self.setTimeCell.isUserInteractionEnabled = false
         }
         
@@ -164,9 +172,11 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
             self.timeSwitch.setOn(false, animated: false)
             self.locationSwitch.setOn(false, animated: false)
             self.sendAfterTime.isEnabled = false
+            self.sendAfterTitleLabel.isEnabled = false
             self.sendAfterCell.isUserInteractionEnabled = false
             self.activitySwitch.setOn(false, animated: false)
             self.timeLabel.isEnabled = false
+            self.sendOnTitleLabel.isEnabled = false
             self.setTimeCell.isUserInteractionEnabled = false
         }
         else{
@@ -195,11 +205,13 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
                             identifier: "home_location_id")
                             AppDelegate.locationManager.startMonitoring(for: destRegion)
                             self.sendAfterTime.isEnabled = true
+                            self.sendAfterTitleLabel.isEnabled = true
                             self.sendAfterCell.isUserInteractionEnabled = true
                         case .restricted, .denied, .notDetermined:
                             presentSettingsAlert(option: "Location")
                             self.locationSwitch.setOn(false, animated: false)
                             self.sendAfterTime.isEnabled = false
+                            self.sendAfterTitleLabel.isEnabled = false
                             self.sendAfterCell.isUserInteractionEnabled = false
                             break
                     }
@@ -208,6 +220,7 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
                 else{
                     appSettings.setNotification(option: Notification.Location.rawValue, value: false)
                     self.sendAfterTime.isEnabled = false
+                    self.sendAfterTitleLabel.isEnabled = false
                     self.sendAfterCell.isUserInteractionEnabled = false
                     notificationSettings.cancelNotification(identifier: Notification.Location.rawValue)
                     let l = location.getMostRecordedLocation()
@@ -236,6 +249,7 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
     private func setTimeSettings(value: Bool){
         appSettings.setNotification(option: Notification.Time.rawValue, value: value)
         timeLabel.isEnabled = value
+        sendOnTitleLabel.isEnabled = value
         setTimeCell.isUserInteractionEnabled = value
     }
     

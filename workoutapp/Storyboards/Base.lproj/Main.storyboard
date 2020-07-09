@@ -16,27 +16,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ee-sX-YH4">
-                                <rect key="frame" x="20" y="108" width="339" height="32.666666666666657"/>
-                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="25"/>
+                                <rect key="frame" x="20" y="108" width="339" height="26"/>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lWS-xL-PVp" customClass="WKYTPlayerView">
-                                <rect key="frame" x="0.0" y="148.66666666666666" width="375" height="202.99999999999997"/>
+                                <rect key="frame" x="0.0" y="142" width="375" height="203"/>
                                 <subviews>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28P-hw-P0c">
-                                        <rect key="frame" x="8" y="8" width="359" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28P-hw-P0c">
+                                        <rect key="frame" x="166.66666666666666" y="90.333333333333343" width="41.666666666666657" height="22.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="28P-hw-P0c" secondAttribute="trailing" constant="8" id="Djs-T8-nEv"/>
-                                    <constraint firstItem="28P-hw-P0c" firstAttribute="leading" secondItem="lWS-xL-PVp" secondAttribute="leading" constant="8" id="GDN-IL-Dga"/>
+                                    <constraint firstItem="28P-hw-P0c" firstAttribute="centerY" secondItem="lWS-xL-PVp" secondAttribute="centerY" id="8qa-P4-lo4"/>
+                                    <constraint firstItem="28P-hw-P0c" firstAttribute="centerX" secondItem="lWS-xL-PVp" secondAttribute="centerX" id="GDN-IL-Dga"/>
                                     <constraint firstAttribute="width" secondItem="lWS-xL-PVp" secondAttribute="height" multiplier="207:112" id="M1n-QX-dPv"/>
-                                    <constraint firstItem="28P-hw-P0c" firstAttribute="top" secondItem="lWS-xL-PVp" secondAttribute="top" constant="8" id="qIs-cu-Ss8"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1S-DP-3dU">
@@ -46,11 +45,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RVw-Y2-ebf">
-                                <rect key="frame" x="8" y="388" width="359" height="50"/>
+                                <rect key="frame" x="8" y="381.33333333333331" width="359" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdJ-dv-4ck">
-                                        <rect key="frame" x="20" y="13.666666666666684" width="79.666666666666671" height="22.333333333333329"/>
-                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
+                                        <rect key="frame" x="20" y="13.666666666666684" width="75" height="22.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
