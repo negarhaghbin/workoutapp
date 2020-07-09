@@ -48,7 +48,7 @@ class StartRoutineViewController: UIViewController {
         guard let url = Bundle.main.url(forResource: "beep", withExtension: "wav") else { return }
 
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
 
             /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/

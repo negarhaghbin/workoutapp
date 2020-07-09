@@ -88,6 +88,9 @@ class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 cell.nameLabel.text = diariesDict[dates[indexPath.section]]![indexPath.row-1].exercise?.name
                 let duration = diariesDict[dates[indexPath.section]]![indexPath.row-1].duration
                 cell.durationLabel.text = duration?.getDuration()
+                cell.isUserInteractionEnabled = true
+                cell.durationLabel.isEnabled = true
+                cell.nameLabel.isEnabled = true
             }
             
             return cell

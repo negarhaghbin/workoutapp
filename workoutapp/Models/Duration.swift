@@ -16,13 +16,13 @@ class Duration: Object {
     @objc dynamic var streak: Int = 0
     
     convenience init(numberOfSets: Int? = {
-        return 0
+        return -1
         }(), countPerSet:Int? = {
-        return 0
+        return -1
         }(), durationInSeconds: Int? = {
-        return 0
+        return -1
         }(), streak: Int? = {
-        return 0
+        return -1
         }()) {
         self.init()
         let realm = try! Realm()
@@ -35,8 +35,8 @@ class Duration: Object {
     }
     
     private func getCount()->String{
-        if (numberOfSets == 0){
-            if (countPerSet == 0){
+        if (numberOfSets < 0){
+            if (countPerSet < 0){
                 return "No sets"
             }
             else{
@@ -49,7 +49,7 @@ class Duration: Object {
     }
     
     func getTimeDuration()->String{
-        if (durationInSeconds==0){
+        if (durationInSeconds < 0){
             return ""
         }
         else{

@@ -33,6 +33,7 @@ class ViewController: UIViewController, UITableViewDelegate, UIPickerViewDelegat
         if changeDurationAlert.textFields?.count==0{
             createChangeDurationAlert()
         }
+        
         if (exercise?.videoURLString != "" && isConnectedToNetwork()){
             youtubeView.load(withVideoId: exercise!.videoURLString)
         }
@@ -57,18 +58,23 @@ class ViewController: UIViewController, UITableViewDelegate, UIPickerViewDelegat
     }
     
     func createChangeDurationAlert(){
-        changeDurationAlert.addTextField(configurationHandler: { textField in
-            textField.inputView = self.UIPicker
-        })
-        
-        changeDurationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-        changeDurationAlert.addAction(UIAlertAction(title: "Save", style: .default, handler: { action in
+        let saveAction = UIAlertAction(title: "Save", style: .default, handler: { action in
             if let rd = self.changeDurationAlert.textFields?.first?.text {
                 self.exercise?.setDuration(d: self.UIPicker.selectedRow(inComponent: 0)*60 + self.UIPicker.selectedRow(inComponent: 1))
                 self.durationLabel.text = rd
             }
-        }))
+        })
+        
+        changeDurationAlert.addTextField(configurationHandler: { textField in
+            textField.inputView = self.UIPicker
+            if textField.text == "" {
+                saveAction.isEnabled = false
+            }
+        })
+        
+        changeDurationAlert.addAction(saveAction)
+        
+        changeDurationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
     }
     
@@ -86,6 +92,7 @@ class ViewController: UIViewController, UITableViewDelegate, UIPickerViewDelegat
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         changeDurationAlert.textFields?.first?.text = SecondsToString(time: (pickerView.selectedRow(inComponent: 0))*60 + pickerView.selectedRow(inComponent: 1))
+        changeDurationAlert.actions.first?.isEnabled = true
     }
     
     @IBAction func changeDuration(_ sender: Any) {

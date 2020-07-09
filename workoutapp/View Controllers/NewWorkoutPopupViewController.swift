@@ -149,7 +149,11 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
         }
         if diaryItem != nil{
             if countable{
-                DiaryItem.update(uuid: diaryItem!.uuid, e: e, d: Duration(countPerSet: Int(countField.text!)), date: dateLabel.text!)
+                var count = 0
+                if countField.text != "No sets"{
+                    count = Int(countField.text!)!
+                }
+                DiaryItem.update(uuid: diaryItem!.uuid, e: e, d: Duration(countPerSet: count), date: dateLabel.text!)
             }
             else{
                 DiaryItem.update(uuid: diaryItem!.uuid, e: e, d: Duration(durationInSeconds: reverSecondsToString(time: durationLabel.text!)), date: dateLabel.text!)
