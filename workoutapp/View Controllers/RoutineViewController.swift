@@ -38,11 +38,14 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        descriptionLabel.text = customizedSection?.getDescription()
+    }
+    
     private func refreshUI(){
         loadView()
         headerImage.image = imageWithImage( image: UIImage(named:section!.image.url.path)!, scaledToSize: CGSize(width: view.frame.width, height: view.frame.width/3))
         self.title = section?.title
-        descriptionLabel.text = section?.getDescription()
         customizedSection = RoutineSection(title: section!.title, image: section!.image, exercises: section!.exercises)
         let startAlert = createStartAlert()
         createRepetitionAlert(startAlert: startAlert)
@@ -100,6 +103,7 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
             startButton.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.3137254902, blue: 0.6666666667, alpha: 1)
             startButton.isEnabled = true
         }
+        descriptionLabel.text = customizedSection?.getDescription()
     }
     
     func createStartAlert()->UIAlertController{

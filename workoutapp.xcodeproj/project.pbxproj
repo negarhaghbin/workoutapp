@@ -340,7 +340,7 @@
 		849CFC28245322E3007BD77B /* AddWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewController.swift; sourceTree = "<group>"; };
 		849CFC2A2453250A007BD77B /* AddWorkoutTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutTableCell.swift; sourceTree = "<group>"; };
 		849CFC2C24552F57007BD77B /* DiaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableViewCell.swift; sourceTree = "<group>"; };
-		84C10B102336994E00146547 /* 5M Workout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "5M Workout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		84C10B102336994E00146547 /* 5min Workout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "5min Workout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C10B132336994E00146547 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C10B172336994E00146547 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		84C10B1A2336994E00146547 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -649,7 +649,7 @@
 		84C10B112336994E00146547 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84C10B102336994E00146547 /* 5M Workout.app */,
+				84C10B102336994E00146547 /* 5min Workout.app */,
 				84DD8042237319A700B16601 /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
@@ -734,7 +734,7 @@
 			);
 			name = workoutapp;
 			productName = workoutapp;
-			productReference = 84C10B102336994E00146547 /* 5M Workout.app */;
+			productReference = 84C10B102336994E00146547 /* 5min Workout.app */;
 			productType = "com.apple.product-type.application";
 		};
 		84DD8041237319A700B16601 /* OneSignalNotificationServiceExtension */ = {
@@ -1206,7 +1206,7 @@
 				);
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.negar.workoutapp;
-				PRODUCT_NAME = "5M Workout";
+				PRODUCT_NAME = "5min Workout";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1229,7 +1229,7 @@
 				);
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.negar.workoutapp;
-				PRODUCT_NAME = "5M Workout";
+				PRODUCT_NAME = "5min Workout";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
