@@ -11,7 +11,7 @@
         <!--Routines-->
         <scene sceneID="geZ-0a-rDD">
             <objects>
-                <collectionViewController storyboardIdentifier="NextViewController" id="kIL-gk-BzB" customClass="RoutineCollectionViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="NextViewController" id="kIL-gk-BzB" customClass="RoutineCollectionViewController" customModule="_min_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="00m-9X-Rbg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +23,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="RoutineCell" id="lsi-Qh-x7b" customClass="RoutineCollectionViewCell" customModule="_M_Workout" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="RoutineCell" id="lsi-Qh-x7b" customClass="RoutineCollectionViewCell" customModule="_min_Workout" customModuleProvider="target">
                                 <rect key="frame" x="3.5" y="0.0" width="407" height="179"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="j5b-9V-cHh">
@@ -87,7 +87,7 @@
         <!--Routine View Controller-->
         <scene sceneID="SJj-6U-q6Q">
             <objects>
-                <viewController id="NM8-ms-j0T" customClass="RoutineViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NM8-ms-j0T" customClass="RoutineViewController" customModule="_min_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="Nmz-07-mW2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -98,7 +98,7 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D3o-9G-mlP">
                                 <rect key="frame" x="0.0" y="307" width="414" height="506"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RoutineTableReuseIdentifier" editingAccessoryType="checkmark" id="VVh-FY-F7M" customClass="RoutineTableViewCell" customModule="_M_Workout" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RoutineTableReuseIdentifier" editingAccessoryType="checkmark" id="VVh-FY-F7M" customClass="RoutineTableViewCell" customModule="_min_Workout" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VVh-FY-F7M" id="4rS-mr-Thg">
@@ -227,7 +227,7 @@
         <!--Start Routine View Controller-->
         <scene sceneID="nZO-6V-zrR">
             <objects>
-                <viewController id="0Px-hP-tef" customClass="StartRoutineViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0Px-hP-tef" customClass="StartRoutineViewController" customModule="_min_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dZh-k5-VRl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -259,7 +259,7 @@
         <!--Gif View Controller-->
         <scene sceneID="ObZ-WS-eY0">
             <objects>
-                <viewController id="JFI-u9-rpU" customClass="GifViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JFI-u9-rpU" customClass="GifViewController" customModule="_min_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Khh-iB-dsT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -378,7 +378,7 @@
         <!--Workout Complete View Controller-->
         <scene sceneID="7k6-V3-oh2">
             <objects>
-                <viewController id="R1E-v5-7pn" customClass="WorkoutCompleteViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="R1E-v5-7pn" customClass="WorkoutCompleteViewController" customModule="_min_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pGn-BT-Etx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -500,7 +500,7 @@
                                     <action selector="done:" destination="R1E-v5-7pn" eventType="touchUpInside" id="Bu4-iv-6yp"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EBr-2P-ubm" customClass="Balloon" customModule="_M_Workout" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EBr-2P-ubm" customClass="Balloon" customModule="_min_Workout" customModuleProvider="target">
                                 <rect key="frame" x="171" y="356" width="72" height="183"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

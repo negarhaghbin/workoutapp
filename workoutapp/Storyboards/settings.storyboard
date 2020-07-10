@@ -10,7 +10,7 @@
         <!--Settings-->
         <scene sceneID="2Ed-R3-lqh">
             <objects>
-                <tableViewController id="LKD-4Z-I2O" customClass="SettingsTableViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="LKD-4Z-I2O" customClass="SettingsTableViewController" customModule="_min_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="3H9-tY-5uO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -288,7 +288,15 @@
                     <navigationItem key="navigationItem" title="Settings" id="LaY-kH-tcx"/>
                     <connections>
                         <outlet property="activitySwitch" destination="nZ2-hh-mHh" id="4Zn-ts-kW4"/>
+                        <outlet property="locationSwitch" destination="aQs-FU-gRg" id="Ahd-OP-n5l"/>
                         <outlet property="restLabel" destination="MDP-uQ-Q9o" id="yS3-h5-vXl"/>
+                        <outlet property="sendAfterCell" destination="tra-1Q-lAU" id="1zQ-LX-i3N"/>
+                        <outlet property="sendAfterTime" destination="WrD-a9-aPV" id="ttb-bs-mba"/>
+                        <outlet property="sendAfterTitleLabel" destination="SRU-UI-uYZ" id="1pQ-E8-xgj"/>
+                        <outlet property="sendOnTitleLabel" destination="jp6-g0-ozQ" id="EKK-Wh-tP4"/>
+                        <outlet property="setTimeCell" destination="b5u-4T-Hu4" id="x8u-VV-8hT"/>
+                        <outlet property="timeLabel" destination="Ydx-Hu-8P5" id="2vP-4g-Vp2"/>
+                        <outlet property="timeSwitch" destination="Amt-Vj-dn1" id="Qii-TF-A4c"/>
                         <outlet property="userName" destination="nch-ML-IcU" id="3LS-b8-4Tm"/>
                     </connections>
                 </tableViewController>
@@ -299,7 +307,7 @@
         <!--Edit-->
         <scene sceneID="VqZ-9t-j92">
             <objects>
-                <tableViewController id="1lE-g2-9EJ" customClass="NameTableViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="1lE-g2-9EJ" customClass="NameTableViewController" customModule="_min_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="cJk-Gc-KBQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -354,7 +362,7 @@
         <!--Activity View Controller-->
         <scene sceneID="zKK-8g-WUL">
             <objects>
-                <viewController id="gGq-yw-V9r" customClass="ActivityViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gGq-yw-V9r" customClass="ActivityViewController" customModule="_min_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nco-FZ-Ey3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -363,7 +371,7 @@
                                 <rect key="frame" x="0.0" y="91" width="414" height="766"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="HistoryCellIdentifier" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="HistoryCellIdentifier" rowHeight="164" id="bh6-nt-p9f" customClass="HistoryTableViewCell" customModule="_M_Workout" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="HistoryCellIdentifier" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="HistoryCellIdentifier" rowHeight="164" id="bh6-nt-p9f" customClass="HistoryTableViewCell" customModule="_min_Workout" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="164"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bh6-nt-p9f" id="GLR-ao-4bk">
@@ -468,7 +476,7 @@
         <!--Notification Interactions-->
         <scene sceneID="gaZ-PH-OOa">
             <objects>
-                <viewController id="et5-1u-Z5M" customClass="InteractionTableViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="et5-1u-Z5M" customClass="InteractionTableViewController" customModule="_min_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uCp-fE-7sa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -477,7 +485,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="InteractionTableCell" rowHeight="64" id="tgU-ic-iyO" customClass="InteractionTableViewCell" customModule="_M_Workout" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="InteractionTableCell" rowHeight="64" id="tgU-ic-iyO" customClass="InteractionTableViewCell" customModule="_min_Workout" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tgU-ic-iyO" id="7il-uE-x5H">

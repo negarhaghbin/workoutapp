@@ -23,6 +23,7 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         Badge.update{()->() in
             notAchieved = Badge.getNotAchieved()
             achieved = Badge.getAchieved()
@@ -69,6 +70,7 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "achCell", for: indexPath) as? AchievementsTableViewCell{
+//            cell.progressBar.tag = Int("\(indexPath.section)\(indexPath.row)")!
             switch indexPath.section {
             case ACHIEVED_SECTION:
                 cell.title.text = achieved[indexPath.row].title
