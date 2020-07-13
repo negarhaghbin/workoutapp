@@ -97,7 +97,6 @@ class GifViewController: UIViewController {
         
         runTimer()
         totalProgress.progress = 0.0
-        totalProgress.transform = totalProgress.transform.scaledBy(x: 1, y: 10)
         PB.create(view: self.view, duration: self.exerciseSeconds)
         
     }

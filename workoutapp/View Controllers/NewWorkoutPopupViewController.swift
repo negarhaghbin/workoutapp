@@ -72,6 +72,7 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         self.dismissKey()
+        boxTitle.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
         if dateLabel.text == "Label"{
             dateLabel.text = Date().makeDateString()
         }

@@ -308,18 +308,26 @@
                                     <action selector="quitRoutine:" destination="JFI-u9-rpU" eventType="touchUpInside" id="sjI-Po-OCk"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QWo-tf-Jxr">
-                                <rect key="frame" x="20" y="676.5" width="374" height="2"/>
+                            <progressView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QWo-tf-Jxr">
+                                <rect key="frame" x="20" y="658.5" width="374" height="20"/>
                                 <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="jGh-xe-JmE"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzh-jf-Cn3">
-                                <rect key="frame" x="20" y="649" width="374" height="19.5"/>
+                                <rect key="frame" x="20" y="631" width="374" height="19.5"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next: Crunches" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGx-5l-FB0">
-                                <rect key="frame" x="20" y="618.5" width="374" height="22.5"/>
+                                <rect key="frame" x="20" y="600.5" width="374" height="22.5"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -384,7 +392,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="party.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vl0-QK-1Pr">
-                                <rect key="frame" x="-1" y="-90" width="414" height="362.5"/>
+                                <rect key="frame" x="-1" y="-70" width="414" height="362.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0G-PN-qC2">
                                 <rect key="frame" x="86.5" y="359.5" width="34" height="32.5"/>
@@ -523,7 +531,7 @@
                             <constraint firstItem="Vl0-QK-1Pr" firstAttribute="height" secondItem="ZFH-w8-hde" secondAttribute="height" multiplier="0.5" id="ZxR-Xh-dba"/>
                             <constraint firstItem="m0v-eW-QcP" firstAttribute="centerY" secondItem="pGn-BT-Etx" secondAttribute="centerY" constant="-30" id="dhi-x6-hma"/>
                             <constraint firstItem="x0G-PN-qC2" firstAttribute="centerX" secondItem="pGn-BT-Etx" secondAttribute="centerX" multiplier="0.5" id="fEc-Qh-O36"/>
-                            <constraint firstItem="Vl0-QK-1Pr" firstAttribute="top" secondItem="pGn-BT-Etx" secondAttribute="top" constant="-90" id="ftg-XF-e0S"/>
+                            <constraint firstItem="Vl0-QK-1Pr" firstAttribute="top" secondItem="pGn-BT-Etx" secondAttribute="top" constant="-70" id="ftg-XF-e0S"/>
                             <constraint firstItem="476-7j-X8C" firstAttribute="top" secondItem="mJZ-OD-ZsC" secondAttribute="bottom" constant="40" id="icz-cV-awB"/>
                             <constraint firstItem="mJZ-OD-ZsC" firstAttribute="centerX" secondItem="pGn-BT-Etx" secondAttribute="centerX" id="mcv-Pk-ZTK"/>
                             <constraint firstItem="476-7j-X8C" firstAttribute="centerX" secondItem="pGn-BT-Etx" secondAttribute="centerX" id="oRu-2t-Zaj"/>
