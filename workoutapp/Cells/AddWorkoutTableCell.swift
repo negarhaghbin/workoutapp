@@ -10,6 +10,7 @@ import UIKit
 
 class AddWorkoutTableCell: UITableViewCell {
     
+    @IBOutlet weak var addNewWorkout: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var previewImageView: UIImageView!
 

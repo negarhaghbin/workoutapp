@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="SGK-C8-KRM">
-                                <rect key="frame" x="0.0" y="183" width="414" height="713"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="sectionIndexBackgroundColor" red="0.96470588239999999" green="0.090196078430000007" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="addWorkoutCell" rowHeight="150" id="KoN-PE-w82" customClass="AddWorkoutTableCell" customModule="_min_Workout" customModuleProvider="target">
@@ -26,6 +26,27 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMn-aA-3TI">
+                                                    <rect key="frame" x="0.0" y="37.5" width="374" height="75"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="75" id="UhB-Aa-D2H"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                    <color key="tintColor" red="0.96470588239999999" green="0.31372549020000001" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="   Add New Workout" image="plus" catalog="system">
+                                                        <color key="titleColor" red="0.96470588239999999" green="0.31372549020000001" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <segue destination="IZB-b6-2JE" kind="presentation" identifier="newWorkout" modalPresentationStyle="overCurrentContext" id="VAw-oe-zni"/>
+                                                    </connections>
+                                                </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bend-and-twist.gif" translatesAutoresizingMaskIntoConstraints="NO" id="cn3-kg-SiK" userLabel="previewImageView">
                                                     <rect key="frame" x="20" y="5" width="149.5" height="140"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -41,17 +62,22 @@
                                                 <constraint firstItem="5FT-GI-EPZ" firstAttribute="trailing" secondItem="v5r-co-E6N" secondAttribute="trailingMargin" id="64Q-3c-cbQ"/>
                                                 <constraint firstItem="cn3-kg-SiK" firstAttribute="width" secondItem="v5r-co-E6N" secondAttribute="width" multiplier="0.4" id="8Mh-hU-0oy"/>
                                                 <constraint firstItem="cn3-kg-SiK" firstAttribute="centerY" secondItem="v5r-co-E6N" secondAttribute="centerY" id="CT3-AG-un4"/>
+                                                <constraint firstAttribute="trailing" secondItem="GMn-aA-3TI" secondAttribute="trailing" id="OsB-8V-9Rm"/>
+                                                <constraint firstItem="GMn-aA-3TI" firstAttribute="centerX" secondItem="v5r-co-E6N" secondAttribute="centerX" id="S9J-yF-Ywg"/>
                                                 <constraint firstItem="5FT-GI-EPZ" firstAttribute="top" secondItem="v5r-co-E6N" secondAttribute="topMargin" constant="37" id="US9-NP-ZJz"/>
+                                                <constraint firstItem="GMn-aA-3TI" firstAttribute="centerY" secondItem="v5r-co-E6N" secondAttribute="centerY" id="WQt-mu-run"/>
                                                 <constraint firstItem="cn3-kg-SiK" firstAttribute="leading" secondItem="v5r-co-E6N" secondAttribute="leadingMargin" id="cLG-k5-WLR"/>
                                                 <constraint firstItem="5FT-GI-EPZ" firstAttribute="leading" secondItem="cn3-kg-SiK" secondAttribute="trailing" constant="8" id="gR5-Ef-xSV"/>
                                                 <constraint firstItem="cn3-kg-SiK" firstAttribute="top" secondItem="v5r-co-E6N" secondAttribute="top" constant="5" id="hJb-5c-gii"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="5FT-GI-EPZ" secondAttribute="bottom" constant="36" id="hih-3d-ztp"/>
+                                                <constraint firstItem="GMn-aA-3TI" firstAttribute="leading" secondItem="v5r-co-E6N" secondAttribute="leading" id="pfA-kw-AUm"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="VideoTableViewCell" label="VideoTableViewCell">
                                             <bool key="isElement" value="YES"/>
                                         </accessibility>
                                         <connections>
+                                            <outlet property="addNewWorkout" destination="GMn-aA-3TI" id="qjt-1Q-KK0"/>
                                             <outlet property="previewImageView" destination="cn3-kg-SiK" id="Bv6-G8-le2"/>
                                             <outlet property="titleLabel" destination="5FT-GI-EPZ" id="M1O-4I-hw5"/>
                                             <segue destination="IZB-b6-2JE" kind="presentation" identifier="oldWorkout" modalPresentationStyle="overCurrentContext" id="CTW-zQ-tca"/>
@@ -63,36 +89,12 @@
                                     <outlet property="delegate" destination="zbN-l6-OD8" id="KYM-Hd-85w"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMn-aA-3TI">
-                                <rect key="frame" x="20" y="108" width="374" height="75"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="UhB-Aa-D2H"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                <color key="tintColor" red="0.96470588239999999" green="0.31372549020000001" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="   Add New Workout" image="plus" catalog="system">
-                                    <color key="titleColor" red="0.96470588239999999" green="0.31372549020000001" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="IZB-b6-2JE" kind="presentation" modalPresentationStyle="overCurrentContext" id="XOl-IK-swy"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="SGK-C8-KRM" secondAttribute="bottom" id="04h-PM-N9a"/>
-                            <constraint firstItem="GMn-aA-3TI" firstAttribute="top" secondItem="KEK-8t-sKx" secondAttribute="top" constant="20" id="IFj-2s-BdO"/>
+                            <constraint firstItem="SGK-C8-KRM" firstAttribute="top" secondItem="KEK-8t-sKx" secondAttribute="top" id="1JC-Vx-2RX"/>
                             <constraint firstItem="KEK-8t-sKx" firstAttribute="trailing" secondItem="SGK-C8-KRM" secondAttribute="trailing" id="KIr-wb-6Gu"/>
-                            <constraint firstItem="GMn-aA-3TI" firstAttribute="leading" secondItem="SGK-C8-KRM" secondAttribute="leadingMargin" id="Wr8-8e-ib7"/>
-                            <constraint firstItem="SGK-C8-KRM" firstAttribute="top" secondItem="GMn-aA-3TI" secondAttribute="bottom" id="nP5-lm-2pM"/>
-                            <constraint firstItem="GMn-aA-3TI" firstAttribute="trailing" secondItem="SGK-C8-KRM" secondAttribute="trailingMargin" id="x0n-tU-tVX"/>
                             <constraint firstItem="SGK-C8-KRM" firstAttribute="leading" secondItem="KEK-8t-sKx" secondAttribute="leading" id="yqL-cP-d2u"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KEK-8t-sKx"/>
@@ -331,7 +333,7 @@
                         <outlet property="dateLabel" destination="Jgh-qS-pbH" id="k4t-vw-Aia"/>
                         <outlet property="datePicker" destination="GLu-Ww-BSM" id="Cov-8G-kcz"/>
                         <outlet property="durationLabel" destination="UZH-dz-Ncy" id="fxm-W1-eaq"/>
-                        <outlet property="durationPicker" destination="1Ir-8N-q0O" id="q40-qh-jMA"/>
+                        <outlet property="durationPicker" destination="1Ir-8N-q0O" id="eFu-2n-7tu"/>
                         <outlet property="nameField" destination="YL3-Fw-wT3" id="Cxz-XM-hjN"/>
                         <outlet property="nameLabelLabel" destination="O4b-jX-iyZ" id="gxT-Wn-82V"/>
                         <outlet property="pickerBackground" destination="F8g-H5-MUA" id="7HK-cP-HOa"/>
@@ -494,7 +496,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="CTW-zQ-tca"/>
+        <segue reference="VAw-oe-zni"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bend-and-twist.gif" width="304" height="336"/>

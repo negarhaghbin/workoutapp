@@ -137,7 +137,7 @@ func addPickerLabels(picker: UIPickerView, vc: UIViewController){
     let componentWidth: CGFloat = CGFloat(vc.view.frame.width) / CGFloat(picker.numberOfComponents)
     var y = CGFloat(picker.frame.height/2) - (fontSize/2)
     if vc is NewWorkoutPopupViewController{
-        y = CGFloat(vc.view.frame.height)*0.145 - (fontSize)
+        y = CGFloat(vc.view.frame.height)*0.15 - (fontSize)
     }
 
     let label1 = UILabel(frame: CGRect(x: componentWidth * 0.65, y: y, width: componentWidth * 0.4, height: fontSize))

@@ -25,6 +25,7 @@ class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.estimatedRowHeight = 100
+        tabBarController?.tabBar.isHidden = false
         diariesDict = DiaryItem.getWithDate()
         steps = Step.getWithDate()
         if diariesDict.count > steps.count{
