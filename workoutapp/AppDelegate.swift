@@ -170,6 +170,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
+        let LocalAppSettings = notificationSettings.getSettings()
         
         let ACTIVITY_TAB_INDEX = 2
 
@@ -190,6 +191,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         switch response.actionIdentifier {
         case NotificationActionID.notToday.rawValue:
+            LocalAppSettings.setNotFeelingItOn(date: Date())
             center.removeAllPendingNotificationRequests()
             break
                
@@ -235,6 +237,9 @@ extension AppDelegate: CLLocationManagerDelegate {
         
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         let LocalAppSettings = notificationSettings.getSettings()
+        if !LocalAppSettings.doesFeelingItOn(date: Date()){
+            return
+        }
         if  DiaryItem.hasBeenActiveEnoughInTotal(){
             notificationSettings.cancelNotification(identifier: Notification.Activity.rawValue)
         }

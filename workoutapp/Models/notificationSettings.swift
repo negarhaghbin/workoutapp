@@ -25,6 +25,7 @@ class notificationSettings: Object {
     @objc dynamic var locationSendAfter : Int = 15*60 //minutes
     @objc dynamic var timeBool : Bool = true
     @objc dynamic var time : String = "8:00"
+    @objc dynamic var notFeelingItOn : String = ""
 
     func setTime(value: String){
         let realm = try! Realm()
@@ -37,6 +38,22 @@ class notificationSettings: Object {
         let realm = try! Realm()
         try! realm.write {
             self.locationSendAfter = value
+        }
+    }
+    
+    func setNotFeelingItOn(date: Date){
+        let realm = try! Realm()
+        try! realm.write {
+            self.notFeelingItOn = date.makeDateString()
+        }
+    }
+    
+    func doesFeelingItOn(date: Date)->Bool{
+        if date.makeDateString() == notFeelingItOn{
+            return false
+        }
+        else{
+            return true
         }
     }
     
