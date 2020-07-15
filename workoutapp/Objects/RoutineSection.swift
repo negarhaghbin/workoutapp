@@ -52,7 +52,7 @@ class RoutineSection: NSObject {
         var equipmentsString = ""
         let equipments = self.getEquipments()
         if (equipments == []){
-            equipmentsString = "No Equipments"
+            equipmentsString = "No Equipment"
         }
         else{
             var temp = ""
