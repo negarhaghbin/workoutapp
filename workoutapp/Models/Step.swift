@@ -130,13 +130,15 @@ class Step: Object {
     
     private class func updateStepDB(date: Date, steps: Int){
         let realm = try! Realm()
-        if let step = realm.object(ofType: Step.self, forPrimaryKey: date.makeDateString()){
+        let dateString = date.makeDateString()
+        if let step = realm.object(ofType: Step.self, forPrimaryKey: dateString){
             try! realm.write {
                 step.count = steps
             }
         }
         else{
-               Step(dateString: date.makeDateString(), count: steps).add()
+            let step = Step(dateString: dateString, count: steps)
+            step.add()
         }
     }
     

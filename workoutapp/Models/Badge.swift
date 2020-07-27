@@ -327,9 +327,9 @@ class Badge: Object {
     func getProgressBetween0and1()->(Float,String){
         var progressInNumber = Float(0.0)
         var progressInString = "0"
-        if duration?.countPerSet == 0{
-            if duration?.durationInSeconds == 0{
-                if duration?.streak == 0{
+        if duration?.countPerSet == -1{
+            if duration?.durationInSeconds == -1{
+                if duration?.streak == -1{
                     print("unknown progress!!")
                 }
                 else{

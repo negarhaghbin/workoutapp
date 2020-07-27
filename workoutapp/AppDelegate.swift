@@ -173,17 +173,18 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         let LocalAppSettings = notificationSettings.getSettings()
         
         let ACTIVITY_TAB_INDEX = 2
-
-        let interaction = Interaction(identifier: response.notification.request.identifier)
+        
+        let notificationID = response.notification.request.identifier
+        let interaction = Interaction(identifier: notificationID)
         interaction.add()
         
-        Badge.achieved(notificationID: response.notification.request.identifier)
+        Badge.achieved(notificationID: notificationID)
         
         
         let storyboard = UIStoryboard(name: "NotificationLaunch", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "NotificationStoryboard") as! NotificationLauncherViewController
         vc.interaction = interaction
-        if response.notification.request.identifier == Notification.Activity.rawValue {
+        if notificationID == Notification.Activity.rawValue {
             vc.nextViewControllerTabIndex = ACTIVITY_TAB_INDEX
         }
         
