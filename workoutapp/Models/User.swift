@@ -13,7 +13,7 @@ class User: Object {
     @objc dynamic var name = ""
     @objc dynamic var uuid : String = UUID().uuidString
     @objc dynamic var restDuration : Int = 20
-    @objc dynamic var streak : Int = 0
+    @objc dynamic var streak : Int = 1
     @objc dynamic var lastLogin : String = {
         return Date().makeDateString()
     }()

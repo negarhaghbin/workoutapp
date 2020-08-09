@@ -56,7 +56,7 @@ class Step: Object {
     
     class func askAuthorization(completion: () -> ()){
         if HKHealthStore.isHealthDataAvailable() {
-            let stepsCount = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!
+            let stepsCount = HKObjectType.quantityType(forIdentifier: .stepCount)!
 
             healthStore.requestAuthorization(toShare: [], read: [stepsCount]) { (success, error) in
                 if success {
@@ -91,12 +91,16 @@ class Step: Object {
     }
     
     class func update(){
-        let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
-        let (start, end) = Date().getWholeDate()
+        guard let stepCountType = HKObjectType.quantityType(forIdentifier: .stepCount) else {
+            // This should never fail when using a defined constant.
+            fatalError("*** Unable to get the step count type ***")
+        }
+//        let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
+//        let (start, end) = Date().getWholeDate()
+//
+//        let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
 
-        let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
-
-        let query = HKObserverQuery(sampleType: stepsQuantityType, predicate: predicate) { (query, completionHandler, errorOrNil) in
+        let query = HKObserverQuery(sampleType: stepCountType, predicate: nil) { (query, completionHandler, errorOrNil) in
             if let error = errorOrNil {
                 print("not authorized: \(error)")
                 return
@@ -115,7 +119,7 @@ class Step: Object {
         let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
         let (start, end) = Date().getWholeDate()
 
-        let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
+        let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: [])
 
         let query = HKStatisticsQuery(quantityType: stepsQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
             guard let result = result, let sum = result.sumQuantity() else {
