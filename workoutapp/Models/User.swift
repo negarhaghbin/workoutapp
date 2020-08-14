@@ -38,6 +38,18 @@ class User: Object {
         UserDefaults.standard.set(self.uuid, forKey: "uuid")
     }
     
+    func changeName(newName: String){
+        let realm = try! Realm()
+        try! realm.write {
+            self.name = newName
+        }
+    }
+    
+    class func getUser(uuid: String)->User{
+        let realm=try! Realm()
+        return realm.object(ofType: User.self, forPrimaryKey: uuid)!
+    }
+    
     func setRestDuration(rd: Int){
         let realm = try! Realm()
         try! realm.write {

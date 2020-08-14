@@ -47,7 +47,9 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if isNewUser(){
-            askName()
+            self.user = User(n: "Awsome me")
+            self.user!.add()
+            showWalkthrough()
         }
         else{
             let u = realm.object(ofType: User.self, forPrimaryKey: UserDefaults.standard.string(forKey: "uuid"))!
@@ -85,40 +87,12 @@ class WelcomeViewController: UIViewController {
         }
         return true
     }
-            
-        
-    func askName(){
-        let alert = UIAlertController(title: "What's your name?", message: nil, preferredStyle: .alert)
-          
-        let saveAction = UIAlertAction(title: "Save", style: .default, handler: { action in
-            if let name = alert.textFields?.first?.text {
-                self.user = User(n: name)
-                self.user?.add()
-            }
-        })
-        saveAction.isEnabled = false
-        
-        alert.addTextField(configurationHandler: { textField in
-            textField.placeholder = "Awsome me"
-            
-            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using:
-                {_ in
-                    let textCount = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
-                    let textIsNotEmpty = textCount > 0
-                    
-                    saveAction.isEnabled = textIsNotEmpty
-                
-            })
-        })
-            
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
-            self.user = User(n: "Awsome me")
-            self.user!.add()
-        }))
-
-        alert.addAction(saveAction)
-            
-        present(alert, animated: true)
+    
+    func showWalkthrough(){
+        let storyboard = UIStoryboard(name: "Walkthrough", bundle: nil)
+        if let walkthroughViewController = storyboard.instantiateViewController(identifier: "WalkthroughViewController") as? WalkthroughViewController{
+            present(walkthroughViewController, animated: true, completion: nil)
+        }
     }
 
 }

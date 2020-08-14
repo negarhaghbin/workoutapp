@@ -52,7 +52,6 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     private func refreshUI(){
         loadView()
         boxTitle.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
-        datePicker.maximumDate = Date()
         nameField.text = diaryItem?.exercise?.name
         typeLabel.text = diaryItem?.exercise?.type
         dateLabel.text = diaryItem?.dateString
@@ -93,6 +92,7 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
             typeLabelLabel.isEnabled = false
             typeLabelLabel.isUserInteractionEnabled = false
         }
+        datePicker.maximumDate = Date()
         
     }
     
