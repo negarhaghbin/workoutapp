@@ -14,7 +14,6 @@ class WalkthroughContentViewController: UIViewController {
     @IBOutlet weak var contentImageView: UIImageView!
     
     @IBOutlet weak var viewWithImage: UIView!
-    @IBOutlet weak var textField: UITextField!
     var index = 0
     var heading = ""
     var subHeading = ""
@@ -34,11 +33,9 @@ class WalkthroughContentViewController: UIViewController {
         case 0...SET_NAME_INDEX-1:
             subheadingLabel.isHidden = false
             viewWithImage.isHidden = false
-            textField.isHidden = true
         case SET_NAME_INDEX:
             subheadingLabel.isHidden = true
-//            viewWitrhImage.isHidden = true
-            textField.isHidden = false
+            viewWithImage.isHidden = false
         default:
             break
         }

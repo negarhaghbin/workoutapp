@@ -18,9 +18,9 @@ class WalkthroughViewController: UIViewController {
     }
     
     @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet weak var textField: UITextField!
     
     var walkthroughPageViewController : WalkthroughPageViewController?
-    var textField : UITextField?
     
     let SET_NAME_INDEX = 3
      
@@ -28,6 +28,13 @@ class WalkthroughViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print()
+        if walkthroughPageViewController?.currentIndex == SET_NAME_INDEX{
+            
+        }
     }
     
     @IBAction func skipButtonTapped(_ sender: Any) {
@@ -59,19 +66,25 @@ class WalkthroughViewController: UIViewController {
                 nextButton.isEnabled = true
                 nextButton.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.3137254902, blue: 0.6666666667, alpha: 1)
                 skipButton.isHidden = false
+                textField.isHidden = true
             case SET_NAME_INDEX:
                 nextButton.setTitle("SAVE", for: .normal)
                 nextButton.backgroundColor = UIColor.systemGray3
                 nextButton.isEnabled = false
                 skipButton.isHidden = false
-                textField = walkthroughPageViewController!.contentViewController(at: index)?.textField
+                textField.isHidden = false
                 NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using:
                 {_ in
                     let textCount = self.textField!.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
                     let textIsNotEmpty = textCount > 0
-                    
+
                     self.nextButton.isEnabled = textIsNotEmpty
+                    if self.nextButton.isEnabled{
+                        self.nextButton.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.3137254902, blue: 0.6666666667, alpha: 1)
+                    }
+                    
                 })
+                
             default:
                 nextButton.setTitle("GET STARTED", for: .normal)
                 nextButton.isEnabled = true
@@ -83,12 +96,8 @@ class WalkthroughViewController: UIViewController {
     }
     
     func saveName(){
-        if let contentViewController = walkthroughPageViewController?.contentViewController(at: SET_NAME_INDEX){
-            if let name = contentViewController.textField.text {
-                let specificPerson = User.getUser(uuid: UserDefaults.standard.string(forKey: "uuid")!)
-                specificPerson.changeName(newName: name)
-            }
-        }
+        let specificPerson = User.getUser(uuid: UserDefaults.standard.string(forKey: "uuid")!)
+        specificPerson.changeName(newName: textField.text!)
     }
 
     // MARK: - Navigation
