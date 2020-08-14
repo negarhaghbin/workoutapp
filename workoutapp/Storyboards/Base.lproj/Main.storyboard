@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wlM-Va-bSp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wlM-Va-bSp">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="showExercise" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="showExercise" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="_min_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,13 +126,13 @@
         <!--Workout List-->
         <scene sceneID="pyw-Py-3OA">
             <objects>
-                <tableViewController id="eo6-In-mNI" customClass="TableViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="eo6-In-mNI" customClass="TableViewController" customModule="_min_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="kmC-3Y-nCv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="sectionIndexBackgroundColor" red="0.96470588239999999" green="0.090196078430000007" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="VideoTableViewCell" rowHeight="150" id="mOP-Hk-Dvi" customClass="VideoTableViewCell" customModule="_M_Workout" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="VideoTableViewCell" rowHeight="150" id="mOP-Hk-Dvi" customClass="VideoTableViewCell" customModule="_min_Workout" customModuleProvider="target">
                                 <rect key="frame" x="16" y="55.333332061767578" width="343" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mOP-Hk-Dvi" id="MZR-U0-4I4">
@@ -185,7 +185,7 @@
         <!--Workouts-->
         <scene sceneID="F7d-TW-O3O">
             <objects>
-                <splitViewController id="JT7-yW-amM" customClass="SplitViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="JT7-yW-amM" customClass="SplitViewController" customModule="_min_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Workouts" image="list.bullet" catalog="system" id="Htf-Gz-FHu"/>
                     <connections>
                         <segue destination="Cuu-zk-aUk" kind="relationship" relationship="detailViewController" id="2Z3-Rn-cqb"/>
@@ -199,7 +199,7 @@
         <!--Home-->
         <scene sceneID="cvK-bn-i60">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vLV-w9-cbn" customClass="NavViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vLV-w9-cbn" customClass="NavViewController" customModule="_min_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="ui2-GX-did"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="P4z-mc-X6m">
@@ -247,7 +247,7 @@
         <!--Welcome View Controller-->
         <scene sceneID="2KU-ub-ZbZ">
             <objects>
-                <viewController id="PF0-BN-kHv" userLabel="Welcome View Controller" customClass="WelcomeViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PF0-BN-kHv" userLabel="Welcome View Controller" customClass="WelcomeViewController" customModule="_min_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fes-sU-SvI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -271,7 +271,7 @@
                                 <color key="textColor" white="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtT-fi-8FU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--Elbert Hubbard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtT-fi-8FU">
                                 <rect key="frame" x="20" y="593.33333333333337" width="335" height="19.666666666666629"/>
                                 <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="15"/>
                                 <color key="textColor" white="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -318,7 +318,7 @@
         <!--Consent View Controller-->
         <scene sceneID="Waz-OB-16L">
             <objects>
-                <viewController id="ZQ0-fx-zu0" customClass="ConsentViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZQ0-fx-zu0" customClass="ConsentViewController" customModule="_min_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mi2-PC-vke">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -347,7 +347,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="BvI-5f-Bni">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarVCStoryboard" automaticallyAdjustsScrollViewInsets="NO" id="wlM-Va-bSp" customClass="TabBarViewController" customModule="_M_Workout" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarVCStoryboard" automaticallyAdjustsScrollViewInsets="NO" id="wlM-Va-bSp" customClass="TabBarViewController" customModule="_min_Workout" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ujl-bV-9ME">

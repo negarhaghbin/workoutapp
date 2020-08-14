@@ -15,9 +15,9 @@ protocol WalkthroughPageViewControllerDelegate: class {
 class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     weak var walkthroughDelegate: WalkthroughPageViewControllerDelegate?
-    var pageHeadings = ["GET DAILY REMINDERS", "KEEP A WORKOUT DIARY", "EARN BADGES", "What should I call you?"]
-    var pageSubheadings = ["Set notifications setting for 3 types of reminders.", "Write down your workout diary at the end of each day.", "Collect badges after reaching a new level of interaction with 5 mins!",""]
-    var pageImages = ["notifications.png","diary.png","badges.png","nameImage.png"]
+    var pageHeadings = ["GET DAILY REMINDERS", "KEEP A WORKOUT DIARY", "EARN BADGES", "WHAT SHOULD I CALL YOU?", "TIME BASED REMINDERS", "LOCATION BASED REMINDERS", "ARE YOU READY?"]
+    var pageSubheadings = ["Set notifications for 3 types of reminders.", "Write down your workout diary at the end of each day.", "Collect badges after reaching a new level of interaction with 5 mins!","", "It is recommended to do exercises at the same time everyday.", "How long after entering your usual place for starting 5 mins workout routines you want to be reminded to start working out?", "You can always change notification preference in settings."]
+    var pageImages = ["notifications.png","diary.png","badges.png","nameImage.png","","","start.png"]
     
     var currentIndex = 0
 

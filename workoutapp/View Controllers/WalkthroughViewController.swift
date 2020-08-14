@@ -19,26 +19,25 @@ class WalkthroughViewController: UIViewController {
     
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     var walkthroughPageViewController : WalkthroughPageViewController?
+    var datePickerValue = ""
+    var appSettings : notificationSettings = notificationSettings()
+    let dateFormatter = DateFormatter()
     
     let SET_NAME_INDEX = 3
+    let SEND_ON_INDEX = 4
+    let SEND_AFTER_INDEX = 5
      
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print()
-        if walkthroughPageViewController?.currentIndex == SET_NAME_INDEX{
-            
-        }
+        dateFormatter.dateFormat = "HH:mm"
+        datePickerValue = dateFormatter.string(from: Date())
+        datePicker.addTarget(self, action: #selector(self.handleDatePicker(sender:)), for: .valueChanged)
     }
     
     @IBAction func skipButtonTapped(_ sender: Any) {
-        //UserDefaults.standard.set(true, forKey: "hasViewedWalkthrough")
         dismiss(animated: true, completion: nil)
     }
     
@@ -47,15 +46,53 @@ class WalkthroughViewController: UIViewController {
             switch index {
             case 0...SET_NAME_INDEX-1:
                 walkthroughPageViewController?.forwardPage()
+                
             case SET_NAME_INDEX:
                 saveName()
                 walkthroughPageViewController?.forwardPage()
+            
+            case SEND_ON_INDEX:
+                updateSendOn()
+                walkthroughPageViewController?.forwardPage()
+                
+            case SEND_AFTER_INDEX:
+                updateSendAfter()
+                walkthroughPageViewController?.forwardPage()
+                
             default:
                 //UserDefaults.standard.set(true, forKey: "hasViewedWalkthrough")
                 dismiss(animated: true, completion: nil)
             }
         }
         updateUI()
+    }
+    
+    @objc func handleDatePicker(sender: UIDatePicker) {
+        if let index = walkthroughPageViewController?.currentIndex{
+            switch index {
+            case SEND_ON_INDEX:
+                datePicker.date = sender.date
+                datePickerValue = dateFormatter.string(from: sender.date)
+                
+            case SEND_AFTER_INDEX:
+                datePicker.countDownDuration = sender.countDownDuration
+                datePickerValue = MinutesToString(time: Int(sender.countDownDuration))
+                
+            default:
+                break
+            }
+        }
+    }
+    
+    func updateSendOn(){
+        appSettings = notificationSettings.getSettings()
+        appSettings.setTime(value: datePickerValue)
+        appSettings.setUpTimeNotification()
+    }
+    
+    func updateSendAfter(){
+        appSettings = notificationSettings.getSettings()
+        appSettings.setSendAfter(value: Int(datePicker.countDownDuration))
     }
     
     func updateUI(){
@@ -67,6 +104,8 @@ class WalkthroughViewController: UIViewController {
                 nextButton.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.3137254902, blue: 0.6666666667, alpha: 1)
                 skipButton.isHidden = false
                 textField.isHidden = true
+                datePicker.isHidden = true
+            
             case SET_NAME_INDEX:
                 nextButton.setTitle("SAVE", for: .normal)
                 nextButton.backgroundColor = UIColor.systemGray3
@@ -77,19 +116,37 @@ class WalkthroughViewController: UIViewController {
                 {_ in
                     let textCount = self.textField!.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
                     let textIsNotEmpty = textCount > 0
-
                     self.nextButton.isEnabled = textIsNotEmpty
                     if self.nextButton.isEnabled{
                         self.nextButton.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.3137254902, blue: 0.6666666667, alpha: 1)
                     }
-                    
                 })
-                
+                datePicker.isHidden = true
+            
+            case SEND_ON_INDEX:
+                nextButton.setTitle("SAVE", for: .normal)
+                nextButton.isEnabled = true
+                nextButton.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.3137254902, blue: 0.6666666667, alpha: 1)
+                skipButton.isHidden = false
+                textField.isHidden = true
+                datePicker.isHidden = false
+                datePicker.datePickerMode = .time
+            
+            case SEND_AFTER_INDEX:
+                nextButton.setTitle("SAVE", for: .normal)
+                nextButton.isEnabled = true
+                nextButton.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.3137254902, blue: 0.6666666667, alpha: 1)
+                skipButton.isHidden = false
+                textField.isHidden = true
+                datePicker.isHidden = false
+                datePicker.datePickerMode = .countDownTimer
+            
             default:
                 nextButton.setTitle("GET STARTED", for: .normal)
                 nextButton.isEnabled = true
                 nextButton.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.3137254902, blue: 0.6666666667, alpha: 1)
                 skipButton.isHidden = true
+                datePicker.isHidden = true
             }
             pageControl.currentPage = index
         }
