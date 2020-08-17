@@ -17,6 +17,7 @@ class WalkthroughViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -37,8 +38,37 @@ class WalkthroughViewController: UIViewController {
         datePicker.addTarget(self, action: #selector(self.handleDatePicker(sender:)), for: .valueChanged)
     }
     
-    @IBAction func skipButtonTapped(_ sender: Any) {
+    override func viewWillAppear(_ animated: Bool) {
+        self.dismissKey()
+    }
+    
+    @IBAction func closeButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func skipButtonTapped(_ sender: Any) {
+        if let index = walkthroughPageViewController?.currentIndex{
+            switch index {
+            case 0...SET_NAME_INDEX-1:
+                for _ in index...SET_NAME_INDEX-1{
+                    walkthroughPageViewController?.forwardPage()
+                }
+                
+            case SET_NAME_INDEX:
+                walkthroughPageViewController?.forwardPage()
+            
+            case SEND_ON_INDEX:
+                walkthroughPageViewController?.forwardPage()
+                
+            case SEND_AFTER_INDEX:
+                walkthroughPageViewController?.forwardPage()
+                
+            default:
+                //UserDefaults.standard.set(true, forKey: "hasViewedWalkthrough")
+                dismiss(animated: true, completion: nil)
+            }
+        }
+        updateUI()
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {

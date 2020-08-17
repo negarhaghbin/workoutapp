@@ -21,6 +21,17 @@
                                     <segue destination="iXN-dm-wg0" kind="embed" id="0vQ-gV-yWx"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhi-Ai-B0N">
+                                <rect key="frame" x="369" y="64" width="25" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="multiply.circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="43L-50-N4D" eventType="touchUpInside" id="Dbw-Ys-8FS"/>
+                                </connections>
+                            </button>
                             <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="i7j-9j-MYy">
                                 <rect key="frame" x="0.0" y="94" width="414" height="216"/>
                             </datePicker>
@@ -30,14 +41,14 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="r3T-dK-pSz">
                                         <rect key="frame" x="87" y="52" width="240" height="177"/>
                                         <subviews>
-                                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Awesome me" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d7c-8S-WV4">
+                                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Awesome me" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="d7c-8S-WV4">
                                                 <rect key="frame" x="-5" y="-50" width="250" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="9l4-8p-wYQ"/>
                                                     <constraint firstAttribute="height" constant="50" id="d1y-9P-RQ0"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                             </textField>
                                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="Una-CP-sZl">
                                                 <rect key="frame" x="76.5" y="0.0" width="87" height="37"/>
@@ -64,7 +75,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="sdg-7d-LFS"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                                <state key="normal" title="Close">
+                                                <state key="normal" title="Skip">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -88,10 +99,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Ubu-jW-7Jl" firstAttribute="top" secondItem="h8h-uk-OAN" secondAttribute="bottom" id="6fE-yh-4sK"/>
-                            <constraint firstItem="i7j-9j-MYy" firstAttribute="top" secondItem="rce-4h-hVI" secondAttribute="top" constant="50" id="7VP-Vn-6nu"/>
+                            <constraint firstItem="i7j-9j-MYy" firstAttribute="top" secondItem="h8h-uk-OAN" secondAttribute="top" constant="50" id="7VP-Vn-6nu"/>
+                            <constraint firstItem="rce-4h-hVI" firstAttribute="trailing" secondItem="vhi-Ai-B0N" secondAttribute="trailing" constant="20" id="95n-Ok-jJb"/>
                             <constraint firstItem="i7j-9j-MYy" firstAttribute="centerX" secondItem="JOC-H4-Nd0" secondAttribute="centerX" id="EO3-S3-Nll"/>
                             <constraint firstItem="rce-4h-hVI" firstAttribute="trailing" secondItem="Ubu-jW-7Jl" secondAttribute="trailing" id="Eo8-UF-ani"/>
                             <constraint firstItem="rce-4h-hVI" firstAttribute="bottom" secondItem="Ubu-jW-7Jl" secondAttribute="bottom" id="KfU-W1-cEZ"/>
+                            <constraint firstItem="vhi-Ai-B0N" firstAttribute="top" secondItem="rce-4h-hVI" secondAttribute="top" constant="20" id="OyA-Qd-5SJ"/>
                             <constraint firstItem="Ubu-jW-7Jl" firstAttribute="leading" secondItem="rce-4h-hVI" secondAttribute="leading" id="WsK-E0-3EZ"/>
                             <constraint firstItem="rce-4h-hVI" firstAttribute="trailing" secondItem="i7j-9j-MYy" secondAttribute="trailing" id="gf0-Vv-dNN"/>
                             <constraint firstItem="h8h-uk-OAN" firstAttribute="height" secondItem="JOC-H4-Nd0" secondAttribute="height" multiplier="0.6" id="h5N-HA-ckc"/>
@@ -103,6 +116,7 @@
                         <viewLayoutGuide key="safeArea" id="rce-4h-hVI"/>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="vhi-Ai-B0N" id="lv8-aC-g1g"/>
                         <outlet property="datePicker" destination="i7j-9j-MYy" id="2ec-fi-Afs"/>
                         <outlet property="nextButton" destination="nSM-gY-3Bc" id="cDt-XD-Y0x"/>
                         <outlet property="pageControl" destination="Una-CP-sZl" id="ods-dQ-ppz"/>
@@ -214,6 +228,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="multiply.circle" catalog="system" width="128" height="121"/>
         <image name="notifications.png" width="353.51998901367188" height="310.79998779296875"/>
     </resources>
 </document>
