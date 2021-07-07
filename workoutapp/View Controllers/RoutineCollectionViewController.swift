@@ -27,7 +27,7 @@ class RoutineCollectionViewController: UICollectionViewController {
         UIApplication.shared.isIdleTimerDisabled = false
         navigationController?.setNavigationBarHidden(false, animated: false)
         tabBarController?.tabBar.isHidden = false
-        images=Image.loadRoutineSectionHeaders()
+        images=Image.loadRoutineSectionHeaderImages()
         sections = RoutineSection.getCollectionRoutineSections()
     }
     

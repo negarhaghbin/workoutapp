@@ -8,15 +8,10 @@
 
 import UIKit
 
-class Image: NSObject {
+struct Image{
     let url: URL
-
-    init(url: URL) {
-      self.url = url
-      super.init()
-    }
     
-    class func loadRoutineSectionHeaders()->[Image]{
+    static func loadRoutineSectionHeaderImages()->[Image]{
         var images: [Image] = []
         let names = [ "totalBody", "upperBody", "abs", "lowerBody"]
 

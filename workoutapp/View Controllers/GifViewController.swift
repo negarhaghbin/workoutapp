@@ -260,11 +260,19 @@ class GifViewController: UIViewController {
     
     func playSound(name: String, extensionType:String) {
         guard let url = Bundle.main.url(forResource: name, withExtension: extensionType) else { return }
-
+        
         do {
             try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
+            
+//            let utterance = AVSpeechUtterance(string: "Good job")
+//            utterance.voice = AVSpeechSynthesisVoice(identifier: "com.apple.speech.synthesis.voice.Victoria")
+//            utterance.rate = 0.4
+//
+//            let synthesizer = AVSpeechSynthesizer()
+//            synthesizer.speak(utterance)
 
+            
             /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.m4a.rawValue)
 

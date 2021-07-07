@@ -32,17 +32,15 @@
 	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
 	<string>By accessing your health record, this app can add your step counts to diary.</string>
 	<key>NSHealthShareUsageDescription</key>
-	<string>By accessing your health record, this app can tell you if you've been active enough.</string>
+	<string>By accessing your health record, this app can add your step counts to diary.</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>By accessing your health record, this app can tell you if you've been active enough.</string>
+	<string>By accessing your health record, this app can add your step counts to diary.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>By accessing your location, this app can find you a good place to exercise.</string>
 	<key>NSLocationUsageDescription</key>
 	<string>By accessing your location, this app can find you a good place to exercise.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>By accessing your location, this app can find you a good place to exercise.</string>
-	<key>NSMotionUsageDescription</key>
-	<string>In order to know activity I need an access to your pedometer</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
