@@ -9,26 +9,50 @@
 import UIKit
 
 
-class AddWorkoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+class AddWorkoutViewController: UIViewController{
     
+    // MARK: - Outlets
+    @IBOutlet weak var tableView: UITableView!
+
+    // MARK: - Variables
     var sections : [RoutineSection] = RoutineSection.getRoutineSections()
     let cellIdentifier = "addWorkoutCell"
     weak var delegate: ExerciseSelectionDelegate?
     
-    @IBOutlet weak var tableView: UITableView!
-
+    // MARK: - ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
     }
+    
+
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cell = sender as? AddWorkoutTableCell{
+            let indexPath = self.tableView!.indexPath(for: cell)
+            if indexPath?.section != 0 && segue.identifier == "oldWorkout" {
+                let vc = segue.destination as! NewWorkoutPopupViewController
+                let exercise = sections[indexPath!.section-1].exercises[indexPath!.row]
+                let diaryItem = DiaryItem(e: exercise.exercise, d: Duration(durationInSeconds: exercise.durationInSeconds?.durationInSeconds))
+                vc.diaryItem = diaryItem
+            }
+        }
+        else if (sender as? UIButton) != nil{
+            performSegue(withIdentifier: "newWorkout", sender: nil)
+        }
+    }
+}
+
+extension AddWorkoutViewController: UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return (sections.count + 1)
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
             return 1
@@ -57,17 +81,11 @@ class AddWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         if indexPath.section == 0{
-            cell.addNewWorkout.isHidden = false
-            cell.titleLabel.isHidden = true
-            cell.previewImageView.isHidden = true
+            cell.setValues(isWorkout: false)
         }
         else{
-            cell.addNewWorkout.isHidden = true
-            cell.titleLabel.isHidden = false
-            cell.previewImageView.isHidden = false
             let exercise = sections[indexPath.section-1].exercises[indexPath.row]
-            cell.titleLabel.text = exercise.exercise?.name
-            cell.previewImageView.image = UIImage(named: (exercise.gifName + ".gif"))
+            cell.setValues(isWorkout: true, exercise: exercise)
         }
         return cell
     }
@@ -88,23 +106,4 @@ class AddWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
     }
-    
-
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let cell = sender as? AddWorkoutTableCell{
-            let indexPath = self.tableView!.indexPath(for: cell)
-            if indexPath?.section != 0 && segue.identifier == "oldWorkout" {
-                let vc = segue.destination as! NewWorkoutPopupViewController
-                let exercise = sections[indexPath!.section-1].exercises[indexPath!.row]
-                let diaryItem = DiaryItem(e: exercise.exercise, d: Duration(durationInSeconds: exercise.durationInSeconds?.durationInSeconds))
-                vc.diaryItem = diaryItem
-            }
-        }
-        else if (sender as? UIButton) != nil{
-            performSegue(withIdentifier: "newWorkout", sender: nil)
-        }
-    }
-
-
 }

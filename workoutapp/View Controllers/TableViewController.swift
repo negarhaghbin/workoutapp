@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ExerciseSelectionDelegate: class {
+protocol ExerciseSelectionDelegate: AnyObject {
   func exerciseSelected(_ newExercise: AppExercise)
 }
 

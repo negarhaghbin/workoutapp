@@ -10,22 +10,32 @@ import UIKit
 import YoutubePlayer_in_WKWebView
 import SystemConfiguration
 
-class ViewController: UIViewController, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-    @IBOutlet weak var durationView: UIView!
-    var changeDurationAlert = UIAlertController(title: "Change exercise duration", message: nil, preferredStyle: .alert)
-    var UIPicker: UIPickerView = UIPickerView()
+class ViewController: UIViewController{
     
+    // MARK: - Outlets
+    @IBOutlet weak var durationView: UIView!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var subtitleView: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var youtubeView: WKYTPlayerView!
+    
+    // MARK: - Variables
+    var changeDurationAlert = UIAlertController(title: "Change exercise duration", message: nil, preferredStyle: .alert)
+    var UIPicker: UIPickerView = UIPickerView()
+    
     var exercise : AppExercise?{
         didSet{
             refreshUI()
         }
     }
     
+    // MARK: - ViewController
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    // MARK: - Helpers
     private func refreshUI(){
         UIPicker.delegate = self
         UIPicker.dataSource = self
@@ -34,6 +44,13 @@ class ViewController: UIViewController, UITableViewDelegate, UIPickerViewDelegat
             createChangeDurationAlert()
         }
         
+        setupVideoUI()
+        titleLabel.text = exercise!.exercise?.name
+        durationLabel.text = exercise!.durationInSeconds!.getDuration()
+        
+    }
+    
+    private func setupVideoUI(){
         if (exercise?.videoURLString != "" && isConnectedToNetwork()){
             youtubeView.load(withVideoId: exercise!.videoURLString)
         }
@@ -47,14 +64,6 @@ class ViewController: UIViewController, UITableViewDelegate, UIPickerViewDelegat
                 warningLabel.text = "You need internet connection for video tutorials."
             }
         }
-        
-        titleLabel.text = exercise?.exercise?.name
-        durationLabel.text = exercise!.durationInSeconds!.getDuration()
-        
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     func createChangeDurationAlert(){
@@ -78,6 +87,14 @@ class ViewController: UIViewController, UITableViewDelegate, UIPickerViewDelegat
         
     }
     
+    // MARK: - Actions
+    @IBAction func changeDuration(_ sender: Any) {
+        present(changeDurationAlert, animated: false)
+    }
+}
+
+// MARK: - UIPickerView
+extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
@@ -95,10 +112,9 @@ class ViewController: UIViewController, UITableViewDelegate, UIPickerViewDelegat
         changeDurationAlert.actions.first?.isEnabled = true
     }
     
-    @IBAction func changeDuration(_ sender: Any) {
-        present(changeDurationAlert, animated: false)
-    }
 }
+
+// MARK: - ExerciseSelectionDelegate
 
 extension ViewController: ExerciseSelectionDelegate {
   func exerciseSelected(_ newExercise: AppExercise) {
@@ -106,9 +122,10 @@ extension ViewController: ExerciseSelectionDelegate {
   }
 }
 
+// MARK: - Network
+
 extension ViewController{
     func isConnectedToNetwork() -> Bool {
-
         var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
         zeroAddress.sin_family = sa_family_t(AF_INET)

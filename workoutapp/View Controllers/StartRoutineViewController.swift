@@ -10,12 +10,18 @@ import UIKit
 import AVFoundation
 
 class StartRoutineViewController: UIViewController {
+    
+    // MARK: - Outlets
     @IBOutlet weak var counter: UILabel!
+    
+    // MARK: - Variables
     var section : RoutineSection?
     var timer = Timer()
     var seconds = 3
     var player: AVAudioPlayer?
     
+    
+    // MARK: - ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -44,6 +50,8 @@ class StartRoutineViewController: UIViewController {
     }
     
 
+    // MARK: - Helpers
+    
     func playSound() {
         guard let url = Bundle.main.url(forResource: "beep", withExtension: "wav") else { return }
 

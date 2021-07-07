@@ -9,7 +9,10 @@
 import UIKit
 import SearchTextField
 
-class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate {
+class NewWorkoutPopupViewController: UIViewController{
+    
+    // MARK: - Outlets
+    
     @IBOutlet weak var boxTitle: UILabel!
     @IBOutlet weak var pickerBackground: UIView!
     @IBOutlet weak var nameField: SearchTextField!
@@ -24,6 +27,8 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     @IBOutlet weak var nameLabelLabel: UILabel!
     @IBOutlet weak var typeLabelLabel: UILabel!
     @IBOutlet weak var countField: UITextField!
+    
+    // MARK: - Variables
     let types=[ExerciseType.total.rawValue, ExerciseType.upper.rawValue, ExerciseType.abs.rawValue, ExerciseType.lower.rawValue]
     let exercises = Exercise.loadExercises()
     var exerciseNames : [String] = []
@@ -36,37 +41,20 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
         }
     }
     
+    enum pickerViewTags: Int{
+        case date = 0
+        case type
+        case duration
+    }
+    
+    // MARK: - ViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         typeLabel.text = types[0]
         saveButton.isHighlighted = true
         saveButton.isEnabled = false
         
-    }
-    
-    func exerciseSelected(_ newExercise: AppExercise) {
-        diaryItem!.exercise = newExercise.exercise
-        diaryItem?.duration!.durationInSeconds = newExercise.durationInSeconds!.durationInSeconds
-    }
-    
-    private func refreshUI(){
-        loadView()
-        boxTitle.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
-        nameField.text = diaryItem?.exercise?.name
-        typeLabel.text = diaryItem?.exercise?.type
-        dateLabel.text = diaryItem?.dateString
-        if (diaryItem?.duration?.getTimeDuration() == ""){
-            countable = true
-            countField.isHidden = false
-            durationLabel.isHidden = true
-            countField.text = diaryItem!.duration?.getDuration()
-            countField.keyboardType = .numberPad
-        }
-        else{
-            countField.isHidden = true
-            durationLabel.isHidden = false
-            durationLabel.text = diaryItem!.duration?.getDuration()
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,17 +84,73 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
         
     }
     
-    @IBAction func nameFieldChanged(_ sender: UITextField) {
-        if nameField.text == "" {
-            saveButton.isHighlighted = true
-            saveButton.isEnabled = false
+    // MARK: - Helpers
+    
+    private func refreshUI(){
+        loadView()
+        boxTitle.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
+        nameField.text = diaryItem?.exercise?.name
+        typeLabel.text = diaryItem?.exercise?.type
+        dateLabel.text = diaryItem?.dateString
+        if (diaryItem?.duration?.getTimeDuration() == ""){
+            countable = true
+            countField.isHidden = false
+            durationLabel.isHidden = true
+            countField.text = diaryItem!.duration?.getDuration()
+            countField.keyboardType = .numberPad
         }
         else{
+            countField.isHidden = true
+            durationLabel.isHidden = false
+            durationLabel.text = diaryItem!.duration?.getDuration()
+        }
+    }
+    
+    private func getExercise()->Exercise{
+        if Exercise.isNew(ck: Exercise.getCompoundKey(name: nameField.text!, type: typeLabel.text!)){
+            let exercise = Exercise(name: nameField.text!, type: typeLabel.text!)
+            exercise.add()
+            return exercise
+        }
+        else{
+            return Exercise.getObject(ck: Exercise.getCompoundKey(name: nameField.text!, type: typeLabel.text!))
+        }
+    }
+    
+    private func updateDiaryItem(exercise: Exercise){
+        if countable{
+            var count = 0
+            if countField.text != "No sets"{
+                count = Int(countField.text!)!
+            }
+            DiaryItem.update(uuid: diaryItem!.uuid, e: exercise, d: Duration(countPerSet: count), date: dateLabel.text!)
+        }
+        else{
+            DiaryItem.update(uuid: diaryItem!.uuid, e: exercise, d: Duration(durationInSeconds: reverSecondsToString(time: durationLabel.text!)), date: dateLabel.text!)
+        }
+    }
+    
+    private func addDiaryItem(exercise: Exercise){
+        if countable{
+            diaryItem = DiaryItem(e: exercise, d: Duration(countPerSet: Int(countField.text!)), date: dateLabel.text!)
+        }
+        else{
+            diaryItem = DiaryItem(e: exercise, d: Duration(durationInSeconds: reverSecondsToString(time: durationLabel.text!)), date: dateLabel.text!)
+        }
+        diaryItem!.add()
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func nameFieldChanged(_ sender: UITextField) {
+        let isNameFieldEmpty = nameField.text == "" ? true : false
+        saveButton.isHighlighted = isNameFieldEmpty
+        saveButton.isEnabled = !isNameFieldEmpty
+        
+        if !isNameFieldEmpty{
             if let index = exerciseNames.firstIndex(of: nameField.text!){
                 typeLabel.text = exercises[index].type
             }
-            saveButton.isHighlighted = false
-            saveButton.isEnabled = true
         }
     }
     @IBAction func showDatePicker(_ sender: UITapGestureRecognizer) {
@@ -140,38 +184,14 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
     }
     
     @IBAction func save(_ sender: Any) {
-        var e = Exercise()
-        if Exercise.isNew(ck: Exercise.getCompoundKey(name: nameField.text!, type: typeLabel.text!)){
-            e = Exercise(name: nameField.text!, type: typeLabel.text!)
-            e.add()
-        }
-        else{
-            e = Exercise.getObject(ck: Exercise.getCompoundKey(name: nameField.text!, type: typeLabel.text!))
-        }
-        if diaryItem != nil{
-            if countable{
-                var count = 0
-                if countField.text != "No sets"{
-                    count = Int(countField.text!)!
-                }
-                DiaryItem.update(uuid: diaryItem!.uuid, e: e, d: Duration(countPerSet: count), date: dateLabel.text!)
-            }
-            else{
-                DiaryItem.update(uuid: diaryItem!.uuid, e: e, d: Duration(durationInSeconds: reverSecondsToString(time: durationLabel.text!)), date: dateLabel.text!)
-            }
-            
-        }
-        else{
-            if countable{
-                diaryItem = DiaryItem(e: e, d: Duration(countPerSet: Int(countField.text!)), date: dateLabel.text!)
-            }
-            else{
-                diaryItem = DiaryItem(e: e, d: Duration(durationInSeconds: reverSecondsToString(time: durationLabel.text!)), date: dateLabel.text!)
-            }
-            diaryItem!.add()
-            
-        }
+        let exercise = getExercise()
         
+        if diaryItem != nil{
+            updateDiaryItem(exercise: exercise)
+        }
+        else{
+            addDiaryItem(exercise: exercise)
+        }
         dismiss(animated: true)
     }
     
@@ -181,51 +201,63 @@ class NewWorkoutPopupViewController: UIViewController, ExerciseSelectionDelegate
 
 }
 
+// MARK: - ExerciseSelectionDelegate
+extension NewWorkoutPopupViewController: ExerciseSelectionDelegate{
+    func exerciseSelected(_ newExercise: AppExercise) {
+        diaryItem!.exercise = newExercise.exercise
+        diaryItem?.duration!.durationInSeconds = newExercise.durationInSeconds!.durationInSeconds
+    }
+}
+
+// MARK: - UIPickerView
 extension NewWorkoutPopupViewController:  UIPickerViewDelegate, UIPickerViewDataSource{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         switch pickerView.tag {
-        case 1:
+        case pickerViewTags.type.rawValue:
             return 1
-        case 2:
+        case pickerViewTags.duration.rawValue:
             return 2
         default:
-            print("unknown picker")
             return 1
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView.tag {
-        case 1:
+        case pickerViewTags.type.rawValue:
             return types.count
-        case 2:
+            
+        case pickerViewTags.duration.rawValue:
             return 60
+            
         default:
-            print("unknown picker")
             return 0
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView.tag {
-        case 1:
+        case pickerViewTags.type.rawValue:
             return types[row]
-        case 2:
+            
+        case pickerViewTags.duration.rawValue:
             return String(row)
+            
         default:
-            print("unknown picker")
             return "unknown"
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView.tag {
-        case 1:
+        case pickerViewTags.type.rawValue:
             typeLabel.text = types[pickerView.selectedRow(inComponent: 0)]
-        case 2:
+            
+        case pickerViewTags.duration.rawValue:
             durationLabel.text = SecondsToString(time: pickerView.selectedRow(inComponent: 0)*60 + pickerView.selectedRow(inComponent: 1))
+            
         default:
-            print("unknown picker")
+            break
         }
         
     }

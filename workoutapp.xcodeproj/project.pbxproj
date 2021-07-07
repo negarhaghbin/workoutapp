@@ -442,16 +442,34 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		846446A723760CA300F493F0 /* Cells */ = {
+		844220BC26953E8B001781F0 /* AchievementsStoryboard */ = {
+			isa = PBXGroup;
+			children = (
+				848D6869247607C30041445F /* AchievementsViewController.swift */,
+				848D686B2476092C0041445F /* AchievementsTableViewCell.swift */,
+			);
+			path = AchievementsStoryboard;
+			sourceTree = "<group>";
+		};
+		844220BD26953EDF001781F0 /* DiaryStoryboard */ = {
 			isa = PBXGroup;
 			children = (
 				849CFC2A2453250A007BD77B /* AddWorkoutTableCell.swift */,
+				849CFC28245322E3007BD77B /* AddWorkoutViewController.swift */,
+				849CFC2C24552F57007BD77B /* DiaryTableViewCell.swift */,
+				849CFC1E24522CB7007BD77B /* DiaryTableViewController.swift */,
+				849CFC24245238FF007BD77B /* NewWorkoutPopupViewController.swift */,
+			);
+			path = DiaryStoryboard;
+			sourceTree = "<group>";
+		};
+		846446A723760CA300F493F0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
 				84086D3C23CE562300795C3D /* InteractionTableViewCell.swift */,
 				8409283F237CD46000C695F6 /* RoutineCollectionViewCell.swift */,
 				843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */,
 				84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */,
-				849CFC2C24552F57007BD77B /* DiaryTableViewCell.swift */,
-				848D686B2476092C0041445F /* AchievementsTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -459,13 +477,10 @@
 		846446AE23779DAF00F493F0 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				849CFC28245322E3007BD77B /* AddWorkoutViewController.swift */,
-				849CFC1E24522CB7007BD77B /* DiaryTableViewController.swift */,
 				845FD8C4238309A100E9B1D8 /* GifViewController.swift */,
 				84086D3A23CE545F00795C3D /* InteractionTableViewController.swift */,
 				846446B62378AD0100F493F0 /* NameTableViewController.swift */,
 				84C10B2723369FB300146547 /* NavViewController.swift */,
-				849CFC24245238FF007BD77B /* NewWorkoutPopupViewController.swift */,
 				8409283D237C8D9700C695F6 /* RoutineCollectionViewController.swift */,
 				843C3DA2237F0798006FE720 /* RoutineViewController.swift */,
 				846446A523760C9C00F493F0 /* SettingsTableViewController.swift */,
@@ -475,7 +490,6 @@
 				84C10B2923369FD100146547 /* TableViewController.swift */,
 				84C10B172336994E00146547 /* ViewController.swift */,
 				848D683D2471C9B20041445F /* WelcomeViewController.swift */,
-				848D6869247607C30041445F /* AchievementsViewController.swift */,
 				8464599124A155E4004C7B34 /* WorkoutCompleteViewController.swift */,
 				8464599A24A253B5004C7B34 /* NotificationLauncherViewController.swift */,
 				846E780D24E5844700280B7D /* WalkthroughContentViewController.swift */,
@@ -679,6 +693,8 @@
 		84C10B122336994E00146547 /* workoutapp */ = {
 			isa = PBXGroup;
 			children = (
+				844220BC26953E8B001781F0 /* AchievementsStoryboard */,
+				844220BD26953EDF001781F0 /* DiaryStoryboard */,
 				848D683B2471C3DF0041445F /* Message.swift */,
 				848D68392471C3A70041445F /* APIRequest.swift */,
 				849CFC11244F7126007BD77B /* Storyboards */,

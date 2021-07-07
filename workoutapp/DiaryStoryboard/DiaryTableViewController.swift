@@ -8,14 +8,22 @@
 
 import UIKit
 
-class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DiaryTableViewController: UIViewController{
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var viewLabel: UILabel!
+    
+    // MARK: - Variables
+    
     lazy var diariesDict : [String:[DiaryItem]] = DiaryItem.getWithDate()
     lazy var steps : [String:[Step]] = Step.getWithDate()
     var dates : [String] = []
     let STEPS_ROW = 0
+    let diaryCellIdentifier = "diaryCell"
+    
+    // MARK: - ViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,16 +43,29 @@ class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         
-        if diariesDict.count+steps.count > 0{
+        if diariesDict.count+steps.count > 1{
             viewLabel.text = "Tap on an exercise to edit"
         }
         tableView.reloadData()
     }
     
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDiaryItem", let destination = segue.destination as? NewWorkoutPopupViewController {
+            if let cell = sender as? UITableViewCell, let indexPath = self.tableView.indexPath(for: cell) {
+                let diaryItem = diariesDict[dates[indexPath.section]]![indexPath.row-1]
+                destination.diaryItem = diaryItem
+                destination.boxTitle.text = "Edit workout"
+            }
+        }
+    }
     
-    
+}
 
-    // MARK: - Table view data source
+// MARK: - TableViewDataSource and TableViewDelegate
+
+extension DiaryTableViewController: UITableViewDelegate, UITableViewDataSource{
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return max(diariesDict.count, steps.count)
     }
@@ -65,32 +86,12 @@ class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "diaryCell", for: indexPath) as? DiaryTableViewCell{
+        if let cell = tableView.dequeueReusableCell(withIdentifier: diaryCellIdentifier, for: indexPath) as? DiaryTableViewCell{
             if indexPath.row == STEPS_ROW{
-                cell.nameLabel.text = "Steps"
-                if let step = steps[dates[indexPath.section]] {
-                    if step.first!.count == -1{
-                        cell.durationLabel.text = "Not Available"
-                    }
-                    else{
-                        cell.durationLabel.text = String(step.first!.count)
-                    }
-                }
-                else{
-                    cell.durationLabel.text = "Not Available"
-                }
-                
-                cell.isUserInteractionEnabled = false
-                cell.durationLabel.isEnabled = false
-                cell.nameLabel.isEnabled = false
+                cell.setValues(isStepCell: true, stepsCount: steps[dates[indexPath.section]])
             }
             else{
-                cell.nameLabel.text = diariesDict[dates[indexPath.section]]![indexPath.row-1].exercise?.name
-                let duration = diariesDict[dates[indexPath.section]]![indexPath.row-1].duration
-                cell.durationLabel.text = duration?.getDuration()
-                cell.isUserInteractionEnabled = true
-                cell.durationLabel.isEnabled = true
-                cell.nameLabel.isEnabled = true
+                cell.setValues(isStepCell: false, diaryItem: diariesDict[dates[indexPath.section]]![indexPath.row-1])
             }
             
             return cell
@@ -115,24 +116,7 @@ class DiaryTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.row == STEPS_ROW{
-            return false
-        }
-        else{
-            return true
-        }
-    }
-    
-    
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDiaryItem", let destination = segue.destination as? NewWorkoutPopupViewController {
-            if let cell = sender as? UITableViewCell, let indexPath = self.tableView.indexPath(for: cell) {
-                let diaryItem = diariesDict[dates[indexPath.section]]![indexPath.row-1]
-                destination.diaryItem = diaryItem
-                destination.boxTitle.text = "Edit workout"
-            }
-        }
+        return indexPath.row == STEPS_ROW ? false : true
     }
     
 

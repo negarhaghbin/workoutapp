@@ -177,13 +177,15 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
 
 }
 
-// MARK: - EXTENSIONS
+// MARK: - RoutineSelectionDelegate
 
 extension RoutineViewController: RoutineSelectionDelegate {
   func routineSelected(_ newRoutine: RoutineSection) {
     section = newRoutine
   }
 }
+
+// MARK: - UIPicker
 
 extension RoutineViewController: UIPickerViewDelegate, UIPickerViewDataSource  {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

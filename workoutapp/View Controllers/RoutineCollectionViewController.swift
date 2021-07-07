@@ -9,7 +9,7 @@ import UIKit
 
 private let reuseIdentifier = "RoutineCell"
 
-protocol RoutineSelectionDelegate: class {
+protocol RoutineSelectionDelegate: AnyObject {
   func routineSelected(_ newRoutine: RoutineSection)
 }
 
@@ -30,9 +30,6 @@ class RoutineCollectionViewController: UICollectionViewController {
         images=Image.loadRoutineSectionHeaderImages()
         sections = RoutineSection.getCollectionRoutineSections()
     }
-    
-    
-    
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
