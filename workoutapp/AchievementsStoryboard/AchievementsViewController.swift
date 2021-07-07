@@ -79,22 +79,20 @@ extension AchievementsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: badgeCellIdentifier, for: indexPath) as? AchievementsTableViewCell{
-            switch indexPath.section {
-            case sections.achieved.rawValue:
-                cell.setValues(badge: achieved[indexPath.row])
-                cell.setProgress(for: achieved[indexPath.row], achieved: true)
-                return cell
-            default:
-                cell.setValues(badge: notAchieved[indexPath.row])
-                cell.setProgress(for: notAchieved[indexPath.row], achieved: false)
-                return cell
-            }
-        }
-        else{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: badgeCellIdentifier, for: indexPath) as? AchievementsTableViewCell else{
             return AchievementsTableViewCell()
         }
         
+        switch indexPath.section {
+        case sections.achieved.rawValue:
+            cell.setValues(badge: achieved[indexPath.row])
+            cell.setProgress(for: achieved[indexPath.row], achieved: true)
+            return cell
+        default:
+            cell.setValues(badge: notAchieved[indexPath.row])
+            cell.setProgress(for: notAchieved[indexPath.row], achieved: false)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

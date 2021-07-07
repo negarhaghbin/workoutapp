@@ -56,7 +56,10 @@ class RoutineCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! RoutineCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? RoutineCollectionViewCell
+        else{
+            return UICollectionViewCell()
+        }
         
         let image = images[indexPath.section]
         cell.backgroundImage.image = imageWithImage(image: UIImage(named: (image.url.path))!, scaledToSize:cgsize!)

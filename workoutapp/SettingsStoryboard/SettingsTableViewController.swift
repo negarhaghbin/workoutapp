@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 import CoreLocation
 
 enum Notification: String {
@@ -16,53 +15,57 @@ enum Notification: String {
     case Time = "time"
 }
 
-class SettingsTableViewController: UITableViewController, CLLocationManagerDelegate {
+class SettingsTableViewController: UITableViewController, CLLocationManagerDelegate{
     
-    var textFieldTemp : UITextField = UITextField()
-    var textFieldTemp2 : UITextField = UITextField()
-    var restDurationAlert = UIAlertController(title: "Set rest time", message: nil, preferredStyle: .alert)
-    var sendAfterAlert = UIAlertController(title: "Send reminders", message: "Send reminder notifications based on my location after: ", preferredStyle: .alert)
-    var sendOnAlert = UIAlertController(title: "Send reminders", message: "Send reminder notifications daily on: ", preferredStyle: .alert)
-    var UIPicker: UIPickerView = UIPickerView()
-    var datePicker: UIDatePicker = UIDatePicker()
-    var countdownDatePicker : UIDatePicker = UIDatePicker()
-    
-    
-    var user : User = User()
-    var appSettings : notificationSettings = notificationSettings()
+    // MARK: - Outlets
     @IBOutlet weak var sendAfterTime: UILabel!
-    let locationManager = CLLocationManager()
-    
     @IBOutlet weak var sendAfterTitleLabel: UILabel!
     @IBOutlet weak var sendOnTitleLabel: UILabel!
-    
     @IBOutlet weak var restLabel: UILabel!
     @IBOutlet weak var sendAfterCell: UITableViewCell!
     @IBOutlet weak var setTimeCell: UITableViewCell!
     @IBOutlet weak var activitySwitch: UISwitch!
     @IBOutlet weak var locationSwitch: UISwitch!
     @IBOutlet weak var timeSwitch: UISwitch!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var sendOnTimePicker: UIDatePicker!
     @IBOutlet weak var userName: UILabel!
+    
+    // MARK: - Variables
+    let locationManager = CLLocationManager()
+    var textFieldTemp2 : UITextField = UITextField()
+    var restDurationAlert = UIAlertController(title: "Set rest time", message: nil, preferredStyle: .alert)
+    var sendAfterAlert = UIAlertController(title: "Send reminders", message: "Send reminder notifications based on my location after: ", preferredStyle: .alert)
+
+    var UIPicker: UIPickerView = UIPickerView()
+    var datePicker: UIDatePicker = UIDatePicker()
+    var countdownDatePicker : UIDatePicker = UIDatePicker()
+    enum sections: Int{
+        case rest = 1
+        case location = 3
+        case time = 4
+    }
+    
+    var user : User = User()
+    var appSettings : notificationSettings = notificationSettings()
     
     var notifAuthorized : Bool = false
     
+    // MARK: - ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         UIPicker.delegate = self
         UIPicker.dataSource = self
         addPickerLabels(picker: UIPicker, vc: self)
         createRestDurationAlert()
-        createSendOnAlert()
         createSendAfterAlert()
-        user = try! Realm().object(ofType: User.self, forPrimaryKey: UserDefaults.standard.string(forKey: "uuid"))!
+        user = RealmManager.getUser()
 
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(viewWillAppear(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
         userName.text = user.name
         restLabel.text = SecondsToString(time: user.restDuration)
@@ -80,6 +83,23 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
         tableView.reloadData()
     }
     
+    // MARK: - TableViewController
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.section == sections.rest.rawValue && indexPath.row == 0{
+            present(restDurationAlert, animated: true)
+        }
+        else if indexPath.section == sections.location.rawValue && indexPath.row == 1{
+            present(sendAfterAlert, animated: true)
+        }
+        /*else if indexPath.section == sections.time.rawValue && indexPath.row == 1{
+            present(sendOnAlert, animated: true)
+        }*/
+    }
+    
+    // MARK: - Helpers
+    
     private func locationAuthorization(){
         switch CLLocationManager.authorizationStatus() {
             case .authorizedWhenInUse, .authorizedAlways:
@@ -90,63 +110,64 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let LOCATION_SECTION = 3
-        let TIME_SECTION = 4
-        if indexPath.section == 1 && indexPath.row == 0{
-            present(restDurationAlert, animated: true)
+    private func enableDisableLocationNotification(isEnabled: Bool){
+        if isEnabled{
+            self.locationAuthorization()
         }
-        else if indexPath.section == LOCATION_SECTION && indexPath.row == 1{
-            present(sendAfterAlert, animated: true)
-        }
-        else if indexPath.section == TIME_SECTION && indexPath.row == 1{
-            present(sendOnAlert, animated: true)
-        }
+        
+        self.sendAfterTime.isEnabled = isEnabled
+        self.sendAfterTitleLabel.isEnabled = isEnabled
+        self.sendAfterCell.isUserInteractionEnabled = isEnabled
+    }
+    
+    private func enableDisableTimeNotification(isEnabled: Bool){
+        self.sendOnTimePicker.isEnabled = isEnabled
+        self.sendOnTitleLabel.isEnabled = isEnabled
+        self.setTimeCell.isUserInteractionEnabled = isEnabled
+    }
+    
+    private func setupUIForNotificationAuthorization(isAuthorized: Bool){
+        self.timeSwitch.setOn(isAuthorized, animated: false)
+        self.locationSwitch.setOn(isAuthorized, animated: false)
+        self.sendAfterTime.isEnabled = isAuthorized
+        self.sendAfterTitleLabel.isEnabled = isAuthorized
+        self.sendAfterCell.isUserInteractionEnabled = isAuthorized
+        self.activitySwitch.setOn(isAuthorized, animated: false)
+        
+        self.sendOnTimePicker.isEnabled = isAuthorized
+        self.sendOnTitleLabel.isEnabled = isAuthorized
+        self.setTimeCell.isUserInteractionEnabled = isAuthorized
     }
     
     private func refreshUI(authorization: Bool){
-        appSettings = try! Realm().objects(notificationSettings.self).first!
+        appSettings = RealmManager.getAppSettings()
         sendAfterTime.text =
             MinutesToString(time: appSettings.locationSendAfter)
-        timeLabel.text = appSettings.time
+        let time = Date.getTimeFromString(appSettings.time)
+        if let date = Calendar.current.date(bySettingHour: time.h, minute: time.m, second: 0, of: Date()){
+            sendOnTimePicker.date = date
+        }
+        
         textFieldTemp2.text = MinutesToString(time: self.appSettings.locationSendAfter)
-        textFieldTemp.text = self.appSettings.time
         if authorization{
             self.timeSwitch.setOn(self.appSettings.timeBool, animated: false)
             self.locationSwitch.setOn(self.appSettings.location, animated: false)
             if self.locationSwitch.isOn{
-                self.locationAuthorization()
-                self.sendAfterTime.isEnabled = true
-                self.sendAfterTitleLabel.isEnabled = true
-                self.sendAfterCell.isUserInteractionEnabled = true
+                enableDisableLocationNotification(isEnabled: true)
             }
             else{
-                self.sendAfterTime.isEnabled = false
-                self.sendAfterTitleLabel.isEnabled = false
-                self.sendAfterCell.isUserInteractionEnabled = false
+                enableDisableLocationNotification(isEnabled: false)
             }
             self.activitySwitch.setOn(self.appSettings.activity, animated: false)
             if(self.timeSwitch.isOn){
-                self.timeLabel.isEnabled = true
-                self.sendOnTitleLabel.isEnabled = true
-                self.setTimeCell.isUserInteractionEnabled = true
+                enableDisableTimeNotification(isEnabled: true)
             }
             else{
-                self.timeLabel.isEnabled = false
-                self.sendOnTitleLabel.isEnabled = false
-                self.setTimeCell.isUserInteractionEnabled = false
+                enableDisableTimeNotification(isEnabled: false)
             }
         }
         else{
-            self.timeSwitch.setOn(false, animated: false)
-            self.locationSwitch.setOn(false, animated: false)
-            self.sendAfterTime.isEnabled = false
-            self.sendAfterTitleLabel.isEnabled = false
-            self.sendAfterCell.isUserInteractionEnabled = false
-            self.activitySwitch.setOn(false, animated: false)
-            self.timeLabel.isEnabled = false
-            self.sendOnTitleLabel.isEnabled = false
-            self.setTimeCell.isUserInteractionEnabled = false
+            setupUIForNotificationAuthorization(isAuthorized: false)
         }
         
         self.notifAuthorized = authorization
@@ -166,20 +187,35 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
         
     }
     
-    // MARK: - Navigation
+    private func setTimeSettings(value: Bool){
+        appSettings.setNotification(option: Notification.Time.rawValue, value: value)
+        enableDisableTimeNotification(isEnabled: value)
+    }
+    
+    private func presentSettingsAlert(option: String) {
+        let alertController = UIAlertController(title: "\(option) are disabled",
+                                                message: "You need to enable it from settings first.",
+                                                preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (alertAction) in
+            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(appSettings)
+            }
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+        
+        present(alertController, animated: true)
+    }
+    
+    // MARK: - Actions
 
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         if !notifAuthorized{
             presentSettingsAlert(option: "Notifications")
-            self.timeSwitch.setOn(false, animated: false)
-            self.locationSwitch.setOn(false, animated: false)
-            self.sendAfterTime.isEnabled = false
-            self.sendAfterTitleLabel.isEnabled = false
-            self.sendAfterCell.isUserInteractionEnabled = false
-            self.activitySwitch.setOn(false, animated: false)
-            self.timeLabel.isEnabled = false
-            self.sendOnTitleLabel.isEnabled = false
-            self.setTimeCell.isUserInteractionEnabled = false
+            setupUIForNotificationAuthorization(isAuthorized: false)
         }
         else{
             switch sender.restorationIdentifier {
@@ -206,24 +242,21 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
                             radius: 1.0,
                             identifier: "home_location_id")
                             AppDelegate.locationManager.startMonitoring(for: destRegion)
+                            
                             self.sendAfterTime.isEnabled = true
                             self.sendAfterTitleLabel.isEnabled = true
                             self.sendAfterCell.isUserInteractionEnabled = true
                         case .restricted, .denied, .notDetermined:
                             presentSettingsAlert(option: "Location")
                             self.locationSwitch.setOn(false, animated: false)
-                            self.sendAfterTime.isEnabled = false
-                            self.sendAfterTitleLabel.isEnabled = false
-                            self.sendAfterCell.isUserInteractionEnabled = false
+                            enableDisableLocationNotification(isEnabled: false)
                             break
                     }
                     
                 }
                 else{
                     appSettings.setNotification(option: Notification.Location.rawValue, value: false)
-                    self.sendAfterTime.isEnabled = false
-                    self.sendAfterTitleLabel.isEnabled = false
-                    self.sendAfterCell.isUserInteractionEnabled = false
+                    enableDisableLocationNotification(isEnabled: false)
                     notificationSettings.cancelNotification(identifier: Notification.Location.rawValue)
                     let l = location.getMostRecordedLocation()
                     let destRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: l.latitude, longitude: l.longitude),
@@ -248,31 +281,7 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
         }
     }
     
-    private func setTimeSettings(value: Bool){
-        appSettings.setNotification(option: Notification.Time.rawValue, value: value)
-        timeLabel.isEnabled = value
-        sendOnTitleLabel.isEnabled = value
-        setTimeCell.isUserInteractionEnabled = value
-    }
-    
-    private func presentSettingsAlert(option: String) {
-        let alertController = UIAlertController(title: "\(option) are disabled",
-                                                message: "You need to enable it from settings first.",
-                                                preferredStyle: .alert)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (alertAction) in
-            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
-                UIApplication.shared.open(appSettings)
-            }
-        }
-        
-        alertController.addAction(cancelAction)
-        alertController.addAction(settingsAction)
-        
-        present(alertController, animated: true)
-    }
-    
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "edit" {
             let vc = segue.destination as! NameTableViewController
@@ -280,6 +289,4 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
         }
         
     }
-    
-
 }

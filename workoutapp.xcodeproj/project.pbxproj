@@ -23,6 +23,7 @@
 		841808942476DB7600786224 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841808932476DB7600786224 /* Step.swift */; };
 		843C3DA3237F0798006FE720 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C3DA2237F0798006FE720 /* RoutineViewController.swift */; };
 		843C3DA5237F0961006FE720 /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */; };
+		844220C02695D978001781F0 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844220BF2695D978001781F0 /* RealmManager.swift */; };
 		8448791E23C3A9A900F37788 /* dateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448791D23C3A9A800F37788 /* dateExt.swift */; };
 		8448792023C67B7800F37788 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448791F23C67B7800F37788 /* Interaction.swift */; };
 		845D4D172492DC880025217A /* BalloonAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D4D162492DC880025217A /* BalloonAnimation.swift */; };
@@ -215,6 +216,7 @@
 		84361466233BE0660088ADA8 /* 5M Workout.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "5M Workout.entitlements"; sourceTree = "<group>"; };
 		843C3DA2237F0798006FE720 /* RoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
 		843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
+		844220BF2695D978001781F0 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		8448791D23C3A9A800F37788 /* dateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateExt.swift; sourceTree = "<group>"; };
 		8448791F23C67B7800F37788 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
 		845D4D162492DC880025217A /* BalloonAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonAnimation.swift; sourceTree = "<group>"; };
@@ -463,6 +465,17 @@
 			path = DiaryStoryboard;
 			sourceTree = "<group>";
 		};
+		844220BE2695CFE3001781F0 /* SettingsStoryboard */ = {
+			isa = PBXGroup;
+			children = (
+				84086D3A23CE545F00795C3D /* InteractionTableViewController.swift */,
+				846446B62378AD0100F493F0 /* NameTableViewController.swift */,
+				846446A523760C9C00F493F0 /* SettingsTableViewController.swift */,
+				84EB32D6244A39AB009816CE /* SettingsViewExt.swift */,
+			);
+			path = SettingsStoryboard;
+			sourceTree = "<group>";
+		};
 		846446A723760CA300F493F0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,12 +491,9 @@
 			isa = PBXGroup;
 			children = (
 				845FD8C4238309A100E9B1D8 /* GifViewController.swift */,
-				84086D3A23CE545F00795C3D /* InteractionTableViewController.swift */,
-				846446B62378AD0100F493F0 /* NameTableViewController.swift */,
 				84C10B2723369FB300146547 /* NavViewController.swift */,
 				8409283D237C8D9700C695F6 /* RoutineCollectionViewController.swift */,
 				843C3DA2237F0798006FE720 /* RoutineViewController.swift */,
-				846446A523760C9C00F493F0 /* SettingsTableViewController.swift */,
 				84E6EEC4235227F3001B00D8 /* SplitViewController.swift */,
 				845FD8C02380995100E9B1D8 /* StartRoutineViewController.swift */,
 				846446A12376008500F493F0 /* TabBarViewController.swift */,
@@ -693,6 +703,7 @@
 		84C10B122336994E00146547 /* workoutapp */ = {
 			isa = PBXGroup;
 			children = (
+				844220BE2695CFE3001781F0 /* SettingsStoryboard */,
 				844220BC26953E8B001781F0 /* AchievementsStoryboard */,
 				844220BD26953EDF001781F0 /* DiaryStoryboard */,
 				848D683B2471C3DF0041445F /* Message.swift */,
@@ -704,7 +715,6 @@
 				845FD8E12385CD4B00E9B1D8 /* Balloon.swift */,
 				8469DE1923B9105F0098A5FD /* progressBar.swift */,
 				845FD8C623830C1600E9B1D8 /* swift+gif.swift */,
-				84EB32D6244A39AB009816CE /* SettingsViewExt.swift */,
 				849CFC2624532000007BD77B /* HideKeyboardExt.swift */,
 				84C10B212336995000146547 /* Info.plist */,
 				845D4D182492EBBE0025217A /* AlertController+Image.swift */,
@@ -718,6 +728,7 @@
 				8448791D23C3A9A800F37788 /* dateExt.swift */,
 				84EB32D2244A03DE009816CE /* AppUtility.swift */,
 				84D83E0B24B3C11500BF1375 /* roundCorners.swift */,
+				844220BF2695D978001781F0 /* RealmManager.swift */,
 			);
 			path = workoutapp;
 			sourceTree = "<group>";
@@ -787,7 +798,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = Negar;
 				TargetAttributes = {
 					84C10B0F2336994E00146547 = {
@@ -1009,6 +1020,7 @@
 				8448792023C67B7800F37788 /* Interaction.swift in Sources */,
 				845FD9092390A35F00E9B1D8 /* dailyRoutine.swift in Sources */,
 				849CFC232452319A007BD77B /* DiaryItem.swift in Sources */,
+				844220C02695D978001781F0 /* RealmManager.swift in Sources */,
 				8448791E23C3A9A900F37788 /* dateExt.swift in Sources */,
 				84092847237CE16B00C695F6 /* Image.swift in Sources */,
 				84EB32D3244A03DE009816CE /* AppUtility.swift in Sources */,
@@ -1112,6 +1124,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1172,6 +1185,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

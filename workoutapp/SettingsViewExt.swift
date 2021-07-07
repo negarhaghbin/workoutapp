@@ -53,32 +53,9 @@ extension SettingsTableViewController: UIPickerViewDelegate, UIPickerViewDataSou
         }))
     }
     
-    func createSendOnAlert(){
-        sendOnAlert.addTextField(configurationHandler: { textField in
-            self.textFieldTemp = textField
-            self.datePicker.datePickerMode = .time
-            self.datePicker.addTarget(self, action: #selector(self.handleDatePicker(sender:)), for: .valueChanged)
-            textField.inputView = self.datePicker
-            textField.text = self.appSettings.time
-            
-        })
-        
-        sendOnAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-        sendOnAlert.addAction(UIAlertAction(title: "Save", style: .default, handler: { action in
-            if let rd = self.sendOnAlert.textFields?.first?.text {
-                self.appSettings.setTime(value: self.textFieldTemp.text!)
-                self.appSettings.setUpTimeNotification()
-                self.timeLabel.text = rd
-            }
-        }))
-    }
-    
-    @objc func handleDatePicker(sender: UIDatePicker) {
-        datePicker.date = sender.date
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        textFieldTemp.text = dateFormatter.string(from: sender.date)
+    @IBAction func onSendOnTimePickerChange(_ sender: UIDatePicker) {
+        appSettings.setTime(value: sender.date.getHourMinuteFormat())
+        appSettings.setUpTimeNotification()
     }
        
     @objc func handleCountDownPicker(sender: UIDatePicker) {

@@ -7,22 +7,28 @@
 //
 
 import UIKit
-import RealmSwift
 
-class InteractionTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    lazy var interactionsDict : [String:[Interaction]] = Interaction.getWithDate()
-    var dates : [String] = []
+class InteractionTableViewController: UIViewController {
+    
+    // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: - Variables
+    lazy var interactionsDict : [String:[Interaction]] = Interaction.getWithDate()
+    var dates : [String] = []
+    
+    // MARK: - ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
         interactionsDict = Interaction.getWithDate()
         dates = Array(interactionsDict.keys).sorted(by: >)
     }
+}
 
-    // MARK: - Table view data source
+// MARK: - TableViewController
 
+extension InteractionTableViewController:  UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return interactionsDict.count
     }

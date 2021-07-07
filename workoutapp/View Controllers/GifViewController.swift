@@ -8,7 +8,6 @@
 
 import UIKit
 import AVFoundation
-import RealmSwift
 
 class GifViewController: UIViewController {
 
@@ -72,7 +71,7 @@ class GifViewController: UIViewController {
     
     private func refreshUI(){
         loadView()
-        user = try! Realm().object(ofType: User.self, forPrimaryKey: UserDefaults.standard.string(forKey: "uuid"))!
+        user = RealmManager.getUser()
         restDuration = user.restDuration
         
         let currentExercise = section?.exercises[currentExerciseIndex]

@@ -7,11 +7,8 @@
 //
 
 import UIKit
-import RealmSwift
 
 class WelcomeViewController: UIViewController {
-    let realm = try! Realm()
-    
     @IBOutlet weak var helloLabel: UILabel!
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
@@ -52,8 +49,8 @@ class WelcomeViewController: UIViewController {
             showWalkthrough()
         }
         else{
-            let u = realm.object(ofType: User.self, forPrimaryKey: UserDefaults.standard.string(forKey: "uuid"))!
-            self.user = u
+            let user = RealmManager.getUser()
+            self.user = user
         }
     }
     
@@ -63,13 +60,14 @@ class WelcomeViewController: UIViewController {
             var badge : Badge?
             switch user!.streak {
             case 3:
-                badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.streak3.rawValue)
+                badge = RealmManager.getBadge(primaryKey: BadgeTitle.streak3.rawValue)
             case 7:
-                badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.streak7.rawValue)
+                badge = RealmManager.getBadge(primaryKey: BadgeTitle.streak7.rawValue)
+                
             case 14:
-                badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.streak14.rawValue)
+                badge = RealmManager.getBadge(primaryKey: BadgeTitle.streak14.rawValue)
             case 30:
-                badge = realm.object(ofType: Badge.self, forPrimaryKey: BadgeTitle.streak30.rawValue)
+                badge = RealmManager.getBadge(primaryKey: BadgeTitle.streak30.rawValue)
             default:
                 print("No badge available")
             }

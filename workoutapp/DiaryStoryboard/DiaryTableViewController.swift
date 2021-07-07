@@ -86,19 +86,18 @@ extension DiaryTableViewController: UITableViewDelegate, UITableViewDataSource{
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: diaryCellIdentifier, for: indexPath) as? DiaryTableViewCell{
-            if indexPath.row == STEPS_ROW{
-                cell.setValues(isStepCell: true, stepsCount: steps[dates[indexPath.section]])
-            }
-            else{
-                cell.setValues(isStepCell: false, diaryItem: diariesDict[dates[indexPath.section]]![indexPath.row-1])
-            }
-            
-            return cell
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: diaryCellIdentifier, for: indexPath) as? DiaryTableViewCell
         else{
             return DiaryTableViewCell()
         }
+        
+        if indexPath.row == STEPS_ROW{
+            cell.setValues(isStepCell: true, stepsCount: steps[dates[indexPath.section]])
+        }
+        else{
+            cell.setValues(isStepCell: false, diaryItem: diariesDict[dates[indexPath.section]]![indexPath.row-1])
+        }
+        return cell
         
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

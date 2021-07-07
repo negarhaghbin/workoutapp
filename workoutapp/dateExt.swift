@@ -50,4 +50,19 @@ extension Date {
     func isBetween(_ date1: Date, and date2: Date) -> Bool {
         return (min(date1, date2) ... max(date1, date2)).contains(self)
     }
+    
+    func getHourMinuteFormat()->String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.string(from: self)
+    }
+    
+    static func getTimeFromString(_ time: String)->(h: Int, m:Int){
+        var index = time.firstIndex(of: ":")!
+        let hour = time[..<index]
+        index = time.index(after: index)
+        let minute = time[index...]
+        
+        return (h: Int(hour)!, m:Int(minute)!)
+    }
 }

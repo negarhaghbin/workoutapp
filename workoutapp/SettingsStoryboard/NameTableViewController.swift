@@ -7,18 +7,22 @@
 //
 
 import UIKit
-import RealmSwift
 
 class NameTableViewController: UITableViewController {
     
-    var user : User = User()
-
+    // MARK: - Outlets
     @IBOutlet weak var textField: UITextField!
+
+    // MARK: - Variables
+    var user : User = User()
+    
+    // MARK: - ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         textField?.text=user.name
     }
     
+    // MARK: - TableViewController
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 && indexPath.row == 0 {
@@ -27,6 +31,7 @@ class NameTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    // MARK: - Actions
     @IBAction func changeName(_ sender: Any) {
         let specificPerson = User.getUser(uuid: UserDefaults.standard.string(forKey: "uuid")!)
         specificPerson.changeName(newName: textField.text!)
