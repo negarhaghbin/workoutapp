@@ -8,23 +8,30 @@
 
 import UIKit
 
-class AchievementsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AchievementsViewController: UIViewController{
     
+    // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - Variables
     var notAchieved : [Badge] = []
     var achieved : [Badge] = []
     var newlyAchieved : [Badge] = []
+    let badgeCellIdentifier = "achCell"
     
-    let ACHIEVED_SECTION = 0
-    let UPCOMING_SECTION = 1
+    enum sections: Int, CaseIterable{
+        case achieved = 0
+        case upcoming
+    }
     
+    // MARK: - ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Badge.update{()->() in
+        Badge.update{
             notAchieved = Badge.getNotAchieved()
             achieved = Badge.getAchieved()
             newlyAchieved = Badge.getNewlyAchieved()
@@ -33,9 +40,9 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
             
         }
         tableView.reloadData()
-        
     }
     
+    // MARK: - Helpers
     func showCongragulationsMessage(newlyAchieved: [Badge]){
         guard self.newlyAchieved.count > 0 else { return }
         let badge = self.newlyAchieved.first
@@ -54,10 +61,13 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
         })
             self.present(alert, animated: true)
         }
+}
+
+extension AchievementsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case ACHIEVED_SECTION:
+        case sections.achieved.rawValue:
             return achieved.count
         default:
             return notAchieved.count
@@ -65,24 +75,19 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return sections.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "achCell", for: indexPath) as? AchievementsTableViewCell{
-//            cell.progressBar.tag = Int("\(indexPath.section)\(indexPath.row)")!
+        if let cell = tableView.dequeueReusableCell(withIdentifier: badgeCellIdentifier, for: indexPath) as? AchievementsTableViewCell{
             switch indexPath.section {
-            case ACHIEVED_SECTION:
-                cell.title.text = achieved[indexPath.row].title
-                cell.badgeImage.image = UIImage(named: achieved[indexPath.row].imageName)
-                cell.descriptionLabel.text = achieved[indexPath.row].specification
-                setProgressForAchievedBadge(cell: cell, indexPath: indexPath)
+            case sections.achieved.rawValue:
+                cell.setValues(badge: achieved[indexPath.row])
+                cell.setProgress(for: achieved[indexPath.row], achieved: true)
                 return cell
             default:
-                cell.title.text = notAchieved[indexPath.row].title
-                cell.badgeImage.image = UIImage(named: notAchieved[indexPath.row].imageName)
-                cell.descriptionLabel.text = notAchieved[indexPath.row].specification
-                setProgressForNotAchievedBadge(cell: cell, indexPath: indexPath)
+                cell.setValues(badge: notAchieved[indexPath.row])
+                cell.setProgress(for: notAchieved[indexPath.row], achieved: false)
                 return cell
             }
         }
@@ -93,23 +98,31 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case ACHIEVED_SECTION:
+        switch section{
+        case sections.achieved.rawValue:
             return "Achieved"
-        default:
+        case sections.upcoming.rawValue:
             return "Upcoming"
+        default:
+            return ""
         }
     }
     
-    func setProgressForNotAchievedBadge(cell: AchievementsTableViewCell, indexPath: IndexPath){
-        let progress = notAchieved[indexPath.row].getProgressBetween0and1()
-        cell.progressBar?.setProgress(progress.0, animated: false)
-        cell.progressLabel.text = progress.1
-    }
-    
-    func setProgressForAchievedBadge(cell: AchievementsTableViewCell, indexPath: IndexPath){
-        cell.progressBar?.setProgress(1, animated: false)
-        cell.progressLabel.text = achieved[indexPath.row].getProgressBetween0and1().1
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch section{
+        case sections.achieved.rawValue:
+            if achieved.count == 0{
+                return "You have not achieved any badge yet."
+            }
+        case sections.upcoming.rawValue:
+            if notAchieved.count == 0{
+                return "You have achieved all of the badges."
+            }
+        default:
+            return ""
+        }
+        
+        return ""
     }
 
 }
