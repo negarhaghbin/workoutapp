@@ -11,7 +11,6 @@
 		840704892336E4E900961B1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840704882336E4E900961B1E /* SceneDelegate.swift */; };
 		84086D3B23CE545F00795C3D /* InteractionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84086D3A23CE545F00795C3D /* InteractionTableViewController.swift */; };
 		84086D3D23CE562300795C3D /* InteractionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84086D3C23CE562300795C3D /* InteractionTableViewCell.swift */; };
-		8409283E237C8D9800C695F6 /* RoutineCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409283D237C8D9700C695F6 /* RoutineCollectionViewController.swift */; };
 		84092840237CD46000C695F6 /* RoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409283F237CD46000C695F6 /* RoutineCollectionViewCell.swift */; };
 		84092842237CDC1700C695F6 /* Attribution in Resources */ = {isa = PBXBuildFile; fileRef = 84092841237CDC1700C695F6 /* Attribution */; };
 		84092847237CE16B00C695F6 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84092846237CE16B00C695F6 /* Image.swift */; };
@@ -21,6 +20,12 @@
 		840AC9BE24E744CC0069FBF8 /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 840AC9BD24E744CC0069FBF8 /* start.png */; };
 		841808922476D8E900786224 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841808912476D8E900786224 /* Badge.swift */; };
 		841808942476DB7600786224 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841808932476DB7600786224 /* Step.swift */; };
+		842E54162800A52000050C56 /* SettingsViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E54152800A52000050C56 /* SettingsViewExt.swift */; };
+		842E54182800A55200050C56 /* RoutineCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E54172800A55200050C56 /* RoutineCollectionViewController.swift */; };
+		842E541B2800B15E00050C56 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842E541A2800B15E00050C56 /* Colors.xcassets */; };
+		842E541D2800B1B000050C56 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E541C2800B1B000050C56 /* Constants.swift */; };
+		842E541F2800B5D900050C56 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E541E2800B5D800050C56 /* OnboardingPage.swift */; };
+		842E54212800D7D600050C56 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E54202800D7D600050C56 /* UIButtonExtension.swift */; };
 		843C3DA3237F0798006FE720 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C3DA2237F0798006FE720 /* RoutineViewController.swift */; };
 		843C3DA5237F0961006FE720 /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */; };
 		844220C02695D978001781F0 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844220BF2695D978001781F0 /* RealmManager.swift */; };
@@ -173,7 +178,7 @@
 		84C10B2823369FB300146547 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B2723369FB300146547 /* NavViewController.swift */; };
 		84C10B2A23369FD100146547 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B2923369FD100146547 /* TableViewController.swift */; };
 		84C10B2C23369FEB00146547 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */; };
-		84D83E0C24B3C11500BF1375 /* roundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D83E0B24B3C11500BF1375 /* roundCorners.swift */; };
+		84D83E0C24B3C11500BF1375 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D83E0B24B3C11500BF1375 /* UIViewExtension.swift */; };
 		84DC84BB23A1B4C800B82BCD /* notificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC84BA23A1B4C800B82BCD /* notificationSettings.swift */; };
 		84DC84BD23A2F2AA00B82BCD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC84BC23A2F2AA00B82BCD /* User.swift */; };
 		84DD804F237462C500B16601 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DD804E237462C500B16601 /* HealthKit.framework */; };
@@ -182,7 +187,6 @@
 		84E6EEC723528902001B00D8 /* startup in Resources */ = {isa = PBXBuildFile; fileRef = 84E6EEC623528902001B00D8 /* startup */; };
 		84E76C09246F0D750041311F /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E76C08246F0D750041311F /* Duration.swift */; };
 		84EB32D3244A03DE009816CE /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB32D2244A03DE009816CE /* AppUtility.swift */; };
-		84EB32D7244A39AB009816CE /* SettingsViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB32D6244A39AB009816CE /* SettingsViewExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -203,7 +207,6 @@
 		840704882336E4E900961B1E /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		84086D3A23CE545F00795C3D /* InteractionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionTableViewController.swift; sourceTree = "<group>"; };
 		84086D3C23CE562300795C3D /* InteractionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionTableViewCell.swift; sourceTree = "<group>"; };
-		8409283D237C8D9700C695F6 /* RoutineCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoutineCollectionViewController.swift; path = "/Users/negar/Desktop/Concordia/workoutapp/workoutapp/View Controllers/RoutineCollectionViewController.swift"; sourceTree = "<absolute>"; };
 		8409283F237CD46000C695F6 /* RoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCollectionViewCell.swift; sourceTree = "<group>"; };
 		84092841237CDC1700C695F6 /* Attribution */ = {isa = PBXFileReference; lastKnownFileType = text; path = Attribution; sourceTree = "<group>"; };
 		84092846237CE16B00C695F6 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -213,7 +216,12 @@
 		840AC9BD24E744CC0069FBF8 /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = "<group>"; };
 		841808912476D8E900786224 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		841808932476DB7600786224 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
-		84361466233BE0660088ADA8 /* 5M Workout.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "5M Workout.entitlements"; sourceTree = "<group>"; };
+		842E54152800A52000050C56 /* SettingsViewExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewExt.swift; path = workoutapp/SettingsViewExt.swift; sourceTree = SOURCE_ROOT; };
+		842E54172800A55200050C56 /* RoutineCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineCollectionViewController.swift; sourceTree = "<group>"; };
+		842E541A2800B15E00050C56 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		842E541C2800B1B000050C56 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		842E541E2800B5D800050C56 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
+		842E54202800D7D600050C56 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		843C3DA2237F0798006FE720 /* RoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
 		843C3DA4237F0961006FE720 /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
 		844220BF2695D978001781F0 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
@@ -368,7 +376,7 @@
 		84C10B2723369FB300146547 /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		84C10B2923369FD100146547 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		84C10B2B23369FEB00146547 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
-		84D83E0B24B3C11500BF1375 /* roundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roundCorners.swift; sourceTree = "<group>"; };
+		84D83E0B24B3C11500BF1375 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		84DC84BA23A1B4C800B82BCD /* notificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationSettings.swift; sourceTree = "<group>"; };
 		84DC84BC23A2F2AA00B82BCD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84DD8042237319A700B16601 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -378,7 +386,6 @@
 		84E6EEC623528902001B00D8 /* startup */ = {isa = PBXFileReference; lastKnownFileType = file; path = startup; sourceTree = "<group>"; };
 		84E76C08246F0D750041311F /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 		84EB32D2244A03DE009816CE /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
-		84EB32D6244A39AB009816CE /* SettingsViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewExt.swift; path = /Users/negar/Desktop/Concordia/workoutapp/workoutapp/SettingsViewExt.swift; sourceTree = "<absolute>"; };
 		DEFBCB37B5690F1D4D76BE76 /* Pods-workoutapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workoutapp.release.xcconfig"; path = "Target Support Files/Pods-workoutapp/Pods-workoutapp.release.xcconfig"; sourceTree = "<group>"; };
 		E228E4E341D33C7AAF50BB78 /* Pods-workoutapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workoutapp.debug.xcconfig"; path = "Target Support Files/Pods-workoutapp/Pods-workoutapp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -440,8 +447,26 @@
 				8464599C24AB762B004C7B34 /* Routine Pictures */,
 				84E6EEC623528902001B00D8 /* startup */,
 				84C10B1C2336995000146547 /* Assets.xcassets */,
+				842E541A2800B15E00050C56 /* Colors.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		842E54192800A7F000050C56 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				845FD8E12385CD4B00E9B1D8 /* Balloon.swift */,
+				845D4D162492DC880025217A /* BalloonAnimation.swift */,
+				8448791D23C3A9A800F37788 /* dateExt.swift */,
+				849CFC2624532000007BD77B /* HideKeyboardExt.swift */,
+				8469DE1923B9105F0098A5FD /* progressBar.swift */,
+				84D83E0B24B3C11500BF1375 /* UIViewExtension.swift */,
+				845FD8C623830C1600E9B1D8 /* swift+gif.swift */,
+				842E541C2800B1B000050C56 /* Constants.swift */,
+				842E541E2800B5D800050C56 /* OnboardingPage.swift */,
+				842E54202800D7D600050C56 /* UIButtonExtension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		844220BC26953E8B001781F0 /* AchievementsStoryboard */ = {
@@ -468,10 +493,10 @@
 		844220BE2695CFE3001781F0 /* SettingsStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				842E54152800A52000050C56 /* SettingsViewExt.swift */,
 				84086D3A23CE545F00795C3D /* InteractionTableViewController.swift */,
 				846446B62378AD0100F493F0 /* NameTableViewController.swift */,
 				846446A523760C9C00F493F0 /* SettingsTableViewController.swift */,
-				84EB32D6244A39AB009816CE /* SettingsViewExt.swift */,
 			);
 			path = SettingsStoryboard;
 			sourceTree = "<group>";
@@ -490,9 +515,9 @@
 		846446AE23779DAF00F493F0 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				842E54172800A55200050C56 /* RoutineCollectionViewController.swift */,
 				845FD8C4238309A100E9B1D8 /* GifViewController.swift */,
 				84C10B2723369FB300146547 /* NavViewController.swift */,
-				8409283D237C8D9700C695F6 /* RoutineCollectionViewController.swift */,
 				843C3DA2237F0798006FE720 /* RoutineViewController.swift */,
 				84E6EEC4235227F3001B00D8 /* SplitViewController.swift */,
 				845FD8C02380995100E9B1D8 /* StartRoutineViewController.swift */,
@@ -703,32 +728,25 @@
 		84C10B122336994E00146547 /* workoutapp */ = {
 			isa = PBXGroup;
 			children = (
-				844220BE2695CFE3001781F0 /* SettingsStoryboard */,
-				844220BC26953E8B001781F0 /* AchievementsStoryboard */,
-				844220BD26953EDF001781F0 /* DiaryStoryboard */,
-				848D683B2471C3DF0041445F /* Message.swift */,
-				848D68392471C3A70041445F /* APIRequest.swift */,
-				849CFC11244F7126007BD77B /* Storyboards */,
-				84361466233BE0660088ADA8 /* 5M Workout.entitlements */,
-				84C10B132336994E00146547 /* AppDelegate.swift */,
-				840704882336E4E900961B1E /* SceneDelegate.swift */,
-				845FD8E12385CD4B00E9B1D8 /* Balloon.swift */,
-				8469DE1923B9105F0098A5FD /* progressBar.swift */,
-				845FD8C623830C1600E9B1D8 /* swift+gif.swift */,
-				849CFC2624532000007BD77B /* HideKeyboardExt.swift */,
+				84092841237CDC1700C695F6 /* Attribution */,
 				84C10B212336995000146547 /* Info.plist */,
 				845D4D182492EBBE0025217A /* AlertController+Image.swift */,
+				848D68392471C3A70041445F /* APIRequest.swift */,
+				84C10B132336994E00146547 /* AppDelegate.swift */,
+				84EB32D2244A03DE009816CE /* AppUtility.swift */,
+				848D683B2471C3DF0041445F /* Message.swift */,
+				844220BF2695D978001781F0 /* RealmManager.swift */,
+				840704882336E4E900961B1E /* SceneDelegate.swift */,
+				844220BC26953E8B001781F0 /* AchievementsStoryboard */,
+				846446A723760CA300F493F0 /* Cells */,
+				844220BD26953EDF001781F0 /* DiaryStoryboard */,
+				842E54192800A7F000050C56 /* Helpers */,
+				8407048E2337AE2700961B1E /* Models */,
 				846446AF23779DC500F493F0 /* Objects */,
 				8407048F2337AE4400961B1E /* Resources */,
+				844220BE2695CFE3001781F0 /* SettingsStoryboard */,
+				849CFC11244F7126007BD77B /* Storyboards */,
 				846446AE23779DAF00F493F0 /* View Controllers */,
-				846446A723760CA300F493F0 /* Cells */,
-				8407048E2337AE2700961B1E /* Models */,
-				84092841237CDC1700C695F6 /* Attribution */,
-				845D4D162492DC880025217A /* BalloonAnimation.swift */,
-				8448791D23C3A9A800F37788 /* dateExt.swift */,
-				84EB32D2244A03DE009816CE /* AppUtility.swift */,
-				84D83E0B24B3C11500BF1375 /* roundCorners.swift */,
-				844220BF2695D978001781F0 /* RealmManager.swift */,
 			);
 			path = workoutapp;
 			sourceTree = "<group>";
@@ -916,6 +934,7 @@
 				84645A1924AB8180004C7B34 /* crunch.gif in Resources */,
 				84645A3D24AB8180004C7B34 /* total_gold.png in Resources */,
 				84645A6224AB8180004C7B34 /* streak_14days.png in Resources */,
+				842E541B2800B15E00050C56 /* Colors.xcassets in Resources */,
 				846459A524AB762B004C7B34 /* lowerBody.png in Resources */,
 				84645A2024AB8180004C7B34 /* calf-raise.gif in Resources */,
 				846459A424AB762B004C7B34 /* lowerBody.jpg in Resources */,
@@ -1024,6 +1043,7 @@
 				8448791E23C3A9A900F37788 /* dateExt.swift in Sources */,
 				84092847237CE16B00C695F6 /* Image.swift in Sources */,
 				84EB32D3244A03DE009816CE /* AppUtility.swift in Sources */,
+				842E541F2800B5D900050C56 /* OnboardingPage.swift in Sources */,
 				84C10B182336994E00146547 /* ViewController.swift in Sources */,
 				848D683C2471C3DF0041445F /* Message.swift in Sources */,
 				84DC84BD23A2F2AA00B82BCD /* User.swift in Sources */,
@@ -1034,8 +1054,7 @@
 				848D683A2471C3A70041445F /* APIRequest.swift in Sources */,
 				84086D3D23CE562300795C3D /* InteractionTableViewCell.swift in Sources */,
 				84C10B142336994E00146547 /* AppDelegate.swift in Sources */,
-				84EB32D7244A39AB009816CE /* SettingsViewExt.swift in Sources */,
-				84D83E0C24B3C11500BF1375 /* roundCorners.swift in Sources */,
+				84D83E0C24B3C11500BF1375 /* UIViewExtension.swift in Sources */,
 				843C3DA3237F0798006FE720 /* RoutineViewController.swift in Sources */,
 				84C10B2823369FB300146547 /* NavViewController.swift in Sources */,
 				84E76C09246F0D750041311F /* Duration.swift in Sources */,
@@ -1043,13 +1062,14 @@
 				84C10B2C23369FEB00146547 /* VideoTableViewCell.swift in Sources */,
 				84DC84BB23A1B4C800B82BCD /* notificationSettings.swift in Sources */,
 				849CFC2124523098007BD77B /* Exercise.swift in Sources */,
+				842E54182800A55200050C56 /* RoutineCollectionViewController.swift in Sources */,
 				8464599224A155E4004C7B34 /* WorkoutCompleteViewController.swift in Sources */,
 				846E780E24E5844700280B7D /* WalkthroughContentViewController.swift in Sources */,
-				8409283E237C8D9800C695F6 /* RoutineCollectionViewController.swift in Sources */,
 				843C3DA5237F0961006FE720 /* RoutineTableViewCell.swift in Sources */,
 				841808922476D8E900786224 /* Badge.swift in Sources */,
 				846E781024E5857E00280B7D /* WalkthroughPageViewController.swift in Sources */,
 				845FD8E22385CD4C00E9B1D8 /* Balloon.swift in Sources */,
+				842E54212800D7D600050C56 /* UIButtonExtension.swift in Sources */,
 				849CFC1F24522CB7007BD77B /* DiaryTableViewController.swift in Sources */,
 				845D4D192492EBBE0025217A /* AlertController+Image.swift in Sources */,
 				84E6EEC5235227F3001B00D8 /* SplitViewController.swift in Sources */,
@@ -1058,8 +1078,10 @@
 				845FD8CF23844A8A00E9B1D8 /* RoutineSection.swift in Sources */,
 				845FD8C5238309A100E9B1D8 /* GifViewController.swift in Sources */,
 				8464599B24A253B5004C7B34 /* NotificationLauncherViewController.swift in Sources */,
+				842E54162800A52000050C56 /* SettingsViewExt.swift in Sources */,
 				845D4D172492DC880025217A /* BalloonAnimation.swift in Sources */,
 				849CFC2D24552F57007BD77B /* DiaryTableViewCell.swift in Sources */,
+				842E541D2800B1B000050C56 /* Constants.swift in Sources */,
 				845FD8C723830C1600E9B1D8 /* swift+gif.swift in Sources */,
 				84C10B2A23369FD100146547 /* TableViewController.swift in Sources */,
 				84092840237CD46000C695F6 /* RoutineCollectionViewCell.swift in Sources */,
@@ -1222,7 +1244,7 @@
 				CODE_SIGN_ENTITLEMENTS = "workoutapp/5M Workout.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.3;
-				DEVELOPMENT_TEAM = 3BH49U8WFP;
+				DEVELOPMENT_TEAM = BUD4F6K4Y5;
 				INFOPLIST_FILE = workoutapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1245,7 +1267,7 @@
 				CODE_SIGN_ENTITLEMENTS = "workoutapp/5M Workout.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.3;
-				DEVELOPMENT_TEAM = 3BH49U8WFP;
+				DEVELOPMENT_TEAM = BUD4F6K4Y5;
 				INFOPLIST_FILE = workoutapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1264,7 +1286,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3BH49U8WFP;
+				DEVELOPMENT_TEAM = BUD4F6K4Y5;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1284,7 +1306,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3BH49U8WFP;
+				DEVELOPMENT_TEAM = BUD4F6K4Y5;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (

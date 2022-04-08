@@ -27,13 +27,13 @@ extension Date {
         return dayAfter.month != month
     }
     
-    func makeDateString()->String{
+    func makeDateString() -> String {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
         return df.string(from: self)
     }
     
-    func makeDateTimeString()->String{
+    func makeDateTimeString() -> String {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return df.string(from: self)
@@ -51,18 +51,22 @@ extension Date {
         return (min(date1, date2) ... max(date1, date2)).contains(self)
     }
     
-    func getHourMinuteFormat()->String{
+    func getHourMinuteFormat() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         return dateFormatter.string(from: self)
     }
     
-    static func getTimeFromString(_ time: String)->(h: Int, m:Int){
-        var index = time.firstIndex(of: ":")!
-        let hour = time[..<index]
-        index = time.index(after: index)
-        let minute = time[index...]
-        
-        return (h: Int(hour)!, m:Int(minute)!)
+    static func getTimeFromString(_ time: String) -> (h: Int, m:Int) {
+        if let index = time.firstIndex(of: ":") {
+            let hour = time[..<index]
+            let indexAfterColon = time.index(after: index)
+            let minute = time[indexAfterColon...]
+            
+            if let hours = Int(hour), let minutes = Int(minute) {
+                return (h: hours, m: minutes)
+            }
+        }
+        return (h: 0, m: 0)
     }
 }

@@ -9,187 +9,191 @@
 import UIKit
 
 class WalkthroughViewController: UIViewController {
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var nextButton: UIButton!{
-        didSet{
-            nextButton.layer.cornerRadius = 25.0
-            nextButton.layer.masksToBounds = true
-        }
-    }
     
+    // MARK: - Outlets
+    
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var datePicker: UIDatePicker!
+    
+    // MARK: - Properties
     
     var walkthroughPageViewController : WalkthroughPageViewController?
-    var datePickerValue = ""
     var appSettings : notificationSettings = notificationSettings()
-    let dateFormatter = DateFormatter()
+    var selectedName: String?
     
-    let SET_NAME_INDEX = 3
-    let SEND_ON_INDEX = 4
-    let SEND_AFTER_INDEX = 5
+    enum PageIndex: Int {
+        case dailyReminder = 0
+        case diary
+        case badge
+        case setName
+        case timeBasedReminder
+        case locationBasedReminder
+    }
      
+    // MARK: - Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateFormatter.dateFormat = "HH:mm"
-        datePickerValue = dateFormatter.string(from: Date())
-        datePicker.addTarget(self, action: #selector(self.handleDatePicker(sender:)), for: .valueChanged)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(nameFieldChanged(notification:)), name: NotificationNames.nameFieldChanged, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.dismissKey()
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: - Actions
+    
     @IBAction func closeButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     @IBAction func skipButtonTapped(_ sender: Any) {
-        if let index = walkthroughPageViewController?.currentIndex{
+        if let index = walkthroughPageViewController?.currentIndex {
             switch index {
-            case 0...SET_NAME_INDEX-1:
-                for _ in index...SET_NAME_INDEX-1{
+            case 0..<PageIndex.setName.rawValue:
+                for _ in index..<PageIndex.setName.rawValue {
                     walkthroughPageViewController?.forwardPage()
                 }
                 
-            case SET_NAME_INDEX:
+            case PageIndex.setName.rawValue:
                 walkthroughPageViewController?.forwardPage()
             
-            case SEND_ON_INDEX:
+            case PageIndex.timeBasedReminder.rawValue:
                 walkthroughPageViewController?.forwardPage()
                 
-            case SEND_AFTER_INDEX:
+            case PageIndex.locationBasedReminder.rawValue:
                 walkthroughPageViewController?.forwardPage()
                 
             default:
-                //UserDefaults.standard.set(true, forKey: "hasViewedWalkthrough")
-                dismiss(animated: true, completion: nil)
+                dismiss(animated: true)
             }
         }
         updateUI()
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        if let index = walkthroughPageViewController?.currentIndex{
+        if let index = walkthroughPageViewController?.currentIndex {
             switch index {
-            case 0...SET_NAME_INDEX-1:
+            case 0..<PageIndex.setName.rawValue:
                 walkthroughPageViewController?.forwardPage()
                 
-            case SET_NAME_INDEX:
+            case PageIndex.setName.rawValue:
                 saveName()
                 walkthroughPageViewController?.forwardPage()
             
-            case SEND_ON_INDEX:
+            case PageIndex.timeBasedReminder.rawValue:
                 updateSendOn()
                 walkthroughPageViewController?.forwardPage()
                 
-            case SEND_AFTER_INDEX:
+            case PageIndex.locationBasedReminder.rawValue:
                 updateSendAfter()
                 walkthroughPageViewController?.forwardPage()
                 
             default:
-                //UserDefaults.standard.set(true, forKey: "hasViewedWalkthrough")
-                dismiss(animated: true, completion: nil)
+                dismiss(animated: true)
             }
         }
         updateUI()
     }
     
-    @objc func handleDatePicker(sender: UIDatePicker) {
-        if let index = walkthroughPageViewController?.currentIndex{
-            switch index {
-            case SEND_ON_INDEX:
-                datePicker.date = sender.date
-                datePickerValue = dateFormatter.string(from: sender.date)
-                
-            case SEND_AFTER_INDEX:
-                datePicker.countDownDuration = sender.countDownDuration
-                datePickerValue = MinutesToString(time: Int(sender.countDownDuration))
-                
-            default:
-                break
-            }
+    // MARK: - Helpers
+    
+    @objc func nameFieldChanged(notification: NSNotification) {
+        if let name = notification.userInfo?["name"] as? String {
+            selectedName = name
+            updateNextButton(isEnabled: !name.isEmpty)
         }
     }
     
-    func updateSendOn(){
-        appSettings = notificationSettings.getSettings()
-        appSettings.setTime(value: datePickerValue)
-        appSettings.setUpTimeNotification()
+    func updateNextButton(isEnabled: Bool) {
+        nextButton.isEnabled = isEnabled
+        nextButton.backgroundColor = isEnabled ? ColorPalette.mainPink : UIColor.systemGray3
     }
     
-    func updateSendAfter(){
-        appSettings = notificationSettings.getSettings()
-        appSettings.setSendAfter(value: Int(datePicker.countDownDuration))
+    private func updateDefaultPageUI() {
+        nextButton.setTitle("NEXT", for: .normal)
+        updateNextButton(isEnabled: true)
+        skipButton.isHidden = false
     }
     
-    func updateUI(){
+    private func updateSetNameUI() {
+        nextButton.setTitle("SAVE", for: .normal)
+        updateNextButton(isEnabled: false)
+        skipButton.isHidden = false
+    }
+    
+    private func updateTimeBasedNotificationUI() {
+        nextButton.setTitle("SAVE", for: .normal)
+        updateNextButton(isEnabled: true)
+        skipButton.isHidden = false
+    }
+    
+    private func updateLocationBasedReminderUI() {
+        nextButton.setTitle("SAVE", for: .normal)
+        updateNextButton(isEnabled: true)
+        skipButton.isHidden = false
+    }
+    
+    func updateUI() {
         if let index = walkthroughPageViewController?.currentIndex{
             switch index {
-            case 0...SET_NAME_INDEX-1:
-                nextButton.setTitle("NEXT", for: .normal)
-                nextButton.isEnabled = true
-                nextButton.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.3137254902, blue: 0.6666666667, alpha: 1)
-                skipButton.isHidden = false
-                textField.isHidden = true
-                datePicker.isHidden = true
+            case 0..<PageIndex.setName.rawValue:
+                updateDefaultPageUI()
             
-            case SET_NAME_INDEX:
-                nextButton.setTitle("SAVE", for: .normal)
-                nextButton.backgroundColor = UIColor.systemGray3
-                nextButton.isEnabled = false
-                skipButton.isHidden = false
-                textField.isHidden = false
-                NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using:
-                {_ in
-                    let textCount = self.textField!.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
-                    let textIsNotEmpty = textCount > 0
-                    self.nextButton.isEnabled = textIsNotEmpty
-                    if self.nextButton.isEnabled{
-                        self.nextButton.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.3137254902, blue: 0.6666666667, alpha: 1)
-                    }
-                })
-                datePicker.isHidden = true
+            case PageIndex.setName.rawValue:
+                updateSetNameUI()
             
-            case SEND_ON_INDEX:
-                nextButton.setTitle("SAVE", for: .normal)
-                nextButton.isEnabled = true
-                nextButton.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.3137254902, blue: 0.6666666667, alpha: 1)
-                skipButton.isHidden = false
-                textField.isHidden = true
-                datePicker.isHidden = false
-                datePicker.datePickerMode = .time
+            case PageIndex.timeBasedReminder.rawValue:
+                updateTimeBasedNotificationUI()
             
-            case SEND_AFTER_INDEX:
-                nextButton.setTitle("SAVE", for: .normal)
-                nextButton.isEnabled = true
-                nextButton.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.3137254902, blue: 0.6666666667, alpha: 1)
-                skipButton.isHidden = false
-                textField.isHidden = true
-                datePicker.isHidden = false
-                datePicker.datePickerMode = .countDownTimer
+            case PageIndex.locationBasedReminder.rawValue:
+                updateLocationBasedReminderUI()
             
             default:
                 nextButton.setTitle("GET STARTED", for: .normal)
-                nextButton.isEnabled = true
-                nextButton.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.3137254902, blue: 0.6666666667, alpha: 1)
+                updateNextButton(isEnabled: true)
                 skipButton.isHidden = true
-                datePicker.isHidden = true
             }
             pageControl.currentPage = index
         }
     }
     
-    func saveName(){
-        let specificPerson = User.getUser(uuid: UserDefaults.standard.string(forKey: "uuid")!)
-        specificPerson.changeName(newName: textField.text!)
+    
+    func saveName() {
+        guard let uuid = UserDefaults.standard.string(forKey: "uuid") else { return }
+        
+        let specificPerson = User.getUser(uuid: uuid)
+        if let name = selectedName {
+            specificPerson.changeName(newName: name)
+        }
+    }
+    
+    func updateSendOn() {
+        if let index = walkthroughPageViewController?.currentIndex, let contentVC = walkthroughPageViewController?.contentViewController(at: index) {
+            appSettings = notificationSettings.getSettings()
+            appSettings.setTime(value: contentVC.datePickerValue)
+            appSettings.setUpTimeNotification()
+        }
+    }
+    
+    func updateSendAfter() {
+        if let index = walkthroughPageViewController?.currentIndex, let contentVC = walkthroughPageViewController?.contentViewController(at: index) {
+            appSettings = notificationSettings.getSettings()
+            appSettings.setSendAfter(value: Int(contentVC.datePicker.countDownDuration))
+        }
     }
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination
         if let pageViewController = destination as? WalkthroughPageViewController{
@@ -200,10 +204,11 @@ class WalkthroughViewController: UIViewController {
 
 }
 
+// MARK: - WalkthroughPageViewControllerDelegate
+
 extension WalkthroughViewController: WalkthroughPageViewControllerDelegate{
     func didUpdatePageIndex(currentIndex: Int) {
         updateUI()
     }
-    
 }
 

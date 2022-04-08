@@ -22,7 +22,7 @@ class dailyRoutine: Object {
     @objc dynamic var uuid : String = UUID().uuidString
     @objc dynamic var feeling : String
     
-    required init() {
+    required override init() {
         exerciseType = ""
         seconds = 0
         dateString = Date().makeDateString()

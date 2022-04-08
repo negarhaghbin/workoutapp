@@ -27,10 +27,11 @@ class notificationSettings: Object {
     @objc dynamic var time : String = "8:00"
     @objc dynamic var notFeelingItOn : String = ""
 
-    func setTime(value: String){
-        let realm = try! Realm()
-        try! realm.write {
-            self.time = value
+    func setTime(value: String) {
+        if let realm = try? Realm() {
+            try? realm.write {
+                self.time = value
+            }
         }
     }
     
@@ -114,8 +115,11 @@ class notificationSettings: Object {
 
         var date = DateComponents()
         let timeArray = time.split(separator: ":")
-        date.hour = Int(timeArray[0])
-        date.minute = Int(timeArray[1])
+         if !timeArray.isEmpty {
+             date.hour = Int(timeArray[0])
+             date.minute = Int(timeArray[1])
+         }
+        
         let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
 
         let request = UNNotificationRequest(identifier: Notification.Time.rawValue, content: content, trigger: trigger)
