@@ -14,13 +14,17 @@ protocol RoutineSelectionDelegate: AnyObject {
 }
 
 class RoutineCollectionViewController: UICollectionViewController {
+    
+    // MARK: Properties
+    
     private let sectionInsets = UIEdgeInsets(top: 2.0, left: 0.0, bottom: 2.0, right: 0.0)
-    private let itemsPerRow: CGFloat = 1
     var images: [Image] = []
     var sections : [RoutineSection] = []
     var cgsize : CGSize? = nil
     
     weak var delegate: RoutineSelectionDelegate?
+    
+    // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +36,12 @@ class RoutineCollectionViewController: UICollectionViewController {
     }
     
     // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showExercises" {
-            let vc = segue.destination as! RoutineViewController
-            let cell = sender as! UICollectionViewCell
-            let indexPath = self.collectionView!.indexPath(for: cell)
-            vc.section = sections[indexPath!.section]
+        if segue.identifier == "showExercises", let vc = segue.destination as? RoutineViewController, let cell = sender as? UICollectionViewCell {
+            if let indexPath = self.collectionView!.indexPath(for: cell), sections.indices.contains(indexPath.section) {
+                vc.section = sections[indexPath.section]
+            }
         }
     }
     
@@ -50,19 +54,15 @@ class RoutineCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
         return 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? RoutineCollectionViewCell
-        else{
-            return UICollectionViewCell()
-        }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? RoutineCollectionViewCell else { return UICollectionViewCell() }
         
         let image = images[indexPath.section]
-        cell.backgroundImage.image = imageWithImage(image: UIImage(named: (image.url.path))!, scaledToSize:cgsize!)
+        cell.backgroundImage.image = UIImage(named: (image.url.path))!
     
         return cell
     }
@@ -70,28 +70,24 @@ class RoutineCollectionViewController: UICollectionViewController {
 }
 
 // MARK: - Collection View Flow Layout Delegate
+
 extension RoutineCollectionViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemsPerRow: CGFloat = 1
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let vPaddingSpace = (sectionInsets.top + sectionInsets.bottom)
+        let availableWidth = view.frame.width - paddingSpace
+        let availableHeight = view.frame.height - vPaddingSpace
+        cgsize = CGSize(width: availableWidth, height: availableHeight / CGFloat(sections.count + 1))
+        return cgsize!
+    }
     
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-    let availableWidth = view.frame.width - paddingSpace
-    let widthPerItem = availableWidth / itemsPerRow
-    cgsize=CGSize(width: widthPerItem, height: widthPerItem/3)
-    return cgsize!
-  }
-  
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      insetForSectionAt section: Int) -> UIEdgeInsets {
-    return sectionInsets
-  }
-  
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return sectionInsets.left
-  }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
 }
 

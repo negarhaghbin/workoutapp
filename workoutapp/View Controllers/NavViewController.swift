@@ -36,12 +36,12 @@ class NavViewController: UINavigationController{
         })
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
-            User(n: "Awsome me").add()
+            User(name: "Awsome me").add()
         }))
 
         alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { action in
             if let name = alert.textFields?.first?.text {
-                User(n: name).add()
+                User(name: name).add()
             }
         }))
         

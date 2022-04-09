@@ -11,9 +11,11 @@ import UIKit
 class AchievementsViewController: UIViewController{
     
     // MARK: - Outlets
+    
     @IBOutlet weak var tableView: UITableView!
     
-    // MARK: - Variables
+    // MARK: - Properties
+    
     var notAchieved : [Badge] = []
     var achieved : [Badge] = []
     var newlyAchieved : [Badge] = []
@@ -24,7 +26,8 @@ class AchievementsViewController: UIViewController{
         case upcoming
     }
     
-    // MARK: - ViewController
+    // MARK: - Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -43,22 +46,24 @@ class AchievementsViewController: UIViewController{
     }
     
     // MARK: - Helpers
+    
     func showCongragulationsMessage(newlyAchieved: [Badge]){
-        guard self.newlyAchieved.count > 0 else { return }
-        let badge = self.newlyAchieved.first
+        guard self.newlyAchieved.count > 0, let badge = self.newlyAchieved.first else { return }
         
         func removeAndShowNextMessage() {
             self.newlyAchieved.removeFirst()
             self.showCongragulationsMessage(newlyAchieved: newlyAchieved)
         }
         
-        let alert = UIAlertController(title: "Congratulations!", message: "You have successfully achieved \(badge!.title) badge.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Congratulations!", message: "You have successfully achieved \(badge.title) badge.", preferredStyle: .alert)
         
-        let alertImage = UIImage(named: badge!.imageName)
-        alert.addImage(image: alertImage!)
-        alert.addAction(UIAlertAction(title: "Hooray!", style: .default){ (action) in
+        if let alertImage = UIImage(named: badge.imageName) {
+            alert.addImage(image: alertImage)
+            alert.addAction(UIAlertAction(title: "Hooray!", style: .default) { (action) in
                 removeAndShowNextMessage()
-        })
+            })
+        }
+        
             self.present(alert, animated: true)
         }
 }

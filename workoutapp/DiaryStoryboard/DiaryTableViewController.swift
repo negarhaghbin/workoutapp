@@ -50,10 +50,11 @@ class DiaryTableViewController: UIViewController{
     }
     
     // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDiaryItem", let destination = segue.destination as? NewWorkoutPopupViewController {
-            if let cell = sender as? UITableViewCell, let indexPath = self.tableView.indexPath(for: cell) {
-                let diaryItem = diariesDict[dates[indexPath.section]]![indexPath.row-1]
+            if let cell = sender as? UITableViewCell, let indexPath = self.tableView.indexPath(for: cell), dates.indices.contains(indexPath.section), let diaryItems = diariesDict[dates[indexPath.section]], diaryItems.indices.contains(indexPath.row-1) {
+                let diaryItem = diaryItems[indexPath.row-1]
                 destination.diaryItem = diaryItem
                 destination.boxTitle.text = "Edit workout"
             }
@@ -86,27 +87,24 @@ extension DiaryTableViewController: UITableViewDelegate, UITableViewDataSource{
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: diaryCellIdentifier, for: indexPath) as? DiaryTableViewCell
-        else{
-            return DiaryTableViewCell()
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: diaryCellIdentifier, for: indexPath) as? DiaryTableViewCell else { return DiaryTableViewCell() }
         
-        if indexPath.row == STEPS_ROW{
+        if indexPath.row == STEPS_ROW {
             cell.setValues(isStepCell: true, stepsCount: steps[dates[indexPath.section]])
-        }
-        else{
+        } else {
             cell.setValues(isStepCell: false, diaryItem: diariesDict[dates[indexPath.section]]![indexPath.row-1])
         }
-        return cell
         
+        return cell
     }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return dates[section]
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if indexPath.row != STEPS_ROW{
-            if editingStyle == .delete {
+        if indexPath.row != STEPS_ROW {
+            if editingStyle == .delete, dates.indices.contains(indexPath.section) {
                 diariesDict[dates[indexPath.section]]![indexPath.row-1].delete()
                 diariesDict[dates[indexPath.section]]!.remove(at: indexPath.row-1)
                 tableView.deleteRows(at: [indexPath], with: .automatic)

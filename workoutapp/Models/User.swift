@@ -22,79 +22,74 @@ class User: Object {
       return "uuid"
     }
     
-    convenience init(n: String) {
+    convenience init(name: String) {
         self.init()
-        let realm = try! Realm()
-        try! realm.write {
-            self.name = n
+        if let realm = try? Realm() {
+            try? realm.write {
+                self.name = name
+            }
         }
     }
     
-    func add(){
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(self)
-        }
-        UserDefaults.standard.set(self.uuid, forKey: "uuid")
-    }
-    
-    func changeName(newName: String){
-        let realm = try! Realm()
-        try! realm.write {
-            self.name = newName
+    func add() {
+        if let realm = try? Realm() {
+            try? realm.write {
+                realm.add(self)
+            }
+            UserDefaults.standard.set(self.uuid, forKey: "uuid")
         }
     }
     
-    class func getUser(uuid: String)->User{
-        let realm=try! Realm()
-        return realm.object(ofType: User.self, forPrimaryKey: uuid)!
-    }
-    
-    func setRestDuration(rd: Int){
-        let realm = try! Realm()
-        try! realm.write {
-            self.restDuration = rd
+    func changeName(newName: String) {
+        if let realm = try? Realm() {
+            try? realm.write {
+                self.name = newName
+            }
         }
     }
     
-    func manageStreak(completion: () -> ()){
-        let realm = try! Realm()
-        if (self.lastLogin != Date.yesterday.makeDateString()){
-            if lastLoginIsBefore(date: Date.yesterday.makeDateString()){
-                try! realm.write {
-                    self.streak = 1
+    class func getUser(uuid: String) -> User {
+        if let realm = try? Realm() {
+            if let user = realm.object(ofType: User.self, forPrimaryKey: uuid) {
+                return user
+            }
+        }
+        
+        return User()
+    }
+    
+    func setRestDuration(_ restDuration: Int) {
+        if let realm = try? Realm() {
+            try? realm.write {
+                self.restDuration = restDuration
+            }
+        }
+    }
+    
+    func manageStreak(completion: () -> ()) {
+        if let realm = try? Realm() {
+            if (self.lastLogin != Date.yesterday.makeDateString()) {
+                if lastLoginIsBefore(date: Date.yesterday.makeDateString()) {
+                    try? realm.write {
+                        self.streak = 1
+                        self.lastLogin = Date().makeDateString()
+                    }
+                }
+            } else {
+                try? realm.write {
+                    self.streak = self.streak + 1
                     self.lastLogin = Date().makeDateString()
                 }
             }
+            completion()
         }
-        else{
-            try! realm.write {
-                self.streak = self.streak + 1
-                self.lastLogin = Date().makeDateString()
-            }
-        }
-        completion()
-        
     }
     
-    func lastLoginIsBefore(date: String)->Bool{
+    func lastLoginIsBefore(date: String) -> Bool {
         let lastLoginTuple = stringToDate(dateString: lastLogin)
         let dateTuple = stringToDate(dateString: date)
-        if lastLoginTuple.0 < dateTuple.0{
-            return true
-        }
-        else{
-            if lastLoginTuple.1<dateTuple.1{
-                return true
-            }
-            else{
-                if lastLoginTuple.2 < dateTuple.2{
-                    return true
-                }
-                else{
-                    return false
-                }
-            }
-        }
+        return (lastLoginTuple.0 < dateTuple.0) ? true :
+        ((lastLoginTuple.1 < dateTuple.1) ? true :
+            (lastLoginTuple.2 < dateTuple.2 ? true : false))
     }
 }

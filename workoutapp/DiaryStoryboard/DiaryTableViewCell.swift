@@ -21,24 +21,23 @@ class DiaryTableViewCell: UITableViewCell {
     }
     
     func setValues(isStepCell: Bool, stepsCount: [Step]? = nil, diaryItem: DiaryItem? = nil){
-        self.isUserInteractionEnabled = !isStepCell
-        self.durationLabel.isEnabled = !isStepCell
-        self.nameLabel.isEnabled = !isStepCell
+        isUserInteractionEnabled = !isStepCell
+        durationLabel.isEnabled = !isStepCell
+        nameLabel.isEnabled = !isStepCell
         
-        if isStepCell{
-            self.nameLabel.text = "Steps"
-            self.durationLabel.text = "Not Available"
+        if isStepCell {
+            nameLabel.text = "Steps"
+            durationLabel.text = "Not Available"
             
-            if let step = stepsCount {
-                if step.first!.count != -1{
-                    self.durationLabel.text = String(step.first!.count)
-                }
+            if let step = stepsCount, let firstSteps = step.first, firstSteps.count != -1 {
+                durationLabel.text = String(firstSteps.count)
             }
-        }
-        else{
-            self.nameLabel.text = diaryItem!.exercise?.name
-            let duration = diaryItem!.duration
-            self.durationLabel.text = duration?.getDuration()
+        } else {
+            if let diaryItem = diaryItem {
+                nameLabel.text = diaryItem.exercise?.name
+                let duration = diaryItem.duration
+                durationLabel.text = duration?.getDuration()
+            }
         }
     }
 

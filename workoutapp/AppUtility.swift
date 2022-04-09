@@ -108,19 +108,23 @@ func thousandsToKs(number: Int)->Float{
     return Float(number)/1000.0
 }
 
-func reverSecondsToString(time: String)->Int{
+func reverSecondsToString(time: String) -> Int {
     let components = time.components(separatedBy: " ")
-    if components.count>2{
-        return ((Int(components[0])!*60) + Int(components[3])!)
-    }
-    else{
-        if (components[1] == "minutes" || components[1] == "minute"){
-            return Int(components[0])!*60
+    if components.count > 2 {
+        if let seconds = Int(components[0]), let hours = Int(components[3]) {
+            return ((seconds * 60) + hours)
         }
-        else{
-            return Int(components[0])!
+    } else {
+        if let seconds = Int(components[0]) {
+            if (components[1] == "minutes" || components[1] == "minute"){
+                return seconds * 60
+            } else {
+                return seconds
+            }
         }
     }
+    
+    return 0
 }
 
 func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{

@@ -44,7 +44,7 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if isNewUser(){
-            self.user = User(n: "Awsome me")
+            self.user = User(name: "Awsome me")
             self.user!.add()
             showWalkthrough()
         }

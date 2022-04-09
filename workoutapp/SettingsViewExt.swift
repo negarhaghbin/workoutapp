@@ -25,7 +25,7 @@ extension SettingsTableViewController: UIPickerViewDelegate, UIPickerViewDataSou
 
         restDurationAlert.addAction(UIAlertAction(title: "Save", style: .default, handler: { action in
             if let rd = self.restDurationAlert.textFields?.first?.text {
-                self.user.setRestDuration(rd: self.UIPicker.selectedRow(inComponent: 0)*60 + self.UIPicker.selectedRow(inComponent: 1))
+                self.user.setRestDuration(self.UIPicker.selectedRow(inComponent: 0)*60 + self.UIPicker.selectedRow(inComponent: 1))
                 self.restLabel.text = rd
             }
         }))

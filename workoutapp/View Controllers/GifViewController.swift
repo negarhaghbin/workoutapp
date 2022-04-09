@@ -11,6 +11,8 @@ import AVFoundation
 
 class GifViewController: UIViewController {
 
+    // MARK: - Outlets
+    
     @IBOutlet weak var nextLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var counter: UILabel!
@@ -21,12 +23,13 @@ class GifViewController: UIViewController {
     @IBOutlet weak var totalProgress: UIProgressView!
     @IBOutlet weak var exerciseTitle: UILabel!
     
+    
+    // MARK: - Properties
+    
     var exercisesDone : [AppExercise] = []
-    
-    
     var player: AVAudioPlayer?
     
-    var user : User = User()
+    var user: User = User()
     var PB = progressBar()
     var restDuration = 10
     var timer = Timer()
@@ -34,19 +37,21 @@ class GifViewController: UIViewController {
     var isResting = false
     var currentExerciseIndex = 0
     var exerciseSeconds = 0
-    var resumeTapped : Bool = false
+    var resumeTapped: Bool = false
     var seconds = 0
     var routineDuration = 0
-    var routineExercises :[AppExercise] = []
+    var routineExercises: [AppExercise] = []
     
-    var completedRoutine : dailyRoutine?
+    var completedRoutine: dailyRoutine?
     
     
-    var section : RoutineSection?{
-        didSet{
+    var section: RoutineSection? {
+        didSet {
             refreshUI()
         }
     }
+    
+    // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,17 +61,16 @@ class GifViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIScene.willDeactivateNotification, object: nil)
     }
     
-    @objc func appMovedToBackground() {
-        print("App moved to background!")
-        pauseRoutine()
-    }
+    // MARK: - Helpers
     
-    override func viewWillAppear(_ animated: Bool) {
-        
+    @objc func appMovedToBackground() {
+//        print("App moved to background!")
+        pauseRoutine()
     }
     
     private func refreshUI(){
@@ -74,22 +78,23 @@ class GifViewController: UIViewController {
         user = RealmManager.getUser()
         restDuration = user.restDuration
         
-        let currentExercise = section?.exercises[currentExerciseIndex]
-        gifView.loadGif(name: (currentExercise?.gifName)!)
-        exerciseSeconds = (currentExercise!.durationInSeconds?.durationInSeconds)!
-        exerciseTitle.text = (currentExercise!.exercise?.name)!
+        guard let section = section else { return }
+        
+        let currentExercise = section.exercises[currentExerciseIndex]
+        gifView.loadGif(name: currentExercise.gifName)
+        exerciseSeconds = (currentExercise.durationInSeconds?.durationInSeconds)!
+        exerciseTitle.text = (currentExercise.exercise?.name)!
         
         counter.text = self.timeString(time: TimeInterval(self.seconds))
         exerciseCounter.text = self.timeString(time: TimeInterval(self.exerciseSeconds))
-        for _ in 1...Int(section!.repetition){
-            routineExercises += section!.exercises
+        for _ in 1...Int(section.repetition) {
+            routineExercises += section.exercises
         }
-        routineDuration = (section!.repetition * (section?.getDuration())!) + ((routineExercises.count-1) * restDuration)
+        routineDuration = (section.repetition * section.getDuration()) + ((routineExercises.count-1) * restDuration)
         
-        if (restDuration != 0 || (currentExerciseIndex == ((routineExercises.count)-1))){
+        if (restDuration != 0 || (currentExerciseIndex == ((routineExercises.count)-1))) {
             nextLabel.text = "Next: Rest"
-        }
-        else if (currentExerciseIndex < ((routineExercises.count)-1)){
+        } else if (currentExerciseIndex < ((routineExercises.count)-1)) {
             print(routineExercises)
             nextLabel.text = "Next: \(String(describing: routineExercises[currentExerciseIndex+1].exercise!.name))"
         }
@@ -97,93 +102,87 @@ class GifViewController: UIViewController {
         runTimer()
         totalProgress.progress = 0.0
         PB.create(view: self.view, duration: self.exerciseSeconds)
-        
     }
     
     
-    func runTimer(){
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            self.seconds += 1
-            self.totalProgress.progress += (1.0/Float(self.routineDuration))
-            self.counter.text = self.timeString(time: TimeInterval(self.seconds))
-            if (self.seconds == self.routineDuration/2){
-                self.playSound(name: "halfway", extensionType: "m4a")
+    func runTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.seconds += 1
+            strongSelf.totalProgress.progress += (1.0/Float(strongSelf.routineDuration))
+            strongSelf.counter.text = strongSelf.timeString(time: TimeInterval(strongSelf.seconds))
+            if (strongSelf.seconds == strongSelf.routineDuration/2) {
+                strongSelf.playSound(name: "halfway", extensionType: "m4a")
             }
-            if (self.seconds == self.routineDuration){
-                self.timer.invalidate()
-                self.finishRoutine()
+            
+            if (strongSelf.seconds == strongSelf.routineDuration) {
+                strongSelf.timer.invalidate()
+                strongSelf.finishRoutine()
             }
         }
-        exerciseTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            if self.exerciseSeconds != 0{
-                self.exerciseSeconds -= 1
+        exerciseTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
+            guard let strongSelf = self else { return }
+            
+            if strongSelf.exerciseSeconds != 0 {
+                strongSelf.exerciseSeconds -= 1
             }
-            if self.exerciseSeconds == 4{
-                if self.canRest(){
-                    self.playSound(name: "rest in", extensionType: "m4a")
+            
+            if strongSelf.exerciseSeconds == 4 {
+                if strongSelf.canRest() {
+                    strongSelf.playSound(name: "rest in", extensionType: "m4a")
+                } else {
+                    strongSelf.playSound(name: "start in", extensionType: "m4a")
                 }
-                else{
-                    self.playSound(name: "start in", extensionType: "m4a")
+            } else if strongSelf.exerciseSeconds == 3 {
+                strongSelf.playSound(name: "countdown", extensionType: "wav")
+            } else if strongSelf.exerciseSeconds < 1 {
+                if (strongSelf.currentExerciseIndex < ((strongSelf.routineExercises.count)-1)) {
+                    strongSelf.canRest() ? strongSelf.userWillRest() : strongSelf.userWillDoNextExercise()
+                } else {
+                    strongSelf.exerciseTimer.invalidate()
                 }
             }
-            else if self.exerciseSeconds == 3{
-                self.playSound(name: "countdown", extensionType: "wav")
-            }
-            else if self.exerciseSeconds < 1 {
-                if (self.currentExerciseIndex < ((self.routineExercises.count)-1)){
-                    if (self.canRest()){
-                        self.userWillRest()
-                    }
-                    else{
-                        self.userWillDoNextExercise()
-                    }
-                }
-                else{
-                    self.exerciseTimer.invalidate()
-                }
-                
-            }
-            self.exerciseCounter.text = self.timeString(time: TimeInterval(self.exerciseSeconds))
-
+            strongSelf.exerciseCounter.text = strongSelf.timeString(time: TimeInterval(strongSelf.exerciseSeconds))
         }
     }
     
-    func canRest()->Bool{
+    func canRest() -> Bool {
         return (!isResting && (restDuration != 0))
     }
     
-    func userWillRest(){
+    func userWillRest() {
         exerciseSeconds = restDuration
-         gifView.image=UIImage(named: "rest.png")
+         gifView.image = UIImage(named: "rest.png")
          exerciseTitle.text = "Rest"
          nextLabel.text = "Next: \(String(describing: self.routineExercises[self.currentExerciseIndex+1].exercise!.name))"
          isResting = true
          PB.startOver(duration: self.exerciseSeconds)
+        
         //after finishing one exercise
         exercisesDone.append(self.routineExercises[self.currentExerciseIndex])
     }
     
-    func userWillDoNextExercise(){
+    func userWillDoNextExercise() {
         increaseExerciseIndex()
         let currentExercise = routineExercises[currentExerciseIndex]
         exerciseSeconds = (currentExercise.durationInSeconds!.durationInSeconds)
         gifView.loadGif(name: (currentExercise.gifName))
         exerciseTitle.text = currentExercise.exercise?.name
-        if (restDuration != 0 || (currentExerciseIndex == ((routineExercises.count)-1))){
+        if (restDuration != 0 || (currentExerciseIndex == ((routineExercises.count)-1))) {
             nextLabel.text = "Next: Rest"
-        }
-        else if (currentExerciseIndex < ((routineExercises.count)-1)){
+        } else if (currentExerciseIndex < ((routineExercises.count)-1)) {
             nextLabel.text = "Next: \(String(describing: routineExercises[currentExerciseIndex+1].exercise!.name))"
         }
         isResting = false
         PB.startOver(duration: exerciseSeconds)
     }
     
-    func increaseExerciseIndex(){
+    func increaseExerciseIndex() {
         currentExerciseIndex += 1
     }
     
-    func exitRoutine(){
+    func exitRoutine() {
        addExercisesToDiary()
         UIApplication.shared.isIdleTimerDisabled = false
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "NextViewController") as! RoutineCollectionViewController
@@ -191,14 +190,14 @@ class GifViewController: UIViewController {
         self.navigationController!.setViewControllers(viewcontrollers, animated: true)
     }
     
-    func finishRoutine(){
+    func finishRoutine() {
         addExercisesToDiary()
         UIApplication.shared.isIdleTimerDisabled = false
         playSound(name: "good job", extensionType: "m4a")
         self.performSegue(withIdentifier: "wellDone", sender:Any?.self)
     }
     
-    func addExercisesToDiary(){
+    func addExercisesToDiary() {
         if (!isResting && exerciseSeconds == 0){
             exercisesDone.append(self.routineExercises[self.currentExerciseIndex])
         }
@@ -219,16 +218,34 @@ class GifViewController: UIViewController {
         return String(format:"%02i:%02i", minutes, seconds)
     }
     
-    func pauseRoutine(){
+    func pauseRoutine() {
         timer.invalidate()
         exerciseTimer.invalidate()
         PB.pause()
     }
     
-    func resumeRoutine(){
+    func resumeRoutine() {
         runTimer()
         PB.resume()
     }
+    
+    func playSound(name: String, extensionType:String) {
+        guard let url = Bundle.main.url(forResource: name, withExtension: extensionType) else { return }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.m4a.rawValue)
+
+            guard let player = player else { return }
+
+            player.play()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    // MARK: - Actions
     
     @IBAction func togglePlay(_ sender: Any) {
         if self.resumeTapped == false {
@@ -246,51 +263,21 @@ class GifViewController: UIViewController {
         pauseRoutine()
         let alert = UIAlertController(title: "Do you want to finish workout?", message: "It will exit this routine and your progress will be lost.", preferredStyle: .alert)
 
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
-            action in
-            self.exitRoutine()
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { [weak self] action in
+            self?.exitRoutine()
         }))
-        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: {
-            action in
-            self.resumeRoutine()
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { [weak self] action in
+            self?.resumeRoutine()
         }))
-        self.present(alert, animated: true)
+        present(alert, animated: true)
     }
     
-    func playSound(name: String, extensionType:String) {
-        guard let url = Bundle.main.url(forResource: name, withExtension: extensionType) else { return }
-        
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-//            let utterance = AVSpeechUtterance(string: "Good job")
-//            utterance.voice = AVSpeechSynthesisVoice(identifier: "com.apple.speech.synthesis.voice.Victoria")
-//            utterance.rate = 0.4
-//
-//            let synthesizer = AVSpeechSynthesizer()
-//            synthesizer.speak(utterance)
-
-            
-            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.m4a.rawValue)
-
-            /* iOS 10 and earlier require the following line:
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
-
-            guard let player = player else { return }
-
-            player.play()
-
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "wellDone", let destination = segue.destination as? WorkoutCompleteViewController{
             destination.completedRoutine = completedRoutine
-            destination.exercisesCount = currentExerciseIndex+1
+            destination.exercisesCount = currentExerciseIndex + 1
             destination.durationInSeconds = seconds
             
         }

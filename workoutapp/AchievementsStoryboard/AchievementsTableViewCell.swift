@@ -37,14 +37,13 @@ class AchievementsTableViewCell: UITableViewCell {
     }
     
     func setProgress(for badge: Badge, achieved: Bool){
-        if achieved{
-            self.progressBar?.setProgress(1, animated: false)
-            self.progressLabel.text = badge.getProgressBetween0and1().1
-        }
-        else{
+        if achieved {
+            progressBar?.setProgress(1, animated: false)
+            progressLabel.text = badge.getProgressBetween0and1().1
+        } else {
             let progress = badge.getProgressBetween0and1()
-            self.progressBar?.setProgress(progress.0, animated: false)
-            self.progressLabel.text = progress.1
+            progressBar?.setProgress(progress.0, animated: false)
+            progressLabel.text = progress.1
         }
     }
 

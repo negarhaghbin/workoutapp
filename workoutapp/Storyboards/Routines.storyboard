@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fRh-Tt-FNO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fRh-Tt-FNO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Znk-0d-K62">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Znk-0d-K62">
                             <size key="itemSize" width="410" height="179"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -28,11 +28,11 @@
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="RoutineCell" id="lsi-Qh-x7b" customClass="RoutineCollectionViewCell" customModule="_min_Workout" customModuleProvider="target">
                                 <rect key="frame" x="3.5" y="0.0" width="407" height="179"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="j5b-9V-cHh">
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" id="j5b-9V-cHh">
                                     <rect key="frame" x="0.0" y="0.0" width="407" height="179"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upperBody.png" translatesAutoresizingMaskIntoConstraints="NO" id="WAy-re-g9x">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upperBody.png" translatesAutoresizingMaskIntoConstraints="NO" id="WAy-re-g9x">
                                             <rect key="frame" x="0.0" y="0.0" width="407" height="179"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </imageView>
@@ -40,7 +40,6 @@
                                     <constraints>
                                         <constraint firstItem="WAy-re-g9x" firstAttribute="centerX" secondItem="j5b-9V-cHh" secondAttribute="centerX" id="4SQ-o4-gng"/>
                                         <constraint firstItem="WAy-re-g9x" firstAttribute="top" secondItem="j5b-9V-cHh" secondAttribute="top" id="AuA-c8-4ou"/>
-                                        <constraint firstItem="WAy-re-g9x" firstAttribute="width" secondItem="j5b-9V-cHh" secondAttribute="width" id="QZB-vi-vtU"/>
                                         <constraint firstItem="WAy-re-g9x" firstAttribute="centerY" secondItem="j5b-9V-cHh" secondAttribute="centerY" id="Qdd-uI-eWy"/>
                                         <constraint firstAttribute="bottom" secondItem="WAy-re-g9x" secondAttribute="bottom" id="Svl-ge-4Xb"/>
                                         <constraint firstAttribute="trailing" secondItem="WAy-re-g9x" secondAttribute="trailing" id="htc-qa-wgr"/>
@@ -101,24 +100,24 @@
                                 <rect key="frame" x="0.0" y="307" width="414" height="506"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RoutineTableReuseIdentifier" editingAccessoryType="checkmark" id="VVh-FY-F7M" customClass="RoutineTableViewCell" customModule="_min_Workout" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="150"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VVh-FY-F7M" id="4rS-mr-Thg">
-                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="385.5" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="obX-jf-MpY">
-                                                    <rect key="frame" x="0.0" y="0.0" width="155.5" height="150"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="156" height="150"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MEU-Hy-eRM">
-                                                    <rect key="frame" x="329.5" y="60" width="51" height="31"/>
+                                                    <rect key="frame" x="330.5" y="60" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="addRemoveExercise:" destination="NM8-ms-j0T" eventType="valueChanged" id="ezf-w9-7iD"/>
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltO-3n-r0O">
-                                                    <rect key="frame" x="163.5" y="64.5" width="146" height="21"/>
+                                                    <rect key="frame" x="164" y="64.5" width="146.5" height="21"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

@@ -52,52 +52,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func registerForPushNotifications() {
-      center.requestAuthorization(options: [.alert, .sound, .badge]) {
-        [weak self] granted, error in
-        print("Permission granted: \(granted)")
-        if self!.isNewUser(){
-            self!.appSettings = notificationSettings.addNewSettings(granted: granted)
-            if granted{
-                self!.appSettings.setUpTimeNotification()
-                self!.appSettings.setUpActivityNotification(activity: "")
-            }
-        }
-        else{
-            self!.appSettings = notificationSettings.getSettings()
-            if self!.appSettings.timeBool{
-                self!.appSettings.setUpTimeNotification()
-            }
-            if self!.appSettings.activity{
-                self!.appSettings.setUpActivityNotification(activity: "")
-            }
+        center.requestAuthorization(options: [.alert, .sound, .badge]) {
+            [weak self] granted, error in
+            print("Permission granted: \(granted)")
+            guard let strongSelf = self else { return }
             
-        }
-        if granted{
-            self!.addNotificationCategories()
-            OperationQueue.main.addOperation{
-                // Ask for Authorisation from the User.
-                AppDelegate.locationManager.requestAlwaysAuthorization()
-                
-                // For use in foreground
-                AppDelegate.locationManager.requestWhenInUseAuthorization()
-
-                if CLLocationManager.locationServicesEnabled() {
-                    AppDelegate.locationManager.delegate = self
-                    AppDelegate.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-                    AppDelegate.locationManager.startUpdatingLocation()
+            if strongSelf.isNewUser() {
+                strongSelf.appSettings = notificationSettings.addNewSettings(granted: granted)
+                if granted {
+                    strongSelf.appSettings.setUpTimeNotification()
+                    strongSelf.appSettings.setUpActivityNotification(activity: "")
+                }
+            } else {
+                strongSelf.appSettings = notificationSettings.getSettings()
+                if strongSelf.appSettings.timeBool {
+                    strongSelf.appSettings.setUpTimeNotification()
+                }
+                if strongSelf.appSettings.activity {
+                    strongSelf.appSettings.setUpActivityNotification(activity: "")
+                }
+            }
+            if granted {
+                strongSelf.addNotificationCategories()
+                OperationQueue.main.addOperation {
+                    // Ask for Authorisation from the User.
+                    AppDelegate.locationManager.requestAlwaysAuthorization()
+                    
+                    // For use in foreground
+                    AppDelegate.locationManager.requestWhenInUseAuthorization()
+                    
+                    if CLLocationManager.locationServicesEnabled() {
+                        AppDelegate.locationManager.delegate = self
+                        AppDelegate.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                        AppDelegate.locationManager.startUpdatingLocation()
+                    }
                 }
             }
             
-        }
-          guard granted else { return }
-          self?.center.getNotificationSettings { settings in
-            guard settings.authorizationStatus == .authorized else { return }
-            DispatchQueue.main.async {
-              UIApplication.shared.registerForRemoteNotifications()
+            guard granted else { return }
+            
+            strongSelf.center.getNotificationSettings { settings in
+                guard settings.authorizationStatus == .authorized else { return }
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
             }
-          }
-      }
-        
+        }
     }
     
     func addNotificationCategories(){
@@ -120,16 +120,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    func isNewUser()->Bool{
+    func isNewUser() -> Bool {
         let defaults = UserDefaults.standard
-        if defaults.string(forKey: "isAppAlreadyLaunchedOnce") != nil{
+        if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
             return false
-        }
-        else{
+        } else {
             defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
             return true
         }
-        
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -182,13 +180,14 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         
         let storyboard = UIStoryboard(name: "NotificationLaunch", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "NotificationStoryboard") as! NotificationLauncherViewController
-        vc.interaction = interaction
-        if notificationID == Notification.Activity.rawValue {
-            vc.nextViewControllerTabIndex = ACTIVITY_TAB_INDEX
+        if let vc = storyboard.instantiateViewController(withIdentifier: "NotificationStoryboard") as? NotificationLauncherViewController {
+            vc.interaction = interaction
+            if notificationID == Notification.Activity.rawValue {
+                vc.nextViewControllerTabIndex = ACTIVITY_TAB_INDEX
+            }
+            
+            UIApplication.shared.windows.first?.rootViewController = vc
         }
-        
-        UIApplication.shared.windows.first?.rootViewController = vc
         
         switch response.actionIdentifier {
         case NotificationActionID.notToday.rawValue:
@@ -238,32 +237,31 @@ extension AppDelegate: CLLocationManagerDelegate {
         
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         let LocalAppSettings = notificationSettings.getSettings()
-        if !LocalAppSettings.doesFeelingItOn(date: Date()){
+        if !LocalAppSettings.doesFeelingItOn(date: Date()) {
             return
         }
-        if  DiaryItem.hasBeenActiveEnoughInTotal(){
+        if  DiaryItem.hasBeenActiveEnoughInTotal() {
             notificationSettings.cancelNotification(identifier: Notification.Activity.rawValue)
-        }
-        else{
-            for type in [ExerciseType.total.rawValue, ExerciseType.abs.rawValue, ExerciseType.lower.rawValue, ExerciseType.upper.rawValue]{
-                if !DiaryItem.hasBeenActiveEnough(In: type){
+        } else {
+            for type in [ExerciseType.total.rawValue, ExerciseType.abs.rawValue, ExerciseType.lower.rawValue, ExerciseType.upper.rawValue] {
+                if !DiaryItem.hasBeenActiveEnough(In: type) {
                     LocalAppSettings.setUpActivityNotification(activity: type)
                     break
                 }
             }
         }
-            let sendAfter = LocalAppSettings.locationSendAfter
-            let content = UNMutableNotificationContent()
-            content.title = "Are you ready to do some exercises?"
-            content.body = "Tap to start now."
-            content.sound = .default
-            content.categoryIdentifier = NotificationCategoryID.snoozable.rawValue
-
+        
+        let sendAfter = LocalAppSettings.locationSendAfter
+        let content = UNMutableNotificationContent()
+        content.title = "Are you ready to do some exercises?"
+        content.body = "Tap to start now."
+        content.sound = .default
+        content.categoryIdentifier = NotificationCategoryID.snoozable.rawValue
+        
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (TimeInterval(sendAfter)), repeats: false)
-
+        
         let request = UNNotificationRequest(identifier: Notification.Location.rawValue, content: content, trigger: trigger)
         center.add(request, withCompletionHandler: nil)
-//        print("entered region")
     }
         
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {

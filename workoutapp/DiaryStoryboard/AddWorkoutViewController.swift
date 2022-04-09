@@ -31,17 +31,17 @@ class AddWorkoutViewController: UIViewController{
     
 
     // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let cell = sender as? AddWorkoutTableCell{
-            let indexPath = self.tableView!.indexPath(for: cell)
-            if indexPath?.section != 0 && segue.identifier == "oldWorkout" {
-                let vc = segue.destination as! NewWorkoutPopupViewController
-                let exercise = sections[indexPath!.section-1].exercises[indexPath!.row]
-                let diaryItem = DiaryItem(e: exercise.exercise, d: Duration(durationInSeconds: exercise.durationInSeconds?.durationInSeconds))
-                vc.diaryItem = diaryItem
+        if let cell = sender as? AddWorkoutTableCell {
+            if let indexPath = self.tableView.indexPath(for: cell), indexPath.section != 0, segue.identifier == "oldWorkout" {
+                if let vc = segue.destination as? NewWorkoutPopupViewController {
+                    let exercise = sections[indexPath.section-1].exercises[indexPath.row]
+                    let diaryItem = DiaryItem(e: exercise.exercise, d: Duration(durationInSeconds: exercise.durationInSeconds?.durationInSeconds))
+                    vc.diaryItem = diaryItem
+                }
             }
-        }
-        else if (sender as? UIButton) != nil{
+        } else if let _ = sender as? UIButton {
             performSegue(withIdentifier: "newWorkout", sender: nil)
         }
     }

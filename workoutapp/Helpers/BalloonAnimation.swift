@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 func showCongratulationAnimation(balloon: Balloon) {
-    var startTime: TimeInterval?, endTime: TimeInterval?
+    var startTime: TimeInterval?
+    var endTime: TimeInterval?
     let animationDuration = 3.0
     var height: CGFloat = 0
     var animationTimer: Timer?
