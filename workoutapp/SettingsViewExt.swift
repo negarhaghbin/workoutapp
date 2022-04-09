@@ -16,17 +16,19 @@ enum Alert: String{
 extension SettingsTableViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     
-    func createRestDurationAlert(){
-        restDurationAlert.addTextField(configurationHandler: { textField in
-            textField.inputView = self.UIPicker
+    func createRestDurationAlert() {
+        restDurationAlert.addTextField(configurationHandler: { [weak self] textField in
+            textField.inputView = self?.picker
         })
         
         restDurationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 
-        restDurationAlert.addAction(UIAlertAction(title: "Save", style: .default, handler: { action in
-            if let rd = self.restDurationAlert.textFields?.first?.text {
-                self.user.setRestDuration(self.UIPicker.selectedRow(inComponent: 0)*60 + self.UIPicker.selectedRow(inComponent: 1))
-                self.restLabel.text = rd
+        restDurationAlert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] action in
+            guard let strongSelf = self else { return }
+            
+            if let rd = strongSelf.restDurationAlert.textFields?.first?.text {
+                strongSelf.user.setRestDuration(strongSelf.picker.selectedRow(inComponent: 0)*60 + strongSelf.picker.selectedRow(inComponent: 1))
+                strongSelf.restLabel.text = rd
             }
         }))
         

@@ -17,6 +17,8 @@ class NewWorkoutPopupViewController: UIViewController{
     @IBOutlet weak var pickerBackground: UIView!
     @IBOutlet weak var nameField: SearchTextField!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var durationPickerMinLabel: UILabel!
+    @IBOutlet weak var durationPickerSecLabel: UILabel!
     @IBOutlet weak var typePicker: UIPickerView!
     @IBOutlet weak var durationPicker: UIPickerView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -58,6 +60,8 @@ class NewWorkoutPopupViewController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.dismissKey()
         tabBarController?.tabBar.isHidden = true
         if dateLabel.text == "Label" {
@@ -71,7 +75,7 @@ class NewWorkoutPopupViewController: UIViewController{
         nameField.filterStrings(exerciseNames)
         countField.isHidden = true
         durationLabel.isHidden = false
-        addPickerLabels(picker: durationPicker, vc: self)
+//        addPickerLabels(picker: durationPicker, vc: self)
         if let name = nameField.text, let type = typeLabel.text, (nameField.text != "" && AppExercise.hasExercise(name: name, type: type)) {
             nameField.isEnabled = false
             nameField.isUserInteractionEnabled = false
@@ -172,6 +176,8 @@ class NewWorkoutPopupViewController: UIViewController{
         typePicker.isHidden = true
         datePicker.isHidden = false
         durationPicker.isHidden = true
+        durationPickerMinLabel.isHidden = true
+        durationPickerSecLabel.isHidden = true
         pickerBackground.isHidden = false
     }
     
@@ -180,6 +186,8 @@ class NewWorkoutPopupViewController: UIViewController{
         datePicker.isHidden = true
         typePicker.isHidden = false
         durationPicker.isHidden = true
+        durationPickerMinLabel.isHidden = true
+        durationPickerSecLabel.isHidden = true
         pickerBackground.isHidden = false
     }
     
@@ -188,6 +196,8 @@ class NewWorkoutPopupViewController: UIViewController{
         datePicker.isHidden = true
         typePicker.isHidden = true
         durationPicker.isHidden = false
+        durationPickerMinLabel.isHidden = false
+        durationPickerSecLabel.isHidden = false
         pickerBackground.isHidden = false
     }
     

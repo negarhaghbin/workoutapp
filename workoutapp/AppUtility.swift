@@ -140,16 +140,16 @@ func addPickerLabels(picker: UIPickerView, vc: UIViewController){
     let fontSize: CGFloat = font.pointSize
     let componentWidth: CGFloat = CGFloat(vc.view.frame.width) / CGFloat(picker.numberOfComponents)
     var y = CGFloat(picker.frame.height/2) - (fontSize/2)
-    if vc is NewWorkoutPopupViewController{
+    if vc is NewWorkoutPopupViewController {
         y = CGFloat(vc.view.frame.height)*0.15 - (fontSize)
     }
-
+    
     let label1 = UILabel(frame: CGRect(x: componentWidth * 0.65, y: y, width: componentWidth * 0.4, height: fontSize))
     label1.font = font
     label1.textAlignment = .left
     label1.text = "min"
     picker.addSubview(label1)
-
+    
     let label2 = UILabel(frame: CGRect(x: componentWidth * 1.65, y: y, width: componentWidth * 0.4, height: fontSize))
     label2.font = font
     label2.textAlignment = .left
