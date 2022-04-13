@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -170,6 +170,7 @@
 		849CFC29245322E3007BD77B /* AddWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC28245322E3007BD77B /* AddWorkoutViewController.swift */; };
 		849CFC2B2453250A007BD77B /* AddWorkoutTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC2A2453250A007BD77B /* AddWorkoutTableCell.swift */; };
 		849CFC2D24552F57007BD77B /* DiaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CFC2C24552F57007BD77B /* DiaryTableViewCell.swift */; };
+		849DD1C22807298200F4054D /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 849DD1C12807298200F4054D /* SwiftEntryKit */; };
 		84C10B142336994E00146547 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B132336994E00146547 /* AppDelegate.swift */; };
 		84C10B182336994E00146547 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C10B172336994E00146547 /* ViewController.swift */; };
 		84C10B1B2336994E00146547 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C10B192336994E00146547 /* Main.storyboard */; };
@@ -397,6 +398,7 @@
 			files = (
 				5659C03FFC5341E18519622C /* Pods_workoutapp.framework in Frameworks */,
 				84DD804F237462C500B16601 /* HealthKit.framework in Frameworks */,
+				849DD1C22807298200F4054D /* SwiftEntryKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,6 +539,7 @@
 		846446AF23779DC500F493F0 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				848D683B2471C3DF0041445F /* Message.swift */,
 				84092846237CE16B00C695F6 /* Image.swift */,
 				845FD8CE23844A8A00E9B1D8 /* RoutineSection.swift */,
 			);
@@ -734,7 +737,6 @@
 				848D68392471C3A70041445F /* APIRequest.swift */,
 				84C10B132336994E00146547 /* AppDelegate.swift */,
 				84EB32D2244A03DE009816CE /* AppUtility.swift */,
-				848D683B2471C3DF0041445F /* Message.swift */,
 				844220BF2695D978001781F0 /* RealmManager.swift */,
 				840704882336E4E900961B1E /* SceneDelegate.swift */,
 				844220BC26953E8B001781F0 /* AchievementsStoryboard */,
@@ -788,6 +790,9 @@
 			dependencies = (
 			);
 			name = workoutapp;
+			packageProductDependencies = (
+				849DD1C12807298200F4054D /* SwiftEntryKit */,
+			);
 			productName = workoutapp;
 			productReference = 84C10B102336994E00146547 /* 5min Workout.app */;
 			productType = "com.apple.product-type.application";
@@ -836,6 +841,9 @@
 				Base,
 			);
 			mainGroup = 84C10B072336994E00146547;
+			packageReferences = (
+				849DD1C02807298200F4054D /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
+			);
 			productRefGroup = 84C10B112336994E00146547 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1353,6 +1361,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		849DD1C02807298200F4054D /* XCRemoteSwiftPackageReference "SwiftEntryKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/huri000/SwiftEntryKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		849DD1C12807298200F4054D /* SwiftEntryKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 849DD1C02807298200F4054D /* XCRemoteSwiftPackageReference "SwiftEntryKit" */;
+			productName = SwiftEntryKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 84C10B082336994E00146547 /* Project object */;
 }

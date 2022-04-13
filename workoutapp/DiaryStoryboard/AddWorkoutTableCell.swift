@@ -25,14 +25,14 @@ class AddWorkoutTableCell: UITableViewCell {
     }
     
     // MARK: - Helpers
-    func setValues(isWorkout: Bool, exercise: AppExercise? = nil){
-        self.addNewWorkout.isHidden = isWorkout
-        self.titleLabel.isHidden = !isWorkout
-        self.previewImageView.isHidden = !isWorkout
+    func setValues(isWorkout: Bool, exercise: AppExercise? = nil) {
+        addNewWorkout.isHidden = isWorkout
+        titleLabel.isHidden = !isWorkout
+        previewImageView.isHidden = !isWorkout
         
-        if isWorkout{
-            self.titleLabel.text = exercise!.exercise?.name
-            self.previewImageView.image = UIImage(named: (exercise!.gifName + ".gif"))
+        if isWorkout {
+            titleLabel.text = exercise!.exercise?.name
+            previewImageView.image = UIImage(named: (exercise!.gifName + ".gif"))
         }
     }
 

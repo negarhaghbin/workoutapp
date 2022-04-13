@@ -31,19 +31,15 @@ class DiaryTableViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         tableView.estimatedRowHeight = 100
         tabBarController?.tabBar.isHidden = false
         diariesDict = DiaryItem.getWithDate()
         steps = Step.getWithDate()
-        if diariesDict.count > steps.count{
-            dates = Array(diariesDict.keys).sorted(by: >)
-        }
-        else{
-            dates = Array(steps.keys).sorted(by: >)
-        }
+        dates = (diariesDict.count > steps.count) ? Array(diariesDict.keys).sorted(by: >) : Array(steps.keys).sorted(by: >)
         
         
-        if diariesDict.count+steps.count > 1{
+        if (diariesDict.count + steps.count) > 1 {
             viewLabel.text = "Tap on an exercise to edit"
         }
         tableView.reloadData()
@@ -75,12 +71,10 @@ extension DiaryTableViewController: UITableViewDelegate, UITableViewDataSource{
         if let specifiedDateWorkouts = diariesDict[dates[section]]{
             if let specifiedDateSteps = steps[dates[section]]{
                 return (specifiedDateWorkouts.count + specifiedDateSteps.count)
-            }
-            else{
+            } else {
                 return specifiedDateWorkouts.count + 1 //showing steps row anyways
             }
-        }
-        else{
+        } else {
             return 1
         }
     }
@@ -115,6 +109,4 @@ extension DiaryTableViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return indexPath.row == STEPS_ROW ? false : true
     }
-    
-
 }

@@ -13,10 +13,15 @@ protocol ExerciseSelectionDelegate: AnyObject {
 }
 
 class TableViewController: UITableViewController {
+    
+    // MARK: - Properties
+    
     var sections : [RoutineSection] = RoutineSection.getRoutineSections()
     let VideoTableViewCellIdentifier = "VideoTableViewCell"
     
     weak var delegate: ExerciseSelectionDelegate?
+    
+    // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +42,7 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: VideoTableViewCellIdentifier, for: indexPath) as? VideoTableViewCell
-            else{
-                return VideoTableViewCell()
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: VideoTableViewCellIdentifier, for: indexPath) as? VideoTableViewCell else { return VideoTableViewCell() }
         
         let exercise = sections[indexPath.section].exercises[indexPath.row]
         cell.titleLabel.text = exercise.exercise?.name
@@ -52,11 +53,8 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedExercise = sections[indexPath.section].exercises[indexPath.row]
         delegate?.exerciseSelected(selectedExercise)
-        if
-            let detailViewController = delegate as? ViewController,
-            let detailNavigationController = detailViewController.navigationController {
+        if let detailViewController = delegate as? ViewController, let detailNavigationController = detailViewController.navigationController {
           splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
         }
     }
-
 }

@@ -12,39 +12,43 @@ import AVFoundation
 class StartRoutineViewController: UIViewController {
     
     // MARK: - Outlets
+    
     @IBOutlet weak var counter: UILabel!
     
     // MARK: - Variables
-    var section : RoutineSection?
+    
+    var section: RoutineSection?
     var timer = Timer()
     var seconds = 3
     var player: AVAudioPlayer?
     
     
     // MARK: - ViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationController?.setNavigationBarHidden(true, animated: false)
         tabBarController?.tabBar.isHidden = true
         self.counter.text = "\(seconds)"
         self.playSound()
         
-
-        // Do any additional setup after loading the view.
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            self.seconds -= 1
-            if self.seconds > 0 {
-                self.counter.text = "\(self.seconds)"
-                self.playSound()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
+            guard let strongSelf = self else {return}
+            
+            strongSelf.seconds -= 1
+            if strongSelf.seconds > 0 {
+                strongSelf.counter.text = "\(strongSelf.seconds)"
+                strongSelf.playSound()
             }
             
-            if self.seconds == 0 {
-                self.counter.text = "Start"
-                self.playSound()
+            if strongSelf.seconds == 0 {
+                strongSelf.counter.text = "Start"
+                strongSelf.playSound()
             }
-            if self.seconds == -1 {
+            if strongSelf.seconds == -1 {
                 timer.invalidate()
-                self.performSegue(withIdentifier: "start", sender: self)
+                strongSelf.performSegue(withIdentifier: "start", sender: self)
             }
         }
     }
@@ -59,11 +63,7 @@ class StartRoutineViewController: UIViewController {
             try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
 
-            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.wav.rawValue)
-
-            /* iOS 10 and earlier require the following line:
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
 
             guard let player = player else { return }
 
@@ -78,10 +78,8 @@ class StartRoutineViewController: UIViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as? GifViewController
-    
-        vc!.section = section
+        if let vc = segue.destination as? GifViewController {
+            vc.section = section
+        }
     }
-    
-
 }

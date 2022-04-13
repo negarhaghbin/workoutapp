@@ -13,6 +13,7 @@ class RoutineTableViewCell: UITableViewCell {
     @IBOutlet weak var selectionSwitch: UISwitch!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var previewImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

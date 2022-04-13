@@ -92,10 +92,9 @@ class GifViewController: UIViewController {
         }
         routineDuration = (section.repetition * section.getDuration()) + ((routineExercises.count-1) * restDuration)
         
-        if (restDuration != 0 || (currentExerciseIndex == ((routineExercises.count)-1))) {
+        if restDuration != 0 || (currentExerciseIndex == (routineExercises.count-1)) {
             nextLabel.text = "Next: Rest"
-        } else if (currentExerciseIndex < ((routineExercises.count)-1)) {
-            print(routineExercises)
+        } else if currentExerciseIndex < (routineExercises.count - 1) {
             nextLabel.text = "Next: \(String(describing: routineExercises[currentExerciseIndex+1].exercise!.name))"
         }
         
@@ -185,31 +184,31 @@ class GifViewController: UIViewController {
     func exitRoutine() {
        addExercisesToDiary()
         UIApplication.shared.isIdleTimerDisabled = false
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "NextViewController") as! RoutineCollectionViewController
-        let viewcontrollers = [vc]
-        self.navigationController!.setViewControllers(viewcontrollers, animated: true)
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "NextViewController") as? RoutineCollectionViewController {
+            navigationController?.setViewControllers([vc], animated: true)
+        }
     }
     
     func finishRoutine() {
         addExercisesToDiary()
         UIApplication.shared.isIdleTimerDisabled = false
         playSound(name: "good job", extensionType: "m4a")
-        self.performSegue(withIdentifier: "wellDone", sender:Any?.self)
+        performSegue(withIdentifier: "wellDone", sender: Any?.self)
     }
     
     func addExercisesToDiary() {
-        if (!isResting && exerciseSeconds == 0){
-            exercisesDone.append(self.routineExercises[self.currentExerciseIndex])
+        if !isResting && (exerciseSeconds == 0) {
+            exercisesDone.append(routineExercises[currentExerciseIndex])
         }
         DiaryItem.add(appExList: exercisesDone)
-        if (!isResting && exerciseSeconds != 0){
-            let lastExercise = self.routineExercises[self.currentExerciseIndex].exercise
-            let remainingDuration = Duration(durationInSeconds:  self.routineExercises[self.currentExerciseIndex].durationInSeconds!.durationInSeconds - exerciseSeconds)
+        if !isResting && (exerciseSeconds != 0) {
+            let lastExercise = routineExercises[currentExerciseIndex].exercise
+            let remainingDuration = Duration(durationInSeconds:  routineExercises[currentExerciseIndex].durationInSeconds!.durationInSeconds - exerciseSeconds)
             DiaryItem(e: lastExercise, d: remainingDuration).add()
         }
         
         completedRoutine = dailyRoutine(exerciseType: section!.title, durationInSeconds: self.seconds)
-        completedRoutine!.add()
+        completedRoutine?.add()
     }
     
     func timeString(time:TimeInterval) -> String {
@@ -248,15 +247,9 @@ class GifViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func togglePlay(_ sender: Any) {
-        if self.resumeTapped == false {
-            pauseRoutine()
-            self.resumeTapped = true
-            self.playPause.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
-        } else {
-            resumeRoutine()
-            self.resumeTapped = false
-            self.playPause.setBackgroundImage(UIImage(systemName: "pause.fill"), for: .normal)
-        }
+        resumeTapped ? resumeRoutine() : pauseRoutine()
+        playPause.setBackgroundImage(UIImage(systemName: resumeTapped ? "pause.fill" : "play.fill"), for: .normal)
+        resumeTapped = !resumeTapped
     }
     
     @IBAction func quitRoutine(_ sender: Any) {

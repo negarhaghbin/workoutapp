@@ -12,6 +12,7 @@ class InteractionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var usefulLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

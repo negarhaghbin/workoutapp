@@ -7,15 +7,13 @@
 
 import UIKit
 
-enum Alert: String{
+enum Alert: String {
     case restDuration = "restDuration"
     case setAfter = "sendAfterTime"
     case setOn = "sendOnTime"
 }
 
 extension SettingsTableViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    
     func createRestDurationAlert() {
         restDurationAlert.addTextField(configurationHandler: { [weak self] textField in
             textField.inputView = self?.picker
@@ -27,30 +25,36 @@ extension SettingsTableViewController: UIPickerViewDelegate, UIPickerViewDataSou
             guard let strongSelf = self else { return }
             
             if let rd = strongSelf.restDurationAlert.textFields?.first?.text {
-                strongSelf.user.setRestDuration(strongSelf.picker.selectedRow(inComponent: 0)*60 + strongSelf.picker.selectedRow(inComponent: 1))
+                let minutes = strongSelf.picker.selectedRow(inComponent: 0)
+                let seconds = strongSelf.picker.selectedRow(inComponent: 1)
+                strongSelf.user.setRestDuration(minutes * 60 + seconds)
                 strongSelf.restLabel.text = rd
             }
         }))
         
     }
     
-    func createSendAfterAlert(){
-        sendAfterAlert.addTextField(configurationHandler: { textField in
-            self.textFieldTemp2 = textField
-            self.countdownDatePicker.datePickerMode = .countDownTimer
-            self.countdownDatePicker.addTarget(self, action: #selector(self.handleCountDownPicker(sender:)), for: .valueChanged)
-            textField.inputView = self.countdownDatePicker
-            textField.text = MinutesToString(time: self.appSettings.locationSendAfter)
-            self.countdownDatePicker.countDownDuration = TimeInterval(self.appSettings.locationSendAfter)
+    func createSendAfterAlert() {
+        sendAfterAlert.addTextField(configurationHandler: { [weak self] textField in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.textFieldTemp2 = textField
+            strongSelf.countdownDatePicker.datePickerMode = .countDownTimer
+            strongSelf.countdownDatePicker.addTarget(self, action: #selector(strongSelf.handleCountDownPicker(sender:)), for: .valueChanged)
+            textField.inputView = self?.countdownDatePicker
+            textField.text = MinutesToString(time: strongSelf.appSettings.locationSendAfter)
+            strongSelf.countdownDatePicker.countDownDuration = TimeInterval(strongSelf.appSettings.locationSendAfter)
             
         })
         
         sendAfterAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 
-        sendAfterAlert.addAction(UIAlertAction(title: "Save", style: .default, handler: { action in
-            if let rd = self.sendAfterAlert.textFields?.first?.text {
-                self.appSettings.setSendAfter(value: Int(self.countdownDatePicker.countDownDuration))
-                self.sendAfterTime.text = rd
+        sendAfterAlert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] action in
+            guard let strongSelf = self else { return }
+            
+            if let rd = strongSelf.sendAfterAlert.textFields?.first?.text {
+                strongSelf.appSettings.setSendAfter(value: Int(strongSelf.countdownDatePicker.countDownDuration))
+                strongSelf.sendAfterTime.text = rd
             }
         }))
     }
@@ -78,9 +82,8 @@ extension SettingsTableViewController: UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        restDurationAlert.textFields?.first?.text = SecondsToString(time: (pickerView.selectedRow(inComponent: 0))*60 + pickerView.selectedRow(inComponent: 1))
+        let minutes = pickerView.selectedRow(inComponent: 0)
+        let seconds = pickerView.selectedRow(inComponent: 1)
+        restDurationAlert.textFields?.first?.text = SecondsToString(time: (minutes * 60) + seconds)
     }
-    
-    
-    
 }

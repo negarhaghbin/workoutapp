@@ -31,9 +31,9 @@ class AchievementsTableViewCell: UITableViewCell {
     // MARK: - Helpers
     
     func setValues(badge: Badge){
-        self.title.text = badge.title
-        self.badgeImage.image = UIImage(named: badge.imageName)
-        self.descriptionLabel.text = badge.specification
+        title.text = badge.title
+        badgeImage.image = UIImage(named: badge.imageName)
+        descriptionLabel.text = badge.specification
     }
     
     func setProgress(for badge: Badge, achieved: Bool){

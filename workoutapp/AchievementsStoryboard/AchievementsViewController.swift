@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AchievementsViewController: UIViewController{
+class AchievementsViewController: UIViewController {
     
     // MARK: - Outlets
     
@@ -16,12 +16,12 @@ class AchievementsViewController: UIViewController{
     
     // MARK: - Properties
     
-    var notAchieved : [Badge] = []
-    var achieved : [Badge] = []
-    var newlyAchieved : [Badge] = []
+    var notAchieved: [Badge] = []
+    var achieved: [Badge] = []
+    var newlyAchieved: [Badge] = []
     let badgeCellIdentifier = "achCell"
     
-    enum sections: Int, CaseIterable{
+    enum Sections: Int, CaseIterable{
         case achieved = 0
         case upcoming
     }
@@ -34,21 +34,22 @@ class AchievementsViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Badge.update{
+        
+        Badge.update {
             notAchieved = Badge.getNotAchieved()
             achieved = Badge.getAchieved()
             newlyAchieved = Badge.getNewlyAchieved()
             Badge.resetNewlyAchieved()
             showCongragulationsMessage(newlyAchieved: newlyAchieved)
-            
         }
+        
         tableView.reloadData()
     }
     
     // MARK: - Helpers
     
-    func showCongragulationsMessage(newlyAchieved: [Badge]){
-        guard self.newlyAchieved.count > 0, let badge = self.newlyAchieved.first else { return }
+    func showCongragulationsMessage(newlyAchieved: [Badge]) {
+        guard !self.newlyAchieved.isEmpty, let badge = self.newlyAchieved.first else { return }
         
         func removeAndShowNextMessage() {
             self.newlyAchieved.removeFirst()
@@ -64,15 +65,17 @@ class AchievementsViewController: UIViewController{
             })
         }
         
-            self.present(alert, animated: true)
+            present(alert, animated: true)
         }
 }
+
+// MARK: - UITable
 
 extension AchievementsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case sections.achieved.rawValue:
+        case Sections.achieved.rawValue:
             return achieved.count
         default:
             return notAchieved.count
@@ -80,16 +83,14 @@ extension AchievementsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.allCases.count
+        return Sections.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: badgeCellIdentifier, for: indexPath) as? AchievementsTableViewCell else{
-            return AchievementsTableViewCell()
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: badgeCellIdentifier, for: indexPath) as? AchievementsTableViewCell else { return AchievementsTableViewCell() }
         
         switch indexPath.section {
-        case sections.achieved.rawValue:
+        case Sections.achieved.rawValue:
             cell.setValues(badge: achieved[indexPath.row])
             cell.setProgress(for: achieved[indexPath.row], achieved: true)
             return cell
@@ -101,10 +102,10 @@ extension AchievementsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section{
-        case sections.achieved.rawValue:
+        switch section {
+        case Sections.achieved.rawValue:
             return "Achieved"
-        case sections.upcoming.rawValue:
+        case Sections.upcoming.rawValue:
             return "Upcoming"
         default:
             return ""
@@ -112,13 +113,13 @@ extension AchievementsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        switch section{
-        case sections.achieved.rawValue:
-            if achieved.count == 0{
+        switch section {
+        case Sections.achieved.rawValue:
+            if achieved.isEmpty {
                 return "You have not achieved any badge yet."
             }
-        case sections.upcoming.rawValue:
-            if notAchieved.count == 0{
+        case Sections.upcoming.rawValue:
+            if notAchieved.isEmpty {
                 return "You have achieved all of the badges."
             }
         default:

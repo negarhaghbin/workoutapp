@@ -12,6 +12,7 @@ class DiaryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

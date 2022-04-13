@@ -11,20 +11,24 @@ import UIKit
 class NameTableViewController: UITableViewController {
     
     // MARK: - Outlets
+    
     @IBOutlet weak var textField: UITextField!
 
     // MARK: - Variables
+    
     var user : User = User()
     
     // MARK: - ViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         textField?.text=user.name
     }
     
     // MARK: - TableViewController
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if indexPath.section == 0 && indexPath.row == 0 {
             textField.becomeFirstResponder()
         }
@@ -32,9 +36,11 @@ class NameTableViewController: UITableViewController {
     }
     
     // MARK: - Actions
+    
     @IBAction func changeName(_ sender: Any) {
-        let specificPerson = User.getUser(uuid: UserDefaults.standard.string(forKey: "uuid")!)
+        guard let uuid = UserDefaults.standard.string(forKey: "uuid") else {return}
+        let specificPerson = User.getUser(uuid: uuid)
         specificPerson.changeName(newName: textField.text!)
-         _ = navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }

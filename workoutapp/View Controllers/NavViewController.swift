@@ -13,22 +13,21 @@ class NavViewController: UINavigationController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if isNewUser(){
+        if isNewUser() {
             askName()
         }
-            
     }
     
-    func isNewUser()->Bool{
+    func isNewUser() -> Bool {
         let defaults = UserDefaults.standard
-        if defaults.string(forKey: "isAppAlreadyLaunchedOnce") != nil{
+        if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
             return false
         }
         return true
     }
         
     
-    func askName(){
+    func askName() {
         let alert = UIAlertController(title: "What's your name?", message: nil, preferredStyle: .alert)
         
         alert.addTextField(configurationHandler: { textField in
@@ -47,6 +46,4 @@ class NavViewController: UINavigationController{
         
         present(alert, animated: true)
     }
-
-    
 }

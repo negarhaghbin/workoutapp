@@ -11,15 +11,19 @@ import UIKit
 class InteractionTableViewController: UIViewController {
     
     // MARK: - Outlets
+    
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Variables
-    lazy var interactionsDict : [String:[Interaction]] = Interaction.getWithDate()
-    var dates : [String] = []
+    
+    lazy var interactionsDict: [String: [Interaction]] = Interaction.getWithDate()
+    var dates: [String] = []
     
     // MARK: - ViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tabBarController?.tabBar.isHidden = true
         interactionsDict = Interaction.getWithDate()
         dates = Array(interactionsDict.keys).sorted(by: >)
@@ -38,21 +42,14 @@ extension InteractionTableViewController:  UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if dates.count>0{
-            return dates[section]
-        }
-        else{
-            return ""
-        }
+        return dates.isEmpty ? "" : dates[section]
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "InteractionTableCell", for: indexPath) as? InteractionTableViewCell
-        else{
-                return InteractionTableViewCell()
-        }
-        cell.typeLabel.text = interactionsDict[dates[indexPath.section]]![indexPath.row].identifier
-        cell.usefulLabel.text = interactionsDict[dates[indexPath.section]]![indexPath.row].wasUseful ? "useful" : " not useful"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "InteractionTableCell", for: indexPath) as? InteractionTableViewCell, let interaction = interactionsDict[dates[indexPath.section]] else { return InteractionTableViewCell() }
+        
+        cell.typeLabel.text = interaction[indexPath.row].identifier
+        cell.usefulLabel.text = interaction[indexPath.row].wasUseful ? "useful" : " not useful"
         return cell
     }
 
