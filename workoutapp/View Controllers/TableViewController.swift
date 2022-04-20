@@ -17,7 +17,6 @@ class TableViewController: UITableViewController {
     // MARK: - Properties
     
     var sections : [RoutineSection] = RoutineSection.getRoutineSections()
-    let VideoTableViewCellIdentifier = "VideoTableViewCell"
     
     weak var delegate: ExerciseSelectionDelegate?
     
@@ -42,7 +41,7 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: VideoTableViewCellIdentifier, for: indexPath) as? VideoTableViewCell else { return VideoTableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.videoTableViewCellIdentifier, for: indexPath) as? VideoTableViewCell else { return VideoTableViewCell() }
         
         let exercise = sections[indexPath.section].exercises[indexPath.row]
         cell.titleLabel.text = exercise.exercise?.name

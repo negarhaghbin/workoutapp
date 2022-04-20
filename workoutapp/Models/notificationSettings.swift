@@ -25,7 +25,7 @@ class notificationSettings: Object {
     @objc dynamic var locationSendAfter : Int = 15*60 //minutes
     @objc dynamic var timeBool : Bool = true
     @objc dynamic var time : String = "8:00"
-    @objc dynamic var notFeelingItOn : String = ""
+    @objc dynamic var notFeelingItOn: Int = Int(Date().timeIntervalSince1970)
 
     func setTime(value: String) {
         if let realm = try? Realm() {
@@ -35,27 +35,24 @@ class notificationSettings: Object {
         }
     }
     
-    func setSendAfter(value: Int){
-        let realm = try! Realm()
-        try! realm.write {
-            self.locationSendAfter = value
+    func setSendAfter(value: Int) {
+        if let realm = try? Realm() {
+            try? realm.write {
+                self.locationSendAfter = value
+            }
         }
     }
     
-    func setNotFeelingItOn(date: Date){
-        let realm = try! Realm()
-        try! realm.write {
-            self.notFeelingItOn = date.makeDateString()
+    func setNotFeelingItOn(date: Date) {
+        if let realm = try? Realm() {
+            try? realm.write {
+                self.notFeelingItOn = Int(date.timeIntervalSince1970)
+            }
         }
     }
     
-    func doesFeelingItOn(date: Date)->Bool{
-        if date.makeDateString() == notFeelingItOn{
-            return false
-        }
-        else{
-            return true
-        }
+    func doesFeelingItOn(date: Date) -> Bool {
+        return !Calendar.current.isDate(date, inSameDayAs: Date(timeIntervalSince1970: TimeInterval(notFeelingItOn)))
     }
     
     func setNotification(option: String, value: Bool){
@@ -92,38 +89,30 @@ class notificationSettings: Object {
     
     // MARK: Time Notification
     
-     func setUpTimeNotification(){
-        
-        let center = UNUserNotificationCenter.current()
-        let content = UNMutableNotificationContent()
-        
-        let yesterday = Date.yesterday.makeDateString()
-        
-        let yesterdayExercises = try! Realm().objects(DiaryItem.self).filter("dateString == \"\(yesterday)\"")
-        
-        if yesterdayExercises.count > 0{
-            content.title = "It's time to do your daily exercises!"
-        }
-        
-        else{
-            content.title = "Today is a new day!"
-        }
-        
-        content.body = "Tap to start now."
-        content.sound = UNNotificationSound.default
-        content.categoryIdentifier = NotificationCategoryID.snoozable.rawValue
-
-        var date = DateComponents()
-        let timeArray = time.split(separator: ":")
+     func setUpTimeNotification() {
+         let content = UNMutableNotificationContent()
+         
+         let today = Int(Date().timeIntervalSince1970)
+         let yesterday = Int(Date.yesterday.timeIntervalSince1970)
+         
+         let yesterdayExercises = try! Realm().objects(DiaryItem.self).filter("diaryItemDate > \(yesterday) AND diaryItemDate < \(today)")
+         
+         content.title = yesterdayExercises.isEmpty ? "Today is a new day!" : "It's time to do your daily exercises!"
+         content.body = "Tap to start now."
+         content.sound = UNNotificationSound.default
+         content.categoryIdentifier = NotificationCategoryID.snoozable.rawValue
+         
+         var date = DateComponents()
+         let timeArray = time.split(separator: ":")
          if !timeArray.isEmpty {
              date.hour = Int(timeArray[0])
              date.minute = Int(timeArray[1])
          }
-        
-        let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
-
-        let request = UNNotificationRequest(identifier: Notification.Time.rawValue, content: content, trigger: trigger)
-        center.add(request)
+         
+         let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+         
+         let request = UNNotificationRequest(identifier: Notification.Time.rawValue, content: content, trigger: trigger)
+         UNUserNotificationCenter.current().add(request)
     }
     
     // MARK: Activity Notification

@@ -19,7 +19,6 @@ class AchievementsViewController: UIViewController {
     var notAchieved: [Badge] = []
     var achieved: [Badge] = []
     var newlyAchieved: [Badge] = []
-    let badgeCellIdentifier = "achCell"
     
     enum Sections: Int, CaseIterable{
         case achieved = 0
@@ -74,10 +73,12 @@ class AchievementsViewController: UIViewController {
 extension AchievementsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case Sections.achieved.rawValue:
+        guard let achievementsSection = Sections(rawValue: section) else { fatalError() }
+        
+        switch achievementsSection {
+        case .achieved:
             return achieved.count
-        default:
+        case .upcoming:
             return notAchieved.count
         }
     }
@@ -87,14 +88,15 @@ extension AchievementsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: badgeCellIdentifier, for: indexPath) as? AchievementsTableViewCell else { return AchievementsTableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.badgeCellIdentifier, for: indexPath) as? AchievementsTableViewCell else { return AchievementsTableViewCell() }
+        guard let achievementsSection = Sections(rawValue: indexPath.section) else { fatalError() }
         
-        switch indexPath.section {
-        case Sections.achieved.rawValue:
+        switch achievementsSection {
+        case .achieved:
             cell.setValues(badge: achieved[indexPath.row])
             cell.setProgress(for: achieved[indexPath.row], achieved: true)
             return cell
-        default:
+        case .upcoming:
             cell.setValues(badge: notAchieved[indexPath.row])
             cell.setProgress(for: notAchieved[indexPath.row], achieved: false)
             return cell
@@ -102,28 +104,28 @@ extension AchievementsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case Sections.achieved.rawValue:
+        guard let achievementsSection = Sections(rawValue: section) else { return "" }
+        
+        switch achievementsSection {
+        case .achieved:
             return "Achieved"
-        case Sections.upcoming.rawValue:
+        case .upcoming:
             return "Upcoming"
-        default:
-            return ""
         }
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        switch section {
-        case Sections.achieved.rawValue:
+        guard let achievementsSection = Sections(rawValue: section) else { return "" }
+        
+        switch achievementsSection {
+        case .achieved:
             if achieved.isEmpty {
                 return "You have not achieved any badge yet."
             }
-        case Sections.upcoming.rawValue:
+        case .upcoming:
             if notAchieved.isEmpty {
                 return "You have achieved all of the badges."
             }
-        default:
-            return ""
         }
         
         return ""

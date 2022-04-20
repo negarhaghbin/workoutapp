@@ -1,5 +1,5 @@
 //
-//  progressBar.swift
+//  ProgressBar.swift
 //  workoutapp
 //
 //  Created by Negar on 2019-12-29.
@@ -8,22 +8,18 @@
 
 import UIKit
 
-class progressBar: NSObject {
+class ProgressBar: NSObject {
     let shapeLayer = CAShapeLayer()
     let trackLayer = CAShapeLayer()
     
     func create(view: UIView, duration: Int){
-        let center = CGPoint(x:view.center.x, y:view.center.y*15/14)
+        let center = CGPoint(x: view.center.x, y: view.center.y * 15 / 14)
         var radius = CGFloat(0)
         let width = view.frame.width
         let height = view.frame.height
-        if (  width > height){
-            radius = height/4
-        }
-        else{
-            radius = width/4
-        }
-        let circularPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: -CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: true)
+        radius = (width > height) ? height/4 : width/4
+        
+        let circularPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: -CGFloat.pi/2, endAngle: 3 * CGFloat.pi / 2, clockwise: true)
         trackLayer.path = circularPath.cgPath
         trackLayer.strokeColor = UIColor.systemGray6.cgColor
         trackLayer.lineWidth = 10
@@ -71,7 +67,7 @@ class progressBar: NSObject {
         view.layer.addSublayer(shapeLayer)
     }
     
-    func changeEndAngle(view: UIView, percentage: Double){
+    func changeEndAngle(view: UIView, percentage: Double) {
         for layer in view.layer.sublayers! {
             if layer.name == "stroke" {
                  layer.removeFromSuperlayer()

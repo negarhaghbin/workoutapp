@@ -18,7 +18,6 @@ class AddWorkoutViewController: UIViewController{
     // MARK: - Variables
     
     var sections : [RoutineSection] = RoutineSection.getRoutineSections()
-    let cellIdentifier = "addWorkoutCell"
     weak var delegate: ExerciseSelectionDelegate?
     
     // MARK: - ViewController
@@ -37,7 +36,7 @@ class AddWorkoutViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? AddWorkoutTableCell {
-            if let indexPath = self.tableView.indexPath(for: cell), indexPath.section != 0, segue.identifier == "oldWorkout" {
+            if let indexPath = self.tableView.indexPath(for: cell), indexPath.section != 0, segue.identifier == SegueIdentifiers.oldWorkout {
                 if let vc = segue.destination as? NewWorkoutPopupViewController {
                     let exercise = sections[indexPath.section-1].exercises[indexPath.row]
                     let diaryItem = DiaryItem(e: exercise.exercise, d: Duration(durationInSeconds: exercise.durationInSeconds?.durationInSeconds))
@@ -45,7 +44,7 @@ class AddWorkoutViewController: UIViewController{
                 }
             }
         } else if let _ = sender as? UIButton {
-            performSegue(withIdentifier: "newWorkout", sender: nil)
+            performSegue(withIdentifier: SegueIdentifiers.newWorkout, sender: nil)
         }
     }
 }
@@ -68,7 +67,7 @@ extension AddWorkoutViewController: UITableViewDelegate, UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? AddWorkoutTableCell else{ return AddWorkoutTableCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.addWorkoutCell, for: indexPath) as? AddWorkoutTableCell else{ return AddWorkoutTableCell() }
         
         if indexPath.section == 0 {
             cell.setValues(isWorkout: false)

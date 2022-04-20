@@ -11,7 +11,7 @@ import UIKit
 struct Image {
     let url: URL
     
-    static func loadRoutineSectionHeaderImages()->[Image] {
+    static func loadRoutineSectionHeaderImages() -> [Image] {
         var images: [Image] = []
         let names = [ "totalBody", "upperBody", "abs", "lowerBody"]
 

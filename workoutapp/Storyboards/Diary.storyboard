@@ -330,7 +330,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vxh-iU-OcH"/>
-                        <color key="backgroundColor" white="0.5" alpha="0.50490989432429634" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.32427417988679846" alpha="0.73858561736858441" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="F8g-H5-MUA" firstAttribute="trailing" secondItem="vxh-iU-OcH" secondAttribute="trailing" id="01X-MA-Z4e"/>
                             <constraint firstItem="F8g-H5-MUA" firstAttribute="bottom" secondItem="tnu-gc-kWW" secondAttribute="bottom" id="6Ob-yi-O1f"/>
@@ -417,7 +417,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="diaryCell" rowHeight="64" translatesAutoresizingMaskIntoConstraints="NO" id="aA1-2h-M3N" customClass="DiaryTableViewCell" customModule="_min_Workout" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="diaryCell" rowHeight="64" translatesAutoresizingMaskIntoConstraints="NO" id="aA1-2h-M3N" customClass="DiaryTableViewCell" customModule="_min_Workout" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="93.5" width="414" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aA1-2h-M3N" id="gfg-52-q1V">
@@ -451,7 +451,7 @@
                                         <connections>
                                             <outlet property="durationLabel" destination="obx-lV-htg" id="l6b-Cm-h2e"/>
                                             <outlet property="nameLabel" destination="waF-nk-z5f" id="8hZ-O5-Svc"/>
-                                            <segue destination="IZB-b6-2JE" kind="presentation" identifier="showDiaryItem" modalPresentationStyle="fullScreen" id="ghH-0T-wnj"/>
+                                            <segue destination="IZB-b6-2JE" kind="presentation" identifier="showDiaryItem" modalPresentationStyle="overCurrentContext" id="ghH-0T-wnj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -514,7 +514,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VAw-oe-zni"/>
+        <segue reference="ghH-0T-wnj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bend-and-twist.gif" width="304" height="336"/>

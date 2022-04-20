@@ -24,7 +24,7 @@ class WorkoutCompleteViewController: UIViewController {
     var exercisesCount = 0
     var durationInSeconds = 0
     
-    var completedRoutine: dailyRoutine?
+    var completedRoutine: DailyRoutine?
     var feeling = ""
     
     // MARK: - Life cycle

@@ -46,7 +46,7 @@ extension InteractionTableViewController:  UITableViewDelegate, UITableViewDataS
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "InteractionTableCell", for: indexPath) as? InteractionTableViewCell, let interaction = interactionsDict[dates[indexPath.section]] else { return InteractionTableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.interactionTableCell, for: indexPath) as? InteractionTableViewCell, let interaction = interactionsDict[dates[indexPath.section]] else { return InteractionTableViewCell() }
         
         cell.typeLabel.text = interaction[indexPath.row].identifier
         cell.usefulLabel.text = interaction[indexPath.row].wasUseful ? "useful" : " not useful"

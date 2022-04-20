@@ -22,7 +22,6 @@ class RoutineViewController: UIViewController {
     // MARK: - Properties
     
     let repetitionAlert = UIAlertController(title: "Select the number of repetitions", message: "", preferredStyle: .alert)
-    let RoutineTableReuseIdentifier = "RoutineTableReuseIdentifier"
     
     var section: RoutineSection? {
         didSet {
@@ -82,7 +81,7 @@ class RoutineViewController: UIViewController {
             }
             
             UIApplication.shared.isIdleTimerDisabled = true
-            self.performSegue(withIdentifier: "startRoutine", sender: self)
+            self.performSegue(withIdentifier: SegueIdentifiers.startRoutine, sender: self)
         })
         
         startAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
@@ -126,14 +125,14 @@ class RoutineViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "startRoutine" {
+        if segue.identifier == SegueIdentifiers.startRoutine {
             if let vc = segue.destination as? StartRoutineViewController, let exercises = customizedSection?.exercises.filter({$0.exercise != nil}) {
                 customizedSection?.exercises = exercises
                 vc.section = customizedSection
             }
         }
         
-        if segue.identifier == "showExercise", let destination = segue.destination as? ViewController {
+        if segue.identifier == SegueIdentifiers.showExercise, let destination = segue.destination as? ViewController {
             if let cell = sender as? UITableViewCell, let indexPath = self.tableView.indexPath(for: cell) {
                 let exercise = section!.exercises[indexPath.row]
                 destination.exercise = exercise
@@ -155,7 +154,7 @@ extension RoutineViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: RoutineTableReuseIdentifier, for: indexPath) as? RoutineTableViewCell else { return RoutineTableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.routineTableReuseIdentifier, for: indexPath) as? RoutineTableViewCell else { return RoutineTableViewCell() }
         
         let exercise = section!.exercises[indexPath.row]
         cell.title.text = exercise.exercise?.name

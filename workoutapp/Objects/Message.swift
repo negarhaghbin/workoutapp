@@ -8,15 +8,15 @@
 
 import Foundation
 
-final class Message: Codable{
-    var contents:replyContent?
+struct Message: Codable {
+    var contents: respondContent?
 }
 
-struct replyContent: Codable{
-    var quotes:[Quote]?
+struct respondContent: Codable {
+    var quotes: [Quote]?
 }
 
-struct Quote: Codable{
-    var quote:String?
-    var author:String
+struct Quote: Codable {
+    var quote: String?
+    var author: String
 }

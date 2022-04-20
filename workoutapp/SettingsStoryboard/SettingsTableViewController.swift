@@ -73,7 +73,7 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
         
         tabBarController?.tabBar.isHidden = false
         userName.text = user.name
-        restLabel.text = SecondsToString(time: user.restDuration)
+        restLabel.text = secondsToMSString(time: user.restDuration)
         checkNotificationAuthorization(completion:{ authorization in
             DispatchQueue.main.async { [weak self] in
                 self?.refreshUI(authorization: authorization)
@@ -142,13 +142,13 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
     
     private func refreshUI(authorization: Bool) {
         appSettings = RealmManager.getAppSettings()
-        sendAfterTime.text = MinutesToString(time: appSettings.locationSendAfter)
+        sendAfterTime.text = secondsToHMString(time: appSettings.locationSendAfter)
         let time = Date.getTimeFromString(appSettings.time)
         if let date = Calendar.current.date(bySettingHour: time.h, minute: time.m, second: 0, of: Date()) {
             sendOnTimePicker.date = date
         }
         
-        textFieldTemp2.text = MinutesToString(time: self.appSettings.locationSendAfter)
+        textFieldTemp2.text = secondsToHMString(time: self.appSettings.locationSendAfter)
         if authorization {
             timeSwitch.setOn(self.appSettings.timeBool, animated: false)
             locationSwitch.setOn(self.appSettings.location, animated: false)
@@ -267,7 +267,7 @@ class SettingsTableViewController: UITableViewController, CLLocationManagerDeleg
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "edit" {
+        if segue.identifier == SegueIdentifiers.edit {
             let vc = segue.destination as! NameTableViewController
             vc.user = user
         }

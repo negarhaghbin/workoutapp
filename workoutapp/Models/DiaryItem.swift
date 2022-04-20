@@ -18,31 +18,30 @@ class DiaryItem: Object {
 
     @objc dynamic var exercise: Exercise?
     @objc dynamic var duration : Duration? = Duration()
-    @objc dynamic var dateString : String = {
-        return Date().makeDateString()
-    }()
+    @objc dynamic var diaryItemDate: Int = Int(Date().timeIntervalSince1970)
     
     override static func primaryKey() -> String? {
       return "uuid"
     }
     
-    convenience init(e: Exercise?, d:Duration , date: String? = {
-        return Date().makeDateString()
-    }()) {
+    convenience init(e: Exercise?, d: Duration, date: Int? = Int(Date().timeIntervalSince1970)) {
         self.init()
-        let realm = try! Realm()
-        try! realm.write {
-            self.uuid = UUID().uuidString
-            self.exercise = e
-            self.duration = d
-            self.dateString = date!
+        
+        if let realm = try? Realm() {
+            try? realm.write {
+                self.uuid = UUID().uuidString
+                self.exercise = e
+                self.duration = d
+                self.diaryItemDate = date!
+            }
         }
     }
     
-    func add(){
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(self)
+    func add() {
+        if let realm = try? Realm() {
+            try? realm.write {
+                realm.add(self)
+            }
         }
     }
     
@@ -53,24 +52,24 @@ class DiaryItem: Object {
         return true
     }
     
-    class func update(uuid: String, e: Exercise, d: Duration, date: String){
-        let realm = try! Realm()
-        var obj = realm.object(ofType: DiaryItem.self, forPrimaryKey: uuid)
-        try! realm.write {
-            if obj != nil{
-                obj!.exercise = e
-                obj!.duration = d
-                obj!.dateString = date
+    class func update(uuid: String, e: Exercise, d: Duration, date: Int) {
+        if let realm = try? Realm() {
+            var obj = realm.object(ofType: DiaryItem.self, forPrimaryKey: uuid)
+            try? realm.write {
+                if let obj = obj {
+                    obj.exercise = e
+                    obj.duration = d
+                    obj.diaryItemDate = date
+                } else {
+                    obj = DiaryItem()
+                    obj!.uuid = UUID().uuidString
+                    obj!.exercise = e
+                    obj!.duration = d
+                    obj!.diaryItemDate = date
+                    realm.add(obj!)
+                }
+                
             }
-            else{
-                obj = DiaryItem()
-                obj!.uuid = UUID().uuidString
-                obj!.exercise = e
-                obj!.duration = d
-                obj!.dateString = date
-                realm.add(obj!)
-            }
-            
         }
     }
     
@@ -106,12 +105,12 @@ class DiaryItem: Object {
         return true
     }
     
-    class func getWithDate() -> [String:[DiaryItem]] {
+    class func getWithDate() -> [String: [DiaryItem]] {
         let all = getAll()
-        return Dictionary(grouping: all, by: {$0.dateString})
+        return Dictionary(grouping: all, by: {Date(timeIntervalSince1970: TimeInterval($0.diaryItemDate)).makeDateString()})
     }
     
-    class func getWithType() -> [String:[DiaryItem]] {
+    class func getWithType() -> [String: [DiaryItem]] {
         let all = getAll()
         return Dictionary(grouping: all, by: {$0.exercise!.type})
     }

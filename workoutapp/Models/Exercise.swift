@@ -20,18 +20,20 @@ class Exercise: Object {
     
     convenience init(name: String, type: String) {
         self.init()
-        let realm = try! Realm()
-        try! realm.write {
-            self.name = name
-            self.type = type
-            self.compoundKey = compoundKeyValue()
+        if let realm = try? Realm() {
+            try? realm.write {
+                self.name = name
+                self.type = type
+                self.compoundKey = compoundKeyValue()
+            }
         }
     }
     
-    func add(){
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(self)
+    func add() {
+        if let realm = try? Realm() {
+            try? realm.write {
+                realm.add(self)
+            }
         }
     }
     
@@ -87,9 +89,12 @@ class Exercise: Object {
         
     }
     
-    class func loadExercises()->[Exercise]{
-        let realm = try? Realm()
-        return Array(realm!.objects(Exercise.self))
+    class func loadExercises() -> [Exercise] {
+        if let realm = try? Realm() {
+            return Array(realm.objects(Exercise.self))
+        }
+        
+        return []
     }
     
     class func getObject(ck: String)->Exercise{

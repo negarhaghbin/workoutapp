@@ -11,12 +11,9 @@ import RealmSwift
 import CoreLocation
 
 class Interaction: Object {
-    @objc dynamic var identifier : String = ""
-    @objc dynamic var dateString : String = {
-        //return Date().makeDateTimeString()
-        return Date().makeDateString()
-    }()
-    @objc dynamic var wasUseful : Bool = false
+    @objc dynamic var identifier: String = ""
+    @objc dynamic var interactionDate: Int = Int(Date().timeIntervalSince1970)
+    @objc dynamic var wasUseful: Bool = false
     
     convenience init(identifier: String) {
         self.init()
@@ -48,7 +45,7 @@ class Interaction: Object {
     
     class func getWithDate() -> [String:[Interaction]] {
         let all = getAll()
-        return Dictionary(grouping: all, by: {$0.dateString})
+        return Dictionary(grouping: all, by: { Date(timeIntervalSince1970: TimeInterval($0.interactionDate)).makeDateString() })
     }
     
 }

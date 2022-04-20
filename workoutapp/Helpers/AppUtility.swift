@@ -9,13 +9,14 @@
 import Foundation
 import UIKit
 
-enum ExerciseType : String {
+enum ExerciseType: String {
     case total = "Total Body"
     case upper = "Upper Body"
     case abs = "Abs"
     case lower = "Lower Body"
 }
-enum BadgeDuration : Int {
+
+enum BadgeDuration: Int {
     //15 * 60 = 900
     case bronze = 900
     //60 * 60 = 3600
@@ -32,83 +33,59 @@ enum BadgeDuration : Int {
     
 }
 
-func MinutesToString(time: Int)->String{
+func secondsToHMString(time: Int) -> String {
     let hours = time / 3600
     let minutes = time / 60 % 60
     switch hours {
     case 0:
-        if minutes == 1{
-            return "\(minutes) minute"
-        }
-        else{
-            return "\(minutes) minutes"
-        }
+        return "\(minutes) minute\((minutes == 1) ? "" : "s")"
     case 1:
-        if minutes == 0{
+        if minutes == 0 {
             return "\(hours) hour"
-        }
-        else if minutes == 1{
-            return "\(hours) hour and \(minutes) minute"
-        }
-        else{
-            return "\(hours) hour and \(minutes) minutes"
+        } else {
+            return "\(hours) hour and \(minutes) minute\((minutes == 1) ? "" : "s")"
         }
     default:
-        if minutes == 0{
+        if minutes == 0 {
             return "\(hours) hours"
-        }
-        else if minutes == 1{
-            return "\(hours) hours and \(minutes) minute"
-        }
-        else{
-            return "\(hours) hours and \(minutes) minutes"
+        } else {
+            return "\(hours) hours and \(minutes) minute\((minutes == 1) ? "" : "s")"
         }
     }
 }
 
-func SecondsToString(time: Int)->String{
+func secondsToMSString(time: Int) -> String{
     let minutes = time / 60
     let seconds = time % 60
+    
     switch minutes {
     case 0:
-        if seconds == 1{
-            return "\(seconds) second"
-        }
-        else{
-            return "\(seconds) seconds"
-        }
+        return "\(seconds) second\((seconds == 1) ? "" : "s")"
     case 1:
-        if seconds == 0{
+        if seconds == 0 {
             return "\(minutes) minute"
+        } else {
+            return "\(minutes) minute and \(seconds) second\((seconds == 1) ? "" : "s")"
         }
-        else if seconds == 1{
-            return "\(minutes) minute and \(seconds) second"
-        }
-        else{
-            return "\(minutes) minute and \(seconds) seconds"
-        }
+
     default:
-        if seconds == 0{
+        if seconds == 0 {
             return "\(minutes) minutes"
-        }
-        else if seconds == 1{
-            return "\(minutes) minutes and \(seconds) second"
-        }
-        else{
-            return "\(minutes) minutes and \(seconds) seconds"
+        } else {
+            return "\(minutes) minutes and \(seconds) second\((seconds == 1) ? "" : "s")"
         }
     }
 }
 
-func secondsToMinutes(seconds: Int)->Float{
+func secondsToMinutes(seconds: Int) -> Float {
     return Float(seconds)/60.0
 }
 
-func thousandsToKs(number: Int)->Float{
+func thousandsToKs(number: Int) -> Float {
     return Float(number)/1000.0
 }
 
-func reverSecondsToString(time: String) -> Int {
+func stringToSeconds(time: String) -> Int {
     let components = time.components(separatedBy: " ")
     if components.count > 2 {
         if let seconds = Int(components[0]), let hours = Int(components[3]) {
@@ -157,7 +134,7 @@ func addPickerLabels(picker: UIPickerView, vc: UIViewController){
     picker.addSubview(label2)
 }
 
-func stringToDate(dateString: String)->(String, String, String){
-    let result = dateString.split(separator: "-")
-    return (String(result[0]), String(result[1]), String(result[2]))
-}
+//func stringToDate(dateString: String) -> (String, String, String){
+//    let result = dateString.split(separator: "-")
+//    return (String(result[0]), String(result[1]), String(result[2]))
+//}

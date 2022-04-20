@@ -48,7 +48,7 @@ class StartRoutineViewController: UIViewController {
             }
             if strongSelf.seconds == -1 {
                 timer.invalidate()
-                strongSelf.performSegue(withIdentifier: "start", sender: self)
+                strongSelf.performSegue(withIdentifier: SegueIdentifiers.start, sender: self)
             }
         }
     }

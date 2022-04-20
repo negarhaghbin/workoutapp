@@ -7,8 +7,6 @@
 
 import UIKit
 
-private let reuseIdentifier = "RoutineCell"
-
 protocol RoutineSelectionDelegate: AnyObject {
   func routineSelected(_ newRoutine: RoutineSection)
 }
@@ -38,7 +36,7 @@ class RoutineCollectionViewController: UICollectionViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showExercises", let vc = segue.destination as? RoutineViewController, let cell = sender as? UICollectionViewCell {
+        if segue.identifier == SegueIdentifiers.showExercises, let vc = segue.destination as? RoutineViewController, let cell = sender as? UICollectionViewCell {
             if let indexPath = self.collectionView!.indexPath(for: cell), sections.indices.contains(indexPath.section) {
                 vc.section = sections[indexPath.section]
             }
@@ -59,7 +57,7 @@ class RoutineCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? RoutineCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.routineCell, for: indexPath) as? RoutineCollectionViewCell else { return UICollectionViewCell() }
         
         let image = images[indexPath.section]
         cell.backgroundImage.image = UIImage(named: (image.url.path))!

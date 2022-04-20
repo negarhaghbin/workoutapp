@@ -15,33 +15,32 @@ enum RoutineFeeling: String{
     case bad = "bad"
 }
 
-class dailyRoutine: Object {
-    @objc dynamic var exerciseType : String
-    @objc dynamic var seconds : Int
-    @objc dynamic var dateString : String
-    @objc dynamic var uuid : String = UUID().uuidString
-    @objc dynamic var feeling : String
+class DailyRoutine: Object {
+    @objc dynamic var exerciseType: String
+    @objc dynamic var seconds: Int
+    @objc dynamic var performeDate: Double
+//    @objc dynamic var dateString: String
+    @objc dynamic var uuid: String = UUID().uuidString
+    @objc dynamic var feeling: String
     
     required override init() {
         exerciseType = ""
         seconds = 0
-        dateString = Date().makeDateString()
+        performeDate = Date().timeIntervalSince1970
+//        dateString = Date().makeDateString()
         feeling = ""
     }
     
-    convenience init(exerciseType: String, durationInSeconds:Int , date: String? = {
-        return Date().makeDateString()
-        }(), feeling: String? = {
-        return ""
-        }()) {
+    convenience init(exerciseType: String, durationInSeconds:Int , date: Double? = Date().timeIntervalSince1970, feeling: String? = "") {
         self.init()
-        let realm = try! Realm()
-        try! realm.write {
-            self.exerciseType = exerciseType
-            self.seconds = durationInSeconds
-            self.dateString = date!
-            self.uuid = UUID().uuidString
-            self.feeling = feeling!
+        if let realm = try? Realm() {
+            try? realm.write {
+                self.exerciseType = exerciseType
+                self.seconds = durationInSeconds
+                self.performeDate = date!
+                self.uuid = UUID().uuidString
+                self.feeling = feeling!
+            }
         }
     }
     
@@ -51,9 +50,9 @@ class dailyRoutine: Object {
     }
     
     
-    class func getAll() -> [dailyRoutine]{
+    class func getAll() -> [DailyRoutine]{
         let realm = try! Realm()
-        let allRoutines = realm.objects(dailyRoutine.self)
+        let allRoutines = realm.objects(DailyRoutine.self)
         return Array(allRoutines)
     }
     

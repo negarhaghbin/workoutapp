@@ -11,13 +11,13 @@ import RealmSwift
 
 
 class AppExercise: Object {
-    @objc dynamic var uuid : String = UUID().uuidString
+    @objc dynamic var uuid: String = UUID().uuidString
     @objc dynamic var exercise: Exercise?
     
-    @objc dynamic var gifName : String = ""
-    @objc dynamic var videoURLString : String = ""
-    @objc dynamic var durationInSeconds : Duration?
-    @objc dynamic var equipmentsString : String = ""
+    @objc dynamic var gifName: String = ""
+    @objc dynamic var videoURLString: String = ""
+    @objc dynamic var durationInSeconds: Duration?
+    @objc dynamic var equipmentsString: String = ""
     
     var equipments : Array<String> = []
     
@@ -133,9 +133,12 @@ class AppExercise: Object {
         }
     }
     
-    class func loadExercises()->[AppExercise]{
-        let realm = try? Realm()
-        return Array(realm!.objects(AppExercise.self))
+    class func loadExercises() -> [AppExercise] {
+        if let realm = try? Realm() {
+            return Array(realm.objects(AppExercise.self))
+        }
+        
+        return []
     }
     
     class func hasExercise(name: String, type: String) -> Bool {

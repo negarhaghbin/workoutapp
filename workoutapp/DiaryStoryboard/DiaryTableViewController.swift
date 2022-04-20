@@ -21,7 +21,6 @@ class DiaryTableViewController: UIViewController{
     lazy var steps : [String:[Step]] = Step.getWithDate()
     var dates : [String] = []
     let STEPS_ROW = 0
-    let diaryCellIdentifier = "diaryCell"
     
     // MARK: - ViewController
     
@@ -48,7 +47,7 @@ class DiaryTableViewController: UIViewController{
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDiaryItem", let destination = segue.destination as? NewWorkoutPopupViewController {
+        if segue.identifier == SegueIdentifiers.showDiaryItem, let destination = segue.destination as? NewWorkoutPopupViewController {
             if let cell = sender as? UITableViewCell, let indexPath = self.tableView.indexPath(for: cell), dates.indices.contains(indexPath.section), let diaryItems = diariesDict[dates[indexPath.section]], diaryItems.indices.contains(indexPath.row-1) {
                 let diaryItem = diaryItems[indexPath.row-1]
                 destination.diaryItem = diaryItem
@@ -81,7 +80,7 @@ extension DiaryTableViewController: UITableViewDelegate, UITableViewDataSource{
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: diaryCellIdentifier, for: indexPath) as? DiaryTableViewCell else { return DiaryTableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.diaryCellIdentifier, for: indexPath) as? DiaryTableViewCell, dates.indices.contains(indexPath.section) else { return DiaryTableViewCell() }
         
         if indexPath.row == STEPS_ROW {
             cell.setValues(isStepCell: true, stepsCount: steps[dates[indexPath.section]])

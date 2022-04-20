@@ -99,7 +99,7 @@ class NewWorkoutPopupViewController: UIViewController{
         
         nameField.text = diaryItem.exercise?.name
         typeLabel.text = diaryItem.exercise?.type
-        dateLabel.text = diaryItem.dateString
+        dateLabel.text = Date(timeIntervalSince1970: TimeInterval(diaryItem.diaryItemDate)).makeDateString()
         if (diaryItem.duration?.getTimeDuration() == "") {
             countable = true
             countField.isHidden = false
@@ -133,24 +133,24 @@ class NewWorkoutPopupViewController: UIViewController{
             if let countText = countField.text, countText != "No sets" {
                 count = Int(countText)!
             }
-            if let dateText = dateLabel.text {
-                DiaryItem.update(uuid: diaryItem.uuid, e: exercise, d: Duration(countPerSet: count), date: dateText)
+            if let dateText = dateLabel.text, let date = Date.dateFromString(dateString: dateText) {
+                DiaryItem.update(uuid: diaryItem.uuid, e: exercise, d: Duration(countPerSet: count), date: Int(date.timeIntervalSince1970))
             }
         } else {
-            if let dateText = dateLabel.text, let durationText = durationLabel.text {
-                DiaryItem.update(uuid: diaryItem.uuid, e: exercise, d: Duration(durationInSeconds: reverSecondsToString(time: durationText)), date: dateText)
+            if let dateText = dateLabel.text, let durationText = durationLabel.text, let date = Date.dateFromString(dateString: dateText) {
+                DiaryItem.update(uuid: diaryItem.uuid, e: exercise, d: Duration(durationInSeconds: stringToSeconds(time: durationText)), date: Int(date.timeIntervalSince1970))
             }
         }
     }
     
     private func addDiaryItem(exercise: Exercise) {
         if countable {
-            if let countText = countField.text, let dateText = dateLabel.text {
-                diaryItem = DiaryItem(e: exercise, d: Duration(countPerSet: Int(countText)), date: dateText)
+            if let countText = countField.text, let dateText = dateLabel.text, let date = Date.dateFromString(dateString: dateText) {
+                diaryItem = DiaryItem(e: exercise, d: Duration(countPerSet: Int(countText)), date: Int(date.timeIntervalSince1970))
             }
         } else {
-            if let dateText = dateLabel.text, let durationText = durationLabel.text {
-                diaryItem = DiaryItem(e: exercise, d: Duration(durationInSeconds: reverSecondsToString(time: durationText)), date: dateText)
+            if let dateText = dateLabel.text, let durationText = durationLabel.text, let date = Date.dateFromString(dateString: dateText) {
+                diaryItem = DiaryItem(e: exercise, d: Duration(durationInSeconds: stringToSeconds(time: durationText)), date: Int(date.timeIntervalSince1970))
             }
         }
         if let diaryItem = diaryItem {
@@ -281,7 +281,7 @@ extension NewWorkoutPopupViewController:  UIPickerViewDelegate, UIPickerViewData
             typeLabel.text = types[pickerView.selectedRow(inComponent: 0)]
             
         case PickerViewTags.duration.rawValue:
-            durationLabel.text = SecondsToString(time: pickerView.selectedRow(inComponent: 0)*60 + pickerView.selectedRow(inComponent: 1))
+            durationLabel.text = secondsToMSString(time: pickerView.selectedRow(inComponent: 0)*60 + pickerView.selectedRow(inComponent: 1))
             
         default:
             break

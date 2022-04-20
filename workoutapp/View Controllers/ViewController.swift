@@ -114,7 +114,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let minutes = pickerView.selectedRow(inComponent: 0)
         let seconds = pickerView.selectedRow(inComponent: 1)
-        changeDurationAlert.textFields?.first?.text = SecondsToString(time: (minutes * 60) + seconds)
+        changeDurationAlert.textFields?.first?.text = secondsToMSString(time: (minutes * 60) + seconds)
         changeDurationAlert.actions.first?.isEnabled = true
     }
     

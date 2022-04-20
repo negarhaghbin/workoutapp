@@ -42,7 +42,7 @@ extension SettingsTableViewController: UIPickerViewDelegate, UIPickerViewDataSou
             strongSelf.countdownDatePicker.datePickerMode = .countDownTimer
             strongSelf.countdownDatePicker.addTarget(self, action: #selector(strongSelf.handleCountDownPicker(sender:)), for: .valueChanged)
             textField.inputView = self?.countdownDatePicker
-            textField.text = MinutesToString(time: strongSelf.appSettings.locationSendAfter)
+            textField.text = secondsToHMString(time: strongSelf.appSettings.locationSendAfter)
             strongSelf.countdownDatePicker.countDownDuration = TimeInterval(strongSelf.appSettings.locationSendAfter)
             
         })
@@ -66,7 +66,7 @@ extension SettingsTableViewController: UIPickerViewDelegate, UIPickerViewDataSou
        
     @objc func handleCountDownPicker(sender: UIDatePicker) {
         countdownDatePicker.countDownDuration = sender.countDownDuration
-        textFieldTemp2.text = MinutesToString(time: Int(sender.countDownDuration))
+        textFieldTemp2.text = secondsToHMString(time: Int(sender.countDownDuration))
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -84,6 +84,6 @@ extension SettingsTableViewController: UIPickerViewDelegate, UIPickerViewDataSou
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let minutes = pickerView.selectedRow(inComponent: 0)
         let seconds = pickerView.selectedRow(inComponent: 1)
-        restDurationAlert.textFields?.first?.text = SecondsToString(time: (minutes * 60) + seconds)
+        restDurationAlert.textFields?.first?.text = secondsToMSString(time: (minutes * 60) + seconds)
     }
 }

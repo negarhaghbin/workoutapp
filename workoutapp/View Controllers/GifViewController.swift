@@ -30,7 +30,7 @@ class GifViewController: UIViewController {
     var player: AVAudioPlayer?
     
     var user: User = User()
-    var PB = progressBar()
+    var PB = ProgressBar()
     var restDuration = 10
     var timer = Timer()
     var exerciseTimer = Timer()
@@ -42,7 +42,7 @@ class GifViewController: UIViewController {
     var routineDuration = 0
     var routineExercises: [AppExercise] = []
     
-    var completedRoutine: dailyRoutine?
+    var completedRoutine: DailyRoutine?
     
     
     var section: RoutineSection? {
@@ -193,7 +193,7 @@ class GifViewController: UIViewController {
         addExercisesToDiary()
         UIApplication.shared.isIdleTimerDisabled = false
         playSound(name: "good job", extensionType: "m4a")
-        performSegue(withIdentifier: "wellDone", sender: Any?.self)
+        performSegue(withIdentifier: SegueIdentifiers.wellDone, sender: Any?.self)
     }
     
     func addExercisesToDiary() {
@@ -207,7 +207,7 @@ class GifViewController: UIViewController {
             DiaryItem(e: lastExercise, d: remainingDuration).add()
         }
         
-        completedRoutine = dailyRoutine(exerciseType: section!.title, durationInSeconds: self.seconds)
+        completedRoutine = DailyRoutine(exerciseType: section!.title, durationInSeconds: self.seconds)
         completedRoutine?.add()
     }
     
@@ -268,7 +268,7 @@ class GifViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "wellDone", let destination = segue.destination as? WorkoutCompleteViewController{
+        if segue.identifier == SegueIdentifiers.wellDone, let destination = segue.destination as? WorkoutCompleteViewController{
             destination.completedRoutine = completedRoutine
             destination.exercisesCount = currentExerciseIndex + 1
             destination.durationInSeconds = seconds

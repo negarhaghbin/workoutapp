@@ -8,13 +8,13 @@
 
 import Foundation
 
-enum APIError:Error{
+enum APIError: Error {
     case responseProblem
     case decodingProblem
     case encodingProblem
 }
 
-struct APIRequest{
+struct APIRequest {
     let resourceURL: URL
     
     init() {
@@ -25,7 +25,7 @@ struct APIRequest{
         self.resourceURL = resourceURL
     }
     
-    func save(completion: @escaping(Result<Message, APIError>) -> Void){
+    func save(completion: @escaping(Result<Message, APIError>) -> Void) {
             var urlRequest = URLRequest(url: resourceURL)
             urlRequest.httpMethod = "GET"
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")

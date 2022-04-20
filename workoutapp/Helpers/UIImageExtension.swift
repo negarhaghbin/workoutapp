@@ -11,7 +11,6 @@ import UIKit
 import ImageIO
 
 extension UIImageView {
-
     public func loadGif(name: String) {
         DispatchQueue.global().async {
             let image = UIImage.gif(name: name)
@@ -20,8 +19,7 @@ extension UIImageView {
             }
         }
     }
-
-    @available(iOS 9.0, *)
+    
     public func loadGif(asset: String) {
         DispatchQueue.global().async {
             let image = UIImage.gif(asset: asset)
@@ -30,11 +28,9 @@ extension UIImageView {
             }
         }
     }
-
 }
 
 extension UIImage {
-
     public class func gif(data: Data) -> UIImage? {
         guard let source = CGImageSourceCreateWithData(data as CFData, nil) else {
             print("SwiftGif: Source for the image does not exist")
@@ -77,7 +73,6 @@ extension UIImage {
         return gif(data: imageData)
     }
 
-    @available(iOS 9.0, *)
     public class func gif(asset: String) -> UIImage? {
         // Create source from assets catalog
         guard let dataAsset = NSDataAsset(name: asset) else {

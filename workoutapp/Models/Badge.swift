@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 
-enum BadgeTitle : String{
+enum BadgeTitle : String {
     case bronzeAbs = "Bronze Abs"
     case bronzeLegs = "Bronze Legs"
     case bronzeArms = "Bronze Arms"
@@ -49,12 +49,13 @@ class Badge: Object {
     
     convenience init(imageName: String, title: String, specification: String, d: Duration) {
         self.init()
-        let realm = try! Realm()
-        try! realm.write {
-            self.imageName = imageName
-            self.title = title
-            self.specification = specification
-            self.duration = d
+        if let realm = try? Realm() {
+            try? realm.write {
+                self.imageName = imageName
+                self.title = title
+                self.specification = specification
+                self.duration = d
+            }
         }
     }
     

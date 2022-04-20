@@ -11,41 +11,41 @@ import RealmSwift
 import HealthKit
 
 class Step: Object {
-    @objc dynamic var dateString : String = ""
-    @objc dynamic var count : Int = 0
+    @objc dynamic var stepDate: Int = 0
+    @objc dynamic var count: Int = 0
     
     override static func primaryKey() -> String? {
-      return "dateString"
+      return "stepDate"
     }
     
-    convenience init(dateString: String, count: Int) {
+    convenience init(stepDate: Int, count: Int) {
         self.init()
         let realm = try! Realm()
         try! realm.write {
-            self.dateString = dateString
+            self.stepDate = stepDate
             self.count = count
         }
     }
     
-    func add(){
+    func add() {
         let realm = try! Realm()
         try! realm.write {
             realm.add(self)
         }
     }
     
-    class func getWithDate() -> [String:[Step]] {
+    class func getWithDate() -> [String: [Step]] {
         let all = getAll()
-        return Dictionary(grouping: all, by: {$0.dateString})
+        return Dictionary(grouping: all, by: {Date(timeIntervalSince1970: Double($0.stepDate)).makeDateString()})
     }
     
-    private class func getAll() -> [Step]{
+    private class func getAll() -> [Step] {
         let realm = try! Realm()
         let allSteps = realm.objects(Step.self)
         return Array(allSteps)
     }
     
-    class func getTotalStepsCount()->Int{
+    class func getTotalStepsCount() -> Int {
         let steps = Step.getAll()
         var totalStepCounts = 0
         for step in steps{
@@ -134,14 +134,13 @@ class Step: Object {
     
     private class func updateStepDB(date: Date, steps: Int){
         let realm = try! Realm()
-        let dateString = date.makeDateString()
-        if let step = realm.object(ofType: Step.self, forPrimaryKey: dateString){
+        let dateInterval = Int(date.timeIntervalSince1970)
+        if let step = realm.object(ofType: Step.self, forPrimaryKey: dateInterval) {
             try! realm.write {
                 step.count = steps
             }
-        }
-        else{
-            let step = Step(dateString: dateString, count: steps)
+        } else {
+            let step = Step(stepDate: dateInterval, count: steps)
             step.add()
         }
     }

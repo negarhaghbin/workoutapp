@@ -69,4 +69,10 @@ extension Date {
         }
         return (h: 0, m: 0)
     }
+    
+    static func dateFromString(dateString: String) -> Date? {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        return df.date(from: dateString)
+    }
 }

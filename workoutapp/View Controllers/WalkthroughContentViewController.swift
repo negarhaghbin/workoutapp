@@ -84,7 +84,7 @@ class WalkthroughContentViewController: UIViewController {
             
         case WalkthroughViewController.PageIndex.locationBasedReminder.rawValue:
             datePicker.countDownDuration = sender.countDownDuration
-            datePickerValue = MinutesToString(time: Int(sender.countDownDuration))
+            datePickerValue = secondsToHMString(time: Int(sender.countDownDuration))
             
         default:
             break
